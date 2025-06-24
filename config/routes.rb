@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  get 'confirm_registration', to: 'registrations#confirm'
   resource :registration, only: [:new,:create]
   resource :session
   resources :passwords, param: :token

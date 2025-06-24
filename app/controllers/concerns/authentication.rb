@@ -18,7 +18,11 @@ module Authentication
     end
 
     def require_authentication
-      resume_session || request_authentication
+      if resume_session
+        request_confirmation unless Current.session.user.confirmed?
+      else
+        request_authentication
+      end
     end
 
     def resume_session
@@ -28,6 +32,11 @@ module Authentication
     def find_session_by_cookie
       Session.find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]
     end
+
+    def request_confirmation
+      redirect_to root_url, alert: "Please confirm your email address to continue."
+    end
+
 
     def request_authentication
       session[:return_to_after_authenticating] = request.url
@@ -46,7 +55,7 @@ module Authentication
     end
 
     def terminate_session
-      Current.session.destroy
+      Current.session&.destroy
       cookies.delete(:session_id)
     end
 end
