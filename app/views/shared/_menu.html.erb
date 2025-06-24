@@ -1,0 +1,29 @@
+<ul class="w-64 text-lg font-semibold text-gray-700">
+  <li class="border border-gray-300 rounded-lg hover:shadow-lg transition-shadow duration-200">
+    <%= link_to 'Home', root_path, class: "block px-6 py-3 text-center hover:bg-blue-500 hover:text-white rounded-lg" %>
+  </li>
+
+  <% if Rails.application.routes.url_helpers.respond_to?(:pages_about_path) %>
+    <li class="border border-gray-300 rounded-lg hover:shadow-lg transition-shadow duration-200">
+      <%= link_to "About Page", pages_about_path, class: "block px-6 py-3 text-center bg-green-100 hover:bg-blue-500 hover:text-white rounded-lg" %>
+    </li>
+  <% end %>
+
+  <% if Rails.application.routes.url_helpers.respond_to?(:pages_authentification_path) %>
+    <li class="border border-gray-300 rounded-lg hover:shadow-lg transition-shadow duration-200">
+      <%= link_to "Authentication Page", pages_authentification_path, class: "block px-6 py-3 text-center bg-yellow-100 hover:bg-blue-500 hover:text-white rounded-lg" %>
+    </li>
+  <% end %>
+
+  <% if Rails.application.routes.url_helpers.respond_to?(:pages_account_path) %>
+    <li class="border border-gray-300 rounded-lg hover:shadow-lg transition-shadow duration-200">
+      <%= link_to "Account Page", pages_account_path, class: "block px-6 py-3 text-center bg-red-100  hover:bg-blue-500 hover:text-white rounded-lg" %>
+    </li>
+  <% end %>
+
+  <% if Rails.application.routes.url_helpers.respond_to?(:letter_opener_web_path) && Rails.env.development? %>
+    <li class="border border-gray-300 rounded-lg hover:shadow-lg transition-shadow duration-200">
+      <%= link_to "Check Email", letter_opener_web_path, target: "_blank", class: "block px-6 py-3 text-center bg-gray-100 hover:bg-blue-500 hover:text-white rounded-lg" %>
+    </li>
+  <% end %>
+</ul>
