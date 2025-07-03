@@ -13,9 +13,9 @@
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 	
-    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon-new.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="apple-touch-icon" href="/icon-new.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
@@ -35,7 +35,7 @@
 			<a class="mr-1 hover:text-gray-900"><%= link_to "About", pages_about_path, class: "block px-6 py-3 text-center bg-green-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
 		    <% end %>
 		    <% if Rails.application.routes.url_helpers.respond_to?(:pages_authentification_path) %>
-		      <a class="mr-1 hover:text-gray-900"><%= link_to "Login", pages_authentification_path, class: "block px-6 py-3 text-center bg-yellow-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
+			      <a class="mr-1 hover:text-gray-900"><%= link_to "Login", pages_authentification_path, class: "block px-6 py-3 text-center bg-yellow-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
 		    <% end %>
 		    <% if Rails.application.routes.url_helpers.respond_to?(:pages_account_path) %>
 		      <a class="mr-1 hover:text-gray-900"><%= link_to "Account", pages_account_path, class: "block px-6 py-3 text-center bg-red-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
