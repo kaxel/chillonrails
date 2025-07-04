@@ -31,18 +31,18 @@
 	        <span class="ml-3 text-xl">CHILLFILTR®</span>
 	      </a>
 	      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-			<a class="mr-1 hover:text-gray-900"><%= link_to "Radio", pages_radio_path, class: "block px-6 py-3 text-center bg-cyan-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
+			<a class="mr-1 hover:text-gray-900"><%= link_to "Radio", pages_radio_path, class: "block px-4 py-2 text-center bg-cyan-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
 		    <% if Rails.application.routes.url_helpers.respond_to?(:pages_about_path) %>
-			<a class="mr-1 hover:text-gray-900"><%= link_to "About", pages_about_path, class: "block px-6 py-3 text-center bg-green-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
+			<a class="mr-1 hover:text-gray-900"><%= link_to "About", pages_about_path, class: "block px-4 py-2 text-center bg-green-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
 		    <% end %>
 		    <% if Rails.application.routes.url_helpers.respond_to?(:pages_authentification_path) %>
-			      <a class="mr-1 hover:text-gray-900"><%= link_to "Login", pages_authentification_path, class: "block px-6 py-3 text-center bg-yellow-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
+			      <a class="mr-1 hover:text-gray-900"><%= link_to "Login", pages_authentification_path, class: "block px-4 py-2 text-center bg-yellow-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
 		    <% end %>
 		    <% if Rails.application.routes.url_helpers.respond_to?(:pages_account_path) %>
-		      <a class="mr-1 hover:text-gray-900"><%= link_to "Account", pages_account_path, class: "block px-6 py-3 text-center bg-red-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
+		      <a class="mr-1 hover:text-gray-900"><%= link_to "Account", pages_account_path, class: "block px-4 py-2 text-center bg-red-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
 		    <% end %>
 		    <% if Rails.application.routes.url_helpers.respond_to?(:letter_opener_web_path) && Rails.env.development? %>
-		      <a class="mr-1 hover:text-gray-900"><%= link_to "Check Email", letter_opener_web_path, target: "_blank", class: "block px-6 py-3 text-center bg-gray-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
+		      <a class="mr-1 hover:text-gray-900"><%= link_to "Check Email", letter_opener_web_path, target: "_blank", class: "block px-4 py-2 text-center bg-gray-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
 		    <% end %>
 	      </nav>
 	    </div>
