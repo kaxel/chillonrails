@@ -31,6 +31,7 @@
 	        <span class="ml-3 text-xl">CHILLFILTR®</span>
 	      </a>
 	      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+			<a class="mr-1 hover:text-gray-900"><%= link_to "Radio", pages_radio_path, class: "block px-6 py-3 text-center bg-cyan-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
 		    <% if Rails.application.routes.url_helpers.respond_to?(:pages_about_path) %>
 			<a class="mr-1 hover:text-gray-900"><%= link_to "About", pages_about_path, class: "block px-6 py-3 text-center bg-green-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
 		    <% end %>
