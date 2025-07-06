@@ -21,4 +21,11 @@ RSpec.describe "Pages", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
+
+  describe "GET /radio" do
+    it "returns http success" do
+      get "/pages/radio"
+      expect(response).to have_http_status(:success)
+    end
+  end
 end
