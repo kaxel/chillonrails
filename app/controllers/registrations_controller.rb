@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  allow_unauthenticated_access only: [:new, :create, :confirm]
+  allow_unauthenticated_access only: [ :new, :create, :confirm ]
 
   def new
     @user = User.new
