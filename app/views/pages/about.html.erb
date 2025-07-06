@@ -1,7 +1,7 @@
 <section class="text-gray-600 body-font">
   <div class="container mx-auto flex px-5 py-8 md:flex-row flex-col items-center">
     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-      <img class="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600">
+      <img class="object-cover object-center rounded" alt="hero" src="/art/weekly-broadcast.jpg">
     </div>
     <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
       <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">I built CHILLFILTR® as a creative vehicle to support the independent artists that I love.
@@ -10,7 +10,73 @@
 	  <p>Send us your music <a class="hover:text-white bg-teal-300" href="https://www.submithub.com/to/chillfiltr" target="_blank" title="Send music">on SubmitHub.</a></p><br/>
       <div class="flex justify-center">
         <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
-        <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Browse</button>
+        <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"><%= link_to "More About Me", pages_about_path(anchor: "beginning"), class: "button", onclick: "handleClick(); return false;" %></button>
+		
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="py-12"/>
+
+<section class="text-gray-600 body-font">
+  <a id="beginning"></a>
+  <div class="container mx-auto flex px-5 py-8 md:flex-row flex-col items-center">
+    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+      <img class="object-cover object-center rounded" alt="hero" src="/art/krister-promo.jpg">
+    </div>
+    <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Krister Axel Bio
+      </h1>
+      <p class="mb-8 leading-relaxed">I was born in Paris, France, and finished high school in a suburb of New York City. After finishing a liberal arts degree (Poetry) in Madison, Wisconsin, I moved to California and thrived as musician and producer while also holding down a day job as a database developer. Since then, my career has continued to expand in both music and technology. I've lived in both Oregon and New York, and speak fluent French and a bit of Spanish. I kicked off my weekly broadcast show <em>The Weekly Catch</em> for KSKQ in 2025.</p>
+      <div class="flex justify-center">
+        <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"><%= link_to "More About CHILLFILTR®", pages_about_path(anchor: "second"), class: "button", onclick: "handleClick(); return false;" %></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="py-12"/>
+
+<section class="text-gray-600 body-font">
+  <a id="second"></a>
+  <div class="container mx-auto flex px-5 py-8 md:flex-row flex-col items-center">
+    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+      <img class="object-cover object-center rounded" alt="hero" src="/logo-900-clear.png">
+    </div>
+    <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">We love music and we bring it to you free of charge.
+      </h1>
+      <p class="mb-8 leading-relaxed">Please visit our radio page for a realtime example of our taste levels. The music we love falls very roughly into 3 categories: Indie Rock, Folk-Roots-Soul, and Electro Pop.<br/><br/>
+
+The best thing you can do to help us discover your songs is to have them available for sale on Bandcamp. If we hear about it, and we like it, then we will buy it and spin it. It's really that simple.<br/><br/>
+
+You can also send us your songs directly. We charge a small listening fee.</p>
+      <div class="flex justify-center">
+        <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"><%= link_to "Final Notes", pages_about_path(anchor: "final"), class: "button", onclick: "handleClick(); return false;" %></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="py-12"/>
+
+<section class="text-gray-600 body-font">
+  <a id="final"></a>
+  <div class="container mx-auto flex px-5 py-8 md:flex-row flex-col items-center">
+    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+      <img class="object-cover object-center rounded" alt="hero" src="/art/chillfiltr_Ghost_reflection_flowers-mirror.jpg">
+    </div>
+    <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">I want to live in a world where internet radio doesn't live behind a paywall.
+      </h1>
+      <p class="mb-8 leading-relaxed">I have spent most of my life writing music and producing albums. I fell in love with the piano at the age of 12, and the art of songwriting a few years later. I've written hundreds of songs and released many of them.<br/><br/>
+
+I am mostly self-taught on the piano and guitar. I took one year of composition school at UW Madison but that was strictly theory. I play lots of instruments: acoustic & electric piano, Hohner D6 Clavinet, Hammond B3, electric guitar, electric bass, acoustic guitar, hand percussion, harmonium, melodica, and accordion.<br/><br/>
+
+My music is online at all the usual places as Krister Axel and my roots band The River South (also on <a class="hover:text-white bg-teal-300" href="https://axelradio.com" target="_blank">Bandcamp</a>). I love music, technology, and the craft of writing: CHILLFILTR® was just the logical next step.</p>
+      <div class="flex justify-center">
+        <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"><%= link_to "CHILLFILTR® Radio", pages_radio_path, class: "button", onclick: "handleClick(); return false;" %></button><button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"><a href="https://weeklycatch.org" target="_blank">The Weekly Catch</a></button>
       </div>
     </div>
   </div>
