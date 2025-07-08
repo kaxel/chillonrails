@@ -9,7 +9,7 @@ class PostsIngester
   def initialize(csv_file_path)
     @csv_file_path = csv_file_path
     @storage_dir = Rails.root.join('storage')
-    @public_art_dir = Rails.root.join('public', 'art')
+    @public_art_dir = Rails.root.join("public/art")
     @stats = {
       processed: 0,
       created: 0,
@@ -19,21 +19,21 @@ class PostsIngester
   end
 
   def run
-    puts "Starting CSV ingestion from #{@csv_file_path}"
-    
+    Rails.logger.debug "Starting CSV ingestion from #{@csv_file_path}"
+
     CSV.foreach(@csv_file_path, headers: true) do |row|
       @stats[:processed] += 1
-      
+
       begin
         process_row(row)
         @stats[:created] += 1
       rescue => e
         @stats[:errors] += 1
-        puts "Error processing row #{@stats[:processed]}: #{e.message}"
-        puts "Row data: #{row.to_h}"
+        Rails.logger.debug "Error processing row #{@stats[:processed]}: #{e.message}"
+        Rails.logger.debug "Row data: #{row.to_h}"
       end
     end
-    
+
     print_stats
   end
 
@@ -42,17 +42,17 @@ class PostsIngester
   def process_row(row)
     # Find or create location
     location = find_or_create_location(row['location'])
-    
+
     # Process tags (can be multiple separated by semicolon)
     tags = process_tags(row['tags'])
     primary_tag = tags.first
-    
+
     # Download and process image
     image_path = process_image(row['top-image'], row['Slug'])
-    
+
     # Create or update post
     post = Post.find_or_initialize_by(slug: row['Slug'])
-    
+
     post.assign_attributes(
       title: row['Name'],
       slug: row['Slug'],
@@ -66,24 +66,24 @@ class PostsIngester
       location: location,
       tag: primary_tag
     )
-    
+
     post.save!
-    
-    puts "#{post.persisted? ? 'Created' : 'Updated'} post: #{post.title}"
+
+    Rails.logger.debug "#{post.persisted? ? 'Created' : 'Updated'} post: #{post.title}"
   end
 
   def find_or_create_location(location_name)
     return nil if location_name.blank?
-    
+
     # Normalize location name
     normalized_name = normalize_location_name(location_name)
-    
+
     location = Location.find_or_initialize_by(name: normalized_name)
     if location.new_record?
       location.save!
-      puts "Created location: #{normalized_name}"
+      Rails.logger.debug "Created location: #{normalized_name}"
     end
-    
+
     location
   end
 
@@ -103,20 +103,20 @@ class PostsIngester
       'ireland' => 'Ireland',
       'india' => 'India'
     }
-    
+
     location_mapping[location_name.downcase] || location_name.titleize
   end
 
   def process_tags(tags_string)
     return [] if tags_string.blank?
-    
+
     tag_names = tags_string.split(/[;,]/).map(&:strip).reject(&:blank?)
-    
+
     tag_names.map do |tag_name|
       tag = Tag.find_or_initialize_by(name: tag_name)
       if tag.new_record?
         tag.save!
-        puts "Created tag: #{tag_name}"
+        Rails.logger.debug "Created tag: #{tag_name}"
       end
       tag
     end
@@ -124,26 +124,26 @@ class PostsIngester
 
   def process_image(image_url, slug)
     return nil if image_url.blank?
-    
+
     # Extract filename from URL
     filename = extract_filename_from_url(image_url, slug)
-    
+
     # Check if file already exists in public/art
     local_path = @public_art_dir.join(filename)
-    
+
     if local_path.exist?
-      puts "Image already exists: #{filename}"
+      Rails.logger.debug "Image already exists: #{filename}"
       return "/art/#{filename}"
     end
-    
+
     # Download image
     begin
       download_image(image_url, local_path)
-      puts "Downloaded image: #{filename}"
-      return "/art/#{filename}"
+      Rails.logger.debug "Downloaded image: #{filename}"
+      "/art/#{filename}"
     rescue => e
-      puts "Failed to download image #{image_url}: #{e.message}"
-      return nil
+      Rails.logger.debug "Failed to download image #{image_url}: #{e.message}"
+      nil
     end
   end
 
@@ -151,10 +151,10 @@ class PostsIngester
     # Extract extension from URL
     extension = File.extname(URI.parse(url).path)
     extension = '.jpg' if extension.empty?
-    
+
     # Create filename from slug
     filename = "#{slug}#{extension}"
-    
+
     # Clean filename
     filename.gsub(/[^a-zA-Z0-9\-_.]/, '')
   end
@@ -162,13 +162,13 @@ class PostsIngester
   def download_image(url, local_path)
     require 'net/http'
     require 'uri'
-    
+
     uri = URI.parse(url)
-    
+
     Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
       request = Net::HTTP::Get.new(uri)
       response = http.request(request)
-      
+
       if response.code == '200'
         File.open(local_path, 'wb') do |file|
           file.write(response.body)
@@ -181,39 +181,39 @@ class PostsIngester
 
   def parse_date(date_string)
     return nil if date_string.blank?
-    
+
     begin
       Date.parse(date_string)
     rescue ArgumentError
-      puts "Warning: Invalid date format '#{date_string}', skipping published_on"
+      Rails.logger.debug "Warning: Invalid date format '#{date_string}', skipping published_on"
       nil
     end
   end
 
   def print_stats
-    puts "\n" + "="*50
-    puts "CSV Ingestion Complete"
-    puts "="*50
-    puts "Processed: #{@stats[:processed]} rows"
-    puts "Created: #{@stats[:created]} posts"
-    puts "Updated: #{@stats[:updated]} posts"
-    puts "Errors: #{@stats[:errors]} rows"
-    puts "="*50
+    Rails.logger.debug "\n" + "="*50
+    Rails.logger.debug "CSV Ingestion Complete"
+    Rails.logger.debug "="*50
+    Rails.logger.debug "Processed: #{@stats[:processed]} rows"
+    Rails.logger.debug "Created: #{@stats[:created]} posts"
+    Rails.logger.debug "Updated: #{@stats[:updated]} posts"
+    Rails.logger.debug "Errors: #{@stats[:errors]} rows"
+    Rails.logger.debug "="*50
   end
 end
 
 # Run the ingester
 if __FILE__ == $0
-  csv_file = Rails.root.join('storage', 'CHILLFLOW - Articles - sample.csv')
-  
+  csv_file = Rails.root.join("storage/CHILLFLOW - Articles - sample.csv")
+
   unless File.exist?(csv_file)
-    puts "CSV file not found: #{csv_file}"
+    Rails.logger.debug "CSV file not found: #{csv_file}"
     exit 1
   end
-  
+
   # Ensure public/art directory exists
-  FileUtils.mkdir_p(Rails.root.join('public', 'art'))
-  
+  FileUtils.mkdir_p(Rails.root.join("public/art"))
+
   ingester = PostsIngester.new(csv_file)
   ingester.run
 end

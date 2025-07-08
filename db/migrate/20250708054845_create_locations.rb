@@ -7,7 +7,7 @@ class CreateLocations < ActiveRecord::Migration[8.0]
       t.string :color
       t.timestamps
     end
-    
+
     add_index :locations, :slug, unique: true
   end
 end

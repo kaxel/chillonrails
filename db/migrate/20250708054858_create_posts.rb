@@ -14,7 +14,7 @@ class CreatePosts < ActiveRecord::Migration[8.0]
       t.references :tag, null: true, foreign_key: true
       t.timestamps
     end
-    
+
     add_index :posts, :slug, unique: true
     add_index :posts, :topic
   end
