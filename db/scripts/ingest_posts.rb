@@ -62,6 +62,7 @@ class PostsIngester
       audio_link: row['audio'],
       preview: row['preview'],
       topic: row['topic'],
+      published_on: parse_date(row['published_on']),
       location: location,
       tag: primary_tag
     )
@@ -175,6 +176,17 @@ class PostsIngester
       else
         raise "HTTP #{response.code}: #{response.message}"
       end
+    end
+  end
+
+  def parse_date(date_string)
+    return nil if date_string.blank?
+    
+    begin
+      Date.parse(date_string)
+    rescue ArgumentError
+      puts "Warning: Invalid date format '#{date_string}', skipping published_on"
+      nil
     end
   end
 
