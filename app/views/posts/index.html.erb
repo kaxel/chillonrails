@@ -1,0 +1,40 @@
+<div class="posts-index">
+  <div class="header">
+    <h1>Posts</h1>
+    <%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
+  </div>
+  
+  <div class="posts-grid">
+    <% @posts.each do |post| %>
+      <div class="post-card">
+        <% if post.image.present? %>
+          <%= image_tag post.image, class: "post-image" %>
+        <% end %>
+        
+        <div class="post-content">
+          <h3><%= link_to post.title, post %></h3>
+          <p class="preview"><%= post.preview %></p>
+          
+          <div class="post-meta">
+            <% if post.topic.present? %>
+              <span class="topic"><%= post.topic %></span>
+            <% end %>
+            <% if post.location.present? %>
+              <span class="location"><%= post.location.name %></span>
+            <% end %>
+            <% if post.tag.present? %>
+              <span class="tag"><%= post.tag.name %></span>
+            <% end %>
+          </div>
+          
+          <div class="post-actions">
+            <%= link_to "View", post, class: "btn btn-sm" %>
+            <%= link_to "Edit", edit_post_path(post), class: "btn btn-sm" %>
+            <%= link_to "Delete", post, method: :delete, 
+                        confirm: "Are you sure?", class: "btn btn-sm btn-danger" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

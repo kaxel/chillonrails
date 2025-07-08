@@ -1,0 +1,70 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div class="error-messages">
+      <h4><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h4>
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slug %>
+    <%= form.text_field :slug %>
+    <small>Leave blank to auto-generate from title</small>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, rows: 10, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :preview %>
+    <%= form.text_area :preview, rows: 3 %>
+    <small>Leave blank to auto-generate from content</small>
+  </div>
+
+  <div class="field">
+    <%= form.label :topic %>
+    <%= form.text_field :topic %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.url_field :image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :video_link %>
+    <%= form.url_field :video_link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :audio_link %>
+    <%= form.url_field :audio_link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location_id %>
+    <%= form.collection_select :location_id, Location.all, :id, :name, 
+                              { prompt: "Select a location" }, { class: "form-control" } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tag_id %>
+    <%= form.collection_select :tag_id, Tag.all, :id, :name, 
+                              { prompt: "Select a tag" }, { class: "form-control" } %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
