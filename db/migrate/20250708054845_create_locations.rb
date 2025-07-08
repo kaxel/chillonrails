@@ -9,5 +9,6 @@ class CreateLocations < ActiveRecord::Migration[8.0]
     end
 
     add_index :locations, :slug, unique: true
+    add_index :locations, :name, unique: true
   end
 end

@@ -21,6 +21,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_08_054858) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_locations_on_name", unique: true
     t.index ["slug"], name: "index_locations_on_slug", unique: true
   end
 
@@ -59,6 +60,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_08_054858) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
     t.index ["slug"], name: "index_tags_on_slug", unique: true
   end
 
