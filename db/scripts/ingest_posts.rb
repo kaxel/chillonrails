@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-#require 'csv'
+require 'csv'
 
 # Load Rails environment
 require_relative '../../config/environment'

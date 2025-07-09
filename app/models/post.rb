@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true
   validates :content, presence: true
+  
   validates :video_link, format: { with: URI::DEFAULT_PARSER.make_regexp, message: "must be a valid URL" }, allow_blank: true
   validates :audio_link, format: { with: URI::DEFAULT_PARSER.make_regexp, message: "must be a valid URL" }, allow_blank: true
 
