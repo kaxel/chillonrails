@@ -25,6 +25,15 @@ describe PostIngest do
       expect(post_ingest.created_on).to eq("2024-12-26")
       expect(post_ingest.preview).to eq("An abiding sense that these melodies extend from a tender place deep within the human heart.")
       expect(post_ingest.image).to eq("https://cdn.prod.website-files.com/65511e3719795897b270b804/6764af8bd969a127c955ed9c_micha---promo--lores.jpg")
+      
+      expect(post_ingest.author).to eq("krister-axel")
+      expect(post_ingest.reading_time).to eq(3)
+      expect(post_ingest.topic).to eq("music")
+      expect(post_ingest.published_on).to eq("2024-12-20")
+      expect(post_ingest.tags).to eq("indie; folk; roots")
+      expect(post_ingest.location).to eq("nashville; tennessee; usa")
+      expect(post_ingest.video).to eq("")
+      expect(post_ingest.audio).to eq("https://storage.googleapis.com/chillfiltr-music/song-sub/MICHA%20-%20Hopeful.mp3")
     end
   end  
 
