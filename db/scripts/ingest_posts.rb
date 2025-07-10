@@ -4,6 +4,8 @@ require 'csv'
 # Load Rails environment
 require_relative '../../config/environment'
 
+# run ruby db/scripts/ingest_posts.rb
+
 class PostsIngester
   def initialize(csv_file_path)
     @csv_file_path = csv_file_path
@@ -215,4 +217,6 @@ if __FILE__ == $0
 
   ingester = PostsIngester.new(csv_file)
   ingester.run
+else
+  Rails.logger.debug "file not found"
 end

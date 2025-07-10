@@ -2,6 +2,8 @@ require 'rails_helper'
 require 'csv'
 require 'tempfile'
 
+# run with --- bundle exec rspec spec/scripts/ingest_posts_spec.rb
+
 # Load the script
 require_relative '../../db/scripts/ingest_posts'
 
