@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-SAMPLE_LINE_ITEM = "MICHA - Hopeful,micha---hopeful,Thu Dec 26 2024 04:00:32 GMT+0000 (Coordinated Universal Time),https://cdn.prod.website-files.com/65511e3719795897b270b804/6764af8bd969a127c955ed9c_micha---promo--lores.jpg,An abiding sense that these melodies extend from a tender place deep within the human heart.,krister-axel,3,music,Fri Dec 20 2024 00:00:00 GMT+0000 (Coordinated Universal Time),indie; folk; roots,nashville; tennessee; usa,,https://storage.googleapis.com/chillfiltr-music/song-sub/MICHA%20-%20Hopeful.mp3"
+SAMPLE_LINE_ITEM = CSV.open("storage/CHILLFLOW - Articles - sample 100.csv", 'r', :headers => true) { |csv| csv.first }
 
 describe PostIngest do
   let(:name) { "Test Name" }
@@ -21,19 +21,19 @@ describe PostIngest do
   describe "#parse new line" do
     it "breaks down csv line" do
       post_ingest.feed_line(SAMPLE_LINE_ITEM)
-      expect(post_ingest.slug).to eq("micha---hopeful")
-      expect(post_ingest.created_on).to eq("2024-12-26")
-      expect(post_ingest.preview).to eq("An abiding sense that these melodies extend from a tender place deep within the human heart.")
-      expect(post_ingest.image).to eq("https://cdn.prod.website-files.com/65511e3719795897b270b804/6764af8bd969a127c955ed9c_micha---promo--lores.jpg")
+      expect(post_ingest.slug).to eq("jonny-j-solo---fallen-leaves")
+      expect(post_ingest.created_on).to eq("2024-12-18")
+      expect(post_ingest.preview).to eq("An edgy folk style that feels both authentic and slightly wounded.")
+      expect(post_ingest.image).to eq("https://cdn.prod.website-files.com/65511e3719795897b270b804/676342170f811f47205f618e_Jonny%20J%20Solo%20-%20promo.jpg")
       
       expect(post_ingest.author).to eq("krister-axel")
       expect(post_ingest.reading_time).to eq(3)
       expect(post_ingest.topic).to eq("music")
-      expect(post_ingest.published_on).to eq("2024-12-20")
-      expect(post_ingest.tags).to eq("indie; folk; roots")
-      expect(post_ingest.location).to eq("nashville; tennessee; usa")
+      expect(post_ingest.published_on).to eq("2024-12-18")
+      expect(post_ingest.tags).to eq("folk; solo")
+      expect(post_ingest.location).to eq("fairbanks; alaska; usa")
       expect(post_ingest.video).to eq("")
-      expect(post_ingest.audio).to eq("https://storage.googleapis.com/chillfiltr-music/song-sub/MICHA%20-%20Hopeful.mp3")
+      expect(post_ingest.audio).to eq("https://storage.googleapis.com/chillfiltr-music/song-sub/Jonny%20J%20Solo%20-%20Fallen%20Leaves.mp3")
     end
   end  
 

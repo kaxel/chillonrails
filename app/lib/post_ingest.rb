@@ -14,19 +14,19 @@ class PostIngest
   end
   
   def feed_line(s_input)
-    slices = s_input.split(",")
+    slices = s_input #.split(",")
     @slug = slices[1]
-    @created_on = slices[2].to_date.strftime("%F")
-    @image = slices[3]
-    @preview = slices[4]
-    @author = slices[5]
-    @reading_time = slices[6].to_i
-    @topic = slices[7]
+    @created_on = slices[7].to_date.strftime("%F")
+    @image = slices[11]
+    @preview = slices[12]
+    @author = slices[13]
+    @reading_time = slices[14].to_i
+    @topic = slices[15]
     @published_on = slices[8].to_date.strftime("%F")
-    @tags = slices[9]
-    @location = slices[10]
-    @video = slices[11]
-    @audio = slices[12]
+    @tags = slices[20]
+    @location = slices[21]
+    @video = slices[22].nil? ? "" : slices[22]
+    @audio = slices[23].nil? ? "" : slices[23]
   end
   
   def slug

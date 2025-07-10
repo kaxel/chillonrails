@@ -22,7 +22,8 @@ class PostImporter
     
     CSV.foreach(@csv_file_path, headers: true) do |row|
       begin
-        process_post(row)
+        #process_post(row)
+        this_row = PostIngest.new("row").feed_line(row)
         @processed_count += 1
         puts "Processed: #{row['Name']}"
       rescue => e
@@ -40,28 +41,7 @@ class PostImporter
   private
 
   def process_post(row)
-    # Skip if already exists
-    return if Post.exists?(slug: row['Slug'])
-    
-    # Find or create location
-    location = find_or_create_location(row['location'])
-    
-    # Find or create tag
-    tag = find_or_create_tag(row['tags'])
-    
-    # Create post
-    post = Post.new(
-      title: row['Name'],
-      slug: row['Slug'],
-      content: clean_content(row['content']),
-      preview: row['preview'],
-      topic: row['topic'],
-      published_on: parse_date(row['Published On']),
-      location: location,
-      tag: tag,
-      video_link: row['video'],
-      audio_link: row['audio']
-    )
+
     
     # Download and set images
     if row['top-image'].present?
