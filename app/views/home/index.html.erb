@@ -24,25 +24,91 @@ Listen live Sunday mornings from 9-11am on 89.5 FM Ashland, 94.1 Medford, at <a 
 <% @posts.last(8).each_slice(2) do |first, second| %>
 
 	<section class="text-gray-600 body-font">
-	  <div class="container px-5 py-12 mx-auto">
+	  <div class="container px-5 py-8 mx-auto">
+		  
 	    <div class="flex flex-wrap -mx-4 -mb-10 text-center">
-	      
-		  <div class="sm:w-1/2 mb-10 px-4">
+			
+		  <!-- post 1 -->
+		  <div class="sm:w-1/2 mb-4 shadow-sm border border-slate-200 rounded-lg">
 	        <div class="rounded-lg h-64 overflow-hidden">
 	          <img alt="content" class="object-cover object-center h-full w-full" src="<%= first.image %>">
-		  
 	        </div>
-	        <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3"><%= first.title %></h2>
-	        <p class="leading-relaxed text-base"><%= first.preview %></p>
-	        <button class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Button</button>
+	        <div class="p-4">
+			  <div class="flex space-x-1">
+	            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
+	              <%= first.topic %>
+	            </div>
+	            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
+	              tag
+	            </div>
+	            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
+	              location
+	            </div>
+			  </div>
+	          <h6 class="mb-2 text-slate-800 text-xl font-semibold">
+	            <%= first.title %>
+	          </h6>
+	          <p class="text-slate-600 leading-normal font-light">
+	            <%= first.preview %>
+	          </p>
+	        </div>
+			<div class="flex items-center justify-between p-4">
+			  <div class="flex items-center">
+			    <img
+			      alt="Tania Andrew"
+			      src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1480&amp;q=80"
+			      class="relative inline-block h-8 w-8 rounded-full"
+			    />
+			    <div class="flex flex-col ml-3 text-sm">
+			      <span class="text-slate-800 font-semibold">Lewis Daniel</span>
+			      <span class="text-slate-600">
+			        <%= first.published_on %>
+			      </span>
+			    </div>
+			  </div>
+		    </div>
 	      </div>
-	      <div class="sm:w-1/2 mb-10 px-4">
+		  
+		  <!-- post 2 -->
+		  
+		  <div class="sm:w-1/2 mb-4 shadow-sm border border-slate-200 rounded-lg">
 	        <div class="rounded-lg h-64 overflow-hidden">
 	          <img alt="content" class="object-cover object-center h-full w-full" src="<%= second.image %>">
 	        </div>
-	        <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3"><%= second.title %></h2>
-	        <p class="leading-relaxed text-base"><%= second.preview %></p>
-	        <button class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Button</button>
+	        <div class="p-4">
+			  <div class="flex space-x-1">
+	            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
+	              <%= second.topic %>
+	            </div>
+	            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
+	              tag
+	            </div>
+	            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
+	              location
+	            </div>
+			  </div>
+	          <h6 class="mb-2 text-slate-800 text-xl font-semibold">
+	            <%= second.title %>
+	          </h6>
+	          <p class="text-slate-600 leading-normal font-light">
+	            <%= second.preview %>
+	          </p>
+	        </div>
+			<div class="flex items-center justify-between p-4">
+			  <div class="flex items-center">
+			    <img
+			      alt="Tania Andrew"
+			      src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1480&amp;q=80"
+			      class="relative inline-block h-8 w-8 rounded-full"
+			    />
+			    <div class="flex flex-col ml-3 text-sm">
+			      <span class="text-slate-800 font-semibold">Lewis Daniel</span>
+			      <span class="text-slate-600">
+			        <%= second.published_on %>
+			      </span>
+			    </div>
+			  </div>
+		    </div>
 	      </div>
 		  
 	    </div>
