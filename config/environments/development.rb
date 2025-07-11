@@ -5,6 +5,9 @@ Rails.application.configure do
 
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
+  
+  # Enable serving of static files from the public folder
+  config.public_file_server.enabled = true
 
   # Do not eager load code on boot.
   config.eager_load = false

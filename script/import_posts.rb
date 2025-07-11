@@ -61,12 +61,13 @@ class PostImporter
     
     newpost.title = this_row.title
     newpost.slug = this_row.slug
-    newpost.video = this_row.video
-    newpost.audio = this_row.audio
+    newpost.video_link = this_row.video
+    newpost.audio_link = this_row.audio
     newpost.preview = this_row.preview
     newpost.topic = this_row.topic
     newpost.published_on = this_row.published_on
-    post.save!
+    newpost.content = this_row.content
+    newpost.save!
   end
 
   def find_or_create_location(location_name)
