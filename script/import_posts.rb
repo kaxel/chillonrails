@@ -27,9 +27,8 @@ class PostImporter
         
         this_row = PostIngest.new(row['name'])
         this_row.feed_line(row)
-        #process_post(this_row)
-        puts "show this_row"
-        puts this_row.preview
+        process_post(this_row)
+        
         @processed_count += 1
         puts "Processed: #{row['Name']}"
       rescue => e
@@ -46,19 +45,28 @@ class PostImporter
 
   private
 
-  def process_post(row)
-
+  def process_post(this_row)
+    puts "show this_row"
+    puts this_row.preview
+    
+    newpost = Post.new
 
     # Download and set images
-    if row['top-image'].present?
-      # image_filename = download_image(row['top-image'], row['Slug'])
-      # post.image = image_filename if image_filename
+    if this_row.image
+      puts "image found:"
+      puts this_row.image
+      image_filename = download_image(this_row.image, this_row.slug)
+      newpost.image = image_filename if image_filename
     end
     
-    # Download images from content
-    # post.content = download_content_images(post.content, row['Slug'])
-    
-    #post.save!
+    newpost.title = this_row.name
+    newpost.slug = this_row.slug
+    newpost.video = this_row.video_link
+    newpost.audio = this_row.audio_link
+    newpost.preview = this_row.preview
+    newpost.topic = this_row.topic
+    newpost.published_on = this_row.published_on
+    post.save!
   end
 
   def find_or_create_location(location_name)

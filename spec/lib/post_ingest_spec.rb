@@ -2,6 +2,8 @@ require 'rails_helper'
 
 SAMPLE_LINE_ITEM = CSV.open("storage/CHILLFLOW - Articles - sample 100.csv", 'r', :headers => true) { |csv| csv.first }
 
+# run with: 
+
 describe PostIngest do
   let(:name) { "Test Name" }
   let(:post_ingest) { PostIngest.new(name) }
@@ -22,6 +24,7 @@ describe PostIngest do
     it "breaks down csv line" do
       post_ingest.feed_line(SAMPLE_LINE_ITEM)
       expect(post_ingest.slug).to eq("jonny-j-solo---fallen-leaves")
+      expect(post_ingest.title).to eq("Jonny J Solo - Fallen Leaves")
       expect(post_ingest.created_on).to eq("2024-12-18")
       expect(post_ingest.preview).to eq("An edgy folk style that feels both authentic and slightly wounded.")
       expect(post_ingest.image).to eq("https://cdn.prod.website-files.com/65511e3719795897b270b804/676342170f811f47205f618e_Jonny%20J%20Solo%20-%20promo.jpg")
