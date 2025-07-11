@@ -116,8 +116,7 @@ class PostImporter
     
     # Extract filename from URL
     uri = URI.parse(image_url)
-    filename = File.basename(uri.path)
-    filename = "#{slug}-main.jpg" if filename.blank? || filename == '/' # fallback filename
+    filename = "#{slug}-main-image.jpg"
     
     # Download the file
     local_path = image_dir.join(filename)
