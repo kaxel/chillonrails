@@ -22,8 +22,14 @@ class PostImporter
     
     CSV.foreach(@csv_file_path, headers: true) do |row|
       begin
-        #process_post(row)
-        this_row = PostIngest.new("row").feed_line(row)
+        
+        #this_row = PostIngest.new("row").feed_line(row)
+        
+        this_row = PostIngest.new(row['name'])
+        this_row.feed_line(row)
+        #process_post(this_row)
+        puts "show this_row"
+        puts this_row.preview
         @processed_count += 1
         puts "Processed: #{row['Name']}"
       rescue => e
@@ -42,17 +48,17 @@ class PostImporter
 
   def process_post(row)
 
-    
+
     # Download and set images
     if row['top-image'].present?
-      image_filename = download_image(row['top-image'], row['Slug'])
-      post.image = image_filename if image_filename
+      # image_filename = download_image(row['top-image'], row['Slug'])
+      # post.image = image_filename if image_filename
     end
     
     # Download images from content
-    post.content = download_content_images(post.content, row['Slug'])
+    # post.content = download_content_images(post.content, row['Slug'])
     
-    post.save!
+    #post.save!
   end
 
   def find_or_create_location(location_name)
