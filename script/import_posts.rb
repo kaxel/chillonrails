@@ -59,10 +59,10 @@ class PostImporter
       newpost.image = image_filename if image_filename
     end
     
-    newpost.title = this_row.name
+    newpost.title = this_row.title
     newpost.slug = this_row.slug
-    newpost.video = this_row.video_link
-    newpost.audio = this_row.audio_link
+    newpost.video = this_row.video
+    newpost.audio = this_row.audio
     newpost.preview = this_row.preview
     newpost.topic = this_row.topic
     newpost.published_on = this_row.published_on
