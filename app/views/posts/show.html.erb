@@ -1,7 +1,7 @@
 <header class="post-header">
   <h1><%= @post.title %></h1>
   
-  <div class="post-meta">
+  <div class="post-meta flex space-x-1">
     <% if @post.topic.present? %>
       <span class="topic">Topic: <%= @post.topic %></span>
     <% end %>
