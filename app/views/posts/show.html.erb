@@ -1,9 +1,9 @@
 <header class="post-header">
-  <h1><%= @post.title %></h1>
+  <div class="title-section flex justify-center"><h1 class="text-3xl font-bold text-black-600"><%= @post.title %></h1></div>
   
   <div class="post-meta flex space-x-1">
     <% if @post.topic.present? %>
-      <span class="topic">Topic: <%= @post.topic %></span>
+      <span class="topic">Topic: <%= @post.topic.capitalize %></span>
     <% end %>
     <% if @post.location.present? %>
       <span class="location">Location: <%= @post.location.name %></span>
@@ -25,12 +25,8 @@
             <%= image_tag @post.image, class: "featured-image" %>
 		  </div>
         <% end %>
-        
-        <div class="content text-left">
-          <%= simple_format(@post.content) %>
-        </div>
-        
-		<% if current_user %>
+		
+		<% if current_user || true %>
           <% if @post.video_link.present? %>
             <div class="video-section">
               <h3>Video</h3>
@@ -39,12 +35,17 @@
           <% end %>
           
           <% if @post.audio_link.present? %>
-            <div class="audio-section">
-              <h3>Audio</h3>
-              <a href="<%= @post.audio_link %>" target="_blank">Listen to Audio</a>
+            <div class="audio-section flex justify-center">
+			  <iframe scrolling="no" style="width: 320px; height: 70px; border:0; overflow: hidden; margin-top: -10px;" 
+			    src="https://audio-34a0d.web.app/amplitude.html?load=<%= @post.audio_link %>">
+			  </iframe>
             </div>
           <% end %>
 		<% end %>
+        
+        <div class="content text-left">
+          <%= simple_format(@post.content) %>
+        </div>
       </div>
       
       <div class="post-actions">
