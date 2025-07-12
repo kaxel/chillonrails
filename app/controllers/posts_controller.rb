@@ -8,8 +8,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    puts params.inspect
     set_post
+        respond_to do |format|
+          puts format
+          format.html # renders app/views/posts/show.html.erb
+          format.json { render json: @post.to_json } # Renders JSON for the post
+        end
   end
 
   def new

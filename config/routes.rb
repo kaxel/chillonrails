@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :registration, only: [:new,:create]
   resource :session
   resources :passwords, param: :token
-  resources :posts,  param: :slug
+  resources :posts,  param: :slug, only: [:edit, :show]
   resources :locations, only: [:index, :show]
   resources :tags, only: [:index, :show]
   get "pages/about"
