@@ -1,46 +1,51 @@
-<div class="post-show">
-  <header class="post-header">
-    <h1><%= @post.title %></h1>
-    
-    <div class="post-meta">
-      <% if @post.topic.present? %>
-        <span class="topic">Topic: <%= @post.topic %></span>
-      <% end %>
-      <% if @post.location.present? %>
-        <span class="location">Location: <%= @post.location.name %></span>
-      <% end %>
-      <% if @post.tag.present? %>
-        <span class="tag">Tag: <%= @post.tag.name %></span>
-      <% end %>
-    </div>
-  </header>
+<header class="post-header">
+  <h1><%= @post.title %></h1>
   
-  <div class="post-content">
-    <% if @post.image.present? %>
-      <%= image_tag @post.image, class: "featured-image" %>
+  <div class="post-meta">
+    <% if @post.topic.present? %>
+      <span class="topic">Topic: <%= @post.topic %></span>
     <% end %>
-    
-    <div class="content">
-      <%= simple_format(@post.content) %>
-    </div>
-    
-    <% if @post.video_link.present? %>
-      <div class="video-section">
-        <h3>Video</h3>
-        <a href="<%= @post.video_link %>" target="_blank">Watch Video</a>
-      </div>
+    <% if @post.location.present? %>
+      <span class="location">Location: <%= @post.location.name %></span>
     <% end %>
-    
-    <% if @post.audio_link.present? %>
-      <div class="audio-section">
-        <h3>Audio</h3>
-        <a href="<%= @post.audio_link %>" target="_blank">Listen to Audio</a>
-      </div>
+    <% if @post.tag.present? %>
+      <span class="tag">Tag: <%= @post.tag.name %></span>
     <% end %>
   </div>
-  
-  <div class="post-actions">
-    <%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %>
-    <%= link_to "Back to Posts", root_path, class: "btn btn-secondary" %>
-  </div>
+</header>
+
+<div class="container px-5 py-2 mx-auto">
+  <div class="flex flex-wrap -mx-4 -mb-10 text-center">
+    <div class="post-show">
+      
+      <div class="post-content">
+        <% if @post.image.present? %>
+          <%= image_tag @post.image, class: "featured-image" %>
+        <% end %>
+        
+        <div class="content">
+          <%= simple_format(@post.content) %>
+        </div>
+        
+        <% if @post.video_link.present? %>
+          <div class="video-section">
+            <h3>Video</h3>
+            <a href="<%= @post.video_link %>" target="_blank">Watch Video</a>
+          </div>
+        <% end %>
+        
+        <% if @post.audio_link.present? %>
+          <div class="audio-section">
+            <h3>Audio</h3>
+            <a href="<%= @post.audio_link %>" target="_blank">Listen to Audio</a>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="post-actions">
+        <%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %>
+        <%= link_to "Back to Posts", root_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  <div>
 </div>
