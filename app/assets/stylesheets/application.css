@@ -37,8 +37,12 @@ a:hover {
 	background-color: turquoise;
 }
 
-hover-effect-image:hover {
+img:hover-effect-image:hover {
   transform: scale(1.2);
   filter: grayscale(100%);
   transition: filter 0.3s ease-in-out; /* Example transition */
+}
+
+post-content.img {
+	margin: 0 0 0 1.5em;
 }

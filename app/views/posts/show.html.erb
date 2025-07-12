@@ -21,7 +21,9 @@
       
       <div class="post-content">
         <% if @post.image.present? %>
-          <%= image_tag @post.image, class: "featured-image" %>
+		  <div class="flex justify-center">
+            <%= image_tag @post.image, class: "featured-image" %>
+		  </div>
         <% end %>
         
         <div class="content text-left">
