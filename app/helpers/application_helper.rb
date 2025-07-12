@@ -11,6 +11,7 @@ module ApplicationHelper
     elsif s.include?("watch?")
       new_val = s.split("watch?v=").last
     else
+      # no match
       newval = s
     end
     

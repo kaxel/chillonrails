@@ -21,7 +21,7 @@
       
       <div class="post-content">
         <% if @post.image.present? %>
-		  <div class="flex justify-center">
+		  <div class="flex justify-center mb-8">
             <%= image_tag @post.image, class: "featured-image" %>
 		  </div>
         <% end %>
@@ -34,8 +34,6 @@
 			    frameborder="0"></iframe>
             </div>
           <% end %>
-		  
-		  
           
           <% if @post.audio_link.present? %>
             <div class="audio-section flex justify-center">
