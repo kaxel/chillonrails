@@ -32,7 +32,6 @@ describe PostIngest do
       #test content
       MATCH_STRING="Jonny J Solo is a singer-songwriter from interior Alaska. He released his first single earlier this year, and today he's back with a new release"
       expect(post_ingest.content).to include(MATCH_STRING)
-      # include(a_string_matching(/can't be blank/))
       
       expect(post_ingest.author).to eq("krister-axel")
       expect(post_ingest.reading_time).to eq(3)
@@ -41,6 +40,7 @@ describe PostIngest do
       expect(post_ingest.tags).to eq("folk; solo")
       expect(post_ingest.location).to eq("fairbanks; alaska; usa")
       expect(post_ingest.video).to eq("")
+      expect(post_ingest.author).to eq("krister-axel")
       expect(post_ingest.audio).to eq("https://storage.googleapis.com/chillfiltr-music/song-sub/Jonny%20J%20Solo%20-%20Fallen%20Leaves.mp3")
     end
   end  
