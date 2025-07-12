@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  allow_unauthenticated_access
   before_action :set_post, only: [ :show, :edit, :update, :destroy ]
 
   def index
@@ -7,6 +8,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    puts params.inspect
+    set_post
   end
 
   def new
@@ -42,7 +45,7 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.find_by_slug(params[:slug])
   end
 
   def post_params
