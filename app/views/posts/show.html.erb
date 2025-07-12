@@ -14,6 +14,7 @@
   </div>
 </header>
 
+
 <div class="container px-5 py-2 mx-auto">
   <div class="flex flex-wrap -mx-4 -mb-10 text-center">
     <div class="post-show">
@@ -23,27 +24,29 @@
           <%= image_tag @post.image, class: "featured-image" %>
         <% end %>
         
-        <div class="content">
+        <div class="content text-left">
           <%= simple_format(@post.content) %>
         </div>
         
-        <% if @post.video_link.present? %>
-          <div class="video-section">
-            <h3>Video</h3>
-            <a href="<%= @post.video_link %>" target="_blank">Watch Video</a>
-          </div>
-        <% end %>
-        
-        <% if @post.audio_link.present? %>
-          <div class="audio-section">
-            <h3>Audio</h3>
-            <a href="<%= @post.audio_link %>" target="_blank">Listen to Audio</a>
-          </div>
-        <% end %>
+		<% if current_user %>
+          <% if @post.video_link.present? %>
+            <div class="video-section">
+              <h3>Video</h3>
+              <a href="<%= @post.video_link %>" target="_blank">Watch Video</a>
+            </div>
+          <% end %>
+          
+          <% if @post.audio_link.present? %>
+            <div class="audio-section">
+              <h3>Audio</h3>
+              <a href="<%= @post.audio_link %>" target="_blank">Listen to Audio</a>
+            </div>
+          <% end %>
+		<% end %>
       </div>
       
       <div class="post-actions">
-        <%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %>
+        <% if current_user %><%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %><% end %>
         <%= link_to "Back to Posts", root_path, class: "btn btn-secondary" %>
       </div>
     </div>
