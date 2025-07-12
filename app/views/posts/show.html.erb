@@ -25,15 +25,17 @@
             <%= image_tag @post.image, class: "featured-image" %>
 		  </div>
         <% end %>
-		
+				
 		<% if current_user || true %>
           <% if @post.video_link.present? %>
             <div class="video-section">
-			  <iframe id="ytplayer" type="text/html" width="100%"
+			  <iframe id="ytplayer" type="text/html" width="100%" height="540"
 			    src="https://www.youtube.com/embed/<%= get_val_string(@post.video_link) %>?autoplay=1&origin=http://example.com"
 			    frameborder="0"></iframe>
             </div>
           <% end %>
+		  
+		  
           
           <% if @post.audio_link.present? %>
             <div class="audio-section flex justify-center">
