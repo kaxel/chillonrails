@@ -2,7 +2,7 @@ require 'rails_helper'
 
 SAMPLE_LINE_ITEM = CSV.open("storage/CHILLFLOW - Articles - sample 100.csv", 'r', :headers => true) { |csv| csv.first }
 
-# run with: 
+  # run with: 
 
 describe PostIngest do
   let(:name) { "Test Name" }
@@ -28,6 +28,11 @@ describe PostIngest do
       expect(post_ingest.created_on).to eq("2024-12-18")
       expect(post_ingest.preview).to eq("An edgy folk style that feels both authentic and slightly wounded.")
       expect(post_ingest.image).to eq("https://cdn.prod.website-files.com/65511e3719795897b270b804/676342170f811f47205f618e_Jonny%20J%20Solo%20-%20promo.jpg")
+      
+      #test content
+      MATCH_STRING="Jonny J Solo is a singer-songwriter from interior Alaska. He released his first single earlier this year, and today he's back with a new release"
+      expect(post_ingest.content).to include(MATCH_STRING)
+      # include(a_string_matching(/can't be blank/))
       
       expect(post_ingest.author).to eq("krister-axel")
       expect(post_ingest.reading_time).to eq(3)

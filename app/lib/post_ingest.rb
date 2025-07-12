@@ -28,7 +28,7 @@ class PostIngest
     @video = slices[22].nil? ? "" : slices[22]
     @audio = slices[23].nil? ? "" : slices[23]
     @title = slices[0]
-    @content = slices[9]
+    @content = slices[10]
   end
   
   def slug
