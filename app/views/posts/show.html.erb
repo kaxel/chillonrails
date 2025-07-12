@@ -1,9 +1,15 @@
 <header class="post-header">
-  <div class="title-section flex justify-center"><h1 class="text-3xl font-bold text-black-600"><%= @post.title %></h1></div>
   
-  <div class="post-meta flex space-x-1">
+  
+  <div class="post-meta flex space-x-1  bg-blue-100 rounded-lg">
     <% if @post.topic.present? %>
-      <span class="topic">Topic: <%= @post.topic.capitalize %></span>
+	  <section class="text-gray-600 body-font">
+	    <div class="container px-5 py-1 mx-auto">
+	      <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
+	        <h1 class="flex-grow px-2 sm:pr-16 text-2xl font-medium title-font text-gray-900 bg-blue-200 rounded-lg"><%= @post.topic.capitalize %></h1>
+	      </div>
+	    </div>
+	  </section>
     <% end %>
     <% if @post.location.present? %>
       <span class="location">Location: <%= @post.location.name %></span>
@@ -12,6 +18,9 @@
       <span class="tag">Tag: <%= @post.tag.name %></span>
     <% end %>
   </div>
+  
+  <div class="title-section flex justify-center"><h1 class="text-3xl font-bold text-black-600"><%= @post.title %></h1></div>
+  <div class="title-section flex justify-center"><h1 class="text-2xl text-black-300"><%= @post.preview %></h1></div>
 </header>
 
 
