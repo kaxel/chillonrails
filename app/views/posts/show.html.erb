@@ -1,12 +1,12 @@
 <header class="post-header">
   
   
-  <div class="post-meta flex space-x-1  bg-blue-100 rounded-lg">
+  <div class="post-meta flex space-x-1 bg-gradient-to-bl from-gray-400 via-teal-500 to-blue-200">
     <% if @post.topic.present? %>
 	  <section class="text-gray-600 body-font">
 	    <div class="container px-5 py-1 mx-auto">
 	      <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
-	        <h1 class="flex-grow px-2 sm:pr-16 text-2xl font-medium title-font text-gray-900 bg-blue-200 rounded-lg"><%= @post.topic.capitalize %></h1>
+	        <h1 class="flex-grow px-2 sm:pr-16 text-xl font-medium title-font text-gray-900 bg-blue-200 rounded-lg"><%= @post.topic.capitalize %></h1>
 	      </div>
 	    </div>
 	  </section>
