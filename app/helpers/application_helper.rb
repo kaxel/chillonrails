@@ -19,4 +19,18 @@ module ApplicationHelper
     return new_val
   end
   
+  def pretty_author(author)
+    s = ""
+    puts "run pretty author for #{author}"
+    if author.include?("-")
+      parts = author.split("-")
+      parts.each do |p|
+        s += "#{p.capitalize} "
+      end
+      return s
+    else
+      author.capitalize
+    end
+  end
+  
 end

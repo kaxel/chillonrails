@@ -31,7 +31,7 @@ Listen live Sunday mornings from 9-11am on 89.5 FM Ashland, 94.1 Medford, at <a 
 		  <!-- post 1 -->
 		  <div class="sm:w-1/2 mb-4 rounded-lg px-4">
 	        <div class="rounded-lg h-80 overflow-hidden">
-	          <img alt="content" class="object-cover object-center h-full w-full" src="<%= first_p.image %>">
+	          <a href="/posts/<%= first_p.slug %>"><img alt="content" class="object-cover object-center h-full w-full" src="<%= first_p.image %>"></a>
 	        </div>
 	        <div class="p-4 shadow-sm border border-slate-200 ">
 			  <div class="flex space-x-1">
@@ -55,12 +55,12 @@ Listen live Sunday mornings from 9-11am on 89.5 FM Ashland, 94.1 Medford, at <a 
   			  <div class="flex items-center justify-between p-4">
   			    <div class="flex items-center">
   			      <img
-  			        alt="Tania Andrew"
-  			        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1480&amp;q=80"
+  			        alt="post author <%= pretty_author("krister-axel") %>"
+  			        src="https://res.cloudinary.com/ashland-io-llc/image/upload/c_pad,w_100,h_100,ar_1:1/v1611606713/hytale/krister-axel-thumb_k4qf7c.png"
   			        class="relative inline-block h-8 w-8 rounded-full"
   			      />
   			      <div class="flex flex-col ml-3 text-sm">
-  			        <span class="text-slate-800 font-semibold">Lewis Daniel</span>
+  			        <span class="text-slate-800 font-semibold"><%= pretty_author("krister-axel") %></span>
   			        <span class="text-slate-600">
   			          <%= first_p.published_on %>
   			        </span>
@@ -77,7 +77,7 @@ Listen live Sunday mornings from 9-11am on 89.5 FM Ashland, 94.1 Medford, at <a 
 		  <!-- post 2 -->
 		  <div class="sm:w-1/2 mb-4 rounded-lg px-4">
 	        <div class="rounded-lg h-80 overflow-hidden">
-	          <img alt="content" class="object-cover object-center h-full w-full" src="<%= second_p.image %>">
+	          <a href="/posts/<%= second_p.slug %>"><img alt="content" class="object-cover object-center h-full w-full" src="<%= second_p.image %>"></a>
 	        </div>
 	        <div class="p-4 shadow-sm border border-slate-200">
 			  <div class="flex space-x-1">
@@ -101,12 +101,12 @@ Listen live Sunday mornings from 9-11am on 89.5 FM Ashland, 94.1 Medford, at <a 
   			  <div class="flex items-center justify-between p-4">
   			    <div class="flex items-center">
   			      <img
-  			        alt="Tania Andrew"
-  			        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1480&amp;q=80"
+  			        alt="post author <%= pretty_author("krister-axel") %>"
+  			        src="https://res.cloudinary.com/ashland-io-llc/image/upload/c_pad,w_100,h_100,ar_1:1/v1611606713/hytale/krister-axel-thumb_k4qf7c.png"
   			        class="relative inline-block h-8 w-8 rounded-full"
   			      />
   			      <div class="flex flex-col ml-3 text-sm">
-  			        <span class="text-slate-800 font-semibold">Lewis Daniel</span>
+  			        <span class="text-slate-800 font-semibold"><%= pretty_author("krister-axel") %></span>
   			        <span class="text-slate-600">
   			          <%= second_p.published_on %>
   			        </span>
