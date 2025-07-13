@@ -5,6 +5,7 @@ class PostIngest
     @slug = ""
     @title = ""
     @image = ""
+    @content = "this is sample content"
   end
 
   def greeting
@@ -82,6 +83,12 @@ class PostIngest
   
   def content
     @content
+  end
+  
+  def content_link
+    # look for img tag
+    x = @content.scan(/<img[^>]*src="([^"]*)"[^>]*>/)
+    x.flatten.first.to_s unless x==[]
   end
   
 end

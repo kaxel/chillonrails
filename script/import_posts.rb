@@ -68,6 +68,17 @@ class PostImporter
     newpost.topic = this_row.topic
     newpost.published_on = this_row.published_on
     newpost.content = this_row.content
+    
+    # find content img link
+    link = this_row.content_link
+    if link
+      # download w/ file_ext = 'content'
+      new_img_loc = download_image(link, this_row.slug, "content")
+      # replace
+      new_content = this_row.content.gsub!(link, new_img_loc)
+      newpost.content = new_content
+    end
+    
     newpost.save!
   end
 
@@ -108,7 +119,7 @@ class PostImporter
     end
   end
 
-  def download_image(image_url, slug)
+  def download_image(image_url, slug, filename_ext = nil)
     return nil if image_url.blank?
     
     # Create directory for this post's images
@@ -117,7 +128,7 @@ class PostImporter
     
     # Extract filename from URL
     uri = URI.parse(image_url)
-    filename = "#{slug}-main-image.jpg"
+    filename = "#{slug}-#{filename_ext ? filename_ext : 'main'}-image.jpg"
     
     # Download the file
     local_path = image_dir.join(filename)
