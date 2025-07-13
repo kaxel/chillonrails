@@ -11,7 +11,14 @@ class Post < ApplicationRecord
 
   scope :by_topic, ->(topic) { where(topic: topic) }
   
-
+  def locations_from_hash
+    self.location.split(";").map {|t| t.titleize }
+  end
+  
+  def tags_from_hash
+    self.tags.split(";").map {|t| t.titleize }
+  end
+  
   private
 
   def generate_slug
@@ -21,4 +28,5 @@ class Post < ApplicationRecord
   def generate_preview
     self.preview = content.truncate(200) if content.present? && preview.blank?
   end
+  
 end

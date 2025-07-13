@@ -31,6 +31,13 @@ class PostIngest
     @content = s_input[10]
   end
   
+  def locations_from_hash
+    # duplicated in the Post class
+    newlist = self.location.split(";")
+    newlist_return = self.location.split(";").map {|t| t.titleize }
+    newlist_return
+  end
+  
   def slug
     @slug
   end
