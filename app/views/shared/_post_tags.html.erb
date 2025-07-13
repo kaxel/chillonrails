@@ -1,5 +1,5 @@
 	  <% local_color = get_location_color %> 	  
 	  
 	  <% post.tags_from_hash.each do |e| %>
-        <div><h1 class="flex-grow px-1 text-xs m-2 py-1 font-medium title-font text-gray-700 <%= local_color %> rounded-lg"><%= e %></h1></div>
+        <div><h1 class="flex-grow px-1 text-xs m-2 py-1 font-medium title-font text-gray-700 <%= local_color %> hover:bg-blue-500 rounded-lg"><%= e %></h1></div>
 	  <% end %>

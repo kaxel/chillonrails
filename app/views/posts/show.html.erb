@@ -31,7 +31,7 @@
           <% if @post.video_link.present? %>
             <div class="video-section">
 			  <iframe id="ytplayer" type="text/html" width="100%" height="540"
-			    src="https://www.youtube.com/embed/<%= get_val_string(@post.video_link) %>?autoplay=1&origin=http://example.com"
+			    src="https://www.youtube.com/embed/<%= get_val_string(@post.video_link) %>?autoplay=1&origin=http://chillfiltr.com"
 			    frameborder="0"></iframe>
             </div>
           <% end %>
@@ -48,6 +48,10 @@
         <div class="content text-left">
           <%= simple_format(@post.content) %>
         </div>
+      </div>
+	  
+      <div class="author-info">
+        <p><small>Published <%= @post.published_on %> by <%= pretty_author(@post.author) %></small></p>
       </div>
 
       <div class="post-actions">
