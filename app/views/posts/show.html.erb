@@ -1,17 +1,17 @@
 <header class="post-header">
   <div class="post-meta flex space-x-1 bg-gradient-to-tl from-white-400 via-gray-100 to-gray-400">
-    <div class="flex">
+    <div class="flex justify-center">
 	<% if @post.topic.present? %>
-	  <h1 class="flex-grow px-4 text-sm m-2 font-bold title-font text-white <%= get_topic_color(@post.topic) %> rounded-lg"><%= @post.topic.capitalize %></h1>
+	  <div><h1 class="flex-grow px-4 text-normal m-2 mt-2 font-bold title-font text-white <%= get_topic_color(@post.topic) %> rounded-lg"><%= @post.topic.capitalize %></h1></div>
     <% end %>
     <% if @post.location.present? %>
 	  <% @post.locations_from_hash.each do |e| %>
-        <h1 class="flex-grow px-4 text-sm m-2 font-medium title-font text-gray-700 <%= get_location_color(e) %> rounded-lg"><%= e %></h1>
+        <div><h1 class="flex-grow px-4 text-xs m-2 py-1 font-medium title-font text-gray-700 <%= get_location_color(e) %> rounded-lg"><%= e %></h1></div>
 	  <% end %>
     <% end %>
     <% if @post.tags.present? %>
 	  <% @post.tags_from_hash.each do |e| %>
-        <h1 class="flex-grow px-4 text-sm m-2 font-medium title-font text-gray-700 <%= get_tag_color(e) %> rounded-lg"><%= e %></h1>
+        <div><h1 class="flex-grow px-4 text-xs m-2 py-1 font-medium title-font text-gray-700 <%= get_tag_color(e) %> rounded-lg"><%= e %></h1></div>
 	  <% end %>
     <% end %>
     </div>
