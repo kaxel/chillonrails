@@ -43,4 +43,10 @@ module ApplicationHelper
     end
   end
   
+  def locations_from_hash(list)
+    newlist = list.split(";")
+    return newlist.map {|t| t.capitalize }
+  end
+  
+  
 end

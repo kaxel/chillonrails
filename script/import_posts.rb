@@ -68,6 +68,8 @@ class PostImporter
     newpost.topic = this_row.topic
     newpost.published_on = this_row.published_on
     newpost.content = this_row.content
+    newpost.location = this_row.location
+    newpost.tags = this_row.tags
     
     # find content img link
     link = this_row.content_link

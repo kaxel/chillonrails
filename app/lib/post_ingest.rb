@@ -20,6 +20,8 @@ class PostIngest
     @author = s_input[13]
     @reading_time = s_input[14].to_i
     @topic = s_input[15]
+    @location = s_input[21]
+    @tags = s_input[20]
     @published_on = s_input[8].to_date.strftime("%F")
     @tags = s_input[20]
     @location = s_input[21]

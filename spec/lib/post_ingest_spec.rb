@@ -44,6 +44,7 @@ describe PostIngest do
       expect(post_ingest.published_on).to eq("2024-12-18")
       expect(post_ingest.tags).to eq("folk; solo")
       expect(post_ingest.location).to eq("fairbanks; alaska; usa")
+      expect(locations_from_hash(post_ingest.location)).to eq(["Fairbanks", "Alaska", "Usa"])
       expect(post_ingest.video).to eq("")
       expect(post_ingest.author).to eq("krister-axel")
       expect(post_ingest.audio).to eq("https://storage.googleapis.com/chillfiltr-music/song-sub/Jonny%20J%20Solo%20-%20Fallen%20Leaves.mp3")

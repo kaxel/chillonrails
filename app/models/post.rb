@@ -1,7 +1,4 @@
 class Post < ApplicationRecord
-  belongs_to :location, optional: true
-  belongs_to :tag, optional: true
-
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true
   validates :content, presence: true
@@ -13,8 +10,7 @@ class Post < ApplicationRecord
   before_validation :generate_preview
 
   scope :by_topic, ->(topic) { where(topic: topic) }
-  scope :with_location, -> { joins(:location) }
-  scope :with_tag, -> { joins(:tag) }
+  
 
   private
 

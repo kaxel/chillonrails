@@ -32,17 +32,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_08_054858) do
     t.string "image"
     t.string "video_link"
     t.string "audio_link"
+    t.string "location"
+    t.string "tags"
     t.text "preview"
     t.string "topic"
     t.string "author"
     t.date "published_on"
-    t.bigint "location_id"
-    t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["location_id"], name: "index_posts_on_location_id"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
-    t.index ["tag_id"], name: "index_posts_on_tag_id"
     t.index ["topic"], name: "index_posts_on_topic"
   end
 
@@ -76,7 +74,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_08_054858) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
-  add_foreign_key "posts", "locations"
-  add_foreign_key "posts", "tags"
   add_foreign_key "sessions", "users"
 end

@@ -1,13 +1,8 @@
 <header class="post-header">
   <div class="post-meta flex space-x-1 bg-gradient-to-tl from-white-400 via-gray-100 to-gray-400">
-    <% if @post.topic.present? %>
-	  <section class="text-gray-600 body-font">
-	    <div class="container px-5 py-1 mx-auto">
-	      <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
-	        <h1 class="flex-grow px-2 sm:pr-16 text-xl font-medium title-font text-gray-900 <%= get_topic_color(@post.topic) %> rounded-lg"><%= @post.topic.capitalize %></h1>
-	      </div>
-	    </div>
-	  </section>
+    <div class="flex">
+	<% if @post.topic.present? %>
+	  <h1 class="flex-grow px-4 text-sm m-2 font-medium title-font text-white <%= get_topic_color(@post.topic) %> rounded-lg"><%= @post.topic.capitalize %></h1>
     <% end %>
     <% if @post.location.present? %>
       <span class="location">Location: <%= @post.location.name %></span>
@@ -15,6 +10,7 @@
     <% if @post.tag.present? %>
       <span class="tag">Tag: <%= @post.tag.name %></span>
     <% end %>
+    </div>
   </div>
   <div class="title-section flex justify-center"><h1 class="text-3xl font-bold text-black-600"><%= @post.title %></h1></div>
   <div class="title-section flex justify-center"><h1 class="text-xl text-gray-800 px-8"><%= @post.preview %></h1></div>
