@@ -12,7 +12,15 @@ class Post < ApplicationRecord
   scope :by_topic, ->(topic) { where(topic: topic) }
   
   def locations_from_hash
-    self.location.split(";").map {|t| t.titleize }
+    result_array = []
+    temp = ""
+    self.location.split(";").each do |t|
+      temp = t.titleize
+      if temp == "Usa" then temp = "USA" end
+      if temp == "Uk" then temp = "UK" end
+    end
+    result_array << temp
+    return result_array
   end
   
   def tags_from_hash
