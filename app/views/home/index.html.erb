@@ -10,7 +10,7 @@
       <p class="mb-8 leading-relaxed">CHILLFILTR® is a multifaceted platform dedicated to amplifying independent voices in both music and literature.
 Listen live Sunday mornings from 9-11am on 89.5 FM Ashland, 94.1 Medford, at <a class="hover:text-white bg-teal-300" href="https://kskq.org" target="_blank">kskq.org</a>, & archived at <a class="hover:text-white bg-teal-300" href="https://weeklycatch.org" target="_blank">weeklycatch.org</a>.</p>
       <div class="flex justify-center">
-        <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"><a href="#random">Random Post</button>
+        <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"><a href="#random">Random Post</a></button>
         <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"><%= link_to "Submissions", pages_submit_path %> </button>
       </div>
     </div>
@@ -20,116 +20,6 @@ Listen live Sunday mornings from 9-11am on 89.5 FM Ashland, 94.1 Medford, at <a 
 </section>
 
 <!-- FIRST CONTENT SECTION -->
-<% i = 0 %>
-<% rand_match = rand(98) %>
-
 <% @posts.last(98).each_slice(2) do |first_p, second_p| %>
-
-  <% i+=1 %>
-  
-  <% if i == rand_match %>
-  	<a id="random"></a>
-  <% end %>
-
-	<section class="text-gray-600 body-font">
-	  <div class="container px-5 py-8 mx-auto">
-		  
-	    <div class="flex flex-wrap -mx-4 -mb-10 text-center">
-			
-		  <!-- post 1 -->
-		  <div class="sm:w-1/2 mb-4 rounded-lg px-4">
-	        <div class="rounded-lg h-80 overflow-hidden">
-	          <a href="/posts/<%= first_p.slug %>"><img alt="content" class="object-cover object-center h-full w-full" src="<%= first_p.image %>"></a>
-	        </div>
-	        <div class="p-4 shadow-sm border border-slate-200 ">
-			  <div class="flex space-x-1">
-	            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
-	              <%= first_p.topic %>
-	            </div>
-	            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
-	              tag
-	            </div>
-	            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
-	              location
-	            </div>
-			  </div>
-	          <h6 class="mb-2 text-slate-800 text-xl font-semibold">
-	            <%= first_p.title %>
-	          </h6>
-	          <p class="text-slate-600 leading-normal font-light">
-	            <%= first_p.preview %>
-	          </p>
-			  
-  			  <div class="flex items-center justify-between p-4">
-  			    <div class="flex items-center">
-  			      <img
-  			        alt="post author <%= pretty_author("krister-axel") %>"
-  			        src="https://res.cloudinary.com/ashland-io-llc/image/upload/c_pad,w_100,h_100,ar_1:1/v1611606713/hytale/krister-axel-thumb_k4qf7c.png"
-  			        class="relative inline-block h-8 w-8 rounded-full"
-  			      />
-  			      <div class="flex flex-col ml-3 text-sm">
-  			        <span class="text-slate-800 font-semibold"><%= pretty_author("krister-axel") %></span>
-  			        <span class="text-slate-600">
-  			          <%= first_p.published_on %>
-  			        </span>
-  			      </div>
-  			    </div>
-				<div class="flex items-center">
-					<%= link_to "Get It", post_path(slug: first_p.slug), class: "block px-4 py-2 text-center bg-cyan-400 hover:bg-blue-500 hover:text-white rounded-lg" %>
-				</div>
-  		      </div>
-	        </div>
-			
-	      </div>
-
-		  <!-- post 2 -->
-		  <div class="sm:w-1/2 mb-4 rounded-lg px-4">
-	        <div class="rounded-lg h-80 overflow-hidden">
-	          <a href="/posts/<%= second_p.slug %>"><img alt="content" class="object-cover object-center h-full w-full" src="<%= second_p.image %>"></a>
-	        </div>
-	        <div class="p-4 shadow-sm border border-slate-200">
-			  <div class="flex space-x-1">
-	            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
-	              <%= second_p.topic %>
-	            </div>
-	            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
-	              tag
-	            </div>
-	            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
-	              location
-	            </div>
-			  </div>
-	          <h6 class="mb-2 text-slate-800 text-xl font-semibold">
-	            <%= second_p.title %>
-	          </h6>
-	          <p class="text-slate-600 leading-normal font-light">
-	            <%= second_p.preview %>
-	          </p>
-			  
-  			  <div class="flex items-center justify-between p-4">
-  			    <div class="flex items-center">
-  			      <img
-  			        alt="post author <%= pretty_author("krister-axel") %>"
-  			        src="https://res.cloudinary.com/ashland-io-llc/image/upload/c_pad,w_100,h_100,ar_1:1/v1611606713/hytale/krister-axel-thumb_k4qf7c.png"
-  			        class="relative inline-block h-8 w-8 rounded-full"
-  			      />
-  			      <div class="flex flex-col ml-3 text-sm">
-  			        <span class="text-slate-800 font-semibold"><%= pretty_author("krister-axel") %></span>
-  			        <span class="text-slate-600">
-  			          <%= second_p.published_on %>
-  			        </span>
-  			      </div>
-  			    </div>
-				<div class="flex items-center">
-					<%= link_to "Get It", post_path(slug: second_p.slug), class: "block px-4 py-2 text-center bg-cyan-400 hover:bg-blue-500 hover:text-white rounded-lg" %>
-				</div>
-  		      </div>
-	        </div>
-			
-	      </div>
-		  
-	    </div>
-	  </div>
-	</section>
-
+	<%= render "shared/index_items", :first_p => first_p, :second_p => second_p %>
 <% end %>

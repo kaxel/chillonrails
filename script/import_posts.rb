@@ -60,6 +60,7 @@ class PostImporter
     end
     
     newpost.title = this_row.title
+    newpost.author = this_row.author
     newpost.slug = this_row.slug
     newpost.video_link = this_row.video
     newpost.audio_link = this_row.audio

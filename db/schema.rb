@@ -34,6 +34,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_08_054858) do
     t.string "audio_link"
     t.text "preview"
     t.string "topic"
+    t.string "author"
     t.date "published_on"
     t.bigint "location_id"
     t.bigint "tag_id"

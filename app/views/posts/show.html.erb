@@ -1,6 +1,4 @@
 <header class="post-header">
-  
-  
   <div class="post-meta flex space-x-1 bg-gradient-to-bl from-gray-400 via-teal-500 to-blue-200">
     <% if @post.topic.present? %>
 	  <section class="text-gray-600 body-font">
@@ -18,23 +16,21 @@
       <span class="tag">Tag: <%= @post.tag.name %></span>
     <% end %>
   </div>
-  
   <div class="title-section flex justify-center"><h1 class="text-3xl font-bold text-black-600"><%= @post.title %></h1></div>
   <div class="title-section flex justify-center"><h1 class="text-xl text-gray-800 px-8"><%= @post.preview %></h1></div>
 </header>
 
-
 <div class="container px-5 py-2 mx-auto">
   <div class="flex flex-wrap -mx-4 -mb-10 text-center">
     <div class="post-show mb-8">
-      
+
       <div class="post-content">
         <% if @post.image.present? %>
 		  <div class="flex justify-center mb-8">
             <%= image_tag @post.image, class: "featured-image" %>
 		  </div>
         <% end %>
-				
+
 		<% if current_user || true %>
           <% if @post.video_link.present? %>
             <div class="video-section">
@@ -43,7 +39,7 @@
 			    frameborder="0"></iframe>
             </div>
           <% end %>
-          
+
           <% if @post.audio_link.present? %>
             <div class="audio-section flex justify-center">
 			  <iframe scrolling="no" style="width: 320px; height: 70px; border:0; overflow: hidden; margin-top: -10px;" 
@@ -52,12 +48,12 @@
             </div>
           <% end %>
 		<% end %>
-        
+
         <div class="content text-left">
           <%= simple_format(@post.content) %>
         </div>
       </div>
-      
+
       <div class="post-actions">
         <% if current_user %><%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %><% end %>
         <%= link_to "Back to Posts", root_path, class: "btn btn-secondary" %>
