@@ -46,15 +46,15 @@ class PostImporter
   private
 
   def process_post(this_row)
-    puts "show this_row"
-    puts this_row.preview
+    # puts "show this_row"
+    # puts this_row.preview
     
     newpost = Post.new
 
     # Download and set images
     if this_row.image
-      puts "image found:"
-      puts this_row.image
+      puts "image found: #{this_row.image}"
+      # download w/ file_ext = 'main' (default)
       image_filename = download_image(this_row.image, this_row.slug)
       newpost.image = image_filename if image_filename
     end
@@ -80,6 +80,7 @@ class PostImporter
     end
     
     newpost.save!
+    puts ""
   end
 
   def find_or_create_location(location_name)
