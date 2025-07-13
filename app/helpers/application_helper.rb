@@ -32,4 +32,15 @@ module ApplicationHelper
     end
   end
   
+  def get_topic_color(topic)
+    case topic
+      when "music" then "bg-cyan-600"
+      when "lifestyle" then "bg-red-600"
+      when "personal" then "bg-gray-600"
+      when "technology" then "bg-amber-600"
+      when "prose" then "bg-orange-600"
+      when "poetry" then "bg-pink-600"
+    end
+  end
+  
 end
