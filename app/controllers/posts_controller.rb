@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @posts = Post.includes(:location, :tag).all(:limit=>"10")
+    @posts = Post.all(:limit=>"10")
     @posts = @posts.by_topic(params[:topic]) if params[:topic].present?
   end
 

@@ -20,7 +20,7 @@
               <span class="topic"><%= post.topic %></span>
             <% end %>
             <% if post.location.present? %>
-              <span class="location"><%= post.location.name %></span>
+              <span class="location"><%= post.locations_from_hash %></span>
             <% end %>
             <% if post.tag.present? %>
               <span class="tag"><%= post.tag.name %></span>

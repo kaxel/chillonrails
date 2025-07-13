@@ -2,13 +2,17 @@
   <div class="post-meta flex space-x-1 bg-gradient-to-tl from-white-400 via-gray-100 to-gray-400">
     <div class="flex">
 	<% if @post.topic.present? %>
-	  <h1 class="flex-grow px-4 text-sm m-2 font-medium title-font text-white <%= get_topic_color(@post.topic) %> rounded-lg"><%= @post.topic.capitalize %></h1>
+	  <h1 class="flex-grow px-4 text-sm m-2 font-bold title-font text-white <%= get_topic_color(@post.topic) %> rounded-lg"><%= @post.topic.capitalize %></h1>
     <% end %>
     <% if @post.location.present? %>
-      <span class="location">Location: <%= @post.location.name %></span>
+	  <% @post.locations_from_hash.each do |e| %>
+        <h1 class="flex-grow px-4 text-sm m-2 font-medium title-font text-gray-700 <%= get_location_color(e) %> rounded-lg"><%= e %></h1>
+	  <% end %>
     <% end %>
-    <% if @post.tag.present? %>
-      <span class="tag">Tag: <%= @post.tag.name %></span>
+    <% if @post.tags.present? %>
+	  <% @post.tags_from_hash.each do |e| %>
+        <h1 class="flex-grow px-4 text-sm m-2 font-medium title-font text-gray-700 <%= get_tag_color(e) %> rounded-lg"><%= e %></h1>
+	  <% end %>
     <% end %>
     </div>
   </div>
@@ -22,7 +26,7 @@
 
       <div class="post-content">
         <% if @post.image.present? %>
-		  <div class="flex justify-center mb-8">
+		  <div class="flex justify-center mb-4">
             <%= image_tag @post.image, class: "featured-image" %>
 		  </div>
         <% end %>
