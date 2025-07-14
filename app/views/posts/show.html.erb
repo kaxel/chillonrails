@@ -1,3 +1,14 @@
+<% content_for :head do %>
+  <meta name="description" content="<%= @post.preview %>">
+  <meta name="keywords" content="<%= @post.topic %>, <%= @post.tags_from_hash.join(", ") %>, <%= @post.locations_from_hash.join(", ")  %>"
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="<%= @post.preview %>">
+  <meta property="og:image" content="<%= @post.image %>">
+  <meta property="og:url" content="<%= request.original_url %>">
+  <meta name="twitter:card" content="summary_large_image">
+<% end %>
+
 <header class="post-header">
   <div class="post-meta flex bg-gradient-to-tl from-white-400 via-gray-100 to-gray-400">
     <div class="flex">

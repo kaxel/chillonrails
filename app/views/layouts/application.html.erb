@@ -16,6 +16,9 @@
     <link rel="icon" href="/svg-logo2.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon-300v2.png">
+	
+	<%# add meta tags for socials %>
+	<meta property="og:title" content="<%= content_for(:title) %>">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
@@ -24,26 +27,26 @@
 
   <body>
 	  
-	  <header class="text-gray-600 body-font">
+	  <header class="text-gray-600 body-font bg-white sticky top-0 z-50">
 	    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
 	      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/">
 			<%= render 'shared/logo' %>
 	        <span class="ml-3 text-xl">CHILLFILTR®</span>
 	      </a>
 	      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-			<a class="mr-1 hover:text-gray-900"><%= link_to "Radio", pages_radio_path, class: "block px-4 py-2 text-center bg-cyan-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
+			<a class="mr-1 hover:text-gray-900"><%= link_to "Radio", pages_radio_path, class: "block px-4 text-center bg-cyan-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
 		    <% if Rails.application.routes.url_helpers.respond_to?(:pages_about_path) %>
-			<a class="mr-1 hover:text-gray-900"><%= link_to "About", pages_about_path, class: "block px-4 py-2 text-center bg-green-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
+			<a class="mr-1 hover:text-gray-900"><%= link_to "About", pages_about_path, class: "block px-4 text-center bg-green-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
 		    <% end %>
 		    <% if Rails.application.routes.url_helpers.respond_to?(:pages_authentification_path) %>
-			      <a class="mr-1 hover:text-gray-900"><%= link_to "Login", pages_authentification_path, class: "block px-4 py-2 text-center bg-yellow-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
+			      <a class="mr-1 hover:text-gray-900"><%= link_to "Login", pages_authentification_path, class: "block px-4 text-center bg-yellow-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
 		    <% end %>
 			<% if Current.user %>
 		      <% if Rails.application.routes.url_helpers.respond_to?(:pages_account_path) %>
-		        <a class="mr-1 hover:text-gray-900"><%= link_to "Account", pages_account_path, class: "block px-4 py-2 text-center bg-red-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
+		        <a class="mr-1 hover:text-gray-900"><%= link_to "Account", pages_account_path, class: "block px-4 text-center bg-red-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
 		      <% end %>
 		      <% if Rails.application.routes.url_helpers.respond_to?(:letter_opener_web_path) && Rails.env.development? %>
-		        <a class="mr-1 hover:text-gray-900"><%= link_to "Check Email", letter_opener_web_path, target: "_blank", class: "block px-4 py-2 text-center bg-gray-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
+		        <a class="mr-1 hover:text-gray-900"><%= link_to "Check Email", letter_opener_web_path, target: "_blank", class: "block px-4 text-center bg-gray-100 hover:bg-blue-500 hover:text-white rounded-lg" %></a>
 		      <% end %>
 			<% end %>
 	      </nav>
