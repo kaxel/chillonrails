@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "pages/account"
   get "pages/radio"
   get "pages/submit"
+  get "pages/search"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
   get '/post/:slug', to: redirect('/posts/%{slug}')

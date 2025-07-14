@@ -83,4 +83,9 @@ module ApplicationHelper
       "bg-rose-500", "bg-rose-600"].sample
   end
   
+  def random_search_message
+    ["A good search is a wonderful thing.", "Good luck with that.", "Gimme some search, said the web user.", "Your answer, just a click away.", "The AI will see you now.", 
+      "I love the smell of a search in the morning.", "Come on over and search me sometime.", "When the lights go down, in the city...", "I hope you find what you're searching for."].sample  
+  end
+  
 end
