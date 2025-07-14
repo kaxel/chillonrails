@@ -18,6 +18,23 @@
 	
 	<div>
 	  <p><%= @posts ? @posts.size : 0 %> records found.</p>
+	  <% if @posts && @posts.size>0 %>
+	  <% @posts.each do |p| %>
+	  <section class="text-gray-600 body-font">
+	    <div class="container px-5 py-2 mx-auto">
+	      <div class="lg:w-5/6 flex sm:flex-row sm:items-center items-start mx-auto">
+	        <h1 class="flex-grow sm:pr-2 text-normal font-medium title-font text-gray-900 w-120"><%= p.title %></h1>
+			<div class="flex">
+			  <div class="text-sm w-80 px-2"><%= p.preview %></div>
+	          <div class="text-sm min-w-10"><%= link_to("get it", post_path(slug: p.slug)) %></div>
+		    </div>
+	      </div>
+	    </div>
+	  </section>
+	  <% end %>
+	  <% end %>
+	  
+	  
 	</div>
   </div>
 </section>
