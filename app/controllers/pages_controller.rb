@@ -6,6 +6,11 @@ class PagesController < ApplicationController
   end
   
   def search
+    if params[:search].present?
+      @posts = Post.where("title LIKE ?", "%#{params[:search]}%")
+    else
+      @post = nil
+    end
   end
 
   def radio
