@@ -11,7 +11,7 @@
 Listen live Wednesday nights from 9-11pm on 89.5 FM Ashland, 94.1 Medford, at <a class="hover:text-white bg-teal-300" href="https://kskq.org" target="_blank">kskq.org</a>, & archived at <a class="hover:text-white bg-teal-300" href="https://weeklycatch.org" target="_blank">weeklycatch.org</a>.
 	  </p>
       <div class="flex justify-center">
-        <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"><a href="#">Random</a></button>
+        <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"><a href="#top_of_index">Posts</a></button>
         <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
 		  <%= link_to "Submissions", pages_submit_path %>
 	    </button>
@@ -21,7 +21,7 @@ Listen live Wednesday nights from 9-11pm on 89.5 FM Ashland, 94.1 Medford, at <a
   
   <!-- Link Letter Opener -->
 </section>
-
+<a id="top_of_index"></a>
 <!-- FIRST CONTENT SECTION -->
 <% @posts.first(98).each_slice(2) do |first_p, second_p| %>
 	<%= render "shared/index_items", :first_p => first_p, :second_p => second_p %>

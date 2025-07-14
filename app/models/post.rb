@@ -30,7 +30,7 @@ class Post < ApplicationRecord
   private
 
   def generate_slug
-    self.slug = title.parameterize if title.present?
+    self.slug = title.parameterize if title.present? && slug.blank?
   end
 
   def generate_preview

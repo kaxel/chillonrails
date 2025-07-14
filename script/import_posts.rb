@@ -61,7 +61,9 @@ class PostImporter
     
     newpost.title = this_row.title
     newpost.author = this_row.author
+    
     newpost.slug = this_row.slug
+    puts "saving #{this_row.slug} as #{newpost.slug}"
     newpost.video_link = this_row.video
     newpost.audio_link = this_row.audio
     newpost.preview = this_row.preview
@@ -177,7 +179,7 @@ end
 
 # Run the importer
 if __FILE__ == $0
-  csv_file = ARGV[0] || Rails.root.join('storage', 'CHILLFLOW - Articles - full.csv')
+  csv_file = ARGV[0] || Rails.root.join('storage', 'CHILLFLOW - Articles - sample 100.csv')
   
   unless File.exist?(csv_file)
     puts "CSV file not found: #{csv_file}"

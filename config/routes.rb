@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   get "pages/radio"
   get "pages/submit"
   get "pages/search"
+  get "pages/contact"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
+  get '/:slug', to: redirect('/posts/%{slug}')
   get '/post/:slug', to: redirect('/posts/%{slug}')
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

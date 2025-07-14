@@ -12,6 +12,9 @@ class PagesController < ApplicationController
       @post = nil
     end
   end
+  
+  def contact
+  end
 
   def radio
   end

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 SAMPLE_LINE_ITEM = CSV.open("storage/CHILLFLOW - Articles - sample 100.csv", 'r', :headers => true) { |csv| csv.first }
+SAMPLE_LINE_ITEM2 = CSV.open("storage/CHILLFLOW - sample 2.csv", 'r', :headers => true) { |csv| csv.first }
 
   # run with: 
 
@@ -48,6 +49,12 @@ describe PostIngest do
       expect(post_ingest.video).to eq("")
       expect(post_ingest.author).to eq("krister-axel")
       expect(post_ingest.audio).to eq("https://storage.googleapis.com/chillfiltr-music/song-sub/Jonny%20J%20Solo%20-%20Fallen%20Leaves.mp3")
+    end
+    
+    it "tests slug links" do
+      post_ingest.feed_line(SAMPLE_LINE_ITEM2)
+      expect(post_ingest.title).to eq("Valley Onda - Brutha")
+      expect(post_ingest.slug).to eq("valley-onda---brutha")
     end
   end  
 
