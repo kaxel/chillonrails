@@ -97,7 +97,7 @@ class PostIngest
   def content_link
     # look for img tag
     x = @content.scan(/<img[^>]*src="([^"]*)"[^>]*>/)
-    x.flatten.first.to_s unless x==[]
+    x.flatten
   end
   
 end

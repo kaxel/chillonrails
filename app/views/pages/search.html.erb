@@ -7,7 +7,7 @@
         <div class="relative mr-4 lg:w-full xl:w-1/2 w-2/4 md:w-full">
 			
 			<%= form_with url: :pages_search, method: :get do |form| %>
-			  <div class="p-2"><span class="border"><%= form.text_field :search, size: 40, height: 20 %></span></div>
+			  <div class="p-2"><span class="border"><%= form.text_field :search, size: 40, height: 20, :value => @search_term %></span></div>
 			  <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"><%= form.submit "Search" %></button>
 			<% end %>
 		  

@@ -73,13 +73,17 @@ class PostImporter
     newpost.location = this_row.location
     newpost.tags = this_row.tags
     
-    # find content img link
-    link = this_row.content_link
-    if link
-      # download w/ file_ext = 'content'
-      new_img_loc = download_image(link, this_row.slug, "content")
-      # replace
-      new_content = this_row.content.gsub!(link, new_img_loc)
+    # find content img links
+    links = this_row.content_link
+    new_content = this_row.content
+    if links && links.any?
+      links.each_with_index do |link, index|
+        # download w/ file_ext = 'content' + index for multiple images
+        file_ext = index == 0 ? "content" : "content#{index + 1}"
+        new_img_loc = download_image(link, this_row.slug, file_ext)
+        # replace each link with its downloaded location
+        new_content = new_content.gsub(link, new_img_loc) if new_img_loc
+      end
       newpost.content = new_content
     end
     

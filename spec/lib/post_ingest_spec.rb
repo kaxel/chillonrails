@@ -35,9 +35,9 @@ describe PostIngest do
       MATCH_STRING="Jonny J Solo is a singer-songwriter from interior Alaska. He released his first single earlier this year, and today he's back with a new release"
       expect(post_ingest.content).to include(MATCH_STRING)
       # look for img link
-      expect(post_ingest.content_link).to include("https://cdn.prod.website-files.com/65511e3719795897b270b804/67633eaba57cafa18eb9e00c_67633e8c5b17b68789c34d27")
+      expect(post_ingest.content_link.first).to include("https://cdn.prod.website-files.com/65511e3719795897b270b804/67633eaba57cafa18eb9e00c_67633e8c5b17b68789c34d27")
       # test model function for no match
-      expect(post_ingest_empty.content_link).to eq nil
+      expect(post_ingest_empty.content_link.first).to eq nil
       
       expect(post_ingest.author).to eq("krister-axel")
       expect(post_ingest.reading_time).to eq(3)

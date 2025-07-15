@@ -7,9 +7,12 @@ class PagesController < ApplicationController
   
   def search
     if params[:search].present?
-      @posts = Post.where("title LIKE ?", "%#{params[:search]}%")
+      @search_term = params[:search]
+      puts "search for #{@search_term}"
+      @posts = Post.where("lower(title) ILIKE ? OR lower(preview) ILIKE ?", "%#{@search_term.downcase}%", "%#{@search_term.downcase}%" )
+      puts "found #{@posts ? @posts.size : 0} recs"
     else
-      @post = nil
+      @posts = nil
     end
   end
   
