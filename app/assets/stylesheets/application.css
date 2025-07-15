@@ -33,10 +33,6 @@ blockquote p {
   display: inline; /* Keeps nested p elements inline with blockquote */
 }
 
-a:hover {
-	background-color: turquoise;
-}
-
 .inchup {
   position: relative;
   top: -8px; /* Moves the element up by 10 pixels from its original position */
