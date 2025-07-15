@@ -14,10 +14,18 @@ Rails.application.routes.draw do
   get "pages/submit"
   get "pages/search"
   get "pages/contact"
+  get "pages/webflow_migration"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
   get '/:slug', to: redirect('/posts/%{slug}')
   get '/post/:slug', to: redirect('/posts/%{slug}')
+  get '/about', to: redirect('/pages/about')
+  get '/search', to: redirect('/pages/search')
+  get '/contact', to: redirect('/pages/contact')
+  get '/radio', to: redirect('/pages/radio')
+  
+  # random post
+  get "posts/random"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

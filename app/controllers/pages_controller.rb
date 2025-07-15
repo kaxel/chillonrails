@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  allow_unauthenticated_access only: [ :about, :authentification, :radio, :submit, :search, :contact ]
+  allow_unauthenticated_access only: [ :about, :authentification, :radio, :submit, :search, :contact, :webflow_migration ]
   before_action :resume_session, only: [ :authentification ]
   
   def about
@@ -29,5 +29,8 @@ class PagesController < ApplicationController
   end
   
   def submit
+  end
+  
+  def webflow_migration
   end
 end

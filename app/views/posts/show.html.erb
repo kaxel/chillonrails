@@ -1,6 +1,6 @@
 <% content_for :head do %>
   <meta name="description" content="<%= @post.preview %>">
-  <meta name="keywords" content="<%= @post.topic %>, <%= @post.tags_from_hash.join(", ") %>, <%= @post.locations_from_hash.join(", ")  %>"
+  <meta name="keywords" content="<%= @post.topic %>, <%= @post.tags_from_hash.join(", ") %>, <%= @post.locations_from_hash.join(", ") %>">
   
   <meta property="og:type" content="article" />
   <meta property="og:description" content="<%= @post.preview %>">
@@ -66,7 +66,8 @@
 
       <div class="post-actions">
         <% if current_user %><%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %><% end %>
-        <%= link_to "Back to Posts", root_path, class: "btn btn-secondary" %>
+        <%= link_to "Back to Posts", root_path, class: "btn btn-secondary hover:text-white bg-teal-300" %><br/>
+		<%= link_to "Something Random", posts_random_path, class: "btn btn-secondary hover:text-white bg-teal-300" %>
       </div>
     </div>
   <div>

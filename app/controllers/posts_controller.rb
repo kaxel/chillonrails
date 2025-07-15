@@ -19,6 +19,12 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
   end
+  
+  def random
+    random_post = Post.all.sample
+    puts "redirect to: #{random_post.title}"
+    redirect_to post_path(random_post.slug), notice: "could be anything"
+  end
 
   def create
     @post = Post.new(post_params)
