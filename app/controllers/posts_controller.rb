@@ -3,13 +3,12 @@ class PostsController < ApplicationController
   before_action :set_post, only: [ :show, :edit, :update, :destroy, :random ]
 
   def index
-    @posts = Post.all(:limit=>"10", id: :desc)
     @posts = @posts.by_topic(params[:topic]).(id: :desc) if params[:topic].present?
+    @posts = Post.all(:limit=>"10", id: :desc) unless @posts
   end
 
   def show
     @random_link = Post.order(Arel.sql('RANDOM()')).first.slug
-    puts "random #{@random_link}"
     set_post
     respond_to do |format|
       puts format
