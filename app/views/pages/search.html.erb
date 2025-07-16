@@ -13,26 +13,26 @@
 		  
         </div>
       </div>
-      <p class="text-sm mt-2 text-gray-500 mb-2 w-full"><%= random_search_message %></p>
+      
     </div>
 	
 	<div>
 	  <p><%= @posts ? @posts.size : 0 %> records found.</p>
 	  <% if @posts && @posts.size>0 %>
-	  <% @posts.each do |p| %>
-	  <section class="text-gray-600 body-font hover:bg-gray-300">
-		<a href="<%= post_path(slug: p.slug) %>">
-	    <div class="container px-5 py-2 mx-auto">
-	      <div class="lg:w-5/6 flex sm:flex-row sm:items-center items-start mx-auto">
-	        <h1 class="flex-grow sm:pr-2 text-normal font-medium title-font text-gray-900 w-120"><%= p.title %></h1>
-			<div class="flex">
-			  <div class="text-sm w-80 px-2"><%= p.preview %></div>
-		    </div>
-	      </div>
-	    </div>
-	    </a>
-	  </section>
-	  <% end %>
+	    <% @posts.each do |p| %>
+	      <section class="text-gray-600 body-font hover:bg-gray-300">
+	      	<a href="<%= post_path(slug: p.slug) %>">
+	        <div class="container px-1 py-2 mx-auto">
+	          <div class="lg:w-5/6 flex sm:flex-row sm:items-center items-start mx-auto">
+	            <h1 class="flex-grow sm:pr-2 text-normal font-medium title-font text-gray-900 min-w-80 max-w-80"><%= p.title %></h1>
+	      		<div class="flex">
+	      		  <div class="text-sm min-w-40 px-1 max-w-120"><%= p.preview %></div>
+	      	    </div>
+	          </div>
+	        </div>
+	        </a>
+	      </section>
+	    <% end %>
 	  <% end %>
 	  
 	  

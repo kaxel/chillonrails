@@ -1,10 +1,10 @@
 <header class="text-gray-600 body-font bg-white sticky top-0 z-50">
-  <div class="container mx-auto max-w-5xl flex flex-wrap px-5 p-1 flex-col md:flex-row items-center justify-between">
-    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/">
+  <div class="container mx-auto max-w-5xl flex flex-wrap px-5 p-1 flex-row items-center justify-between">
+    <a class="flex title-font font-medium items-center text-gray-900" href="/">
 		<%= render 'shared/logo' %>
       <span class="ml-3 text-xl">CHILLFILTR®</span>
     </a>
-	<div class="flex relative" data-controller="hamburger">
+	<div class="flex relative ml-auto md:ml-0" data-controller="hamburger">
       <button data-action="click->hamburger#toggle" type="button" class="inline-flex items-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 
 	    focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
         <span class="sr-only">Open main menu</span>
@@ -27,18 +27,6 @@
               <%= link_to 'Radio', pages_radio_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
             </li>
           <% end %>
-          
-          
-          <% if Rails.application.routes.url_helpers.respond_to?(:pages_contact_path) %>
-            <li>
-              <%= link_to 'Contact', pages_contact_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
-            </li>
-          <% end %>
-          <% if Rails.application.routes.url_helpers.respond_to?(:pages_submit_path) %>
-            <li>
-              <%= link_to 'Submit', pages_submit_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
-            </li>
-          <% end %>
           <% if Rails.application.routes.url_helpers.respond_to?(:pages_about_path) %>
             <li>
               <%= link_to 'About', pages_about_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
@@ -52,6 +40,16 @@
           <% if Rails.application.routes.url_helpers.respond_to?(:pages_account_path) && Current.user %>
             <li>
               <%= link_to 'Account', pages_account_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
+            </li>
+          <% end %>
+          <% if Rails.application.routes.url_helpers.respond_to?(:pages_submit_path) %>
+            <li>
+              <%= link_to 'Submit', pages_submit_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
+            </li>
+          <% end %>
+          <% if Rails.application.routes.url_helpers.respond_to?(:pages_contact_path) %>
+            <li>
+              <%= link_to 'Contact', pages_contact_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
             </li>
           <% end %>
         </ul>
