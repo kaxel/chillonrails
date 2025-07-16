@@ -38,7 +38,7 @@ blockquote p {
   top: -8px; /* Moves the element up by 10 pixels from its original position */
 }
 
-div img { padding: 1em; }
+div img { padding-bottom: 0.25em; }
 
 h2 {
 	font-size: x-large;
