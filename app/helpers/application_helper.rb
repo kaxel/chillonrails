@@ -1,7 +1,7 @@
 module ApplicationHelper
   LIGHT_COLOR_BG = ["bg-slate-50", "bg-slate-100", "bg-slate-200", "bg-gray-50",
       "bg-gray-100", "bg-gray-200", "bg-gray-300", "bg-gray-400", "bg-zinc-50", "bg-zinc-100", "bg-zinc-200", "bg-zinc-300",
-      "bg-zinc-400", "bg-zinc-500", "bg-zinc-600", "bg-neutral-50", "bg-neutral-100", "bg-neutral-200", "bg-neutral-300", "bg-stone-50", "bg-stone-100", "bg-stone-200", "bg-stone-300", "bg-stone-400", "bg-red-50", "bg-red-100",
+      "bg-zinc-400", "bg-zinc-500", "bg-zinc-600", "bg-neutral-50", "bg-neutral-100", "bg-stone-50", "bg-stone-100", "bg-stone-200", "bg-stone-300", "bg-stone-400", "bg-red-50", "bg-red-100",
       "bg-red-200", "bg-red-300", "bg-red-400", "bg-orange-50", "bg-orange-100", "bg-orange-200", "bg-orange-300", "bg-orange-400",
       "bg-orange-500", "bg-amber-50", "bg-amber-100", "bg-amber-200", "bg-amber-300", "bg-amber-400", "bg-amber-500", "bg-yellow-50", "bg-yellow-100", "bg-yellow-200", 
       "bg-yellow-300", "bg-yellow-400", "bg-yellow-500", "bg-yellow-600", "bg-lime-50", "bg-lime-100",

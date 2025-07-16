@@ -26,3 +26,5 @@ Listen live Wednesday nights from 9-11pm on 89.5 FM Ashland, 94.1 FM Medford, at
 <% @posts.first(98).each_slice(2) do |first_p, second_p| %>
 	<%= render "shared/index_items", :first_p => first_p, :second_p => second_p %>
 <% end %>
+
+<%= render "shared/more_links"%>
