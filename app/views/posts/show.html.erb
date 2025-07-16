@@ -67,7 +67,7 @@
       <div class="post-actions">
         <% if current_user %><%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %><% end %>
         <%= link_to "Back to Posts", root_path, class: "btn btn-secondary hover:text-white bg-teal-300" %><br/>
-		<%= link_to "Something Random", posts_random_path, class: "btn btn-secondary hover:text-white bg-teal-300" %>
+		<a href="/posts/<%= @random_link %>" class="btn btn-secondary hover:text-white bg-teal-300">Something Random</a>
       </div>
     </div>
   <div>

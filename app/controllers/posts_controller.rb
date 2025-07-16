@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   allow_unauthenticated_access
-  before_action :set_post, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_post, only: [ :show, :edit, :update, :destroy, :random ]
 
   def index
     @posts = Post.all(:limit=>"10", id: :desc)
@@ -8,12 +8,14 @@ class PostsController < ApplicationController
   end
 
   def show
+    @random_link = Post.order(Arel.sql('RANDOM()')).first.slug
+    puts "random #{@random_link}"
     set_post
-        respond_to do |format|
-          puts format
-          format.html # renders app/views/posts/show.html.erb
-          format.json { render json: @post.to_json } # Renders JSON for the post
-        end
+    respond_to do |format|
+      puts format
+      format.html # renders app/views/posts/show.html.erb
+      format.json { render json: @post.to_json } # Renders JSON for the post
+    end
   end
 
   def new
@@ -21,9 +23,8 @@ class PostsController < ApplicationController
   end
   
   def random
-    random_post = Post.all.sample
-    puts "redirect to: #{random_post.title}"
-    redirect_to post_path(random_post.slug), notice: "could be anything"
+    #random_post = Post.all.sample
+    @post = Post.order(Arel.sql('RANDOM()')).first
   end
 
   def create
