@@ -15,6 +15,15 @@ Rails.application.routes.draw do
   get "pages/search"
   get "pages/contact"
   get "pages/webflow_migration"
+  get "pages/licensing"
+  get "pages/cookies"
+  get "pages/privacy"
+  # terms
+  get '/term/licensing', to: redirect('/pages/licensing')
+  get '/term/cookies', to: redirect('/pages/cookies')
+  get '/term/privacy', to: redirect('/pages/privacy')
+  get 'term/privacy-policy', to: redirect('/pages/privacy')
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
   get '/:slug', to: redirect('/posts/%{slug}')
