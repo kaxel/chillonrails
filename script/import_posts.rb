@@ -69,6 +69,7 @@ class PostImporter
     newpost.preview = this_row.preview
     newpost.topic = this_row.topic
     newpost.published_on = this_row.published_on
+    newpost.created_on = this_row.created_on
     newpost.content = this_row.content
     newpost.location = this_row.location
     newpost.tags = this_row.tags
@@ -183,7 +184,7 @@ end
 
 # Run the importer
 if __FILE__ == $0
-  csv_file = ARGV[0] || Rails.root.join('storage', 'CHILLFLOW - Articles - full.csv')
+  csv_file = ARGV[0] || Rails.root.join('storage', 'CHILLFLOW - Articles - sample 100.csv')
   
   unless File.exist?(csv_file)
     puts "CSV file not found: #{csv_file}"

@@ -13,6 +13,7 @@ class CreatePosts < ActiveRecord::Migration[8.0]
       t.string :topic
       t.string :author
       t.date :published_on
+      t.date :created_on
       t.timestamps
     end
 

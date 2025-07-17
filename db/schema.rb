@@ -38,6 +38,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_08_054858) do
     t.string "topic"
     t.string "author"
     t.date "published_on"
+    t.date "created_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_posts_on_slug", unique: true

@@ -22,7 +22,8 @@ class PostIngest
     @topic = s_input[15]
     @location = s_input[21]
     @tags = s_input[20]
-    @published_on = s_input[8].to_date.strftime("%F")
+    @published_on = s_input[9].to_date.strftime("%F")
+    @created_on = s_input[7].to_date.strftime("%F")
     @tags = s_input[20]
     @location = s_input[21]
     @video = s_input[22].nil? ? "" : s_input[22]
@@ -68,6 +69,10 @@ class PostIngest
   
   def published_on
     @published_on
+  end
+  
+  def published_on
+    @created_on
   end
   
   def tags
