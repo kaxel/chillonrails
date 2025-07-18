@@ -26,6 +26,8 @@ module ApplicationHelper
       new_val = s.split("/").last
     elsif s.include?("watch?")
       new_val = s.split("watch?v=").last
+    elsif s.include?("vimeo")
+      new_val = s.split("/").last
     else
       # no match
       newval = s
