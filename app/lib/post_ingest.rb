@@ -23,7 +23,7 @@ class PostIngest
     @location = s_input[21]
     @tags = s_input[20]
     @published_on = s_input[9].to_date.strftime("%F")
-    @created_on = s_input[7].to_date.strftime("%F")
+    @created_on = s_input[16].to_date.strftime("%F")
     @tags = s_input[20]
     @location = s_input[21]
     @video = s_input[22].nil? ? "" : s_input[22]

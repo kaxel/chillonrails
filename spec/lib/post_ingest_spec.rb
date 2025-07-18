@@ -2,6 +2,7 @@ require 'rails_helper'
 
 SAMPLE_LINE_ITEM = CSV.open("storage/CHILLFLOW - Articles - sample 100.csv", 'r', :headers => true) { |csv| csv.first }
 SAMPLE_LINE_ITEM2 = CSV.open("storage/CHILLFLOW - sample 2.csv", 'r', :headers => true) { |csv| csv.first }
+SAMPLE_LINE_ITEM3 = CSV.open("storage/CHILLFLOW - sample - multi audio.csv", 'r', :headers => true) { |csv| csv.first }
 
   # run with: 
 
@@ -56,6 +57,11 @@ describe PostIngest do
       post_ingest.feed_line(SAMPLE_LINE_ITEM2)
       expect(post_ingest.title).to eq("Valley Onda - Brutha")
       expect(post_ingest.slug).to eq("valley-onda---brutha")
+    end
+    
+    it "double checks created on date" do
+      post_ingest.feed_line(SAMPLE_LINE_ITEM3)
+      expect(post_ingest.created_on).to eq("2019-07-16")
     end
   end  
 
