@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "pages/search"
   get "pages/contact"
   get "pages/webflow_migration"
+  get "pages/song_promo"
   get "pages/licensing"
   get "pages/cookies"
   get "pages/privacy"
@@ -35,6 +36,8 @@ Rails.application.routes.draw do
   
   # random post
   get "posts/random", to: "posts#random"
+  
+  # find a way to re4solve old blog links with dates - chillfiltr.com/blog/2018/11/25/the-bull-brothers-high-time (TODO)
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

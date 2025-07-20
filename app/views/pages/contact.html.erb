@@ -5,17 +5,42 @@
       <%= image_tag "chillfiltr_hemp_parchment.png", class:"object-cover object-center rounded"  %>
     </div>
     <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Editor-in-chief
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Editor-in-Chief
         <br class="hidden lg:inline-block">Krister Axel
       </h1>
-      <p class="mb-8 leading-relaxed">CHILLFILTR® was built for one simple reason: to bring a spotlight to independent artists from around the world. With careful curation for CHILLFILTR® Radio & daily coverage of our favorite releases we strive to bring the best new art to a worldwide audience—by leveraging best-in-class technology to create a seamless and immersive web experience.</p>
-	  <p>Hire me for your next <%= link_to "Webflow migration", pages_webflow_migration_path, class: "hover:text-white bg-teal-300" %>.</p>
+      <p class="mb-8 leading-relaxed">CHILLFILTR® was built for one simple reason: to bring a spotlight to independent artists & creators from around the world.</p>
+	  <p class="leading-relaxed"> if you need to send me a message, you can use the contact form below. Please note, if you are sending me music, please use <%= link_to("this form", pages_submit_path, :class => "hover:text-white bg-teal-300") %> instead.</p>
+	  <div class="bg-gray-200 flex text-center justify-center">
+		<form action="https://api.web3forms.com/submit" method="POST">
+
+		    <!-- Replace with your Access Key -->
+		    <input type="hidden" name="access_key" value="2822f03b-fe85-4f97-9c10-a316a6dd1f25">
+
+		    <!-- Form Inputs. Each input must have a name="" attribute -->
+			<div><small><label width="30">Name</label></small>
+		    <input type="text" name="name" required class="bg-white m-2 float-right"></div>
+			<div class="mt-4"><small><label width="30">Email</label></small>
+		    <input type="email" name="email" required class="bg-white m-2 float-right"></div>
+			<div class="mt-4"><small><label width="30">Message</label></small>
+		    <textarea name="message" required class="bg-white m-2 float-right" cols=26></textarea></div>
+
+		    <!-- Honeypot Spam Protection -->
+		    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+		    <!-- Custom Confirmation / Success Page -->
+		    <!-- <input type="hidden" name="redirect" value="https://mywebsite.com/thanks.html"> -->
+			<br/>	
+		    <button type="submit" class="hover:text-white bg-teal-300 m-2">SEND MESSAGE</button>
+
+		</form>
+	  </div>
     </div>
   </div>
+  <hr/>
 </section>
 
-<section class="text-gray-600 body-font">
-  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+<section class="text-gray-600 body-font mb-8">
+  <div class="container mx-auto flex px-5 py-12 md:flex-row flex-col items-center">
     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
       <%= image_tag "chillfiltr-ai.png", class:"object-cover object-center rounded"  %>
     </div>
@@ -24,8 +49,10 @@
       </h1>
       <p class="mb-8 leading-relaxed">You may use <%= link_to("this form", pages_submit_path, :class => "hover:text-white bg-teal-300") %> to submit music. Music that we like will be added to our radio channel and possibly broadcast on <a href="https://kskq.org" target="_blank" class="hover:text-white bg-teal-300">KSKQ</a>.</p>
 	  <p>Pricing: <%= link_to "$2 per file", pages_submit_path, :class => "hover:text-white bg-teal-300" %>.</p>
+	  <p>Click <%= link_to("here", pages_song_promo_path, :class => "hover:text-white bg-teal-300") %> if you are looking for song promotion.</p>
     </div>
   </div>
+  <hr/>
 </section>
 
 <figure class="max-w-screen-md mx-auto text-center">
