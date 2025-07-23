@@ -1,9 +1,22 @@
 <header class="text-gray-600 body-font bg-white sticky top-0 z-50">
   <div class="container mx-auto max-w-5xl flex flex-wrap px-5 p-1 flex-row items-center justify-between">
-    <a class="flex title-font font-medium items-center text-gray-900" href="/">
+    <div class="flex items-center">
+      <a class="flex title-font font-medium items-center text-gray-900" href="/">
 		<%= render 'shared/logo' %>
-      <span class="ml-3 text-xl">CHILLFILTR®</span>
-    </a>
+        <span class="ml-3 text-xl">CHILLFILTR®</span>
+      </a>
+      
+      <% if defined?(@available_topics) && @available_topics.any? %>
+        <div class="flex items-center ml-6 space-x-2">
+          <%= link_to "All", root_path, 
+              class: "px-3 py-1 text-sm rounded-full border transition-colors #{'bg-gray-900 text-white border-gray-900' if @current_topic.blank?} #{'bg-white text-gray-700 border-gray-300 hover:bg-gray-50' unless @current_topic.blank?}" %>
+          <% @available_topics.each do |topic| %>
+            <%= link_to topic.titleize, root_path(topic: topic), 
+                class: "px-3 py-1 text-sm rounded-full border transition-colors #{'bg-gray-900 text-white border-gray-900' if @current_topic == topic} #{'bg-white text-gray-700 border-gray-300 hover:bg-gray-50' unless @current_topic == topic}" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 	<div class="flex relative ml-auto md:ml-0" data-controller="hamburger">
       <button data-action="click->hamburger#toggle" type="button" class="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 
 	    focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
