@@ -18,7 +18,14 @@
         </div>
       <% end %>
     </div>
-	<div class="flex relative ml-auto md:ml-0" data-controller="hamburger">
+	<div class="flex items-center relative ml-auto md:ml-0">
+      <% if controller_name == 'home' && action_name == 'index' %>
+        <button data-action="click->collapse#toggle" 
+                class="mr-3 px-3 py-1 text-xs bg-gray-200 hover:bg-gray-300 rounded-full transition-colors">
+          <span data-collapse-target="toggleText"><%= @hide_hero ? 'View' : 'Hide' %></span>
+        </button>
+      <% end %>
+      <div data-controller="hamburger">
       <button data-action="click->hamburger#toggle" type="button" class="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 
 	    focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
         <span class="sr-only">Open main menu</span>
@@ -31,19 +38,9 @@
           <li>
             <%= link_to 'Home', root_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
           </li>
-          <% if Rails.application.routes.url_helpers.respond_to?(:pages_search_path) %>
-            <li>
-              <%= link_to 'Search', pages_search_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
-            </li>
-          <% end %>
           <% if Rails.application.routes.url_helpers.respond_to?(:pages_radio_path) %>
             <li>
               <%= link_to 'Radio', pages_radio_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
-            </li>
-          <% end %>
-          <% if Rails.application.routes.url_helpers.respond_to?(:pages_about_path) %>
-            <li>
-              <%= link_to 'About', pages_about_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
             </li>
           <% end %>
           <% if Rails.application.routes.url_helpers.respond_to?(:pages_authentification_path)  && !Current.user %>
@@ -51,21 +48,33 @@
               <%= link_to 'Login', pages_authentification_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
             </li>
           <% end %>
-          <% if Rails.application.routes.url_helpers.respond_to?(:pages_account_path) && Current.user %>
-            <li>
-              <%= link_to 'Account', pages_account_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
-            </li>
-          <% end %>
-          <% if Rails.application.routes.url_helpers.respond_to?(:pages_submit_path) %>
-            <li>
-              <%= link_to 'Submit', pages_submit_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
-            </li>
-          <% end %>
-          <% if Rails.application.routes.url_helpers.respond_to?(:pages_contact_path) %>
-            <li>
-              <%= link_to 'Contact', pages_contact_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
-            </li>
-          <% end %>
+          
+          <li data-controller="submenu">
+            <button data-action="click->submenu#toggle" 
+                    class="flex items-center justify-between w-full py-2 px-4 text-gray-700 hover:bg-gray-100 text-left">
+              <span>More</span>
+              <svg data-submenu-target="icon" class="w-4 h-4 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <div data-submenu-target="content" class="overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+              <% if Rails.application.routes.url_helpers.respond_to?(:pages_search_path) %>
+                <%= link_to 'Search', pages_search_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
+              <% end %>
+              <% if Rails.application.routes.url_helpers.respond_to?(:pages_about_path) %>
+                <%= link_to 'About', pages_about_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
+              <% end %>
+              <% if Rails.application.routes.url_helpers.respond_to?(:pages_account_path) && Current.user %>
+                <%= link_to 'Account', pages_account_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
+              <% end %>
+              <% if Rails.application.routes.url_helpers.respond_to?(:pages_submit_path) %>
+                <%= link_to 'Submit', pages_submit_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
+              <% end %>
+              <% if Rails.application.routes.url_helpers.respond_to?(:pages_contact_path) %>
+                <%= link_to 'Contact', pages_contact_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
+              <% end %>
+            </div>
+          </li>
           
           <% if defined?(@available_topics) && @available_topics.any? %>
             <li class="border-t border-gray-200 mt-2 pt-2" data-controller="submenu">
@@ -90,6 +99,7 @@
             </li>
           <% end %>
         </ul>
+      </div>
       </div>
     </div>
     

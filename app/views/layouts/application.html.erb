@@ -25,7 +25,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body data-controller="<%= 'collapse' if controller_name == 'home' && action_name == 'index' %>" data-collapse-hide-hero-value="<%= @hide_hero if controller_name == 'home' && action_name == 'index' %>">
 	  
 	  
 	<%= render "shared/app_layout_menu" %>

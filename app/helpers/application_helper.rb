@@ -36,6 +36,15 @@ module ApplicationHelper
     return new_val
   end
   
+  def author_photo(author)
+    puts "#{author} running"
+    if author == 'krister-axel'
+      return "https://res.cloudinary.com/ashland-io-llc/image/upload/c_pad,w_100,h_100,ar_1:1/v1611606713/hytale/krister-axel-thumb_k4qf7c.png"
+    else
+      return "https://res.cloudinary.com/ashland-io-llc/image/upload/t_author-blurb/v1751488873/new-logo--chillfiltr--square-900-clear_p77h4p.png"
+    end
+  end
+  
   def pretty_author(author)
     s = ""
     # puts "run pretty author for #{author}"

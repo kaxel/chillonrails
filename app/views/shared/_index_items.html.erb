@@ -32,8 +32,8 @@
   			  <div class="flex items-center justify-between p-4">
   			    <div class="flex items-center">
   			      <img
-  			        alt="post author <%= pretty_author("krister-axel") %>"
-  			        src="https://res.cloudinary.com/ashland-io-llc/image/upload/c_pad,w_100,h_100,ar_1:1/v1611606713/hytale/krister-axel-thumb_k4qf7c.png"
+  			        alt="post author <%= pretty_author(first_p.author) %>"
+  			        src="<%= author_photo(first_p.author) %>"
   			        class="relative inline-block h-8 w-8 rounded-full"
   			      />
   			      <div class="flex flex-col ml-3 text-sm">
@@ -82,8 +82,8 @@
   			  <div class="flex items-center justify-between p-4">
   			    <div class="flex items-center">
   			      <img
-  			        alt="post author <%= pretty_author("krister-axel") %>"
-  			        src="https://res.cloudinary.com/ashland-io-llc/image/upload/c_pad,w_100,h_100,ar_1:1/v1611606713/hytale/krister-axel-thumb_k4qf7c.png"
+  			        alt="post author <%= pretty_author(second_p.author) %>"
+  			        src="<%= author_photo(second_p.author) %>"
   			        class="relative inline-block h-8 w-8 rounded-full"
   			      />
   			      <div class="flex flex-col ml-3 text-sm">
