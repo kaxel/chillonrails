@@ -16,6 +16,15 @@
                 class: "px-3 py-1 text-sm rounded-full border transition-colors #{'bg-gray-900 text-white border-gray-900' if @current_topic == topic} #{'bg-white text-gray-700 border-gray-300 hover:bg-gray-50' unless @current_topic == topic}" %>
           <% end %>
         </div>
+      <% elsif defined?(@from_home) && @from_home %>
+        <div class="hidden lg:flex items-center ml-6">
+          <%= link_to root_path, class: "flex items-center px-3 py-1 text-sm text-gray-700 hover:text-gray-900 transition-colors" do %>
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Posts
+          <% end %>
+        </div>
       <% end %>
     </div>
 	<div class="flex items-center relative ml-auto md:ml-0">

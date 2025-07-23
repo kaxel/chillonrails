@@ -10,6 +10,8 @@ class PostsController < ApplicationController
   def show
     @random_link = Post.order(Arel.sql('RANDOM()')).first.slug
     set_post
+    @from_home = params[:from_home] == 'true' || request.referer&.include?(root_path)
+    @available_topics = Post.where.not(topic: [nil, '']).group(:topic).having('COUNT(*) > 0').distinct.pluck(:topic).sort
     respond_to do |format|
       puts format
       format.html # renders app/views/posts/show.html.erb
