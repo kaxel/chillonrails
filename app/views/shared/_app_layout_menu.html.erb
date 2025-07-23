@@ -68,17 +68,25 @@
           <% end %>
           
           <% if defined?(@available_topics) && @available_topics.any? %>
-            <li class="border-t border-gray-200 mt-2 pt-2">
-              <div class="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">Topics</div>
-              <% current_hide_hero = params[:hide_hero] == 'true' ? 'true' : 'false' %>
-              <%= link_to "All Posts", root_path(hide_hero: current_hide_hero), 
-                  class: "block py-2 px-6 text-gray-700 hover:bg-gray-100 #{'bg-gray-100 font-medium' if @current_topic.blank?}", 
-                  data: { action: "click->hamburger#hide" } %>
-              <% @available_topics.each do |topic| %>
-                <%= link_to topic.titleize, root_path(topic: topic, hide_hero: current_hide_hero), 
-                    class: "block py-2 px-6 text-gray-700 hover:bg-gray-100 #{'bg-gray-100 font-medium' if @current_topic == topic}", 
+            <li class="border-t border-gray-200 mt-2 pt-2" data-controller="submenu">
+              <button data-action="click->submenu#toggle" 
+                      class="flex items-center justify-between w-full py-2 px-4 text-gray-700 hover:bg-gray-100 text-left">
+                <span>Topics</span>
+                <svg data-submenu-target="icon" class="w-4 h-4 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </button>
+              <div data-submenu-target="content" class="overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                <% current_hide_hero = params[:hide_hero] == 'true' ? 'true' : 'false' %>
+                <%= link_to "All Posts", root_path(hide_hero: current_hide_hero), 
+                    class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm #{'bg-gray-100 font-medium text-gray-900' if @current_topic.blank?}", 
                     data: { action: "click->hamburger#hide" } %>
-              <% end %>
+                <% @available_topics.each do |topic| %>
+                  <%= link_to topic.titleize, root_path(topic: topic, hide_hero: current_hide_hero), 
+                      class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm #{'bg-gray-100 font-medium text-gray-900' if @current_topic == topic}", 
+                      data: { action: "click->hamburger#hide" } %>
+                <% end %>
+              </div>
             </li>
           <% end %>
         </ul>
