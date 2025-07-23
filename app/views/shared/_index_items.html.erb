@@ -53,53 +53,55 @@
 
 		  <!-- post 2 -->
 		  <div class="w-full sm:w-1/2 mb-4 rounded-lg px-4">
-	        <div class="rounded-lg h-80 overflow-hidden">
-	          <a href="/post/<%= second_p.slug %>?from_home=true"><img alt="content" class="object-cover object-center h-full w-full shadow-md transition-all duration-300 hover:scale-105 hover:sepia" src="<%= second_p.image %>"></a>
-	        </div>
-	        <div class="p-4 shadow-sm border border-slate-200">
-			  <div class="flex space-x-1">
-	            <div class="mb-4 rounded-full <%= get_topic_color(second_p.topic.downcase) %> py-0.5 border border-transparent text-sm text-white transition-all shadow-sm min-w-26 text-center">
-	              <%= second_p.topic.upcase %>
-	            </div>
-				
-		        <div class="flex">
-		        <% if second_p.location.present? %>
-			      <%= render "shared/post_locations", :post => second_p %>
-		        <% end %>
-		        <% if second_p.tags.present? %>
-			      <%= render "shared/post_tags", :post => second_p %>
-		        <% end %>
-		        </div>
-				
-			  </div>
-	          <h6 class="mb-2 text-slate-800 text-xl font-semibold">
-	            <%= link_to(second_p.title, post_path(slug: second_p.slug, from_home: true)) %>
-	          </h6>
-	          <p class="text-slate-600 leading-normal font-light">
-	            <%= second_p.preview %>
-	          </p>
-			  
-  			  <div class="flex items-center justify-between p-4">
-  			    <div class="flex items-center">
-  			      <img
-  			        alt="post author <%= pretty_author(second_p.author) %>"
-  			        src="<%= author_photo(second_p.author) %>"
-  			        class="relative inline-block h-8 w-8 rounded-full"
-  			      />
-  			      <div class="flex flex-col ml-3 text-sm">
-  			        <span class="text-slate-800 font-semibold"><%= pretty_author(second_p.author) %></span>
-  			        <span class="text-slate-600">
-  			          <%= second_p.published_on %>
-  			        </span>
+			<% if second_p %>
+	          <div class="rounded-lg h-80 overflow-hidden">
+	            <a href="/post/<%= second_p.slug %>?from_home=true"><img alt="content" class="object-cover object-center h-full w-full shadow-md transition-all duration-300 hover:scale-105 hover:sepia" src="<%= second_p.image %>"></a>
+	          </div>
+	          <div class="p-4 shadow-sm border border-slate-200">
+			    <div class="flex space-x-1">
+	              <div class="mb-4 rounded-full <%= get_topic_color(second_p.topic.downcase) %> py-0.5 border border-transparent text-sm text-white transition-all shadow-sm min-w-26 text-center">
+	                <%= second_p.topic.upcase %>
+	              </div>
+			  	
+		          <div class="flex">
+		          <% if second_p.location.present? %>
+			        <%= render "shared/post_locations", :post => second_p %>
+		          <% end %>
+		          <% if second_p.tags.present? %>
+			        <%= render "shared/post_tags", :post => second_p %>
+		          <% end %>
+		          </div>
+			  	
+			    </div>
+	            <h6 class="mb-2 text-slate-800 text-xl font-semibold">
+	              <%= link_to(second_p.title, post_path(slug: second_p.slug, from_home: true)) %>
+	            </h6>
+	            <p class="text-slate-600 leading-normal font-light">
+	              <%= second_p.preview %>
+	            </p>
+			    
+  			    <div class="flex items-center justify-between p-4">
+  			      <div class="flex items-center">
+  			        <img
+  			          alt="post author <%= pretty_author(second_p.author) %>"
+  			          src="<%= author_photo(second_p.author) %>"
+  			          class="relative inline-block h-8 w-8 rounded-full"
+  			        />
+  			        <div class="flex flex-col ml-3 text-sm">
+  			          <span class="text-slate-800 font-semibold"><%= pretty_author(second_p.author) %></span>
+  			          <span class="text-slate-600">
+  			            <%= second_p.published_on %>
+  			          </span>
+  			        </div>
   			      </div>
-  			    </div>
-				<div class="flex items-center">
-					<%= link_to "Get It", post_path(slug: second_p.slug, from_home: true), class: "block px-4 py-2 text-center bg-cyan-400 hover:bg-blue-500 hover:text-white rounded-lg" %>
-				</div>
-  		      </div>
-	        </div>
-			
-	      </div>
+			  	<div class="flex items-center">
+			  		<%= link_to "Get It", post_path(slug: second_p.slug, from_home: true), class: "block px-4 py-2 text-center bg-cyan-400 hover:bg-blue-500 hover:text-white rounded-lg" %>
+			  	</div>
+  		        </div>
+	          </div>
+			<% end %>
+	      
+		  </div>
 		  
 		  
 		  
