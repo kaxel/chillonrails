@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
   private
 
   def render_not_found
+    # Store the original requested path in session for the 404 page
+    session[:not_found_path] = request.original_url
     redirect_to "/404"
   end
 end

@@ -58,7 +58,7 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find_by_slug(params[:slug])
-    raise ActionController::RoutingError.new('Not Found') unless @post
+    raise ActionController::RoutingError.new("(#{params[:slug]}) Not Found") unless @post
   end
 
   def post_params

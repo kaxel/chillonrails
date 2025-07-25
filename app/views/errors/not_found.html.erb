@@ -1,4 +1,17 @@
-<div>
-  <h1 class="font-bold text-4xl">Errors#not_found</h1>
-  <p>Find me in app/views/errors/not_found.html.erb</p>
+<div class="flex flex-col items-center justify-center min-h-96 text-center">
+  <h1 class="font-bold text-6xl text-gray-800 mb-4">404</h1>
+  <h2 class="font-semibold text-2xl text-gray-600 mb-4">Page Not Found</h2>
+  
+  <% if @original_path %>
+    <p class="text-gray-500 mb-6">
+      The page <code class="bg-gray-100 px-2 py-1 rounded text-sm"><%= @original_path %></code> could not be found.
+    </p>
+  <% else %>
+    <p class="text-gray-500 mb-6">The page you were looking for could not be found.</p>
+  <% end %>
+  
+  <div class="space-x-4 my-6">
+    <%= link_to "Go Home", root_path, class: "px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors" %>
+    <%= link_to "Go Back", "javascript:history.back()", class: "px-6 py-3 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors" %>
+  </div>
 </div>
