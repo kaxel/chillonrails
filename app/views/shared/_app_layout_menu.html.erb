@@ -8,11 +8,10 @@
       
       <% if defined?(@available_topics) && @available_topics.any? %>
         <div class="hidden lg:flex items-center ml-6 space-x-2">
-          <% current_hide_hero = params[:hide_hero] == 'true' ? 'true' : 'false' %>
-          <%= link_to "All", root_path(hide_hero: current_hide_hero), 
+          <%= link_to "All", root_path, 
               class: "px-3 py-1 text-sm rounded-full border transition-colors #{'bg-gray-900 text-white border-gray-900' if @current_topic.blank?} #{'bg-white text-gray-700 border-gray-300 hover:bg-gray-50' unless @current_topic.blank?}" %>
           <% @available_topics.each do |topic| %>
-            <%= link_to topic.titleize, root_path(topic: topic, hide_hero: current_hide_hero), 
+            <%= link_to topic.titleize, root_path(topic: topic), 
                 class: "px-3 py-1 text-sm rounded-full border transition-colors #{'bg-gray-900 text-white border-gray-900' if @current_topic == topic} #{'bg-white text-gray-700 border-gray-300 hover:bg-gray-50' unless @current_topic == topic}" %>
           <% end %>
         </div>
@@ -31,7 +30,7 @@
       <% if controller_name == 'home' && action_name == 'index' %>
         <button data-action="click->collapse#toggle" 
                 class="mr-3 px-3 py-1 text-xs bg-gray-200 hover:bg-gray-300 rounded-full transition-colors">
-          <span data-collapse-target="toggleText"><%= @hide_hero ? 'View' : 'Hide' %></span>
+          <span data-collapse-target="toggleText">Hide</span>
         </button>
       <% end %>
       <div data-controller="hamburger">
@@ -95,12 +94,11 @@
                 </svg>
               </button>
               <div data-submenu-target="content" class="overflow-hidden transition-all duration-300 ease-in-out max-h-0">
-                <% current_hide_hero = params[:hide_hero] == 'true' ? 'true' : 'false' %>
-                <%= link_to "All Posts", root_path(hide_hero: current_hide_hero), 
+                <%= link_to "All Posts", root_path, 
                     class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm #{'bg-gray-100 font-medium text-gray-900' if @current_topic.blank?}", 
                     data: { action: "click->hamburger#hide" } %>
                 <% @available_topics.each do |topic| %>
-                  <%= link_to topic.titleize, root_path(topic: topic, hide_hero: current_hide_hero), 
+                  <%= link_to topic.titleize, root_path(topic: topic), 
                       class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm #{'bg-gray-100 font-medium text-gray-900' if @current_topic == topic}", 
                       data: { action: "click->hamburger#hide" } %>
                 <% end %>
