@@ -23,7 +23,7 @@
 </section>
 <a id="top_of_index"></a>
 <!-- FIRST CONTENT SECTION -->
-<% @posts.first(48).each_slice(2) do |first_p, second_p| %>
+<% @posts.first(64).each_slice(2) do |first_p, second_p| %>
 	<%= render "shared/index_items", :first_p => first_p, :second_p => second_p %>
 <% end %>
 
