@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "errors/not_found"
+  get "errors/internal_server_error"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   get 'confirm_registration', to: 'registrations#confirm'
   resource :registration, only: [:new,:create]
@@ -7,6 +9,10 @@ Rails.application.routes.draw do
   resources :posts, path: 'post', param: :slug, only: [:edit, :show]
   resources :locations, only: [:index, :show]
   resources :tags, only: [:index, :show]
+  
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
+        
   get "pages/about"
   get "pages/authentification"
   get "pages/account"
@@ -35,7 +41,7 @@ Rails.application.routes.draw do
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
-  get '/:slug', to: redirect('/post/%{slug}')
+  get '/:slug', to: redirect('/post/%{slug}') unless !Post.find_by_slug(':slug')
   get '/posts/:slug', to: redirect('/post/%{slug}')
   
   

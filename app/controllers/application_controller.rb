@@ -5,7 +5,16 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  rescue_from ActionController::RoutingError, with: :render_not_found
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+
   def current_user
     Current.session&.user
+  end
+
+  private
+
+  def render_not_found
+    redirect_to "/404"
   end
 end
