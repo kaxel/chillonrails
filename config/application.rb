@@ -37,6 +37,9 @@ module Chillonrails
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    
+    config.action_mailer.delivery_method = :postmark
+    config.action_mailer.postmark_settings = { :api_token => "6ee07d77-a4b7-4214-8d32-c221dc379343" }
 
     # Don't generate system test files.
     config.generators do |g|
