@@ -41,9 +41,8 @@ Rails.application.routes.draw do
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
-  get '/:slug', to: redirect('/post/%{slug}') unless !Post.find_by_slug(':slug')
-  get '/posts/:slug', to: redirect('/post/%{slug}')
-  
+  get '/:slug', to: redirect('/post/%{slug}')
+  get 'posts/:slug', to: redirect('/post/%{slug}')
   
   # random post
   get "posts/random", to: "post#random"
