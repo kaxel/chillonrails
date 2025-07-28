@@ -1,6 +1,25 @@
 class PostsController < ApplicationController
   allow_unauthenticated_access
   before_action :set_post, only: [ :show, :edit, :update, :destroy, :random ]
+  
+  # Usage Examples:
+  #
+  # Now you can use these fields in your application:
+  #
+  # # Query posts by score
+  # Post.order(score: :desc)
+  # Post.where('score > ?', 100)
+  #
+  # # Update scores
+  # post = Post.find_by_slug('some-slug')
+  # post.update(score: 50, score_all_time: 1000)
+  #
+  # # Use in views
+  # <%= @post.score %>
+  # <%= @post.score_all_time %>
+  #
+  # The fields are ready to use for tracking post scoring metrics in your application!
+  #
 
   def index
     @posts = @posts.by_topic(params[:topic]).(id: :desc) if params[:topic].present?
@@ -62,6 +81,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :slug, :content, :image, :video_link, :audio_link, :preview, :topic, :location_id, :tag_id)
+    params.require(:post).permit(:title, :slug, :content, :image, :video_link, :audio_link, :preview, :topic, :location_id, :tag_id, :score, :score_all_time)
   end
 end
