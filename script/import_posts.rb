@@ -184,7 +184,7 @@ end
 
 # Run the importer
 if __FILE__ == $0
-  csv_file = ARGV[0] || Rails.root.join('storage', 'CHILLFLOW - Articles - full.csv')
+  csv_file = ARGV[0] || Rails.root.join('public', 'import.csv')
   
   unless File.exist?(csv_file)
     puts "CSV file not found: #{csv_file}"
