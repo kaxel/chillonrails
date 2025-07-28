@@ -7,7 +7,10 @@ class HomeController < ApplicationController
              else
                Post.order( published_on: :desc )
              end
-    
+             
+             
+    @top20 = Post.order(Arel.sql('RANDOM()')).last(20)  
+        
     @available_topics = Post.where.not(topic: [nil, '']).group(:topic).having('COUNT(*) > 0').distinct.pluck(:topic).sort
     @current_topic = params[:topic]
   end

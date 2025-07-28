@@ -23,8 +23,17 @@
 </section>
 <a id="top_of_index"></a>
 <!-- FIRST CONTENT SECTION -->
-<% @posts.first(64).each_slice(2) do |first_p, second_p| %>
+<section>
+<h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Top 20</h1>
+<% @top20.each_slice(2) do |first_p, second_p| %>
 	<%= render "shared/index_items", :first_p => first_p, :second_p => second_p %>
 <% end %>
-
-<%= render "shared/more_links"%>
+</section>
+<section>
+<h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Recent Posts</h1>
+<!-- SECOND CONTENT SECTION -->
+<% @posts.first(102).each_slice(2) do |first_p, second_p| %>
+	<%= render "shared/index_items", :first_p => first_p, :second_p => second_p %>
+<% end %>
+</section>
+<%= render "shared/more_links" %>
