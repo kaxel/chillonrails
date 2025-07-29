@@ -24,8 +24,6 @@ class Post < ApplicationRecord
   end
   
   def tags_from_hash
-    puts "tags_from_hash"
-    puts "looking in:"
     puts self.tags
     if self.tags.downcase.include?("poetry;")
       # it's a hack, but it's easy: because the topic is already poetry, a poetry tag is redundant
@@ -35,6 +33,17 @@ class Post < ApplicationRecord
       new_result = self.tags.gsub("; poetry","")
       new_result = new_result.gsub("poetry","")
       puts "removed poetry"
+    else
+      new_result = self.tags
+    end
+    if self.tags.downcase.include?("prose;")
+      # it's a hack, but it's easy: because the topic is already prose, a prose tag is redundant
+      puts "removed prose;"
+      new_result = self.tags.gsub("prose;","")
+    elsif self.tags.downcase.include?("prose")
+      new_result = self.tags.gsub("; prose","")
+      new_result = new_result.gsub("prose","")
+      puts "removed prose"
     else
       new_result = self.tags
     end

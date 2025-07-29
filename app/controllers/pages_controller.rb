@@ -27,6 +27,7 @@ class PagesController < ApplicationController
   end
 
   def authentification
+    @page_title = "authentification"
   end
 
   def account
