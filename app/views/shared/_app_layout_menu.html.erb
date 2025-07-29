@@ -17,6 +17,18 @@
         </div>
       <% end %>
     </div>
+    
+    <!-- Animated Page Title Display -->
+    <% if defined?(@page_title) && @page_title.present? %>
+      <div class="flex-1 flex justify-center items-center mx-4">
+        <div class="animate-fade-in-slide-up">
+          <h1 class="text-lg font-semibold text-gray-900 text-center animate-pulse-subtle">
+            <%= @page_title %>
+          </h1>
+        </div>
+      </div>
+    <% end %>
+    
 	<div class="flex items-center relative ml-auto md:ml-0">
       <% if controller_name == 'home' && action_name == 'index' %>
         <button data-action="click->collapse#toggle" 

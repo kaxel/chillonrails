@@ -24,9 +24,11 @@ class PostsController < ApplicationController
   def index
     @posts = @posts.by_topic(params[:topic]).(id: :desc) if params[:topic].present?
     @posts = Post.all(:limit=>"10", id: :desc) unless @posts
+    @page_title = "Index of Posts"
   end
 
   def show
+    @page_title = "spotlight"
     @random_link = Post.order(Arel.sql('RANDOM()')).first.slug
     set_post
     @from_home = params[:from_home] == 'true' || request.referer&.include?(root_path)

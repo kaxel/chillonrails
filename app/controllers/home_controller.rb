@@ -13,5 +13,6 @@ class HomeController < ApplicationController
         
     @available_topics = Post.where.not(topic: [nil, '']).group(:topic).having('COUNT(*) > 0').distinct.pluck(:topic).sort
     @current_topic = params[:topic]
+    @page_title = @current_topic
   end
 end
