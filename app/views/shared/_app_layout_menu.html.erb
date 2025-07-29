@@ -5,17 +5,6 @@
 		<%= render 'shared/logo' %>
         <span class="ml-3 text-xl">CHILLFILTR®</span>
       </a>
-      
-      <% if defined?(@from_home) && @from_home %>
-        <div class="hidden lg:flex items-center ml-6">
-          <%= link_to root_path, class: "flex items-center px-3 py-1 text-sm text-gray-700 hover:text-gray-900 transition-colors" do %>
-            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-            Back to Posts
-          <% end %>
-        </div>
-      <% end %>
     </div>
     
     <!-- Animated Page Title Display -->
