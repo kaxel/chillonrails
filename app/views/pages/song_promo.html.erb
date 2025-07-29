@@ -61,12 +61,17 @@
         </div>
       </div>
     </div>
+	<p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto mt-8">A typical campaign will be split into three sections.<br/><br/>
+		The first is the week before release, where we will tailor the campaign language and test out a few different genre tags for optimal matching with interested content creators in the blogging community. <br/><br/>
+		The second and third week we will go all in on the preferred genre tag and shift focus towards playlisters. <br/><br/>
+		The final two weeks are used to pinpoint all of the final elements and optimize the campaign ROI.</p><br/>
     <button id="getItBtn" class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95">Get It</button>
     
     
   </div>
 </section>
 
+<section>
     <!-- Hidden form container with smooth animation -->
     <div id="formContainer" class="hidden overflow-y-auto transition-all duration-500 ease-in-out">
       <div class="bg-white p-8 rounded-lg shadow-lg border max-w-2xl mx-auto">
@@ -77,23 +82,57 @@
         </div>
       </div>
     </div>
+</section>
+
+<div>
+	<h1 class="title-font sm:text-4xl text-3xl mb-4 mt-8 font-medium text-gray-900 text-center">Customer Testimonials</h1>
+	<section class="text-gray-600 body-font">
+	  <div class="container mx-auto flex px-5 py-12 items-center justify-center flex-col">
+		<%= image_tag "introducing-astara-black-new-green-desert-main-image.jpg", class: "lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" %>
+	    <div class="text-center lg:w-2/3 w-full">
+	      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Astara Black - Rollerbird EP (2025)</h1>
+	      <p class="mb-8 leading-relaxed">We were able to successfully launch a debut EP for Astara Black with four song campaigns over three months. We grew her monthly listeners to 10k+, and successfully put all of her singles over 1000 spins on Spotify alone within the first weeks of release on a very small budget.</p>
+	      <div class="flex justify-center">
+	        <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"><a href="https://open.spotify.com/album/3yhTBU6Y6M4UOHRnzZiysd?si=wK-axPDTT_2piK8CXGzXXQ" target="_blank">Spotify</a></button>
+	        <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"><a href="https://music.apple.com/us/artist/astara-black/1803627928" target="_blank">Apple Music</a></button>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+	
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const getItBtn = document.getElementById('getItBtn');
   const formContainer = document.getElementById('formContainer');
   
-  getItBtn.addEventListener('click', function() {
+  // Debug logging
+  console.log('Button:', getItBtn);
+  console.log('Form container:', formContainer);
+  
+  if (!getItBtn || !formContainer) {
+    console.error('Button or form container not found');
+    return;
+  }
+  
+  getItBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    console.log('Button clicked, current classes:', formContainer.className);
+    
     if (formContainer.classList.contains('hidden')) {
       // Show the form
       formContainer.classList.remove('hidden');
       formContainer.classList.add('mt-8');
       getItBtn.textContent = 'Hide Form';
+      formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      console.log('Form shown');
     } else {
       // Hide the form
       formContainer.classList.remove('mt-8');
       formContainer.classList.add('hidden');
       getItBtn.textContent = 'Get It';
+      console.log('Form hidden');
     }
   });
 });
