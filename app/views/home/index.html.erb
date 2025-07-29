@@ -24,13 +24,13 @@
 <a id="top_of_index"></a>
 <!-- FIRST CONTENT SECTION -->
 <section>
-<h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Top 20</h1>
-<% @top20.each_slice(2) do |first_p, second_p| %>
+<h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 text-center">Top Contest Entries</h1>
+<% @top20.first(4).each_slice(2) do |first_p, second_p| %>
 	<%= render "shared/index_items", :first_p => first_p, :second_p => second_p %>
 <% end %>
 </section>
 <section>
-<h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Recent Posts</h1>
+<h1 class="title-font sm:text-4xl text-3xl my-8 mb-4 font-medium text-gray-900 text-center">Recent Posts<% if @current_topic %><%= " in #{@current_topic.titleize}" %><% end %></h1>
 <!-- SECOND CONTENT SECTION -->
 <% @posts.first(102).each_slice(2) do |first_p, second_p| %>
 	<%= render "shared/index_items", :first_p => first_p, :second_p => second_p %>

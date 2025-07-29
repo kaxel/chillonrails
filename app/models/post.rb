@@ -24,7 +24,21 @@ class Post < ApplicationRecord
   end
   
   def tags_from_hash
-    self.tags.split(";").map {|t| t.titleize }
+    puts "tags_from_hash"
+    puts "looking in:"
+    puts self.tags
+    if self.tags.downcase.include?("poetry;")
+      # it's a hack, but it's easy: because the topic is already poetry, a poetry tag is redundant
+      puts "removed poetry;"
+      new_result = self.tags.gsub("poetry;","")
+    elsif self.tags.downcase.include?("poetry")
+      new_result = self.tags.gsub("; poetry","")
+      new_result = new_result.gsub("poetry","")
+      puts "removed poetry"
+    else
+      new_result = self.tags
+    end
+    new_result.split(";").map {|t| t.titleize }
   end
   
   private
