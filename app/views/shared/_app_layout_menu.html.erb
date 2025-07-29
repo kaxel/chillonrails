@@ -43,6 +43,11 @@
               <%= link_to 'Radio', pages_radio_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
             </li>
           <% end %>
+          <% if Rails.application.routes.url_helpers.respond_to?(:pages_about_path) %>
+            <li>
+              <%= link_to 'About', pages_about_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
+            </li>
+          <% end %>
           <% if Rails.application.routes.url_helpers.respond_to?(:pages_authentication_path)  && !Current.user %>
             <li>
               <%= link_to 'Login', pages_authentication_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
@@ -60,9 +65,6 @@
             <div data-submenu-target="content" class="overflow-hidden transition-all duration-300 ease-in-out max-h-0">
               <% if Rails.application.routes.url_helpers.respond_to?(:pages_search_path) %>
                 <%= link_to 'Search', pages_search_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
-              <% end %>
-              <% if Rails.application.routes.url_helpers.respond_to?(:pages_about_path) %>
-                <%= link_to 'About', pages_about_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
               <% end %>
               <% if Rails.application.routes.url_helpers.respond_to?(:pages_account_path) && Current.user %>
                 <%= link_to 'Account', pages_account_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
