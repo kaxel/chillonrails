@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   match "/500", to: "errors#internal_server_error", via: :all
         
   get "pages/about"
-  get "pages/authentification"
+  get "pages/authentication"
   get "pages/account"
   get "pages/radio"
   get "pages/submit"

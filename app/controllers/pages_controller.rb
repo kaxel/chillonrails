@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-  allow_unauthenticated_access only: [ :about, :authentification, :radio, :submit, :search, :contact, :webflow_migration, :song_promo, :licensing, :cookies, :privacy ]
-  before_action :resume_session, only: [ :authentification ]
+  allow_unauthenticated_access only: [ :about, :authentication, :radio, :submit, :search, :contact, :webflow_migration, :song_promo, :licensing, :cookies, :privacy ]
+  before_action :resume_session, only: [ :authentication ]
   
   def about
     @page_title = "about"  
@@ -26,8 +26,8 @@ class PagesController < ApplicationController
     @page_title = "radio"
   end
 
-  def authentification
-    @page_title = "authentification"
+  def authentication
+    @page_title = "authentication"
   end
 
   def account

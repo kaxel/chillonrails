@@ -43,9 +43,9 @@
               <%= link_to 'Radio', pages_radio_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
             </li>
           <% end %>
-          <% if Rails.application.routes.url_helpers.respond_to?(:pages_authentification_path)  && !Current.user %>
+          <% if Rails.application.routes.url_helpers.respond_to?(:pages_authentication_path)  && !Current.user %>
             <li>
-              <%= link_to 'Login', pages_authentification_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
+              <%= link_to 'Login', pages_authentication_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
             </li>
           <% end %>
           

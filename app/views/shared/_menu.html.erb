@@ -9,9 +9,9 @@
     </li>
   <% end %>
 
-  <% if Rails.application.routes.url_helpers.respond_to?(:pages_authentification_path) %>
+  <% if Rails.application.routes.url_helpers.respond_to?(:pages_authentication_path) %>
     <li class="border border-gray-300 rounded-lg hover:shadow-lg transition-shadow duration-200">
-      <%= link_to "Authentication Page", pages_authentification_path, class: "block px-6 py-3 text-center bg-yellow-100 hover:bg-blue-500 hover:text-white rounded-lg" %>
+      <%= link_to "Authentication Page", pages_authentication_path, class: "block px-6 py-3 text-center bg-yellow-100 hover:bg-blue-500 hover:text-white rounded-lg" %>
     </li>
   <% end %>
 
