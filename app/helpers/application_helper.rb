@@ -36,6 +36,14 @@ module ApplicationHelper
     return new_val
   end
   
+  def shorten(s)
+    if s.size>60
+      return "#{s[0,60]}..."
+    else
+      return s
+    end
+  end
+  
   def author_photo(author)
     puts "#{author} running"
     if author == 'krister-axel'

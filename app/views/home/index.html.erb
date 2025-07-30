@@ -26,7 +26,7 @@
 <section>
 <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 text-center">Top Contest Entries</h1>
 <% @top20.first(4).each_slice(2) do |first_p, second_p| %>
-	<%= render "shared/index_items", :first_p => first_p, :second_p => second_p %>
+	<%= render "shared/contest_items", :first_p => first_p, :second_p => second_p %>
 <% end %>
 </section>
 <section>
