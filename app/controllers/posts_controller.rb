@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     
     @random_link = Post.order(Arel.sql('RANDOM()')).first.slug
     set_post
-    @page_title = "spotlight on #{@post.topic}"
+    @page_title = "spotlight on #{@post.topic.capitalize}"
     @from_home = params[:from_home] == 'true' || request.referer&.include?(root_path)
     @available_topics = Post.where.not(topic: [nil, '']).group(:topic).having('COUNT(*) > 0').distinct.pluck(:topic).sort
     respond_to do |format|
