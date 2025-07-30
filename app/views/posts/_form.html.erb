@@ -12,56 +12,52 @@
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title, required: true %>
+    <%= form.text_field :title, required: true, size: 40, class: "px-4" %>
   </div>
 
   <div class="field">
     <%= form.label :slug %>
-    <%= form.text_field :slug %>
-    <small>Leave blank to auto-generate from title</small>
+    <%= form.text_field :slug, size: 40, class: "px-4" %>
   </div>
 
   <div class="field">
     <%= form.label :content %>
-    <%= form.text_area :content, rows: 10, required: true %>
+    <%= form.text_area :content, rows: 6, cols: 60, required: true, class: "px-4" %>
   </div>
 
   <div class="field">
     <%= form.label :preview %>
-    <%= form.text_area :preview, rows: 3 %>
-    <small>Leave blank to auto-generate from content</small>
+    <%= form.text_area :preview, rows: 3, cols: 60, class: "px-4" %>
   </div>
 
   <div class="field">
     <%= form.label :topic %>
-    <%= form.text_field :topic %>
+    <%= form.text_field :topic, size: 40, class: "px-4"  %>
   </div>
 
   <div class="field">
     <%= form.label :image %>
-    <%= form.url_field :image %>
+    <%= form.url_field :image, size: 40, class: "px-4" %>
   </div>
 
   <div class="field">
     <%= form.label :video_link %>
-    <%= form.url_field :video_link %>
+    <%= form.url_field :video_link, size: 40, class: "px-4"  %>
   </div>
 
   <div class="field">
     <%= form.label :audio_link %>
-    <%= form.url_field :audio_link %>
+    <%= form.url_field :audio_link, size: 40, class: "px-4"  %>
   </div>
 
   <div class="field">
-    <%= form.label :location_id %>
-    <%= form.collection_select :location_id, Location.all, :id, :name, 
-                              { prompt: "Select a location" }, { class: "form-control" } %>
+    <%= form.label :location %>
+    <%= form.url_field :location, size: 40, class: "px-4"  %>
   </div>
 
   <div class="field">
     <%= form.label :tag_id %>
-    <%= form.collection_select :tag_id, Tag.all, :id, :name, 
-                              { prompt: "Select a tag" }, { class: "form-control" } %>
+    <%= form.url_field :tags, size: 40, class: "px-4"   %>
   </div>
 
   <div class="actions">
