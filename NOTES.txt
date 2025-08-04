@@ -1,0 +1,5 @@
+pg_dump -U kristeraxel -d chillonrails_development > output_file.sql --format=c
+DEV ^^
+
+pg_restore --dbname=postgresql://chill_cluster_user:kXKpbBWGKGpKCuEkbSHaQ4SNAWn7TRtB@dpg-d23ji8vgi27c7381geqg-a.oregon-postgres.render.com/chill_cluster --verbose --clean --if-exists --no-owner --no-privileges output_file.sql
+

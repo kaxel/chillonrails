@@ -24,6 +24,9 @@
 	      	<a href="<%= post_path(slug: p.slug) %>">
 	        <div class="container px-1 py-2 mx-auto">
 	          <div class="lg:w-5/6 flex sm:flex-row sm:items-center items-start mx-auto">
+	            <div class="flex-shrink-0 mr-3">
+	              <img src="<%= p.image %>" alt="<%= p.title %>" class="w-16 h-16 object-cover rounded">
+	            </div>
 	            <h1 class="flex-grow sm:pr-2 text-normal font-medium title-font text-gray-900 min-w-80 max-w-80"><%= p.title %></h1>
 	      		<div class="flex">
 	      		  <div class="text-sm min-w-40 px-1 max-w-120"><%= p.preview %></div>
