@@ -32,8 +32,6 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-	
-	<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=67070acc8a5b5b001dc3b3c2&product=sticky-share-buttons' async='async'></script>
   </head>
 
   <body data-controller="<%= 'collapse' if controller_name == 'home' && action_name == 'index' %>">
