@@ -16,7 +16,9 @@
             data: { turbo_method: :delete, confirm: "Are you sure?" }, 
             class: "bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-200" %>
       <% else %>
-        <p class="text-lg text-gray-800">Please sign in to access more features.</p>
+        <p class="text-lg text-gray-800">Please sign in to access more features.
+			<br/><br/>
+			NOTE: new account registrations will open in September.</p>
         <%= link_to "Sign In", new_session_path, 
             class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-200" %>
       <% end %>
@@ -33,7 +35,7 @@
           <% else %>
             <!-- Show links when user is signed out -->
             <li>
-              <%= link_to "Register New User", new_registration_path, class: "text-blue-600 hover:underline" %>
+              <span class="text-gray-400 cursor-not-allowed">Register New User</span>
             </li>
             <li>
               <%= link_to "Sign In", new_session_path, class: "text-blue-600 hover:underline" %>
