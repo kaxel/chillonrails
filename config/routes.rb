@@ -52,7 +52,8 @@ Rails.application.routes.draw do
   
   
   
-  # find a way to resolve old blog links with dates - chillfiltr.com/blog/2018/11/25/the-bull-brothers-high-time (TODO)
+  # Old blog format redirects to new post format
+  get '/blog/:year/:month/:day/:slug', to: redirect('/post/%{slug}')
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
