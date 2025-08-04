@@ -6,7 +6,7 @@
 		  <!-- post 1 -->
 		  <div class="w-full sm:w-1/2 mb-4 rounded-lg px-4">
 	        <div class="rounded-lg h-80 overflow-hidden">
-	          <a href="/post/<%= first_p.slug %>?from_home=true"><img alt="content" class="object-cover object-center h-full w-full shadow-md transition-all duration-300 hover:scale-105 hover:sepia" src="<%= first_p.image %>"></a>
+	          <a href="/post/<%= first_p.slug %>"><img alt="content" class="object-cover object-center h-full w-full shadow-md transition-all duration-300 hover:scale-105 hover:sepia" src="<%= first_p.image %>"></a>
 	        </div>
 	        <div class="p-4 shadow-sm border border-slate-200">
 			  <div class="flex space-x-1">
@@ -23,7 +23,7 @@
 			    </div>
 			  </div>
 	          <h6 class="mb-2 text-slate-800 text-xl font-semibold">
-	            <%= link_to(first_p.title, post_path(slug: first_p.slug, from_home: true)) %>
+	            <%= link_to(first_p.title, post_path(slug: first_p.slug)) %>
 	          </h6>
 	          <p class="text-slate-600 leading-normal font-light">
 	            <%= first_p.preview %>
@@ -44,7 +44,7 @@
   			      </div>
   			    </div>
 				<div class="flex items-center">
-					<%= link_to "Get It", post_path(slug: first_p.slug, from_home: true), class: "block px-4 py-2 text-center bg-cyan-400 hover:bg-blue-500 hover:text-white rounded-lg" %>
+					<%= link_to "Get It", post_path(slug: first_p.slug), class: "block px-4 py-2 text-center bg-cyan-400 hover:bg-blue-500 hover:text-white rounded-lg" %>
 				</div>
   		      </div>
 	        </div>
@@ -55,7 +55,7 @@
 		  <div class="w-full sm:w-1/2 mb-4 rounded-lg px-4">
 			<% if second_p %>
 	          <div class="rounded-lg h-80 overflow-hidden">
-	            <a href="/post/<%= second_p.slug %>?from_home=true"><img alt="content" class="object-cover object-center h-full w-full shadow-md transition-all duration-300 hover:scale-105 hover:sepia" src="<%= second_p.image %>"></a>
+	            <a href="/post/<%= second_p.slug %>"><img alt="content" class="object-cover object-center h-full w-full shadow-md transition-all duration-300 hover:scale-105 hover:sepia" src="<%= second_p.image %>"></a>
 	          </div>
 	          <div class="p-4 shadow-sm border border-slate-200">
 			    <div class="flex space-x-1">
@@ -74,7 +74,7 @@
 			  	
 			    </div>
 	            <h6 class="mb-2 text-slate-800 text-xl font-semibold">
-	              <%= link_to(second_p.title, post_path(slug: second_p.slug, from_home: true)) %>
+	              <%= link_to(second_p.title, post_path(slug: second_p.slug)) %>
 	            </h6>
 	            <p class="text-slate-600 leading-normal font-light">
 	              <%= second_p.preview %>
@@ -95,7 +95,7 @@
   			        </div>
   			      </div>
 			  	<div class="flex items-center">
-			  		<%= link_to "Get It", post_path(slug: second_p.slug, from_home: true), class: "block px-4 py-2 text-center bg-cyan-400 hover:bg-blue-500 hover:text-white rounded-lg" %>
+			  		<%= link_to "Get It", post_path(slug: second_p.slug), class: "block px-4 py-2 text-center bg-cyan-400 hover:bg-blue-500 hover:text-white rounded-lg" %>
 			  	</div>
   		        </div>
 	          </div>

@@ -4,10 +4,10 @@
       <div class="p-4 lg:w-1/2 md:w-full">
         <div class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-4 sm:flex-row flex-col">
           <div class="w-32 h-32 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-lg text-indigo-500 flex-shrink-0">
-            <a href="/post/<%= first_p.slug %>?from_home=true"><img alt="content" class="object-cover object-center h-35 w-40 shadow-md transition-all duration-300 hover:scale-105 hover:sepia" src="<%= first_p.image %>"></a>
+            <a href="/post/<%= first_p.slug %>"><img alt="content" class="object-cover object-center h-35 w-40 shadow-md transition-all duration-300 hover:scale-105 hover:sepia" src="<%= first_p.image %>"></a>
           </div>
           <div class="flex-grow">
-            <h2 class="text-gray-900 font-medium mb-3"><%= link_to(first_p.title, post_path(slug: first_p.slug, from_home: true)) %></h2>
+            <h2 class="text-gray-900 font-medium mb-3"><%= link_to(first_p.title, post_path(slug: first_p.slug)) %></h2>
             <p class="leading-relaxed text-base"><%= shorten(first_p.preview) %></p>
             <a class="mt-3 text-indigo-500 inline-flex items-center" href="<%= post_path(slug: first_p.slug) %>">Learn More
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
@@ -20,10 +20,10 @@
       <div class="p-4 lg:w-1/2 md:w-full">
         <div class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-4 sm:flex-row flex-col">
           <div class="w-32 h-32 sm:mr-8 sm:mb-0 mb-4 inline-flex items-center justify-center rounded-lg text-indigo-500 flex-shrink-0">
-            <a href="/post/<%= second_p.slug %>?from_home=true"><img alt="content" class="object-cover object-center h-35 w-40 shadow-md transition-all duration-300 hover:scale-105 hover:sepia" src="<%= second_p.image %>"></a>
+            <a href="/post/<%= second_p.slug %>"><img alt="content" class="object-cover object-center h-35 w-40 shadow-md transition-all duration-300 hover:scale-105 hover:sepia" src="<%= second_p.image %>"></a>
           </div>
           <div class="flex-grow">
-            <h2 class="text-gray-900 font-medium mb-3"><%= link_to(second_p.title, post_path(slug: second_p.slug, from_home: true)) %></h2>
+            <h2 class="text-gray-900 font-medium mb-3"><%= link_to(second_p.title, post_path(slug: second_p.slug)) %></h2>
             <p class="leading-relaxed text-base"><%= shorten(second_p.preview) %></p>
             <a class="mt-3 text-indigo-500 inline-flex items-center" href="<%= post_path(slug: second_p.slug) %>">Learn More
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
