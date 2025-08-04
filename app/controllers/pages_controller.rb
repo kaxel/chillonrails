@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  allow_unauthenticated_access only: [ :about, :authentication, :radio, :submit, :search, :contact, :webflow_migration, :song_promo, :licensing, :cookies, :privacy ]
+  allow_unauthenticated_access only: [ :about, :authentication, :radio, :submit, :search, :contact, :webflow_migration, :song_promo, :licensing, :cookies, :privacy, :support ]
   before_action :resume_session, only: [ :authentication ]
   
   def about
@@ -16,6 +16,10 @@ class PagesController < ApplicationController
     else
       @posts = nil
     end
+  end
+  
+  def support
+    @page_title = "support the channel"
   end
   
   def contact

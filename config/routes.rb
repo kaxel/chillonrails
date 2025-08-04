@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get "pages/licensing"
   get "pages/cookies"
   get "pages/privacy"
+  get "pages/support"
+  
   # terms
   get '/term/licensing', to: redirect('/pages/licensing')
   get '/term/cookies', to: redirect('/pages/cookies')
@@ -38,6 +40,7 @@ Rails.application.routes.draw do
   get '/search', to: redirect('/pages/search')
   get '/contact', to: redirect('/pages/contact')
   get '/radio', to: redirect('/pages/radio')
+  get '/support', to: redirect('/pages/support')
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
