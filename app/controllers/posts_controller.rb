@@ -76,10 +76,13 @@ class PostsController < ApplicationController
   end
 
   def feed
-    @posts = Post.order(published_on: :desc).limit(30)
+    @posts = Post.order(created_at: :desc).limit(30)
     respond_to do |format|
       format.rss { render layout: false }
     end
+  rescue => e
+    Rails.logger.error "RSS Feed Error: #{e.message}"
+    head :internal_server_error
   end
 
   private

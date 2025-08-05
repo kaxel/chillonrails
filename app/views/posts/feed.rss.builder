@@ -3,7 +3,7 @@ xml.instruct! :xml, version: "1.0"
 xml.rss version: "2.0", "xmlns:atom" => "http://www.w3.org/2005/Atom" do
   xml.channel do
     xml.title "CHILLFILTR® - Latest Posts"
-    xml.atom :link, "href" => posts_feed_url(format: :rss), "rel" => "self", "type" => "application/rss+xml"
+    xml.atom :link, "href" => url_for(controller: 'posts', action: 'feed', format: :rss, only_path: false), "rel" => "self", "type" => "application/rss+xml"
     xml.link root_url
     xml.description "CHILLFILTR® is a multifaceted platform dedicated to amplifying independent voices in both music and literature."
     xml.language "en-us"

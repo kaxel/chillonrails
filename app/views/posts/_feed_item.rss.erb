@@ -7,7 +7,11 @@
 <% end %>
 
 <% if post.content.present? %>
-  <p><strong>Content Preview:</strong> <%= truncate(strip_tags(post.content), length: 100) %></p>
+  <% begin %>
+    <p><strong>Content Preview:</strong> <%= truncate(strip_tags(post.content), length: 100) %></p>
+  <% rescue => e %>
+    <p><strong>Content Preview:</strong> <%= post.content.to_s.first(100) %></p>
+  <% end %>
 <% end %>
 
 <p><a href="<%= post_url(slug: post.slug) %>">Read more...</a></p>
@@ -21,5 +25,9 @@
 <% end %>
 
 <% if post.tags.present? %>
-  <p><strong>Tags:</strong> <%= post.tags_from_hash.join(', ') %></p>
+  <% begin %>
+    <p><strong>Tags:</strong> <%= post.tags_from_hash.join(', ') %></p>
+  <% rescue => e %>
+    <p><strong>Tags:</strong> <%= post.tags %></p>
+  <% end %>
 <% end %>

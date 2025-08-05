@@ -37,6 +37,11 @@ Rails.application.routes.draw do
   # review,/topic/prose
   get "/review", to: redirect("/?topic=prose")
   
+  get "/topic/music", to: redirect("/?topic=music")
+  get "/topic/personal", to: redirect("/?topic=personal")
+  get "/topic/lifestyle", to: redirect("/?topic=lifestyle")
+  get "/topic/technology", to: redirect("/?topic=technology")
+  
   get '/about', to: redirect('/pages/about')
   get '/search', to: redirect('/pages/search')
   get '/contact', to: redirect('/pages/contact')
