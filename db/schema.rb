@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_28_071510) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_05_004421) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -23,6 +23,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_28_071510) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_locations_on_name", unique: true
     t.index ["slug"], name: "index_locations_on_slug", unique: true
+  end
+
+  create_table "page_not_founds", force: :cascade do |t|
+    t.string "url"
+    t.datetime "accessed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|

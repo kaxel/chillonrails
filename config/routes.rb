@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
   resources :posts, path: 'post', param: :slug, only: [:edit, :show, :update]
+  get 'posts/feed', to: 'posts#feed', defaults: { format: 'rss' }
   resources :locations, only: [:index, :show]
   resources :tags, only: [:index, :show]
   

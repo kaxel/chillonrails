@@ -1,0 +1,25 @@
+<% if post.image.present? %>
+  <p><img src="<%= post.image %>" alt="<%= post.title %>" style="max-width: 100%; height: auto;" /></p>
+<% end %>
+
+<% if post.preview.present? %>
+  <p><%= post.preview %></p>
+<% end %>
+
+<% if post.content.present? %>
+  <p><strong>Content Preview:</strong> <%= truncate(strip_tags(post.content), length: 100) %></p>
+<% end %>
+
+<p><a href="<%= post_url(slug: post.slug) %>">Read more...</a></p>
+
+<% if post.topic.present? %>
+  <p><strong>Topic:</strong> <%= post.topic.titleize %></p>
+<% end %>
+
+<% if post.location.present? %>
+  <p><strong>Location:</strong> <%= post.location.name %></p>
+<% end %>
+
+<% if post.tags.present? %>
+  <p><strong>Tags:</strong> <%= post.tags_from_hash.join(', ') %></p>
+<% end %>

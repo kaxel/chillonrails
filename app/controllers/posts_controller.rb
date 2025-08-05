@@ -75,6 +75,13 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: "Post was successfully deleted."
   end
 
+  def feed
+    @posts = Post.order(published_on: :desc).limit(30)
+    respond_to do |format|
+      format.rss { render layout: false }
+    end
+  end
+
   private
 
   def set_post
