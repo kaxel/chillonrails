@@ -76,7 +76,7 @@ class PostsController < ApplicationController
   end
 
   def feed
-    @posts = Post.order(created_at: :desc).limit(30)
+    @posts = Post.order(Arel.sql('COALESCE(published_on, created_at) DESC')).limit(30)
     respond_to do |format|
       format.rss { render layout: false }
     end
