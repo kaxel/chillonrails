@@ -23,11 +23,11 @@
 </section>
 <a id="top_of_index"></a>
 <!-- FIRST CONTENT SECTION -->
-<section>
-<h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 text-center">Top Posts</h1>
-<% @top20.sample(4).each_slice(2) do |first_p, second_p| %>
-	<%= render "shared/contest_items", :first_p => first_p, :second_p => second_p %>
-<% end %>
+<section class="mb-8">
+<h1 class="title-font text-2xl mb-4 font-medium text-gray-900 text-center">Top Posts</h1>
+<div class="max-w-2xl mx-auto bg-white rounded-lg shadow-sm border border-gray-200">
+  <%= render "shared/top_posts_list" %>
+</div>
 </section>
 <section>
 <h1 class="title-font sm:text-4xl text-3xl my-8 mb-4 font-medium text-gray-900 text-center">Recent Posts<% if @current_topic %><%= " in #{@current_topic.titleize}" %><% end %></h1>
