@@ -2,3 +2,27 @@ pg_dump -U kristeraxel -d chillonrails_development > output_file.sql --format=c
 DEV ^^
 
 pg_restore --dbname=postgresql://chill_cluster_user:kXKpbBWGKGpKCuEkbSHaQ4SNAWn7TRtB@dpg-d23ji8vgi27c7381geqg-a.oregon-postgres.render.com/chill_cluster --verbose --clean --if-exists --no-owner --no-privileges output_file.sql
+
+Dump the posts table from local development:
+
+  pg_dump -U kristeraxel -d chillonrails_development -t posts > posts_table.sql --format=c
+
+  Restore the posts table to production:
+
+  pg_restore --dbname=postgresql://chill_cluster_user:kXKpbBWGKGpKCuEkbSHaQ4SNAWn7TRtB@dpg-d23ji8vgi27c7381geqg-a.oregon-postgres.render.com/chill_cluster --verbose --clean --if-exists --no-owner --no-privileges posts_table.sql
+
+  
+  
+  
+  
+  Alternative: Data-only refresh (if you only want to update the data, not the 
+  table structure):
+
+  Dump posts data only:
+
+  pg_dump -U kristeraxel -d chillonrails_development -t posts --data-only >
+  posts_data.sql --format=c
+
+  Restore posts data only:
+
+  pg_restore --dbname=postgresql://chill_cluster_user:kXKpbBWGKGpKCuEkbSHaQ4SNAWn7TRtB@dpg-d23ji8vgi27c7381geqg-a.oregon-postgres.render.com/chill_cluster --verbose --data-only --disable-triggers posts_data.sql

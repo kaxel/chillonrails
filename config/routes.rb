@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   get '/contact', to: redirect('/pages/contact')
   get '/radio', to: redirect('/pages/radio')
   get '/support', to: redirect('/pages/support')
+  get '/product/song-submission', to: redirect('/pages/submit')
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
