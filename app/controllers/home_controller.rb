@@ -9,7 +9,7 @@ class HomeController < ApplicationController
              end
              
              
-    @top20 = Post.order("score asc").last(20)  
+    @top12 = Post.order("score asc").last(12)  
         
     @available_topics = Post.where.not(topic: [nil, '']).group(:topic).having('COUNT(*) > 0').distinct.pluck(:topic).sort
     @current_topic = params[:topic]
