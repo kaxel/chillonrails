@@ -48,6 +48,11 @@
               <%= link_to 'About', pages_about_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
             </li>
           <% end %>
+          <% if Rails.application.routes.url_helpers.respond_to?(:pages_submit_path) %>
+            <li>
+              <%= link_to 'Submit', pages_submit_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
+            </li>
+          <% end %>
           
           <li data-controller="submenu">
             <button data-action="click->submenu#toggle" 
@@ -63,9 +68,6 @@
               <% end %>
               <% if Rails.application.routes.url_helpers.respond_to?(:pages_account_path) && Current.user %>
                 <%= link_to 'Account', pages_account_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
-              <% end %>
-              <% if Rails.application.routes.url_helpers.respond_to?(:pages_submit_path) %>
-                <%= link_to 'Submit', pages_submit_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
               <% end %>
               <% if Rails.application.routes.url_helpers.respond_to?(:pages_contact_path) %>
                 <%= link_to 'Contact', pages_contact_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
