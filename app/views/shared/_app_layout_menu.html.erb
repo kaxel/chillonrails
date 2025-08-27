@@ -78,6 +78,9 @@
               <% if Rails.application.routes.url_helpers.respond_to?(:pages_support_path) %>
                 <%= link_to 'Support', pages_support_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
               <% end %>
+              <% if Rails.application.routes.url_helpers.respond_to?(:pages_archive_path) %>
+                <%= link_to 'Archive', pages_archive_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
+              <% end %>
               <% if Rails.application.routes.url_helpers.respond_to?(:pages_authentication_path) && !Current.user %>
                 <%= link_to 'Login', pages_authentication_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
               <% end %>
