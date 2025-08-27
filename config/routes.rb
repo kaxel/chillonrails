@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get "pages/cookies"
   get "pages/privacy"
   get "pages/support"
+  get "pages/archive"
   
   # terms
   get '/term/licensing', to: redirect('/pages/licensing')

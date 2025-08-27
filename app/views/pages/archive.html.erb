@@ -1,0 +1,44 @@
+<section class="text-gray-600 body-font">
+  <div class="container mx-auto flex flex-col px-5 py-4 justify-center items-center">
+    <div class="w-full md:w-2/3 flex flex-col items-center text-center">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Archive</h1>
+      <p class="mb-8 leading-relaxed">Browse all posts organized by month and year:</p>
+    </div>
+    
+    <div class="w-full max-w-4xl">
+      <% @posts_by_month.each do |month_key, posts| %>
+        <% date = Date.strptime(month_key, "%Y-%m") %>
+        <div class="mb-8">
+          <h2 class="text-2xl font-medium text-gray-900 mb-4 border-b border-gray-200 pb-2">
+            <%= date.strftime("%B %Y") %>
+          </h2>
+          <div class="grid gap-2">
+            <% posts.each do |post| %>
+              <div class="hover:bg-gray-100 p-2 rounded">
+                <%= link_to post_path(slug: post.slug), class: "flex items-center justify-between text-gray-700 hover:text-gray-900" do %>
+                  <div class="flex-grow">
+                    <span class="text-lg"><%= post.title %></span>
+                    <% if post.topic %>
+                      <span class="ml-2 text-sm text-gray-500 bg-gray-200 px-2 py-1 rounded">
+                        <%= post.topic %>
+                      </span>
+                    <% end %>
+                  </div>
+                  <span class="text-sm text-gray-500 ml-4">
+                    <%= post.published_on.strftime("%B %d") %>
+                  </span>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      
+      <% if @posts_by_month.empty? %>
+        <div class="text-center py-8">
+          <p class="text-gray-500">No published posts found.</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

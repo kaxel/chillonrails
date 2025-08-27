@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  allow_unauthenticated_access only: [ :about, :authentication, :radio, :submit, :search, :contact, :webflow_migration, :song_promo, :licensing, :cookies, :privacy, :support ]
+  allow_unauthenticated_access only: [ :about, :authentication, :radio, :submit, :search, :contact, :webflow_migration, :song_promo, :licensing, :cookies, :privacy, :support, :archive ]
   before_action :resume_session, only: [ :authentication ]
   
   def about
@@ -60,5 +60,12 @@ class PagesController < ApplicationController
   
   def privacy
     @page_title = "privacy"
+  end
+
+  def archive
+    @page_title = "archive"
+    @posts_by_month = Post.where.not(published_on: nil)
+                          .order(published_on: :desc)
+                          .group_by { |post| post.published_on.strftime("%Y-%m") }
   end
 end
