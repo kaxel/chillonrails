@@ -12,7 +12,8 @@
       <div class="flex-1 flex justify-center items-center mx-4">
         <div class="animate-fade-in-slide-up">
           <h1 class="text-lg font-semibold text-gray-900 text-center animate-pulse-subtle">
-            <%= @page_title.capitalize %>
+            <span class="hidden sm:inline"><%= @page_title.capitalize %></span>
+            <span class="sm:hidden">spotlight</span>
           </h1>
         </div>
       </div>
