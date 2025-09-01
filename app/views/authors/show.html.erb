@@ -1,0 +1,105 @@
+<% content_for :head do %>
+  <meta name="description" content="Posts by <%= @author.display_name %>">
+  <meta name="keywords" content="author, <%= @author.display_name %>, <%= @author.location if @author.location.present? %>">
+  
+  <meta property="og:type" content="profile" />
+  <meta property="og:description" content="Posts by <%= @author.display_name %>">
+  <% if @author.author_photo.present? %>
+    <meta property="og:image" content="<%= @author.author_photo %>">
+  <% end %>
+  <meta property="og:url" content="<%= request.original_url %>">
+  <meta name="twitter:card" content="summary">
+<% end %>
+
+<header class="author-header">
+  <div class="author-meta flex bg-gradient-to-tl from-white-400 via-gray-100 to-gray-400">
+    <div class="flex">
+      <% if @author.location.present? %>
+	    <%= render "shared/post_locations", :post => @author %>
+      <% end %>
+      <% if @author.editorial_chief? %>
+        <span class="chief-tag bg-red-500 text-white px-2 py-1 rounded text-sm">
+          Editorial Chief
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <div class="title-section flex justify-center">
+    <h1 class="text-3xl font-bold text-black-600"><%= @author.display_name %></h1>
+  </div>
+  <% if @author.author_position.present? %>
+    <div class="title-section flex justify-center">
+      <h2 class="text-xl text-gray-800 px-8"><%= @author.author_position %></h2>
+    </div>
+  <% end %>
+</header>
+
+<div class="container px-5 py-2 mx-auto">
+  <div class="flex flex-wrap -mx-4 -mb-10">
+    
+    <% if @author.author_photo.present? || @author.about_author.present? || @author.social_links.any? %>
+      <div class="author-profile mb-8 w-full">
+        <% if @author.author_photo.present? %>
+          <div class="flex justify-center mb-4">
+            <%= image_tag @author.author_photo, class: "author-photo rounded-full w-32 h-32 object-cover" %>
+          </div>
+        <% end %>
+        
+        <% if @author.about_author.present? %>
+          <div class="about-author text-center mb-4 px-8">
+            <p class="text-gray-700"><%= simple_format(@author.about_author) %></p>
+          </div>
+        <% end %>
+        
+        <% if @author.social_links.any? %>
+          <div class="social-links flex justify-center space-x-4 mb-6">
+            <% @author.social_links.each_with_index do |link, i| %>
+              <%= link_to "link #{i+1}", link, target: "_blank", class: "text-blue-600 hover:text-blue-800", rel: "noopener" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="posts-by-author w-full">
+      <h3 class="text-2xl font-semibold mb-4">Posts by <%= @author.display_name %></h3>
+      
+      <% if @posts.any? %>
+        <div class="posts-grid">
+          <% @posts.each do |post| %>
+            <div class="post-item mb-6 p-4 border rounded-lg hover:shadow-lg transition-shadow">
+              <% if post.image.present? %>
+                <div class="post-image mb-3">
+                  <%= link_to post_path(slug: post.slug) do %>
+                    <%= image_tag post.image, class: "w-full h-48 object-cover rounded" %>
+                  <% end %>
+                </div>
+              <% end %>
+              
+              <h4 class="text-xl font-semibold mb-2">
+                <%= link_to post.title, post_path(slug: post.slug), class: "text-gray-900 hover:text-blue-600" %>
+              </h4>
+              
+              <% if post.preview.present? %>
+                <p class="text-gray-600 mb-3"><%= truncate(post.preview, length: 150) %></p>
+              <% end %>
+              
+              <div class="post-meta text-sm text-gray-500 flex justify-between">
+                <span>Published <%= post.published_on || post.created_at.to_date %></span>
+                <% if post.topic.present? %>
+                  <span class="topic-tag bg-gray-200 px-2 py-1 rounded"><%= post.topic.titleize %></span>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-gray-600">No posts found for this author.</p>
+      <% end %>
+    </div>
+
+    <div class="author-actions mt-8 w-full text-center">
+      <%= link_to "Back to Home", root_path, class: "btn btn-secondary hover:text-white bg-teal-300" %>
+    </div>
+  </div>
+</div>

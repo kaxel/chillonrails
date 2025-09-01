@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'posts/feed', to: 'posts#feed', defaults: { format: 'rss' }
   resources :locations, only: [:index, :show]
   resources :tags, only: [:index, :show]
+  resources :authors, path: 'author', param: :slug, only: [:show]
   
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all

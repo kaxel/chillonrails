@@ -14,4 +14,17 @@ class Author < ApplicationRecord
   def social_links
     [social_profile_link_1, social_profile_link_2, social_profile_link_3].compact.reject(&:blank?)
   end
+  
+  def locations_from_hash
+    result_array = []
+    temp = ""
+    self.location.split(";").each do |t|
+      temp = t.titleize
+      if temp == "Usa" then temp = "USA" end
+      if temp == "Uk" then temp = "UK" end
+    end
+    result_array << temp
+    result_array
+  end
+  
 end
