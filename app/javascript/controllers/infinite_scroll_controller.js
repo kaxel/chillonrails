@@ -20,6 +20,11 @@ export default class extends Controller {
   setupIntersectionObserver() {
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
+        console.log("Intersection observer triggered", { 
+          isIntersecting: entry.isIntersecting, 
+          isLoading: this.isLoading, 
+          hasMore: this.hasMore 
+        })
         if (entry.isIntersecting && !this.isLoading && this.hasMore) {
           console.log("Loading more posts...")
           this.loadMore()
@@ -27,14 +32,14 @@ export default class extends Controller {
       })
     }, {
       threshold: 0.1,
-      rootMargin: "100px"
+      rootMargin: "50px"
     })
     
     // Observe the loading indicator
     const loadingIndicator = document.getElementById("loading-indicator")
     if (loadingIndicator) {
       this.observer.observe(loadingIndicator)
-      console.log("Observing loading indicator")
+      console.log("Observing loading indicator", loadingIndicator)
     } else {
       console.error("Loading indicator not found")
     }
@@ -54,7 +59,10 @@ export default class extends Controller {
     // Show loading indicator
     const loadingIndicator = document.getElementById("loading-indicator")
     if (loadingIndicator) {
-      loadingIndicator.classList.remove("hidden")
+      loadingIndicator.innerHTML = `
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+        <p class="mt-2 text-gray-600">Loading more posts...</p>
+      `
     }
 
     try {
@@ -76,24 +84,35 @@ export default class extends Controller {
         const html = await response.text()
         console.log("Response received:", html.substring(0, 200) + "...")
         
-        if (html.trim().includes('No more posts to load')) {
+        // Check if we got any posts back
+        if (html.trim().length === 0 || html.includes('<!-- No more posts -->')) {
           console.log("No more posts available")
           this.hasMore = false
-        }
-        
-        // Let Turbo handle the stream response
-        if (window.Turbo) {
-          Turbo.renderStreamMessage(html)
+          const loadingIndicator = document.getElementById("loading-indicator")
+          if (loadingIndicator) {
+            loadingIndicator.innerHTML = '<p class="text-gray-600">No more posts to load</p>'
+          }
         } else {
-          console.error("Turbo not available")
+          // Let Turbo handle the stream response
+          if (window.Turbo) {
+            Turbo.renderStreamMessage(html)
+          } else {
+            console.error("Turbo not available")
+          }
+          // Clear loading indicator after successful load
+          const loadingIndicator = document.getElementById("loading-indicator")
+          if (loadingIndicator) {
+            loadingIndicator.innerHTML = ""
+          }
         }
       } else {
         console.error("Response not OK:", response.status)
       }
     } catch (error) {
       console.error("Failed to load more posts:", error)
+      const loadingIndicator = document.getElementById("loading-indicator")
       if (loadingIndicator) {
-        loadingIndicator.classList.add("hidden")
+        loadingIndicator.innerHTML = ""
       }
     } finally {
       this.isLoading = false
