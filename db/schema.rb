@@ -10,9 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_05_004421) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_01_063654) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "authors", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.string "collection_id"
+    t.string "locale_id"
+    t.string "item_id"
+    t.boolean "archived", default: false
+    t.boolean "draft", default: false
+    t.datetime "created_on"
+    t.datetime "updated_on"
+    t.datetime "published_on"
+    t.string "author_photo"
+    t.string "author_email"
+    t.string "author_position"
+    t.text "about_author"
+    t.string "social_profile_link_1"
+    t.string "social_profile_link_2"
+    t.string "social_profile_link_3"
+    t.boolean "editorial_chief", default: false
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_authors_on_item_id", unique: true
+    t.index ["slug"], name: "index_authors_on_slug", unique: true
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string "name", null: false
