@@ -33,7 +33,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
-          bundler-cache: true
+          bundler-cache: false
 
       - name: Scan for security vulnerabilities in JavaScript dependencies
         run: bin/importmap audit
