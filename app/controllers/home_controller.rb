@@ -20,7 +20,7 @@ class HomeController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.turbo_stream { render partial: "posts_page", locals: { posts: @posts, page: @page } }
+      format.turbo_stream { render "posts_page", locals: { posts: @posts, page: @page } }
     end
   end
 end

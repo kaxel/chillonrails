@@ -5,7 +5,7 @@
 <% end %>
 
 <%= turbo_stream.replace "loading-indicator" do %>
-  <div id="loading-indicator" class="<%= posts.empty? ? 'text-center py-8' : 'hidden' %> text-center py-8">
+  <div id="loading-indicator" class="<%= posts.empty? ? 'text-center py-8' : 'hidden text-center py-8' %>">
     <% if posts.empty? %>
       <p class="text-gray-600">No more posts to load</p>
     <% else %>
