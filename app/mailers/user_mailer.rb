@@ -3,6 +3,6 @@ class UserMailer < ApplicationMailer
     @user = user
     @confirmation_url = confirm_registration_url(token: @user.confirmation_token)
 
-    mail(to: @user.email_address, subject: "Confirm your account")
+    mail(to: @user.email_address, subject: t("registrations.confirm_account_subject"))
   end
 end

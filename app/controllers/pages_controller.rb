@@ -10,9 +10,9 @@ class PagesController < ApplicationController
     @page_title = "search"
     if params[:search].present?
       @search_term = params[:search]
-      Rails.logger.debug "search for #{@search_term}"
+      Rails.logger.debug { "search for #{@search_term}" }
       @posts = Post.where("lower(title) ILIKE ? OR lower(preview) ILIKE ?", "%#{@search_term.downcase}%", "%#{@search_term.downcase}%")
-      Rails.logger.debug "found #{@posts ? @posts.size : 0} records"
+      Rails.logger.debug { "found #{@posts ? @posts.size : 0} records" }
     else
       @posts = nil
     end

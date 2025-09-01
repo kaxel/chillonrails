@@ -29,3 +29,29 @@
 
 en:
   hello: "Hello world"
+  
+  authentication:
+    please_confirm_email: "Please confirm your email address to continue."
+  
+  passwords:
+    reset_instructions_sent: "Password reset instructions sent (if user with that email address exists)."
+    password_reset: "Password has been reset."
+    passwords_no_match: "Passwords did not match."
+    invalid_reset_link: "Password reset link is invalid or has expired."
+    reset_subject: "Reset your password"
+  
+  posts:
+    created_successfully: "Post was successfully created."
+    updated_successfully: "Post was successfully updated."
+    deleted_successfully: "Post was successfully deleted."
+    must_be_valid_url: "must be a valid URL"
+  
+  registrations:
+    check_email_confirmation: "Please check your email to confirm your account."
+    account_confirmed: "Your account has been confirmed. Welcome!"
+    invalid_confirmation_token: "Invalid confirmation token."
+    confirm_account_subject: "Confirm your account"
+  
+  sessions:
+    try_again_later: "Try again later."
+    try_another_email_password: "Try another email address or password."

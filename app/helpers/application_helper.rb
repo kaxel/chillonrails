@@ -45,7 +45,7 @@ module ApplicationHelper
   end
 
   def author_photo(author)
-    Rails.logger.debug "#{author} running"
+    Rails.logger.debug { "#{author} running" }
     if author == "krister-axel"
       "https://res.cloudinary.com/ashland-io-llc/image/upload/c_pad,w_100,h_100,ar_1:1/v1611606713/hytale/krister-axel-thumb_k4qf7c.png"
     else

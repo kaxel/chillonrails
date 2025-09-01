@@ -35,7 +35,7 @@ module Authentication
     end
 
     def request_confirmation
-      redirect_to root_url, alert: "Please confirm your email address to continue."
+      redirect_to root_url, alert: t("authentication.please_confirm_email")
     end
 
 

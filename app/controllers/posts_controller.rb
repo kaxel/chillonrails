@@ -43,6 +43,9 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def edit
+  end
+
   def random
     # random_post = Post.all.sample
     @post = Post.order(Arel.sql("RANDOM()")).first
@@ -52,18 +55,15 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to @post, notice: "Post was successfully created."
+      redirect_to @post, notice: t("posts.created_successfully")
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit
-  end
-
   def update
     if @post.update(post_params)
-      redirect_to "/", notice: "Post was successfully updated."
+      redirect_to "/", notice: t("posts.updated_successfully")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -71,7 +71,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: "Post was successfully deleted."
+    redirect_to posts_url, notice: t("posts.deleted_successfully")
   end
 
   def feed
@@ -92,6 +92,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :slug, :content, :image, :video_link, :audio_link, :preview, :topic, :location_id, :tag_id, :score, :score_all_time)
+    params.expect(post: [ :title, :slug, :content, :image, :video_link, :audio_link, :preview, :topic, :location_id, :tag_id, :score, :score_all_time ])
   end
 end
