@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-SAMPLE_LINE_ITEM = CSV.open("storage/CHILLFLOW - Articles - sample 100.csv", 'r', :headers => true) { |csv| csv.first }
-SAMPLE_LINE_ITEM2 = CSV.open("storage/CHILLFLOW - sample 2.csv", 'r', :headers => true) { |csv| csv.first }
-SAMPLE_LINE_ITEM3 = CSV.open("storage/CHILLFLOW - sample - multi audio.csv", 'r', :headers => true) { |csv| csv.first }
+SAMPLE_LINE_ITEM = CSV.open("storage/CHILLFLOW - Articles - sample 100.csv", 'r', headers: true) { |csv| csv.first }
+SAMPLE_LINE_ITEM2 = CSV.open("storage/CHILLFLOW - sample 2.csv", 'r', headers: true) { |csv| csv.first }
+SAMPLE_LINE_ITEM3 = CSV.open("storage/CHILLFLOW - sample - multi audio.csv", 'r', headers: true) { |csv| csv.first }
 
-  # run with: 
+# run with:
 
 describe PostIngest do
   let(:name) { "Test Name" }
@@ -22,7 +22,7 @@ describe PostIngest do
       expect(post_ingest.greeting).to eq("Hello, Test Name!")
     end
   end
-  
+
   describe "#parse new line" do
     it "breaks down csv line" do
       post_ingest.feed_line(SAMPLE_LINE_ITEM)
@@ -32,7 +32,7 @@ describe PostIngest do
       expect(post_ingest.published_on).to eq("2024-12-18")
       expect(post_ingest.preview).to eq("An edgy folk style that feels both authentic and slightly wounded.")
       expect(post_ingest.image).to eq("https://cdn.prod.website-files.com/65511e3719795897b270b804/676342170f811f47205f618e_Jonny%20J%20Solo%20-%20promo.jpg")
-      
+
       # test content
       MATCH_STRING="Jonny J Solo is a singer-songwriter from interior Alaska. He released his first single earlier this year, and today he's back with a new release"
       expect(post_ingest.content).to include(MATCH_STRING)
@@ -40,30 +40,28 @@ describe PostIngest do
       expect(post_ingest.content_link.first).to include("https://cdn.prod.website-files.com/65511e3719795897b270b804/67633eaba57cafa18eb9e00c_67633e8c5b17b68789c34d27")
       # test model function for no match
       expect(post_ingest_empty.content_link.first).to eq nil
-      
+
       expect(post_ingest.author).to eq("krister-axel")
       expect(post_ingest.reading_time).to eq(3)
       expect(post_ingest.topic).to eq("music")
       expect(post_ingest.published_on).to eq("2024-12-18")
       expect(post_ingest.tags).to eq("folk; solo")
       expect(post_ingest.location).to eq("fairbanks; alaska; usa")
-      expect(post_ingest.locations_from_hash).to eq(["Fairbanks", "Alaska", "Usa"])
+      expect(post_ingest.locations_from_hash).to eq([ "Fairbanks", "Alaska", "Usa" ])
       expect(post_ingest.video).to eq("")
       expect(post_ingest.author).to eq("krister-axel")
       expect(post_ingest.audio).to eq("https://storage.googleapis.com/chillfiltr-music/song-sub/Jonny%20J%20Solo%20-%20Fallen%20Leaves.mp3")
     end
-    
+
     it "tests slug links" do
       post_ingest.feed_line(SAMPLE_LINE_ITEM2)
       expect(post_ingest.title).to eq("Valley Onda - Brutha")
       expect(post_ingest.slug).to eq("valley-onda---brutha")
     end
-    
+
     it "double checks created on date" do
       post_ingest.feed_line(SAMPLE_LINE_ITEM3)
       expect(post_ingest.created_on).to eq("2019-07-16")
     end
-  end  
-
-  
+  end
 end

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   allow_unauthenticated_access
   before_action :set_post, only: [ :show, :edit, :update, :destroy, :random ]
-  
+
   # Usage Examples:
   #
   # Now you can use these fields in your application:
@@ -23,18 +23,17 @@ class PostsController < ApplicationController
 
   def index
     @posts = @posts.by_topic(params[:topic]).(id: :desc) if params[:topic].present?
-    @posts = Post.all(:limit=>"10", id: :desc) unless @posts
+    @posts = Post.all(limit: "10", id: :desc) unless @posts
     @page_title = "Index of Posts"
   end
 
   def show
-    
-    @random_link = Post.order(Arel.sql('RANDOM()')).first.slug
+    @random_link = Post.order(Arel.sql("RANDOM()")).first.slug
     set_post
     @page_title = "Spotlight on #{@post.topic.titleize}"
-    @available_topics = Post.where.not(topic: [nil, '']).group(:topic).having('COUNT(*) > 0').distinct.pluck(:topic).sort
+    @available_topics = Post.where.not(topic: [ nil, "" ]).group(:topic).having("COUNT(*) > 0").distinct.pluck(:topic).sort
     respond_to do |format|
-      puts format
+      Rails.logger.debug format
       format.html # renders app/views/posts/show.html.erb
       format.json { render json: @post.to_json } # Renders JSON for the post
     end
@@ -43,10 +42,10 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
   end
-  
+
   def random
-    #random_post = Post.all.sample
-    @post = Post.order(Arel.sql('RANDOM()')).first
+    # random_post = Post.all.sample
+    @post = Post.order(Arel.sql("RANDOM()")).first
   end
 
   def create
@@ -76,7 +75,7 @@ class PostsController < ApplicationController
   end
 
   def feed
-    @posts = Post.order(Arel.sql('COALESCE(published_on, created_at) DESC')).limit(30)
+    @posts = Post.order(Arel.sql("COALESCE(published_on, created_at) DESC")).limit(30)
     respond_to do |format|
       format.rss { render layout: false }
     end
@@ -88,7 +87,7 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find_by_slug(params[:slug])
+    @post = Post.find_by(slug: params[:slug])
     raise ActionController::RoutingError.new("(#{params[:slug]}) Not Found") unless @post
   end
 
