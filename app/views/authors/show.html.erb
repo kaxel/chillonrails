@@ -48,7 +48,6 @@
         <% if @author.about_author.present? %>
           <div class="about-author text-center mb-4 px-8">
             <p class="text-gray-700"><%= simple_format(@author.about_author) %></p>
-			<% content_for :description, simple_format(@author.about_author) %>
           </div>
         <% end %>
         
