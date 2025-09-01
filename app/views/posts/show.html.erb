@@ -64,7 +64,7 @@
 		<% end %>
 
         <div class="content text-left">
-          <%= raw @post.content %>
+          <%= sanitize @post.content, tags: %w[p br strong em ul ol li h1 h2 h3 h4 h5 h6 blockquote a img], attributes: %w[href src alt class] %>
         </div>
       </div>
 
