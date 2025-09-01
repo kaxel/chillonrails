@@ -29,8 +29,14 @@
 <section>
 <h1 class="title-font sm:text-4xl text-3xl my-8 mb-4 font-medium text-gray-900 text-center">Recent Posts<% if @current_topic %><%= " in #{@current_topic.titleize}" %><% end %></h1>
 <!-- SECOND CONTENT SECTION -->
-<% @posts.first(102).each_slice(2) do |first_p, second_p| %>
-	<%= render "shared/index_items", :first_p => first_p, :second_p => second_p %>
-<% end %>
+<div id="posts-container" data-controller="infinite-scroll" data-infinite-scroll-page-value="1" data-infinite-scroll-topic-value="<%= @current_topic %>">
+  <% @posts.each_slice(2) do |first_p, second_p| %>
+    <%= render "shared/index_items", :first_p => first_p, :second_p => second_p %>
+  <% end %>
+</div>
+<div id="loading-indicator" class="hidden text-center py-8">
+  <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+  <p class="mt-2 text-gray-600">Loading more posts...</p>
+</div>
 </section>
 <%= render "shared/more_links" %>
