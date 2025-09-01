@@ -29,6 +29,7 @@
 !/tmp/storage/.keep
 
 /public/assets
+/script/import_posts.rb
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
