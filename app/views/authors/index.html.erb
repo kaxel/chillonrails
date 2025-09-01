@@ -1,0 +1,67 @@
+<% content_for :head do %>
+  <meta name="description" content="Browse all authors and contributors">
+  <meta name="keywords" content="authors, writers, contributors">
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Browse all authors and contributors">
+  <meta property="og:url" content="<%= request.original_url %>">
+  <meta name="twitter:card" content="summary">
+<% end %>
+
+<div class="container max-w-2xl px-5 py-2 mx-auto py-2">
+  <div class="authors-list space-y-6">
+    <% @authors.each do |author| %>
+      <div class="author-row bg-white border rounded-lg p-5 hover:shadow-lg transition-shadow">
+        <div class="author-content flex items-start gap-4">
+          <% if author.author_photo.present? %>
+            <div class="author-photo-container flex-shrink-0">
+              <%= image_tag author.author_photo, class: "author-photo rounded-full w-16 h-16 object-cover" %>
+            </div>
+          <% end %>
+          
+          <div class="author-info flex-grow">
+            <div class="author-header mb-3">
+              <h2 class="text-xl font-semibold mb-1">
+                <%= link_to author.display_name, author_path(slug: author.slug), class: "text-gray-900 hover:text-blue-600 transition-colors" %>
+              </h2>
+              
+              <div class="author-meta flex items-center gap-3 text-sm text-gray-500">
+                <% if author.author_position.present? %>
+                  <span class="font-medium text-gray-600"><%= author.author_position %></span>
+                <% end %>
+                
+                <% if author.location.present? %>
+                  <span>📍 <%= author.location %></span>
+                <% end %>
+                
+                <% if author.editorial_chief? %>
+                  <span class="chief-tag bg-red-500 text-white px-2 py-0.5 rounded text-xs font-medium">
+                    Editorial Chief
+                  </span>
+                <% end %>
+                
+                <% post_count = Post.where(author: author.slug).count %>
+                <span class="text-blue-600 font-medium"><%= pluralize(post_count, 'post') %></span>
+              </div>
+            </div>
+            
+            <% if author.about_author.present? %>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                <%= truncate(author.about_author, length: 200) %>
+              </p>
+            <% end %>
+            
+            <div class="author-actions">
+              <%= link_to "View Profile →", author_path(slug: author.slug), 
+                  class: "text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="navigation-actions mt-8 text-center">
+    <%= link_to "Back to Home", root_path, class: "btn btn-secondary hover:text-white bg-teal-300 px-6 py-2 rounded" %>
+  </div>
+</div>

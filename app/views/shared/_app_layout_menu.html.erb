@@ -13,7 +13,7 @@
         <div class="animate-fade-in-slide-up">
           <h1 class="text-lg font-semibold text-gray-900 text-center animate-pulse-subtle">
             <span class="hidden sm:inline"><%= @page_title.capitalize %></span>
-            <span class="sm:hidden">spotlight</span>
+            <span class="sm:hidden"><%= controller_name == 'posts' ? 'spotlight' : @page_title.capitalize %></span>
           </h1>
         </div>
       </div>
