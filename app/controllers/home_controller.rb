@@ -6,10 +6,11 @@ class HomeController < ApplicationController
     @per_page = 20
     @offset = (@page - 1) * @per_page
 
+    # Get posts with distinct to avoid any potential duplicates
     @posts = if params[:topic].present?
-               Post.by_topic(params[:topic]).order(published_on: :desc).offset(@offset).limit(@per_page)
+               Post.by_topic(params[:topic]).order(published_on: :desc).offset(@offset).limit(@per_page).distinct
     else
-               Post.order(published_on: :desc).offset(@offset).limit(@per_page)
+               Post.order(published_on: :desc).offset(@offset).limit(@per_page).distinct
     end
 
     @top12 = Post.order("score asc").last(12)
