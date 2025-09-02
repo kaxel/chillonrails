@@ -7,8 +7,23 @@ export default class extends Controller {
     console.log("Infinite scroll controller connected", { page: this.pageValue, topic: this.topicValue })
     this.isLoading = false
     this.hasMore = true
+    this.loadedPostIds = new Set()
     
+    // Track initially loaded posts to prevent duplicates
+    this.trackExistingPosts()
     this.setupIntersectionObserver()
+  }
+  
+  trackExistingPosts() {
+    // Find all existing post elements and track their IDs
+    const existingPosts = document.querySelectorAll('[data-post-id]')
+    existingPosts.forEach(post => {
+      const postId = post.dataset.postId
+      if (postId) {
+        this.loadedPostIds.add(postId)
+      }
+    })
+    console.log(`Tracked ${this.loadedPostIds.size} existing posts`)
   }
 
   disconnect() {
