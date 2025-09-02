@@ -1,9 +1,9 @@
 class AuthorsController < ApplicationController
   allow_unauthenticated_access
-  before_action :set_author, only: [:show]
+  before_action :set_author, only: [ :show ]
 
   def index
-    @authors = Author.all.order(:name)
+    @authors = Author.order(:name)
     @page_title = "Authors"
   end
 
