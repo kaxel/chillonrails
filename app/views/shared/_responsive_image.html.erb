@@ -1,0 +1,44 @@
+<%# 
+  Responsive image partial with srcset for bandwidth optimization
+  Usage: render 'shared/responsive_image', 
+                     image_url: post.image, 
+                     alt_text: post.title,
+                     css_classes: "object-cover object-center h-full w-full",
+                     link_url: "/post/#{post.slug}"
+%>
+<% link_url ||= nil %>
+<% css_classes ||= "object-cover object-center h-full w-full" %>
+<% loading ||= "lazy" %>
+
+<% if link_url.present? %>
+  <a href="<%= link_url %>">
+<% end %>
+
+<picture>
+  <%# Mobile devices - smallest image %>
+  <source media="(max-width: 640px)" 
+          srcset="<%= image_url %>?w=640&q=75 1x,
+                  <%= image_url %>?w=1280&q=75 2x">
+  
+  <%# Tablets - medium image %>
+  <source media="(max-width: 1024px)" 
+          srcset="<%= image_url %>?w=1024&q=80 1x,
+                  <%= image_url %>?w=2048&q=80 2x">
+  
+  <%# Desktop - larger image %>
+  <source media="(min-width: 1025px)"
+          srcset="<%= image_url %>?w=1920&q=85 1x,
+                  <%= image_url %>?w=3840&q=85 2x">
+  
+  <%# Fallback for browsers that don't support picture element %>
+  <img src="<%= image_url %>?w=1024&q=80" 
+       alt="<%= alt_text %>"
+       loading="<%= loading %>"
+       class="<%= css_classes %> transition-all duration-300 hover:scale-105 hover:sepia"
+       width="1024"
+       height="768">
+</picture>
+
+<% if link_url.present? %>
+  </a>
+<% end %>

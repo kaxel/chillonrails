@@ -38,7 +38,11 @@
       <div class="post-content">
         <% if @post.image.present? %>
 		  <div class="flex justify-center mb-4">
-            <%= image_tag @post.image, class: "featured-image" %>
+            <%= render 'shared/responsive_image', 
+                       image_url: @post.image, 
+                       alt_text: @post.title,
+                       css_classes: "featured-image",
+                       loading: "eager" %>
 		  </div>
         <% end %>
 

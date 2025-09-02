@@ -4,9 +4,13 @@
 	    <div class="flex flex-wrap -mx-4 -mb-10 text-center justify-center">
 			
 		  <!-- post 1 -->
-		  <div class="w-full sm:w-1/2 mb-4 rounded-lg px-4">
+		  <div class="w-full sm:w-1/2 mb-4 rounded-lg px-4" data-post-id="<%= first_p.id %>">
 	        <div class="rounded-lg h-80 overflow-hidden">
-	          <a href="/post/<%= first_p.slug %>"><img alt="content" class="object-cover object-center h-full w-full shadow-md transition-all duration-300 hover:scale-105 hover:sepia" src="<%= first_p.image %>"></a>
+	          <%= render 'shared/responsive_image', 
+	                     image_url: first_p.image, 
+	                     alt_text: first_p.title,
+	                     css_classes: "object-cover object-center h-full w-full shadow-md",
+	                     link_url: "/post/#{first_p.slug}" %>
 	        </div>
 	        <div class="p-4 shadow-sm border border-slate-200">
 			  <div class="flex space-x-1">
@@ -52,10 +56,14 @@
 	      </div>
 
 		  <!-- post 2 -->
-		  <div class="w-full sm:w-1/2 mb-4 rounded-lg px-4">
+		  <div class="w-full sm:w-1/2 mb-4 rounded-lg px-4" data-post-id="<%= second_p.id %>">
 			<% if second_p %>
 	          <div class="rounded-lg h-80 overflow-hidden">
-	            <a href="/post/<%= second_p.slug %>"><img alt="content" class="object-cover object-center h-full w-full shadow-md transition-all duration-300 hover:scale-105 hover:sepia" src="<%= second_p.image %>"></a>
+	            <%= render 'shared/responsive_image', 
+	                       image_url: second_p.image, 
+	                       alt_text: second_p.title,
+	                       css_classes: "object-cover object-center h-full w-full shadow-md",
+	                       link_url: "/post/#{second_p.slug}" %>
 	          </div>
 	          <div class="p-4 shadow-sm border border-slate-200">
 			    <div class="flex space-x-1">
