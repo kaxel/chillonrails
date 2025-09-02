@@ -40,6 +40,10 @@ blockquote p {
 
 div img { padding-bottom: 0.25em; }
 
+h1 {
+	font-size: x-large;
+}
+
 h2 {
 	font-size: x-large;
 }
