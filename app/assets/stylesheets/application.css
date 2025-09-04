@@ -52,6 +52,10 @@ h3 {
 	font-size: x-large;
 }
 
+h4 {
+	font-size: large;
+}
+
 /* Animated Page Title Animations */
 @keyframes fadeInSlideUp {
   0% {
