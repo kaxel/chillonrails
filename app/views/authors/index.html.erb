@@ -25,13 +25,13 @@
                 <%= link_to author.display_name, author_path(slug: author.slug), class: "text-gray-900 hover:text-blue-600 transition-colors" %>
               </h2>
               
-              <div class="author-meta flex items-center gap-3 text-sm text-gray-500">
+              <div class="author-meta flex items-center gap-1 text-sm text-gray-500">
                 <% if author.author_position.present? %>
                   <span class="font-medium text-gray-600"><%= author.author_position %></span>
                 <% end %>
                 
                 <% if author.location.present? %>
-                  <span>📍 <%= author.location %></span>
+                  <%= render "shared/post_locations", :post => author %>
                 <% end %>
                 
                 <% if author.editorial_chief? %>

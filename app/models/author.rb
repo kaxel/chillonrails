@@ -22,8 +22,9 @@ class Author < ApplicationRecord
       temp = t.titleize
       if temp == "Usa" then temp = "USA" end
       if temp == "Uk" then temp = "UK" end
+      result_array << temp
     end
-    result_array << temp
+    
     result_array
   end
 end
