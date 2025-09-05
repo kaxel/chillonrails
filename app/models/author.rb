@@ -24,7 +24,7 @@ class Author < ApplicationRecord
       if temp == "Uk" then temp = "UK" end
       result_array << temp
     end
-    
+
     result_array
   end
 end
