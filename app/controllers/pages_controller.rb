@@ -13,6 +13,13 @@ class PagesController < ApplicationController
       Rails.logger.debug { "search for #{@search_term}" }
       @posts = Post.where("lower(title) ILIKE ? OR lower(preview) ILIKE ?", "%#{@search_term.downcase}%", "%#{@search_term.downcase}%")
       Rails.logger.debug { "found #{@posts ? @posts.size : 0} records" }
+      if @posts.size == 0
+        Rails.logger.debug { "no posts found; search authors" }
+        @authors = Author.where("lower(name) ILIKE ?", "%#{@search_term.downcase}%")
+        Rails.logger.debug { "author found: #{@authors.first.name}" }
+        @posts = Post.where(author: @authors.first.slug)
+        Rails.logger.debug { "found #{@posts ? @posts.size : 0} author matches" }
+      end
     else
       @posts = nil
     end
