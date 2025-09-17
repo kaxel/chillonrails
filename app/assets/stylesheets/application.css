@@ -40,6 +40,18 @@ blockquote p {
 
 div img { padding-bottom: 0.25em; }
 
+/* Force center all images in content area */
+.content img {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.content figure,
+.content div {
+  text-align: center !important;
+}
+
 h1 {
 	font-size: x-large;
 }
