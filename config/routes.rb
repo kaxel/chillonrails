@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "pages/authentication"
   get "pages/account"
   get "pages/radio"
+  get "post/submit", to: redirect('/pages/submit')
   get "pages/submit"
   get "pages/search"
   get "pages/contact"
