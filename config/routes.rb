@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :playlists, path: 'playlist', param: :slug, only: [:show]
   get "errors/not_found"
   get "errors/internal_server_error"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

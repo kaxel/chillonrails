@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_01_063654) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_05_224326) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -56,6 +56,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_01_063654) do
     t.datetime "accessed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "playlists", force: :cascade do |t|
+    t.string "name"
+    t.jsonb "songs"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_playlists_on_slug", unique: true
   end
 
   create_table "posts", force: :cascade do |t|
