@@ -1,4 +1,225 @@
-<div>
-  <h1 class="font-bold text-4xl">Playlists#show</h1>
-  <p>Find me in app/views/playlists/show.html.erb</p>
+<div class="max-w-4xl mx-auto p-6">
+  <h1 class="font-bold text-4xl mb-8">Custom Playlist: <%= @playlist.name %></h1>
+
+  <div id="audio-player" class="mb-8">
+    <audio id="audio" class="hidden"></audio>
+
+    <!-- Now Playing Display -->
+    <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 mb-4">
+      <div class="text-sm text-gray-600 dark:text-gray-400 mb-2">Now Playing</div>
+      <div id="now-playing" class="text-xl font-semibold mb-4">
+        Select a song to play
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="mb-4">
+        <div class="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-1">
+          <span id="current-time">0:00</span>
+          <span id="duration">0:00</span>
+        </div>
+        <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2 cursor-pointer" id="progress-bar">
+          <div id="progress" class="bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex items-center justify-center gap-4">
+        <button id="prev-btn" class="bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-bold py-3 px-6 rounded-lg transition">
+          Previous
+        </button>
+        <button id="play-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition">
+          Play
+        </button>
+        <button id="stop-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition">
+          Stop
+        </button>
+        <button id="next-btn" class="bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-bold py-3 px-6 rounded-lg transition">
+          Next
+        </button>
+      </div>
+    </div>
+
+    <!-- Playlist -->
+    <div class="bg-white dark:bg-gray-900 rounded-lg shadow">
+      <h2 class="text-2xl font-bold p-4 border-b border-gray-200 dark:border-gray-700">Tracks</h2>
+      <ul id="playlist" class="divide-y divide-gray-200 dark:divide-gray-700">
+        <% @playlist.songs.sort_by { |k, v| k.to_i }.each_with_index do |(key, url), index| %>
+          <li class="playlist-item p-4 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer transition" data-index="<%= index %>" data-url="<%= url %>">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="text-gray-500 dark:text-gray-400 font-mono"><%= index + 1 %></span>
+                <span class="song-title"><%= File.basename(url, '.mp3').gsub('%20', ' ').gsub('_', ' ') %></span>
+              </div>
+              <span class="playing-indicator hidden text-blue-600">▶</span>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
+
+<script>
+  const audio = document.getElementById('audio');
+  const playBtn = document.getElementById('play-btn');
+  const stopBtn = document.getElementById('stop-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const nowPlaying = document.getElementById('now-playing');
+  const progress = document.getElementById('progress');
+  const progressBar = document.getElementById('progress-bar');
+  const currentTimeEl = document.getElementById('current-time');
+  const durationEl = document.getElementById('duration');
+  const playlistItems = document.querySelectorAll('.playlist-item');
+
+  let currentIndex = -1;
+  let isPlaying = false;
+
+  // Format time in MM:SS
+  function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  }
+
+  // Load and play a song
+  function loadSong(index) {
+    if (index < 0 || index >= playlistItems.length) return;
+
+    currentIndex = index;
+    const item = playlistItems[index];
+    const url = item.dataset.url;
+    const title = item.querySelector('.song-title').textContent;
+
+    audio.src = url;
+    nowPlaying.textContent = title;
+
+    // Update UI
+    playlistItems.forEach((item, i) => {
+      const indicator = item.querySelector('.playing-indicator');
+      if (i === index) {
+        item.classList.add('bg-blue-50', 'dark:bg-blue-900');
+        indicator.classList.remove('hidden');
+      } else {
+        item.classList.remove('bg-blue-50', 'dark:bg-blue-900');
+        indicator.classList.add('hidden');
+      }
+    });
+  }
+
+  // Play current song
+  function playSong() {
+    if (currentIndex === -1) {
+      loadSong(0);
+    }
+    audio.play();
+    isPlaying = true;
+    playBtn.textContent = 'Pause';
+  }
+
+  // Pause current song
+  function pauseSong() {
+    audio.pause();
+    isPlaying = false;
+    playBtn.textContent = 'Play';
+  }
+
+  // Stop current song
+  function stopSong() {
+    audio.pause();
+    audio.currentTime = 0;
+    isPlaying = false;
+    playBtn.textContent = 'Play';
+  }
+
+  // Previous song
+  function prevSong() {
+    if (currentIndex > 0) {
+      loadSong(currentIndex - 1);
+      if (isPlaying) {
+        audio.play();
+      }
+    }
+  }
+
+  // Next song
+  function nextSong() {
+    if (currentIndex < playlistItems.length - 1) {
+      loadSong(currentIndex + 1);
+      if (isPlaying) {
+        audio.play();
+      }
+    }
+  }
+
+  // Event listeners
+  playBtn.addEventListener('click', () => {
+    if (isPlaying) {
+      pauseSong();
+    } else {
+      playSong();
+    }
+  });
+
+  stopBtn.addEventListener('click', stopSong);
+  prevBtn.addEventListener('click', prevSong);
+  nextBtn.addEventListener('click', nextSong);
+
+  // Playlist item clicks
+  playlistItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      loadSong(index);
+      playSong();
+    });
+  });
+
+  // Update progress bar
+  audio.addEventListener('timeupdate', () => {
+    if (audio.duration) {
+      const percent = (audio.currentTime / audio.duration) * 100;
+      progress.style.width = `${percent}%`;
+      currentTimeEl.textContent = formatTime(audio.currentTime);
+    }
+  });
+
+  // Update duration when loaded
+  audio.addEventListener('loadedmetadata', () => {
+    durationEl.textContent = formatTime(audio.duration);
+  });
+
+  // Seek functionality
+  progressBar.addEventListener('click', (e) => {
+    const rect = progressBar.getBoundingClientRect();
+    const percent = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = percent * audio.duration;
+  });
+
+  // Auto-play next song when current ends
+  audio.addEventListener('ended', () => {
+    if (currentIndex < playlistItems.length - 1) {
+      nextSong();
+    } else {
+      stopSong();
+    }
+  });
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+    switch(e.key) {
+      case ' ':
+        e.preventDefault();
+        if (isPlaying) pauseSong(); else playSong();
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        prevSong();
+        break;
+      case 'ArrowRight':
+        e.preventDefault();
+        nextSong();
+        break;
+    }
+  });
+</script>
