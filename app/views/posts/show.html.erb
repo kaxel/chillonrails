@@ -61,9 +61,10 @@
 
           <% if @post.audio_link.present? %>
             <div class="audio-section flex justify-center">
-			  <iframe scrolling="no" style="width: 320px; height: 70px; border:0; overflow: hidden; margin-top: -10px;" 
-			    src="https://audio-34a0d.web.app/amplitude.html?load=<%= @post.audio_link %>">
-			  </iframe>
+			  <audio controls preload="metadata" style="width: 320px; height: 54px; filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);">
+			    <source src="<%= @post.audio_link %>" type="audio/mpeg">
+			    Your browser does not support the audio element.
+			  </audio>
             </div>
           <% end %>
 		<% end %>
