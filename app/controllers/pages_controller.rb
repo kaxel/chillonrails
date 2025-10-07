@@ -16,9 +16,9 @@ class PagesController < ApplicationController
       if @posts.size == 0
         Rails.logger.debug { "no posts found; search authors" }
         @authors = Author.where("lower(name) ILIKE ?", "%#{@search_term.downcase}%")
-        Rails.logger.debug { "author found: #{@authors.first.name}" }
-        @posts = Post.where(author: @authors.first.slug)
-        Rails.logger.debug { "found #{@posts ? @posts.size : 0} author matches" }
+        Rails.logger.debug { "author found: #{@authors.first.name}" } unless !@authors.first
+        @posts = Post.where(author: @authors.first.slug) unless !@authors.first
+        Rails.logger.debug { "found #{@posts ? @posts.size : 0} author matches" } unless !@posts.first
       end
     else
       @posts = nil
