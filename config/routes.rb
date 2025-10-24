@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   get "pages/support"
   get "pages/archive"
   
+  #redirect old story links to search page
+  get "story/:slug", to: redirect('/pages/search?search=tell+me+a+story')
+  
   # terms
   get '/term/licensing', to: redirect('/pages/licensing')
   get '/term/cookies', to: redirect('/pages/cookies')
