@@ -1,0 +1,30 @@
+<section class="text-gray-600 body-font overflow-hidden">
+  <div class="container mx-auto px-5 py-12 max-w-4xl">
+    <div class="flex flex-col items-center text-center mb-12">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+        Browse by Tag
+      </h1>
+      <p class="text-gray-600">Click any tag to see all posts with that tag</p>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <% if @tags.any? %>
+        <div class="flex flex-wrap gap-2">
+          <% @tags.each do |tag| %>
+            <%= link_to tag_path(tag.slug),
+                class: "inline-block px-4 py-2 rounded-lg text-sm font-medium transition-colors #{tag.color.present? ? '' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}",
+                style: (tag.color.present? ? "background-color: #{tag.color}; color: white;" : nil) do %>
+              <%= tag.name.titleize %>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="text-center py-8">
+          <p class="text-gray-600">No tags available yet.</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<%= render "shared/more_links" %>

@@ -1,14 +1,14 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static values = { page: Number, topic: String }
+  static values = { page: Number, topic: String, tag: String }
 
   connect() {
-    console.log("Infinite scroll controller connected", { page: this.pageValue, topic: this.topicValue })
+    console.log("Infinite scroll controller connected", { page: this.pageValue, topic: this.topicValue, tag: this.tagValue })
     this.isLoading = false
     this.hasMore = true
     this.loadedPostIds = new Set()
-    
+
     // Track initially loaded posts to prevent duplicates
     this.trackExistingPosts()
     this.setupIntersectionObserver()
@@ -81,7 +81,13 @@ export default class extends Controller {
     }
 
     try {
-      const url = new URL(window.location.origin + "/")
+      // Use current page's base URL if on a tag page, otherwise use root
+      let baseUrl = window.location.origin + "/"
+      if (this.tagValue && this.tagValue !== '') {
+        baseUrl = window.location.origin + "/tag/" + this.tagValue
+      }
+
+      const url = new URL(baseUrl)
       url.searchParams.set("page", this.pageValue)
       if (this.topicValue && this.topicValue !== '') {
         url.searchParams.set("topic", this.topicValue)

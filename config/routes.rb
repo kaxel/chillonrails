@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :posts, path: 'post', param: :slug, only: [:edit, :show, :update]
   get 'posts/feed', to: 'posts#feed', defaults: { format: 'rss' }
   resources :locations, only: [:index, :show]
-  resources :tags, only: [:index, :show]
+  resources :tags, path: 'tag', param: :slug, only: [:index, :show]
   get 'authors', to: 'authors#index'
   resources :authors, path: 'author', param: :slug, only: [:show]
   

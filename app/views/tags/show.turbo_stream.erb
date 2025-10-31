@@ -1,0 +1,9 @@
+<% if @posts.any? %>
+<%= turbo_stream.append "posts-container" do %>
+  <% @posts.each_slice(2) do |first_p, second_p| %>
+    <%= render "shared/index_items", :first_p => first_p, :second_p => second_p %>
+  <% end %>
+<% end %>
+<% else %>
+<!-- No more posts -->
+<% end %>

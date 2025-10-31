@@ -56,8 +56,8 @@
 	      </div>
 
 		  <!-- post 2 -->
+		  <% if second_p %>
 		  <div class="w-full sm:w-1/2 mb-4 rounded-lg px-4" data-post-id="<%= second_p.id %>">
-			<% if second_p %>
 	          <div class="rounded-lg h-80 overflow-hidden">
 	            <%= render 'shared/responsive_image', 
 	                       image_url: second_p.image, 
@@ -107,9 +107,8 @@
 			  	</div>
   		        </div>
 	          </div>
-			<% end %>
-	      
 		  </div>
+		  <% end %>
 		  
 		  
 		  

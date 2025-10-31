@@ -1,0 +1,31 @@
+<section class="text-gray-600 body-font overflow-hidden">
+  <div class="container mx-auto px-5 py-12 max-w-4xl">
+    <div class="flex flex-col items-center text-center">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+        tag search: <%= @tag.name.titleize %>
+      </h1>
+      <% if @tag.color.present? %>
+        <span class="inline-block px-4 py-2 mb-4 rounded-lg" style="background-color: <%= @tag.color %>; color: white;">
+          <%= @tag.name.titleize %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div id="posts-container" data-controller="infinite-scroll" data-infinite-scroll-page-value="<%= @page %>" data-infinite-scroll-tag-value="<%= @tag.slug %>">
+    <% if @posts.any? %>
+      <% @posts.each_slice(2) do |first_p, second_p| %>
+        <%= render "shared/index_items", :first_p => first_p, :second_p => second_p %>
+      <% end %>
+    <% else %>
+      <div class="container mx-auto px-5 py-12 max-w-4xl text-center">
+        <p class="text-gray-600">No posts found with this tag.</p>
+      </div>
+    <% end %>
+  </div>
+  <div id="loading-indicator" class="text-center py-8">
+    <!-- Loading content will be inserted here by JavaScript -->
+  </div>
+</section>
