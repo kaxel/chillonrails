@@ -13,7 +13,7 @@
 	                     link_url: "/post/#{first_p.slug}" %>
 	        </div>
 	        <div class="p-4 shadow-sm border border-slate-200">
-			  <div class="flex space-x-1">
+			  <div class="flex items-start space-x-1">
 	            <div class="mb-4 rounded-full <%= get_topic_color(first_p.topic) %> py-0.5 border border-transparent text-sm text-white transition-all shadow-sm min-w-20 text-center">
 	              <%= first_p.topic.upcase %>
 	            </div>
@@ -66,7 +66,7 @@
 	                       link_url: "/post/#{second_p.slug}" %>
 	          </div>
 	          <div class="p-4 shadow-sm border border-slate-200">
-			    <div class="flex space-x-1">
+			    <div class="flex items-start space-x-1">
 	              <div class="mb-4 rounded-full <%= get_topic_color(second_p.topic.downcase) %> py-0.5 border border-transparent text-sm text-white transition-all shadow-sm min-w-20 text-center">
 	                <%= second_p.topic.upcase %>
 	              </div>
