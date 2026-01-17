@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   allow_unauthenticated_access
 
   def index
-    @tags = Tag.all.order(:name)
+    @tags = Tag.order(:name)
     @page_title = "All Tags"
   end
 
@@ -28,11 +28,11 @@ class TagsController < ApplicationController
      .limit(@per_page)
      .distinct
 
-    @available_topics = Post.where.not(topic: [nil, ""]).group(:topic).having("COUNT(*) > 0").distinct.pluck(:topic).sort
+    @available_topics = Post.where.not(topic: [ nil, "" ]).group(:topic).having("COUNT(*) > 0").distinct.pluck(:topic).sort
     @page_title = "Posts tagged with #{@tag.name}"
 
     respond_to do |format|
-      format.html { render 'tags/show' }
+      format.html { render "tags/show" }
       format.turbo_stream
     end
   end

@@ -6,7 +6,7 @@ class AddSlugToPlaylists < ActiveRecord::Migration[8.0]
     reversible do |dir|
       dir.up do
         Playlist.find_each do |playlist|
-          playlist.update_column(:slug, playlist.name.parameterize)
+          playlist.update!(slug: playlist.name.parameterize)
         end
       end
     end
