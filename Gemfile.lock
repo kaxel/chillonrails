@@ -101,6 +101,9 @@ GEM
     dockerfile-rails (1.7.9)
       rails (>= 3.0.0)
     dotenv (3.1.8)
+    dotenv-rails (3.1.8)
+      dotenv (= 3.1.8)
+      railties (>= 6.1)
     drb (2.2.3)
     ed25519 (1.4.0)
     erb (5.0.1)
@@ -489,6 +492,7 @@ DEPENDENCIES
   csv
   debug
   dockerfile-rails (>= 1.7)
+  dotenv-rails
   factory_bot_rails (~> 6.0)
   guard (~> 2.0)
   guard-rspec (~> 4.7)

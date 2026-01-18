@@ -49,6 +49,7 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
+  gem "dotenv-rails"
   gem "rspec-rails", "~> 7.0"
   gem "factory_bot_rails", "~> 6.0"
   gem "guard", "~> 2.0"

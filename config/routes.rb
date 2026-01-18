@@ -3,13 +3,10 @@ Rails.application.routes.draw do
   get "errors/not_found"
   get "errors/internal_server_error"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
-  get 'confirm_registration', to: 'registrations#confirm'
-  resource :registration, only: [:new,:create]
-  resource :session
+  resource :session, only: [:new, :destroy]
   get 'auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
   post 'auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
   get 'auth/failure', to: 'omniauth_callbacks#failure'
-  resources :passwords, param: :token
   resources :posts, path: 'post', param: :slug, only: [:edit, :show, :update]
   get 'posts/feed', to: 'posts#feed', defaults: { format: 'rss' }
   get 'posts/last', to: 'posts#last', defaults: { format: 'rss' }

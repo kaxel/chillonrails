@@ -18,36 +18,11 @@
       <% else %>
         <p class="text-lg text-gray-800">Please sign in to access more features.
 			<br/><br/>
-			NOTE: new account registrations will open in September.</p>
+			NOTE: new account registrations will open soon.</p>
         <%= link_to "Sign In", new_session_path, 
             class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-200" %>
       <% end %>
 
-      <div class="mt-6 text-left">
-        <h2 class="text-2xl font-semibold mb-4">You may also enjoy:</h2>
-        <ul class="space-y-3">
-          
-          <% if current_user %>
-            <!-- Show links when user is signed in -->
-            <li>
-              <%= link_to "Sign Out", session_path, method: :delete, data: { turbo_method: :delete, confirm: "Are you sure?" }, class: "text-blue-600 hover:underline" %>
-            </li>
-          <% else %>
-            <!-- Show links when user is signed out -->
-            <li>
-              <span class="text-gray-400 cursor-not-allowed">Register New User</span>
-            </li>
-            <li>
-              <%= link_to "Sign In", new_session_path, class: "text-blue-600 hover:underline" %>
-            </li>
-          <% end %>
-
-          <!-- Forgot Password link is available for both signed in and signed out users -->
-          <li>
-            <%= link_to "Forgot Password", new_password_path, class: "text-blue-600 hover:underline" %>
-          </li>
-        </ul>
-      </div>
     </div>
   </div>
 </div>
