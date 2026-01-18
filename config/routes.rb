@@ -6,9 +6,13 @@ Rails.application.routes.draw do
   get 'confirm_registration', to: 'registrations#confirm'
   resource :registration, only: [:new,:create]
   resource :session
+  get 'auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
+  post 'auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
+  get 'auth/failure', to: 'omniauth_callbacks#failure'
   resources :passwords, param: :token
   resources :posts, path: 'post', param: :slug, only: [:edit, :show, :update]
   get 'posts/feed', to: 'posts#feed', defaults: { format: 'rss' }
+  get 'posts/last', to: 'posts#last', defaults: { format: 'rss' }
   resources :locations, only: [:index, :show]
   resources :tags, path: 'tag', param: :slug, only: [:index, :show]
   get 'authors', to: 'authors#index'
