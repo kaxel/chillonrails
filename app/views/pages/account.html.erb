@@ -1,9 +1,19 @@
-<div class="container mx-auto max-w-2xl px-5 py-12">
+	<div class="container mx-auto max-w-2xl px-5 py-12">
   <% if Current.user %>
     <div class="bg-white shadow rounded-lg p-6 mb-6">
       <h2 class="text-2xl font-semibold mb-4">Profile Information</h2>
 
       <div class="space-y-3">
+        <% if Current.user.profile_image_url.present? %>
+          <div class="flex justify-center mb-4">
+            <img src="<%= Current.user.profile_image_url(size: 96) %>"
+                 class="rounded-full w-24 h-24 object-cover"
+                 alt="Profile picture"
+                 referrerpolicy="no-referrer"
+                 crossorigin="anonymous" />
+          </div>
+        <% end %>
+
         <div>
           <label class="text-gray-600 text-sm">Email</label>
           <p class="text-gray-900 font-medium"><%= Current.user.email_address %></p>

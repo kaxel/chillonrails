@@ -24,10 +24,25 @@ class User < ApplicationRecord
     provider.present? && uid.present?
   end
 
+  def profile_image_url(size: 96)
+    return nil unless profile_image.present?
+
+    # For Google OAuth images, append size parameter
+    if provider == "google_oauth2" && profile_image.include?("googleusercontent.com")
+      "#{profile_image}=s#{size}-c"
+    else
+      profile_image
+    end
+  end
+
   def self.from_omniauth(auth)
     # First try to find by provider + uid
     oauth_user = find_by(provider: auth.provider, uid: auth.uid)
-    return oauth_user if oauth_user
+    if oauth_user
+      # Update profile image in case it changed
+      oauth_user.update(profile_image: auth.info.image) if auth.info.image.present?
+      return oauth_user
+    end
 
     # Check if email already exists (auto-link accounts)
     existing_user = find_by(email_address: auth.info.email)
@@ -36,6 +51,7 @@ class User < ApplicationRecord
       existing_user.update(
         provider: auth.provider,
         uid: auth.uid,
+        profile_image: auth.info.image,
         confirmed_at: existing_user.confirmed_at || Time.current
       )
       return existing_user
@@ -46,6 +62,7 @@ class User < ApplicationRecord
       email_address: auth.info.email,
       provider: auth.provider,
       uid: auth.uid,
+      profile_image: auth.info.image,
       confirmed_at: Time.current
     )
   end
