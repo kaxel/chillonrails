@@ -1,4 +1,43 @@
-<div>
-  <h1 class="font-bold text-4xl">Pages#account</h1>
-  <p>Find me in app/views/pages/account.html.erb</p>
+<div class="container mx-auto max-w-2xl px-5 py-12">
+  <h1 class="font-bold text-4xl mb-8">Account</h1>
+
+  <% if Current.user %>
+    <div class="bg-white shadow rounded-lg p-6 mb-6">
+      <h2 class="text-2xl font-semibold mb-4">Profile Information</h2>
+
+      <div class="space-y-3">
+        <div>
+          <label class="text-gray-600 text-sm">Email</label>
+          <p class="text-gray-900 font-medium"><%= Current.user.email_address %></p>
+        </div>
+
+        <% if Current.user.provider.present? %>
+          <div>
+            <label class="text-gray-600 text-sm">Sign-in Method</label>
+            <p class="text-gray-900 font-medium"><%= Current.user.provider.capitalize %> OAuth</p>
+          </div>
+        <% end %>
+
+        <div>
+          <label class="text-gray-600 text-sm">Account Status</label>
+          <p class="text-gray-900 font-medium">
+            <% if Current.user.confirmed? %>
+              <span class="text-green-600">Confirmed</span>
+            <% else %>
+              <span class="text-yellow-600">Pending Confirmation</span>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex gap-4">
+      <%= button_to "Sign Out", session_path, method: :delete, class: "px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors" %>
+    </div>
+  <% else %>
+    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+      <p class="text-gray-700">You are not signed in.</p>
+      <%= link_to "Sign In", pages_authentication_path, class: "inline-block mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" %>
+    </div>
+  <% end %>
 </div>

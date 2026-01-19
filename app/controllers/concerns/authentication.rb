@@ -2,6 +2,7 @@ module Authentication
   extend ActiveSupport::Concern
 
   included do
+    before_action :resume_session
     before_action :require_authentication
     helper_method :authenticated?
   end
@@ -14,11 +15,11 @@ module Authentication
 
   private
     def authenticated?
-      resume_session
+      Current.session.present?
     end
 
     def require_authentication
-      if resume_session
+      if Current.session
         request_confirmation unless Current.session.user.confirmed?
       else
         request_authentication

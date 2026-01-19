@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get "pages/webflow_migration"
   get "pages/song_promo"
   get "pages/licensing"
-  get "pages/cookies"
+  get "pages/cookies", to: "pages#cookie_policy"
   get "pages/privacy"
   get "pages/support"
   get "pages/archive"
