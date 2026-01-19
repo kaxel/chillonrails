@@ -6,6 +6,7 @@ class User < ApplicationRecord
   normalizes :email_address, with: ->(e) { e.strip.downcase }
   validates :email_address, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validate :password_required_for_email_users
+  validate :admin_email_restriction
 
   def confirm!
     update!(confirmed_at: Time.current, confirmation_token: nil)
@@ -73,5 +74,11 @@ class User < ApplicationRecord
     return if provider.present? && uid.present?
     return if password_digest.present?
     errors.add(:password, "can't be blank") if password.blank?
+  end
+
+  def admin_email_restriction
+    return unless admin_changed? && admin?
+    return if email_address == "songlistrnet@gmail.com"
+    errors.add(:admin, "can only be granted to the authorized account")
   end
 end
