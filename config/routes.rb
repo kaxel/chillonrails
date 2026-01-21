@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get "pages/webflow_migration"
   get "pages/song_promo"
   get "pages/licensing"
+  get "pages/terms"
   get "pages/cookies", to: "pages#cookie_policy"
   get "pages/privacy"
   get "pages/support"
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
   get '/term/licensing', to: redirect('/pages/licensing')
   get '/term/cookies', to: redirect('/pages/cookies')
   get '/term/privacy', to: redirect('/pages/privacy')
+  get '/term/terms', to: redirect('/pages/terms')
   get 'term/privacy-policy', to: redirect('/pages/privacy')
   
   # review,/topic/prose
