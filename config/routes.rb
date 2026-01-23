@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   get "errors/internal_server_error"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   resource :session, only: [:new, :destroy]
-  get 'auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
-  post 'auth/:provider/callback', to: 'omniauth_callbacks#google_oauth2'
+  get 'auth/google_oauth2/callback', to: 'omniauth_callbacks#google_oauth2'
+  post 'auth/google_oauth2/callback', to: 'omniauth_callbacks#google_oauth2'
+  get 'auth/apple/callback', to: 'omniauth_callbacks#apple'
+  post 'auth/apple/callback', to: 'omniauth_callbacks#apple'
   get 'auth/failure', to: 'omniauth_callbacks#failure'
   resources :posts, path: 'post', param: :slug, only: [:edit, :show, :update]
   get 'posts/feed', to: 'posts#feed', defaults: { format: 'rss' }
