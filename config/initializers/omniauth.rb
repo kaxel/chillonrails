@@ -8,15 +8,17 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       access_type: 'online'
     }
 
-  provider :apple,
-    ENV['APPLE_CLIENT_ID'],
-    '',
-    {
-      scope: 'email name',
-      team_id: ENV['APPLE_TEAM_ID'],
-      key_id: ENV['APPLE_KEY_ID'],
-      pem: File.read(ENV['APPLE_PRIVATE_KEY_PATH'])
-    }
+  if ENV['APPLE_PRIVATE_KEY_PATH'].present?
+    provider :apple,
+      ENV['APPLE_CLIENT_ID'],
+      '',
+      {
+        scope: 'email name',
+        team_id: ENV['APPLE_TEAM_ID'],
+        key_id: ENV['APPLE_KEY_ID'],
+        pem: File.read(ENV['APPLE_PRIVATE_KEY_PATH'])
+      }
+  end
 end
 
 OmniAuth.config.allowed_request_methods = [:post, :get]
