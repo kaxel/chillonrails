@@ -8,16 +8,16 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       access_type: 'online'
     }
 
-    if ENV['APPLE_PRIVATE_KEY'].present?                                                                  
-        provider :apple,                                                                                    
-          ENV['APPLE_CLIENT_ID'],                                                                           
-          '',                                                                                               
-          {                                                                                                 
-            scope: 'email name',                                                                            
-            team_id: ENV['APPLE_TEAM_ID'],                                                                  
-            key_id: ENV['APPLE_KEY_ID'],                                                                    
-            pem: ENV['APPLE_PRIVATE_KEY']                                                                   
-          }                                                                                                 
+    if ENV['APPLE_PRIVATE_KEY'].present?
+        provider :apple,
+          ENV['APPLE_CLIENT_ID'],
+          '',
+          {
+            scope: 'email name',
+            team_id: ENV['APPLE_TEAM_ID'],
+            key_id: ENV['APPLE_KEY_ID'],
+            pem: ENV['APPLE_PRIVATE_KEY'].gsub('\n', "\n")
+          }
     end 
 end
 
