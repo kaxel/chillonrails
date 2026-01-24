@@ -26,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def profile_image_url(size: 96)
-    return nil unless profile_image.present?
+    return nil if profile_image.blank?
 
     # For Google OAuth images, append size parameter
     if provider == "google_oauth2" && profile_image.include?("googleusercontent.com")

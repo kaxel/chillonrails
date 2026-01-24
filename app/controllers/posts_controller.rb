@@ -83,7 +83,7 @@ class PostsController < ApplicationController
     Rails.logger.error "RSS Feed Error: #{e.message}"
     head :internal_server_error
   end
-  
+
   def last
     @posts = Post.order(Arel.sql("COALESCE(published_on, created_at) DESC")).limit(30)
     respond_to do |format|

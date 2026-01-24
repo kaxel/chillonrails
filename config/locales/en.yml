@@ -32,6 +32,10 @@ en:
   
   authentication:
     please_confirm_email: "Please confirm your email address to continue."
+    signed_in_with_google: "Successfully signed in with Google."
+    signed_in_with_apple: "Successfully signed in with Apple."
+    authentication_failed: "Authentication failed. Please try again."
+    oauth_account_use_oauth: "This account uses Google sign-in. Please use the 'Sign in with Google' button."
   
   passwords:
     reset_instructions_sent: "Password reset instructions sent (if user with that email address exists)."

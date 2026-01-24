@@ -11,7 +11,7 @@ class PasswordsController < ApplicationController
   def create
     if user = User.find_by(email_address: params[:email_address])
       if user.oauth_user?
-        redirect_to new_session_path, alert: "This account uses Google sign-in. Please use the 'Sign in with Google' button."
+        redirect_to new_session_path, alert: t("authentication.oauth_account_use_oauth")
         return
       end
       PasswordsMailer.reset(user).deliver_later
