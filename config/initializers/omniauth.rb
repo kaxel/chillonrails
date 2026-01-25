@@ -16,7 +16,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
             scope: 'email name',
             team_id: ENV['APPLE_TEAM_ID'],
             key_id: ENV['APPLE_KEY_ID'],
-            pem: ENV['APPLE_PRIVATE_KEY'].gsub('\\n', "\n")
+            pem: ENV['APPLE_PRIVATE_KEY']
           }
     end 
 end
