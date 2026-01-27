@@ -75,7 +75,7 @@
       </div>
 
       <div class="post-actions">
-        <% if Rails.env.development? %><%= link_to "Edit", edit_post_path(slug: @post.slug), class: "btn btn-primary" %><br/><% end %>
+        <% if Current.user&.admin? %><%= link_to "Edit", edit_post_path(slug: @post.slug), class: "btn btn-primary" %><br/><% end %>
         <%= link_to "Back to Posts", root_path, class: "btn btn-secondary hover:text-white bg-teal-300" %><br/>
 		<a href="/posts/<%= @random_link %>" class="btn btn-secondary hover:text-white bg-teal-300">Something Random</a>
       </div>
