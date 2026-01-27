@@ -62,9 +62,12 @@ Rails.application.routes.draw do
   get '/promo', to: redirect('/pages/song-promo')
   get '/support', to: redirect('/pages/support')
   get '/product/song-submission', to: redirect('/pages/submit')
-  
+
+  # latest post redirect
+  get '/latest', to: redirect('/')
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  
+
   get '/:slug', to: redirect('/post/%{slug}')
   get 'posts/:slug', to: redirect('/post/%{slug}')
   
@@ -83,7 +86,8 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
   
-  get "/post/latest", to: redirect("home#index")
+  get "/posts/latest", to: redirect('/')
+  get "/post/latest", to: redirect('/')
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
