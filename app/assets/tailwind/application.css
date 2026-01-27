@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* Underline links specifically within post content */
+.content a {
+  text-decoration: underline;
+}
