@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   allow_unauthenticated_access
-  before_action :require_admin, only: [:edit, :update, :destroy]
+  before_action :require_admin, only: [ :edit, :update, :destroy ]
   before_action :set_post, only: [ :show, :edit, :update, :destroy, :random ]
 
   # Usage Examples:
@@ -108,7 +108,7 @@ class PostsController < ApplicationController
 
   def require_admin
     unless Current.user&.admin?
-      redirect_to root_path, alert: "You must be an admin to access this page."
+      redirect_to root_path, alert: t("authorization.admin_required")
     end
   end
 end
