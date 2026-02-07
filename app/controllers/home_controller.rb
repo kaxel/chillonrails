@@ -13,7 +13,7 @@ class HomeController < ApplicationController
                Post.order(published_on: :desc).offset(@offset).limit(@per_page).distinct
     end
 
-    @top12 = Post.order("score asc").last(12)
+    @top12 = Post.order("score asc").last(4)
 
     @available_topics = Post.where.not(topic: [ nil, "" ]).group(:topic).having("COUNT(*) > 0").distinct.pluck(:topic).sort
     @current_topic = params[:topic]
