@@ -73,6 +73,7 @@ Rails.application.routes.draw do
   
   # random post
   get "posts/random", to: "post#random"
+  get "posts/random_song", to: "posts#random_song"
   
   
   
