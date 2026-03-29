@@ -11,6 +11,7 @@
   get 'auth/failure', to: 'omniauth_callbacks#failure'
   get "/random_song", to: "posts#random_song"
   resources :posts, path: 'post', param: :slug, only: [:edit, :show, :update]
+  get '/post/:id', to: 'posts#redirect_by_id', constraints: { id: /\d+/ }
   get 'posts/feed', to: 'posts#feed', defaults: { format: 'rss' }
   get 'posts/last', to: 'posts#last', defaults: { format: 'rss' }
   resources :locations, only: [:index, :show]

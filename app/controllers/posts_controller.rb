@@ -80,6 +80,15 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: t("posts.deleted_successfully")
   end
 
+  def redirect_by_id
+    post = Post.find_by(id: params[:id])
+    if post
+      redirect_to "/post/#{post.slug}", status: :moved_permanently
+    else
+      raise ActionController::RoutingError.new("Post #{params[:id]} Not Found")
+    end
+  end
+
   def feed
     @posts = Post.order(Arel.sql("COALESCE(published_on, created_at) DESC")).limit(30)
     respond_to do |format|
