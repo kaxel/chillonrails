@@ -54,7 +54,7 @@ class PostsController < ApplicationController
 
   def random_song
     post = Post.where("audio_link ILIKE '%.mp3'").order(Arel.sql("RANDOM()")).first
-    render plain: post&.audio_link.to_s
+    render plain: [post&.audio_link.to_s, post ? post_url(post) : ""].join(",")
   end
 
   def create

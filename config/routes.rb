@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+  Rails.application.routes.draw do
   resources :playlists, path: 'playlist', param: :slug, only: [:show]
   get "errors/not_found"
   get "errors/internal_server_error"
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'auth/apple/callback', to: 'omniauth_callbacks#apple'
   post 'auth/apple/callback', to: 'omniauth_callbacks#apple'
   get 'auth/failure', to: 'omniauth_callbacks#failure'
+  get "/random_song", to: "posts#random_song"
   resources :posts, path: 'post', param: :slug, only: [:edit, :show, :update]
   get 'posts/feed', to: 'posts#feed', defaults: { format: 'rss' }
   get 'posts/last', to: 'posts#last', defaults: { format: 'rss' }
@@ -70,12 +71,6 @@ Rails.application.routes.draw do
 
   get '/:slug', to: redirect('/post/%{slug}')
   get 'posts/:slug', to: redirect('/post/%{slug}')
-  
-  # random post
-  get "posts/random", to: "post#random"
-  get "posts/random_song", to: "posts#random_song"
-  
-  
   
   # Old blog format redirects to new post format
   get '/blog/:year/:month/:day/:slug', to: redirect('/post/%{slug}')
