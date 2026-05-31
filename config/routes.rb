@@ -31,7 +31,7 @@
   get "pages/search"
   get "pages/contact"
   get "pages/webflow_migration"
-  get "pages/song_promo"
+  # get "pages/song_promo"
   get "pages/licensing"
   get "pages/terms"
   get "pages/cookies", to: "pages#cookie_policy"
@@ -61,7 +61,7 @@
   get '/search', to: redirect('/pages/search')
   get '/contact', to: redirect('/pages/contact')
   get '/radio', to: redirect('/pages/radio')
-  get '/promo', to: redirect('/pages/song-promo')
+  # get '/promo', to: redirect('/pages/song-promo')
   get '/support', to: redirect('/pages/support')
   get '/product/song-submission', to: redirect('/pages/submit')
 
