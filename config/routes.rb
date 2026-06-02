@@ -72,6 +72,11 @@
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # Must be defined before the catch-all "/:slug" route below, or it gets redirected to /post/up.
+  get "up" => "rails/health#show", as: :rails_health_check
+
   get '/:slug', to: redirect('/post/%{slug}')
   get 'posts/:slug', to: redirect('/post/%{slug}')
   
@@ -81,10 +86,6 @@
   # Suppress Chrome DevTools error
   get "/.well-known/appspecific/com.chrome.devtools.json" => proc { [204, {}, []] }
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
-  
   get "/posts/latest", to: redirect('/')
   get "/post/latest", to: redirect('/')
 
