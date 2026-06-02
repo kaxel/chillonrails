@@ -41,8 +41,7 @@
       <div class="flex-grow border-t border-gray-300"></div>
     </div>
 
-    <%= button_to "Sign up with Google",
-        '/auth/google_oauth2',
+    <%= button_to '/auth/google_oauth2',
         method: :post,
         data: { turbo: false },
         class: "w-full flex items-center justify-center gap-3 rounded-md px-3.5 py-2.5 bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 font-medium cursor-pointer" do %>

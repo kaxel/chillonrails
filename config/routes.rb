@@ -4,6 +4,10 @@
   get "errors/internal_server_error"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   resource :session, only: [:new, :destroy]
+  resource :registration, only: [ :new, :create ] do
+    get :confirm
+  end
+  resources :passwords, param: :token, only: [ :new, :create, :edit, :update ]
   get 'auth/google_oauth2/callback', to: 'omniauth_callbacks#google_oauth2'
   post 'auth/google_oauth2/callback', to: 'omniauth_callbacks#google_oauth2'
   get 'auth/apple/callback', to: 'omniauth_callbacks#apple'

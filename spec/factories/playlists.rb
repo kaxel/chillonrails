@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :playlist do
-    name { "MyString" }
-    songs { "" }
+    sequence(:name) { |n| "Playlist #{n}" }
+    sequence(:slug) { |n| "playlist-#{n}" }
+    songs { {} }
   end
 end

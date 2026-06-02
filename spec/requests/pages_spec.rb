@@ -8,17 +8,17 @@ RSpec.describe "Pages", type: :request do
     end
   end
 
-  describe "GET /authentification" do
+  describe "GET /authentication" do
     it "returns http success" do
-      get "/pages/authentification"
+      get "/pages/authentication"
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET /account" do
-    it "returns http success" do
+    it "redirects unauthenticated visitors to sign in" do
       get "/pages/account"
-      expect(response).to have_http_status(:success)
+      expect(response).to redirect_to(new_session_path)
     end
   end
 
