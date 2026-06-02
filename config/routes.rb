@@ -30,7 +30,6 @@
   get "pages/submit"
   get "pages/search"
   get "pages/contact"
-  # get "pages/song_promo"
   get "pages/licensing"
   get "pages/terms"
   get "pages/cookies", to: "pages#cookie_policy"
