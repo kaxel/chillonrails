@@ -30,7 +30,6 @@
   get "pages/submit"
   get "pages/search"
   get "pages/contact"
-  get "pages/webflow_migration"
   # get "pages/song_promo"
   get "pages/licensing"
   get "pages/terms"

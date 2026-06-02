@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  allow_unauthenticated_access only: [ :about, :authentication, :radio, :submit, :search, :contact, :webflow_migration, :song_promo, :licensing, :cookie_policy, :privacy, :terms, :support, :archive ]
+  allow_unauthenticated_access only: [ :about, :authentication, :radio, :submit, :search, :contact, :song_promo, :licensing, :cookie_policy, :privacy, :terms, :support, :archive ]
 
   def about
     @page_title = "about"
@@ -46,10 +46,6 @@ class PagesController < ApplicationController
 
   def submit
     @page_title = "submit"
-  end
-
-  def webflow_migration
-    @page_title = "webflow migration"
   end
 
   def song_promo
