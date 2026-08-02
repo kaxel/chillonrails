@@ -1,0 +1,30 @@
+<% content_for :title, "Submission received — CHILLFILTR®" %>
+
+<section class="text-gray-600 body-font">
+  <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col text-center">
+    <div class="lg:w-2/3 w-full">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Thank you — your submission is in!</h1>
+
+      <% if @submission.paid? %>
+        <p class="mb-6 leading-relaxed">
+          We've received your payment of
+          <strong>$<%= sprintf("%.2f", @submission.amount_dollars) %></strong>
+          for <%= pluralize(@submission.song_count, "track") %> from
+          <strong><%= @submission.artist_name %></strong>.
+        </p>
+      <% else %>
+        <p class="mb-6 leading-relaxed">
+          We've received your <%= pluralize(@submission.song_count, "track") %> from
+          <strong><%= @submission.artist_name %></strong>. If your payment is still
+          processing, this page will reflect it shortly and we'll email a confirmation.
+        </p>
+      <% end %>
+
+      <p class="mb-8 leading-relaxed">A confirmation email is on its way to
+        <strong><%= @submission.email %></strong>. We listen to everything that comes in.</p>
+
+      <%= link_to "Back home", root_path,
+            class: "inline-flex text-white bg-blue-600 border-0 py-2 px-6 focus:outline-none hover:bg-blue-700 rounded text-lg" %>
+    </div>
+  </div>
+</section>

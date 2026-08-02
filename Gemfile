@@ -23,6 +23,12 @@ gem "csv"
 
 gem "postmark-rails"
 
+# Payments via Stripe Checkout [https://github.com/stripe/stripe-ruby]
+gem "stripe", "~> 13.0"
+
+# Active Storage backend for Amazon S3 (production)
+gem "aws-sdk-s3", "~> 1.0", require: false
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1.7"
 gem "omniauth-google-oauth2", "~> 1.2"

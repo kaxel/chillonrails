@@ -62,3 +62,7 @@ en:
 
   authorization:
     admin_required: "You must be an admin to access this page."
+
+  submissions:
+    payment_start_failed: "We couldn't start the payment. Please try again."
+    confirmation_subject: "We received your song submission"
