@@ -95,7 +95,8 @@ AWS vars can stay empty locally. Production uses `:amazon`.
 ## Notes / follow-ups
 
 - **S3-first, pay-second**: files land in S3 before payment, so unpaid
-  submissions accumulate as `status: pending`. Use `Submission.pending` to find
-  them; a scheduled cleanup job (e.g. purge pending older than 24h) is a sensible
-  future addition but is **not** built yet.
+  submissions accumulate as `status: pending`. `PurgePendingSubmissionsJob`
+  destroys pending submissions (and purges their audio) older than 24h; it's
+  scheduled daily at 4am via `config/recurring.yml` (production only). Run it
+  manually with `PurgePendingSubmissionsJob.perform_now(24)`.
 - The webhook handler is idempotent (a second delivery won't re-send email).
