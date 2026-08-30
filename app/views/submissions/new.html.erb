@@ -1,8 +1,8 @@
 <% content_for :title, "Submit Your Music — CHILLFILTR®" %>
 
-<div class="mx-auto md:w-2/3 w-full py-10">
-  <h1 class="font-bold text-4xl mb-2">Submit Your Music</h1>
-  <p class="text-gray-600 mb-6">
+<div class="mx-auto md:w-2/3 w-full py-10 font-sans text-ink">
+  <h1 class="font-display italic text-4xl mb-2">Submit Your Music</h1>
+  <p class="text-muted mb-6">
     Upload your track(s) and pay a small listening fee of
     <strong>$<%= sprintf("%.2f", Submission::PRICE_PER_SONG_CENTS / 100.0) %> per song</strong>.
     We listen to everything; the best tracks make our radio channel.
@@ -25,30 +25,30 @@
     <div class="my-4">
       <%= form.label :contact_name, "Your name", class: "block font-medium mb-1" %>
       <%= form.text_field :contact_name, required: true, autocomplete: "name",
-            class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 w-full" %>
+            class: "block shadow rounded-md border border-line outline-none px-3 py-2 w-full focus:border-moss" %>
     </div>
 
     <div class="my-4">
       <%= form.label :email, "Email", class: "block font-medium mb-1" %>
       <%= form.email_field :email, required: true, autocomplete: "email",
-            class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 w-full" %>
+            class: "block shadow rounded-md border border-line outline-none px-3 py-2 w-full focus:border-moss" %>
     </div>
 
     <div class="my-4">
       <%= form.label :artist_name, "Artist / band name", class: "block font-medium mb-1" %>
       <%= form.text_field :artist_name, required: true,
-            class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 w-full" %>
+            class: "block shadow rounded-md border border-line outline-none px-3 py-2 w-full focus:border-moss" %>
     </div>
 
-    <h2 class="font-bold text-2xl mt-8 mb-3">Songs</h2>
+    <h2 class="font-display italic text-2xl mt-8 mb-3">Songs</h2>
 
     <div data-song-fields-target="rows">
       <%= form.fields_for :submission_songs do |song_form| %>
-        <div data-song-row class="border border-gray-200 rounded-lg p-4 mb-4">
+        <div data-song-row class="border border-line rounded-2xl p-4 mb-4">
           <div class="mb-3">
             <%= song_form.label :title, "Song title", class: "block font-medium mb-1" %>
             <%= song_form.text_field :title, required: true,
-                  class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 w-full" %>
+                  class: "block shadow rounded-md border border-line outline-none px-3 py-2 w-full focus:border-moss" %>
           </div>
           <div class="mb-2">
             <%= song_form.label :audio, "Audio file", class: "block font-medium mb-1" %>
@@ -64,17 +64,17 @@
 
     <%# Template cloned by the Stimulus controller for each additional song. %>
     <template data-song-fields-target="template">
-      <div data-song-row class="border border-gray-200 rounded-lg p-4 mb-4">
+      <div data-song-row class="border border-line rounded-2xl p-4 mb-4">
         <div class="mb-3">
           <label class="block font-medium mb-1">Song title</label>
           <input type="text" name="submission[submission_songs_attributes][__INDEX__][title]" required
-                 class="block shadow rounded-md border border-gray-400 outline-none px-3 py-2 w-full">
+                 class="block shadow rounded-md border border-line outline-none px-3 py-2 w-full focus:border-moss">
         </div>
         <div class="mb-2">
           <label class="block font-medium mb-1">Audio file</label>
           <input type="file" name="submission[submission_songs_attributes][__INDEX__][audio]" required
                  accept="audio/*" data-direct-upload-url="<%= rails_direct_uploads_url %>"
-                 class="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-blue-50 file:text-blue-700">
+                 class="block w-full text-sm text-muted file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-air file:text-moss">
         </div>
         <button type="button" data-action="song-fields#remove"
                 class="text-sm text-red-600 hover:underline">Remove</button>
@@ -82,18 +82,18 @@
     </template>
 
     <button type="button" data-action="song-fields#add"
-            class="rounded-lg py-2 px-4 border border-gray-400 font-medium cursor-pointer hover:bg-gray-50">
+            class="rounded-full py-2 px-4 border border-line font-medium cursor-pointer hover:border-moss hover:text-moss">
       + Add another song
     </button>
 
     <div class="mt-8 mb-4 text-lg">
-      <span class="text-gray-600"><span data-song-fields-target="count">1</span> song(s) ×
+      <span class="text-muted"><span data-song-fields-target="count">1</span> song(s) ×
         $<%= sprintf("%.2f", Submission::PRICE_PER_SONG_CENTS / 100.0) %> =</span>
       <strong class="text-2xl ml-1" data-song-fields-target="total">$0.00</strong>
     </div>
 
     <%= form.submit "Continue to payment",
-          class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-    <p class="text-sm text-gray-500 mt-3">You'll be redirected to Stripe to complete payment securely.</p>
+          class: "rounded-full py-3 px-5 bg-moss hover:bg-moss-dark text-white inline-block font-medium cursor-pointer" %>
+    <p class="text-sm text-muted mt-3">You'll be redirected to Stripe to complete payment securely.</p>
   <% end %>
 </div>

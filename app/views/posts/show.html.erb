@@ -9,9 +9,9 @@
   <meta name="twitter:card" content="summary_large_image">
 <% end %>
 
-<header class="post-header">
-  <div class="post-meta flex bg-gradient-to-tl from-white-400 via-gray-100 to-gray-400">
-    <div class="flex">
+<header class="post-header font-sans">
+  <div class="post-meta flex justify-center">
+    <div class="flex flex-wrap justify-center">
 	<% if @post.topic.present? %>
 	  <%= render "shared/post_topic", :post => @post %>
     <% end %>
@@ -23,11 +23,11 @@
     <% end %>
     </div>
   </div>
-  <div class="title-section flex justify-center"><h1 class="text-3xl font-bold text-black-600"><%= @post.title %></h1></div>
-  <div class="title-section flex justify-center"><h1 class="text-xl text-gray-800 px-8"><%= @post.preview %></h1></div>
-  
-  <div class="author-info flex justify-end">
-    <div class="text-right"><small>Published <%= @post.published_on %> by <%= pretty_author(@post.author) %></small></div>
+  <div class="title-section flex justify-center px-4"><h1 class="font-display italic text-3xl sm:text-4xl text-ink text-center max-w-2xl"><%= @post.title %></h1></div>
+  <div class="title-section flex justify-center"><p class="not-italic font-sans text-lg text-muted px-8 max-w-xl text-center mx-auto"><%= @post.preview %></p></div>
+
+  <div class="author-info flex justify-center mt-4">
+    <p class="text-sm text-muted">Published <%= @post.published_on %> by <%= pretty_author(@post.author) %></p>
   </div>
 </header>
 
@@ -74,10 +74,10 @@
         </div>
       </div>
 
-      <div class="post-actions">
-        <% if Current.user&.admin? %><%= link_to "Edit", edit_post_path(slug: @post.slug), class: "btn btn-primary" %><br/><% end %>
-        <%= link_to "Back to Posts", root_path, class: "btn btn-secondary hover:text-white bg-teal-300" %><br/>
-		<a href="/posts/<%= @random_link %>" class="btn btn-secondary hover:text-white bg-teal-300">Something Random</a>
+      <div class="post-actions font-sans flex flex-col items-center gap-2 text-sm mt-8">
+        <% if Current.user&.admin? %><%= link_to "Edit", edit_post_path(slug: @post.slug), class: "text-moss hover:text-moss-dark" %><% end %>
+        <%= link_to "Back to Posts", root_path, class: "text-moss hover:text-moss-dark" %>
+		<a href="/posts/<%= @random_link %>" class="text-moss hover:text-moss-dark">Something Random</a>
       </div>
     </div>
   <div>
