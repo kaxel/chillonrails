@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe PurgePendingSubmissionsJob, type: :job do
   def backdate(submission, hours)
-    submission.update_column(:created_at, hours.hours.ago)
+    # Bypass validations/callbacks so we can set created_at directly for the cutoff test.
+    submission.update_column(:created_at, hours.hours.ago) # rubocop:disable Rails/SkipsModelValidations
     submission
   end
 
