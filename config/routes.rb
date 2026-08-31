@@ -30,8 +30,12 @@
   get "pages/authentication"
   get "pages/account"
   get "pages/radio"
-  get '/submit', to: redirect('/pages/submit')
-  get "pages/submit"
+  # Song submission form + Stripe checkout (replaces the old Cognito Forms embed).
+  get '/submit', to: 'submissions#new', as: :submit
+  get 'pages/submit', to: 'submissions#new', as: :pages_submit
+  resources :submissions, only: [:create]
+  get '/submissions/:token/success', to: 'submissions#success', as: :submission_success
+  post '/webhooks/stripe', to: 'webhooks/stripe#create'
   get "pages/search"
   get "pages/contact"
   get "pages/licensing"
@@ -65,7 +69,7 @@
   get '/radio', to: redirect('/pages/radio')
   # get '/promo', to: redirect('/pages/song-promo')
   get '/support', to: redirect('/pages/support')
-  get '/product/song-submission', to: redirect('/pages/submit')
+  get '/product/song-submission', to: redirect('/submit')
 
   # latest post redirect
   get '/latest', to: redirect('/')
