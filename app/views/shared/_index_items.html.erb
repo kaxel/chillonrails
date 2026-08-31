@@ -23,7 +23,7 @@
 			  <%= render "shared/post_tags", :post => first_p %>
 		    <% end %>
 		    </div>
-	        <h3 class="mb-2 font-display italic text-3xl">
+	        <h3 class="mb-2 font-display text-3xl">
 	          <%= link_to(first_p.title, post_path(slug: first_p.slug), class: "hover:text-moss") %>
 	        </h3>
 	        <p class="text-muted leading-normal mb-4 max-w-md">
@@ -69,7 +69,7 @@
 		      <%= render "shared/post_tags", :post => second_p %>
 	        <% end %>
 	        </div>
-	        <h3 class="mb-2 font-display italic text-3xl">
+	        <h3 class="mb-2 font-display text-3xl">
 	          <%= link_to(second_p.title, post_path(slug: second_p.slug), class: "hover:text-moss") %>
 	        </h3>
 	        <p class="text-muted leading-normal mb-4 max-w-md">
