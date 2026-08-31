@@ -5,7 +5,7 @@
 
 		  <!-- post 1 -->
 		  <article data-post-id="<%= first_p.id %>">
-	        <div class="rounded-2xl h-56 overflow-hidden mb-4">
+	        <div class="rounded-2xl h-80 overflow-hidden mb-4">
 	          <%= render 'shared/responsive_image',
 	                     image_url: first_p.image,
 	                     alt_text: first_p.title,
@@ -51,7 +51,7 @@
 		  <!-- post 2 -->
 		  <% if second_p %>
 		  <article data-post-id="<%= second_p.id %>">
-	        <div class="rounded-2xl h-56 overflow-hidden mb-4">
+	        <div class="rounded-2xl h-80 overflow-hidden mb-4">
 	          <%= render 'shared/responsive_image',
 	                     image_url: second_p.image,
 	                     alt_text: second_p.title,
