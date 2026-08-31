@@ -6,7 +6,7 @@ FactoryBot.define do
     after(:build) do |song|
       unless song.audio.attached?
         song.audio.attach(
-          io: File.open(Rails.root.join("spec/fixtures/files/sample.mp3")),
+          io: Rails.root.join("spec/fixtures/files/sample.mp3").open,
           filename: "sample.mp3",
           content_type: "audio/mpeg"
         )
