@@ -21,7 +21,6 @@ gem "jbuilder"
 
 gem "csv"
 
-gem "postmark-rails"
 
 # Payments via Stripe Checkout [https://github.com/stripe/stripe-ruby]
 gem "stripe", "~> 13.0"

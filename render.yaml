@@ -29,8 +29,10 @@ services:
     sync: false
   - key: AWS_S3_BUCKET
     sync: false
-  # Postmark (outbound mail) — set the server API token in the dashboard.
-  - key: POSTMARK_API_TOKEN
+  # Brevo SMTP relay (outbound mail) — set values in the dashboard.
+  - key: BREVO_SMTP_LOGIN
+    sync: false
+  - key: BREVO_SMTP_PASSWORD
     sync: false
   region: oregon
   preDeployCommand: bin/rails db:migrate

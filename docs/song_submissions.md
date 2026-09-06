@@ -16,7 +16,7 @@ Native Rails replacement for the old Cognito Forms embed on `/submit`
    redirects the browser to Stripe's hosted payment page.
 4. After payment, Stripe calls `POST /webhooks/stripe`. On
    `checkout.session.completed` the submission is marked `paid` and a
-   confirmation email is sent (Postmark). The user lands on
+   confirmation email is sent (Brevo SMTP). The user lands on
    `/submissions/:token/success`.
 
 Pricing lives in one place: `Submission::PRICE_PER_SONG_CENTS`.
