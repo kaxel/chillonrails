@@ -29,6 +29,9 @@ services:
     sync: false
   - key: AWS_S3_BUCKET
     sync: false
+  # Postmark (outbound mail) — set the server API token in the dashboard.
+  - key: POSTMARK_API_TOKEN
+    sync: false
   region: oregon
   preDeployCommand: bin/rails db:migrate
   dockerContext: .

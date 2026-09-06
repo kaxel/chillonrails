@@ -20,7 +20,8 @@
   <% end %>
 
   <%= form_with model: @submission, url: submissions_path, method: :post, local: true,
-        data: { controller: "song-fields", turbo: false, song_fields_price_per_song_value: Submission::PRICE_PER_SONG_CENTS } do |form| %>
+        data: { controller: "song-fields", turbo: false, song_fields_price_per_song_value: Submission::PRICE_PER_SONG_CENTS,
+                action: "direct-uploads:start->song-fields#uploadStart direct-uploads:end->song-fields#uploadEnd direct-upload:error->song-fields#uploadError" } do |form| %>
 
     <div class="my-4">
       <%= form.label :contact_name, "Your name", class: "block font-medium mb-1" %>
@@ -53,7 +54,7 @@
           <div class="mb-2">
             <%= song_form.label :audio, "Audio file", class: "block font-medium mb-1" %>
             <%= song_form.file_field :audio, required: true, direct_upload: true,
-                  accept: "audio/*",
+                  accept: "audio/*", data: { action: "change->song-fields#fileSelected" },
                   class: "block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-blue-50 file:text-blue-700" %>
           </div>
           <button type="button" data-action="song-fields#remove"
@@ -74,6 +75,7 @@
           <label class="block font-medium mb-1">Audio file</label>
           <input type="file" name="submission[submission_songs_attributes][__INDEX__][audio]" required
                  accept="audio/*" data-direct-upload-url="<%= rails_direct_uploads_url %>"
+                 data-action="change->song-fields#fileSelected"
                  class="block w-full text-sm text-muted file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-air file:text-moss">
         </div>
         <button type="button" data-action="song-fields#remove"
@@ -92,8 +94,14 @@
       <strong class="text-2xl ml-1" data-song-fields-target="total">$0.00</strong>
     </div>
 
-    <%= form.submit "Continue to payment",
-          class: "rounded-full py-3 px-5 bg-moss hover:bg-moss-dark text-white inline-block font-medium cursor-pointer" %>
+    <button type="submit" data-song-fields-target="submitButton"
+            class="rounded-full py-3 px-5 bg-moss hover:bg-moss-dark text-white inline-flex items-center gap-2 font-medium cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed">
+      <svg data-song-fields-target="spinner" class="hidden animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+      </svg>
+      <span data-song-fields-target="submitLabel">Continue to payment</span>
+    </button>
     <p class="text-sm text-muted mt-3">You'll be redirected to Stripe to complete payment securely.</p>
   <% end %>
 </div>
