@@ -92,6 +92,9 @@ export default class extends Controller {
   showError(message) {
     this.errorMessageTarget.textContent = message
     this.errorMessageTarget.classList.remove("hidden")
+    // Return focus to the card field so a donor fixing a typo (wrong CVC, etc.)
+    // can immediately correct it and retry without hunting for the field.
+    this.cardElement.focus()
   }
 
   hideError() {
