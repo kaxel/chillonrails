@@ -58,12 +58,20 @@ export default class extends Controller {
         return
       }
 
-      const { error } = await this.stripe.confirmCardPayment(data.client_secret, {
+      const { error, paymentIntent } = await this.stripe.confirmCardPayment(data.client_secret, {
         payment_method: { card: this.cardElement }
       })
 
       if (error) {
         this.showError(error.message)
+        this.setLoading(false)
+        return
+      }
+
+      // No `error` doesn't guarantee success — Stripe can resolve with a
+      // PaymentIntent still in requires_action/requires_payment_method/etc.
+      if (paymentIntent.status !== "succeeded") {
+        this.showError("We couldn't confirm the payment. Please check your card details and try again.")
         this.setLoading(false)
         return
       }
