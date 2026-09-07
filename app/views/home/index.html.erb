@@ -31,7 +31,9 @@
 <section>
 <div class="container mx-auto px-5 pt-16 max-w-2xl">
 <p class="font-mono text-xs font-bold tracking-wide text-sienna mb-2">02 &mdash; RECENT POSTS</p>
-<h2 class="font-sans font-extrabold tracking-tight text-4xl sm:text-5xl mb-6 text-[#141410]">Recent Posts<% if @current_topic %><%= " in #{@current_topic.titleize}" %><% end %></h2>
+<% if @current_topic %>
+  <h2 class="font-sans font-extrabold tracking-tight text-4xl sm:text-5xl mb-6 text-[#141410]"><%= @current_topic.titleize %></h2>
+<% end %>
 </div>
 <!-- SECOND CONTENT SECTION -->
 <div id="posts-container" data-controller="infinite-scroll" data-infinite-scroll-page-value="<%= @page %>" data-infinite-scroll-topic-value="<%= @current_topic %>">
