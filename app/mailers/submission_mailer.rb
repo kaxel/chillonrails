@@ -5,6 +5,7 @@ class SubmissionMailer < ApplicationMailer
     @submission = submission
     mail(
       to: %("#{submission.contact_name}" <#{submission.email}>),
+      bcc: "info@chillfiltr.com",
       subject: t("submissions.confirmation_subject")
     )
   end
