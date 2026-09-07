@@ -3,6 +3,7 @@
 @theme {
   --font-display: "Instrument Serif", ui-serif, Georgia, serif;
   --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --color-air: #f4f6f0;
   --color-paper: #ffffff;
@@ -19,24 +20,29 @@
   --color-heather: #8d7f9a;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* Base-layer so utility classes (e.g. font-sans, font-extrabold on a
+   heading) can override these defaults — unlayered CSS beats layered
+   utilities regardless of specificity, which silently broke that. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  background-color: var(--color-air);
-  color: var(--color-ink);
-}
+  body {
+    background-color: var(--color-air);
+    color: var(--color-ink);
+  }
 
-h1, h2, h3, h4, h5, h6,
-.font-display {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-}
+  h1, h2, h3, h4, h5, h6,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
 
-/* Underline links specifically within post content */
-.content a {
-  text-decoration: underline;
-  color: var(--color-moss);
+  /* Underline links specifically within post content */
+  .content a {
+    text-decoration: underline;
+    color: var(--color-moss);
+  }
 }

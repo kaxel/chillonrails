@@ -1,18 +1,19 @@
 	<section class="font-sans text-ink">
-	  <div class="container px-5 py-2 mx-auto">
+	  <div class="container px-5 py-8 mx-auto">
 
 	    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-14">
 
 		  <!-- post 1 -->
 		  <article data-post-id="<%= first_p.id %>">
-	        <div class="rounded-2xl h-80 overflow-hidden mb-4">
+	        <div class="font-mono font-bold text-3xl leading-none text-line select-none mb-1" aria-hidden="true">01</div>
+	        <div class="rounded-md h-80 overflow-hidden mb-4">
 	          <%= render 'shared/responsive_image',
 	                     image_url: first_p.image,
 	                     alt_text: first_p.title,
 	                     css_classes: "object-cover object-center h-full w-full",
 	                     link_url: "/post/#{first_p.slug}" %>
 	        </div>
-		    <div class="flex items-center gap-2 text-xs tracking-widest uppercase text-muted mb-2">
+		    <div class="flex items-center gap-2 font-mono text-xs font-bold tracking-wide uppercase text-sienna mb-2">
 		      <i class="w-1.5 h-1.5 rounded-full <%= get_topic_color(first_p.topic) %>"></i><%= first_p.topic %>
 		    </div>
 		    <div class="flex flex-wrap">
@@ -23,7 +24,7 @@
 			  <%= render "shared/post_tags", :post => first_p %>
 		    <% end %>
 		    </div>
-	        <h3 class="mb-2 font-display text-3xl">
+	        <h3 class="mb-2 font-sans font-extrabold tracking-tight text-2xl leading-[1.08] text-[#141410]">
 	          <%= link_to(first_p.title, post_path(slug: first_p.slug), class: "hover:text-moss") %>
 	        </h3>
 	        <p class="text-muted leading-normal mb-4 max-w-md">
@@ -38,27 +39,28 @@
   			      class="relative inline-block h-8 w-8 rounded-full"
   			    />
   			    <div class="flex flex-col ml-3 text-sm">
-  			      <span class="text-ink font-medium"><%= pretty_author(first_p.author) %></span>
-  			      <span class="text-muted text-xs">
+  			      <span class="text-ink font-bold"><%= pretty_author(first_p.author) %></span>
+  			      <span class="font-mono text-muted text-xs">
   			        <%= first_p.published_on %>
   			      </span>
   			    </div>
   			  </div>
-			  <%= link_to "Read →", post_path(slug: first_p.slug), class: "text-sm text-moss hover:text-moss-dark" %>
+			  <%= link_to "Read →", post_path(slug: first_p.slug), class: "text-sm font-bold text-[#141410] hover:text-sienna" %>
   		    </div>
 	      </article>
 
 		  <!-- post 2 -->
 		  <% if second_p %>
 		  <article data-post-id="<%= second_p.id %>">
-	        <div class="rounded-2xl h-80 overflow-hidden mb-4">
+	        <div class="font-mono font-bold text-3xl leading-none text-line select-none mb-1" aria-hidden="true">02</div>
+	        <div class="rounded-md h-80 overflow-hidden mb-4">
 	          <%= render 'shared/responsive_image',
 	                     image_url: second_p.image,
 	                     alt_text: second_p.title,
 	                     css_classes: "object-cover object-center h-full w-full",
 	                     link_url: "/post/#{second_p.slug}" %>
 	        </div>
-		    <div class="flex items-center gap-2 text-xs tracking-widest uppercase text-muted mb-2">
+		    <div class="flex items-center gap-2 font-mono text-xs font-bold tracking-wide uppercase text-sienna mb-2">
 		      <i class="w-1.5 h-1.5 rounded-full <%= get_topic_color(second_p.topic.downcase) %>"></i><%= second_p.topic %>
 		    </div>
 	        <div class="flex flex-wrap">
@@ -69,7 +71,7 @@
 		      <%= render "shared/post_tags", :post => second_p %>
 	        <% end %>
 	        </div>
-	        <h3 class="mb-2 font-display text-3xl">
+	        <h3 class="mb-2 font-sans font-extrabold tracking-tight text-2xl leading-[1.08] text-[#141410]">
 	          <%= link_to(second_p.title, post_path(slug: second_p.slug), class: "hover:text-moss") %>
 	        </h3>
 	        <p class="text-muted leading-normal mb-4 max-w-md">
@@ -84,13 +86,13 @@
   		          class="relative inline-block h-8 w-8 rounded-full"
   		        />
   		        <div class="flex flex-col ml-3 text-sm">
-  		          <span class="text-ink font-medium"><%= pretty_author(second_p.author) %></span>
-  		          <span class="text-muted text-xs">
+  		          <span class="text-ink font-bold"><%= pretty_author(second_p.author) %></span>
+  		          <span class="font-mono text-muted text-xs">
   		            <%= second_p.published_on %>
   		          </span>
   		        </div>
   		      </div>
-			  <%= link_to "Read →", post_path(slug: second_p.slug), class: "text-sm text-moss hover:text-moss-dark" %>
+			  <%= link_to "Read →", post_path(slug: second_p.slug), class: "text-sm font-bold text-[#141410] hover:text-sienna" %>
   		    </div>
 		  </article>
 		  <% end %>
