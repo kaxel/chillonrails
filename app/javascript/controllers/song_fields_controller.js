@@ -30,7 +30,7 @@ export default class extends Controller {
     const file = event.target.files && event.target.files[0]
     if (!file) return
 
-    const tags = await this.readId3Tags(file)
+    const tags = (await this.readId3Tags(file)) || (await this.readMp4Tags(file))
     if (!tags) return
 
     const row = event.target.closest("[data-song-row]")
@@ -82,6 +82,73 @@ export default class extends Controller {
       }
 
       return (title || artist) ? { title, artist } : null
+    } catch {
+      return null
+    }
+  }
+
+  // Minimal MP4/M4A atom reader — walks moov > udta > meta > ilst to pull
+  // the ©nam (title) and ©ART (artist) tags iTunes/GarageBand/Logic write.
+  // Skips files over 50MB rather than loading huge buffers into memory.
+  async readMp4Tags(file) {
+    if (file.size > 50 * 1024 * 1024) return null
+    try {
+      const buf = new Uint8Array(await file.arrayBuffer())
+      const view = new DataView(buf.buffer)
+      const typeStr = (offset) => String.fromCharCode(buf[offset], buf[offset + 1], buf[offset + 2], buf[offset + 3])
+
+      const findAtom = (start, end, path) => {
+        let offset = start
+        while (offset + 8 <= end) {
+          const size = view.getUint32(offset)
+          const type = typeStr(offset + 4)
+          const boxEnd = size === 0 ? end : offset + size
+          if (size < 8 || boxEnd > end) break
+
+          if (type === path[0]) {
+            if (path.length === 1) return { start: offset, end: boxEnd }
+            // The "meta" box has an extra 4-byte version/flags field before its children.
+            const childStart = type === "meta" ? offset + 12 : offset + 8
+            const found = findAtom(childStart, boxEnd, path.slice(1))
+            if (found) return found
+          }
+          offset = boxEnd
+        }
+        return null
+      }
+
+      const ilst = findAtom(0, buf.length, ["moov", "udta", "meta", "ilst"])
+      if (!ilst) return null
+
+      const readIlstChild = (nameBytes) => {
+        let offset = ilst.start + 8
+        while (offset + 8 <= ilst.end) {
+          const size = view.getUint32(offset)
+          const boxEnd = offset + size
+          if (size < 8 || boxEnd > ilst.end) break
+
+          if (nameBytes.every((b, i) => buf[offset + 4 + i] === b)) {
+            let dataOffset = offset + 8
+            while (dataOffset + 8 <= boxEnd) {
+              const dataSize = view.getUint32(dataOffset)
+              const dataType = typeStr(dataOffset + 4)
+              const dataEnd = dataOffset + dataSize
+              if (dataType === "data" && dataSize > 16) {
+                return new TextDecoder("utf-8").decode(buf.slice(dataOffset + 16, dataEnd)).trim() || null
+              }
+              if (dataSize < 8) break
+              dataOffset = dataEnd
+            }
+          }
+          offset = boxEnd
+        }
+        return null
+      }
+
+      const title = readIlstChild([0xa9, 0x6e, 0x61, 0x6d]) // "\xa9nam"
+      const artist = readIlstChild([0xa9, 0x41, 0x52, 0x54]) // "\xa9ART"
+
+      return title || artist ? { title, artist } : null
     } catch {
       return null
     }
