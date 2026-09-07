@@ -17,7 +17,7 @@ RSpec.describe "Donations", type: :request do
     it "creates a PaymentIntent for a valid $5-increment amount" do
       post donations_path, params: { amount_cents: 1000 }, as: :json
       expect(response).to have_http_status(:success)
-      expect(JSON.parse(response.body)["client_secret"]).to eq("pi_test_secret_123")
+      expect(response.parsed_body["client_secret"]).to eq("pi_test_secret_123")
       expect(Stripe::PaymentIntent).to have_received(:create).with(
         hash_including(amount: 1000, currency: "usd", payment_method_types: [ "card" ])
       )
