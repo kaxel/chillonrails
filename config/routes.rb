@@ -1,5 +1,7 @@
   Rails.application.routes.draw do
   resources :playlists, path: 'playlist', param: :slug, only: [:show]
+  # Direct-URL-only preview for comparing home page design directions live.
+  get 'preview/color-blocked', to: 'home#color_blocked', as: :color_blocked_preview
   get "errors/not_found"
   get "errors/internal_server_error"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

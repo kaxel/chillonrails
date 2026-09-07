@@ -24,4 +24,13 @@ class HomeController < ApplicationController
       format.turbo_stream { render "posts_page", locals: { posts: @posts, page: @page } }
     end
   end
+
+  # Standalone preview of the "Color-Blocked Sections" home page direction,
+  # for comparing live against the current design (index). Not linked from
+  # navigation — direct URL only. Safe to remove once a direction is picked.
+  def color_blocked
+    @posts = Post.order(published_on: :desc).limit(6).distinct
+    @top12 = Post.order("score asc").last(4)
+    @page_title = "Welcome. (Color-Blocked preview)"
+  end
 end
