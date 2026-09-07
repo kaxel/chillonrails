@@ -66,3 +66,7 @@ en:
   submissions:
     payment_start_failed: "We couldn't start the payment. Please try again."
     confirmation_subject: "We received your song submission"
+
+  donations:
+    payment_start_failed: "We couldn't start the payment. Please try again."
+    invalid_amount: "Please choose a donation amount in $5 increments."

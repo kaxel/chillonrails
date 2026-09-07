@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  allow_unauthenticated_access only: [ :about, :authentication, :radio, :search, :contact, :licensing, :cookie_policy, :privacy, :terms, :support, :archive ]
+  allow_unauthenticated_access only: [ :about, :authentication, :radio, :search, :contact, :licensing, :cookie_policy, :privacy, :terms, :archive ]
 
   def about
     @page_title = "about"
@@ -22,10 +22,6 @@ class PagesController < ApplicationController
     else
       @posts = nil
     end
-  end
-
-  def support
-    @page_title = "support the channel"
   end
 
   def contact

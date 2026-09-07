@@ -42,7 +42,9 @@
   get "pages/terms"
   get "pages/cookies", to: "pages#cookie_policy"
   get "pages/privacy"
-  get "pages/support"
+  # Donation form + inline Stripe card payment (replaces the old Cognito Forms embed).
+  get 'pages/support', to: 'donations#new', as: :pages_support
+  resources :donations, only: [ :create ]
   get "pages/archive"
   
   #redirect old story links to search page

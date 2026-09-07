@@ -25,6 +25,8 @@ module Webhooks
       case event.type
       when "checkout.session.completed"
         fulfill(event.data.object)
+      when "payment_intent.succeeded"
+        record_donation(event.data.object)
       end
     end
 
@@ -36,6 +38,22 @@ module Webhooks
 
       submission.mark_paid!
       SubmissionMailer.confirmation(submission).deliver_later
+    end
+
+    # Song submissions pay via Checkout Sessions, which create a PaymentIntent
+    # under the hood too — so payment_intent.succeeded fires for those as well.
+    # Only record a Donation for intents this app created for the support page.
+    def record_donation(payment_intent)
+      return unless payment_intent.metadata&.[]("source") == "support_page"
+      return if Donation.exists?(stripe_payment_intent_id: payment_intent.id)
+
+      Donation.create!(
+        amount_cents: payment_intent.amount_received,
+        stripe_payment_intent_id: payment_intent.id,
+        status: "paid"
+      )
+    rescue ActiveRecord::RecordInvalid => e
+      Rails.logger.error("Failed to record donation for #{payment_intent.id}: #{e.message}")
     end
   end
 end

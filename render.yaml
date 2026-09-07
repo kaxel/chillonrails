@@ -15,10 +15,13 @@ services:
   # the pending-submission purge) actually process. Set value to "true".
   - key: SOLID_QUEUE_IN_PUMA
     sync: false
-  # Stripe (song submission checkout) — set values in the Render dashboard.
+  # Stripe (song submission checkout + donation form) — set values in the Render dashboard.
   - key: STRIPE_SECRET_KEY
     sync: false
   - key: STRIPE_WEBHOOK_SECRET
+    sync: false
+  # Publishable key (safe to expose client-side) — used by the donation form's Stripe.js.
+  - key: STRIPE_PUBLISHABLE_KEY
     sync: false
   # Amazon S3 (Active Storage for uploaded audio) — set values in the dashboard.
   - key: AWS_ACCESS_KEY_ID

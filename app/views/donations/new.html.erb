@@ -1,0 +1,66 @@
+<% content_for :title, "Support the Channel — CHILLFILTR®" %>
+
+<% content_for :head do %>
+  <script src="https://js.stripe.com/v3/"></script>
+<% end %>
+
+<div class="mx-auto md:w-2/3 w-full py-10 font-sans text-ink"
+     data-controller="donation"
+     data-donation-increment-value="<%= Donation::INCREMENT_CENTS %>"
+     data-donation-min-value="<%= Donation::MIN_AMOUNT_CENTS %>"
+     data-donation-publishable-key-value="<%= Rails.application.config.stripe[:publishable_key] %>"
+     data-donation-create-intent-url-value="<%= donations_path %>">
+
+  <h1 class="font-display italic text-4xl mb-4">Thank You for Your Support</h1>
+
+  <p class="text-muted mb-4"><strong>CHILLFILTR® Radio is a Public Service.</strong></p>
+
+  <p class="text-muted mb-4">
+    Now that I volunteer at a community radio station I know what the actual costs are in
+    terms of infrastructure and licensing. I can proudly say that the costs for CHILLFILTR®
+    Radio run at around 15% of that. Your support allows me to continue putting out great new
+    music from artists that might not otherwise get much airtime.
+  </p>
+
+  <p class="text-muted mb-8">
+    From one music lover to another: thank you for supporting independent media.<br>
+    – Krister Axel
+  </p>
+
+  <div data-donation-target="form">
+    <h2 class="font-display italic text-2xl mb-3">Donation</h2>
+
+    <div class="flex items-center gap-3 mb-6">
+      <button type="button" data-action="donation#decrement"
+              class="w-10 h-10 rounded-full border border-line font-medium text-lg cursor-pointer hover:border-moss hover:text-moss">−</button>
+      <span data-donation-target="amount" class="text-2xl font-medium w-24 text-center">$5.00</span>
+      <button type="button" data-action="donation#increment"
+              class="w-10 h-10 rounded-full border border-line font-medium text-lg cursor-pointer hover:border-moss hover:text-moss">+</button>
+    </div>
+
+    <h2 class="font-display italic text-2xl mb-3">Payment</h2>
+
+    <div id="card-element" data-donation-target="cardElement"
+         class="border border-line rounded-md p-3 bg-white mb-2"></div>
+    <p data-donation-target="errorMessage" class="hidden text-red-500 text-sm mb-4"></p>
+
+    <div class="my-6 text-lg">
+      <span class="text-muted">Amount Due:</span>
+      <strong class="text-2xl ml-1" data-donation-target="amountDue">$5.00</strong>
+    </div>
+
+    <button type="button" data-action="donation#submit" data-donation-target="submitButton"
+            class="rounded-full py-3 px-5 bg-moss hover:bg-moss-dark text-white inline-flex items-center gap-2 font-medium cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed">
+      <svg data-donation-target="spinner" class="hidden animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+      </svg>
+      <span data-donation-target="submitLabel">Submit</span>
+    </button>
+  </div>
+
+  <div data-donation-target="successMessage" class="hidden">
+    <h2 class="font-display italic text-2xl mb-3">Thank you!</h2>
+    <p class="text-muted">Your donation was received — it genuinely makes a difference. 🙏</p>
+  </div>
+</div>
