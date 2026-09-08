@@ -46,7 +46,7 @@ namespace :weekly_catch do
         published_on: date,
         location: "Ashland;Oregon",
         tags: "Weekly Catch;KSKQ",
-        image: "https://weeklycatch.org/art/weekly-catch-small.png",
+        image: ep.fetch("image_path", "https://weeklycatch.org/art/weekly-catch-small.png"),
         video_link: ep["mixcloud_url"]
       )
       created += 1
