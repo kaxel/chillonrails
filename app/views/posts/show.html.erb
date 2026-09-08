@@ -51,6 +51,9 @@
             <div class="video-section">
 			  <% if @post.video_link.include?("vimeo") %>
 			    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/<%= get_val_string(@post.video_link) %>?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Richy Mitch &amp; The Coal Miners - Wet Socks (lyric video)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+			  <% elsif @post.video_link.include?("mixcloud") %>
+			    <iframe title="Mixcloud player" allow="autoplay" width="100%" height="120" frameborder="0"
+			    src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=<%= ERB::Util.url_encode(URI.parse(@post.video_link).path) %>"></iframe>
 			  <% else %>
 			    <iframe id="ytplayer" type="text/html" width="100%" height="540"
 			    src="https://www.youtube.com/embed/<%= get_val_string(@post.video_link) %>?autoplay=1&origin=http://chillfiltr.com"
