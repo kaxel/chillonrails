@@ -21,7 +21,12 @@ namespace :weekly_catch do
       end
 
       tracklist_html = ep["tracks"].map do |t|
-        "<li><strong>#{ERB::Util.html_escape(t['artist'])}</strong> — #{ERB::Util.html_escape(t['song'])}</li>"
+        label = "<strong>#{ERB::Util.html_escape(t['artist'])}</strong> — #{ERB::Util.html_escape(t['song'])}"
+        if t["seek_seconds"]
+          "<li><a href=\"#\" data-seek=\"#{t['seek_seconds'].to_i}\">#{label}</a></li>"
+        else
+          "<li>#{label}</li>"
+        end
       end.join
 
       content = <<~HTML
