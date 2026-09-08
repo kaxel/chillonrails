@@ -11,6 +11,32 @@ services:
     sync: false
   - key: RAILS_MASTER_KEY
     sync: false
+  # Run Solid Queue inside Puma so background jobs (confirmation emails,
+  # the pending-submission purge) actually process. Set value to "true".
+  - key: SOLID_QUEUE_IN_PUMA
+    sync: false
+  # Stripe (song submission checkout + donation form) — set values in the Render dashboard.
+  - key: STRIPE_SECRET_KEY
+    sync: false
+  - key: STRIPE_WEBHOOK_SECRET
+    sync: false
+  # Publishable key (safe to expose client-side) — used by the donation form's Stripe.js.
+  - key: STRIPE_PUBLISHABLE_KEY
+    sync: false
+  # Amazon S3 (Active Storage for uploaded audio) — set values in the dashboard.
+  - key: AWS_ACCESS_KEY_ID
+    sync: false
+  - key: AWS_SECRET_ACCESS_KEY
+    sync: false
+  - key: AWS_REGION
+    sync: false
+  - key: AWS_S3_BUCKET
+    sync: false
+  # Brevo SMTP relay (outbound mail) — set values in the dashboard.
+  - key: BREVO_SMTP_LOGIN
+    sync: false
+  - key: BREVO_SMTP_PASSWORD
+    sync: false
   region: oregon
   preDeployCommand: bin/rails db:migrate
   dockerContext: .

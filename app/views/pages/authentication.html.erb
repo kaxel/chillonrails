@@ -1,26 +1,26 @@
-<div class="min-h-screen bg-gray-50 flex items-center justify-center">
-  <div class="bg-white shadow-lg rounded-lg p-8 max-w-lg mx-auto border border-gray-200">
-    <h1 class="font-bold text-4xl text-gray-900 text-center mb-6">Authentication Details</h1>
-  
+<div class="min-h-screen bg-air flex items-center justify-center font-sans text-ink">
+  <div class="bg-paper rounded-2xl p-8 max-w-lg mx-auto border border-line">
+    <h1 class="font-display italic text-4xl text-ink text-center mb-6">Authentication Details</h1>
+
     <div class="text-center space-y-4">
       <% if current_user %>
-        <p class="text-lg text-gray-800 font-semibold">Welcome, <%= current_user.email_address %>!</p>
+        <p class="text-lg text-ink font-medium">Welcome, <%= current_user.email_address %>!</p>
 
         <!-- Show confirmation status -->
         <% if current_user.respond_to?(:confirmed?) && !current_user.confirmed? %>
-          <p class="text-lg text-yellow-600 font-semibold">Confirm your email address for full access.</p>
+          <p class="text-lg text-clay font-medium">Confirm your email address for full access.</p>
         <% end %>
 
-        <%= link_to "Sign Out", session_path, 
-            method: :delete, 
-            data: { turbo_method: :delete, confirm: "Are you sure?" }, 
-            class: "bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-200" %>
+        <%= link_to "Sign Out", session_path,
+            method: :delete,
+            data: { turbo_method: :delete, confirm: "Are you sure?" },
+            class: "inline-block border border-line hover:border-moss hover:text-moss text-ink font-medium py-2 px-4 rounded-full transition duration-200" %>
       <% else %>
-        <p class="text-lg text-gray-800">Please sign in to access more features.
+        <p class="text-lg text-muted">Please sign in to access more features.
 			<br/><br/>
 			NOTE: new account registrations will open soon.</p>
-        <%= link_to "Sign In", new_session_path, 
-            class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-200" %>
+        <%= link_to "Sign In", new_session_path,
+            class: "inline-block bg-moss hover:bg-moss-dark text-white font-medium py-2 px-4 rounded-full transition duration-200" %>
       <% end %>
 
     </div>

@@ -1,34 +1,34 @@
-<header class="text-gray-600 body-font bg-white sticky top-0 z-50">
+<header class="font-sans text-ink bg-air/95 backdrop-blur sticky top-0 z-50 border-b border-line">
   <div class="container mx-auto max-w-5xl flex flex-wrap px-5 p-1 flex-row items-center justify-between">
     <div class="flex items-center">
-      <a class="flex title-font font-medium items-center text-gray-900" href="/">
+      <a class="flex items-center text-ink" href="/">
 		<%= render 'shared/logo' %>
-        <span class="ml-3 text-xl">CHILLFILTR®</span>
+        <span class="ml-3 font-display italic text-xl tracking-tight">CHILLFILTR®</span>
       </a>
     </div>
-    
+
     <!-- Animated Page Title Display -->
     <% if defined?(@page_title) && @page_title.present? %>
       <div class="flex-1 flex justify-center items-center mx-4">
         <div class="animate-fade-in-slide-up">
-          <h1 class="text-lg font-semibold text-gray-900 text-center animate-pulse-subtle">
+          <h1 class="text-lg font-sans font-medium not-italic text-ink text-center animate-pulse-subtle">
             <span class="hidden sm:inline"><%= @page_title.capitalize %></span>
             <span class="sm:hidden"><%= controller_name == 'posts' ? 'spotlight' : @page_title.capitalize %></span>
           </h1>
         </div>
       </div>
     <% end %>
-    
+
 	<div class="flex items-center relative ml-auto md:ml-0">
       <% if controller_name == 'home' && action_name == 'index' %>
         <button data-action="click->collapse#toggle"
-                class="mr-3 px-3 py-1 text-xs bg-gray-200 hover:bg-gray-300 rounded-full transition-colors">
+                class="mr-3 px-3 py-1 text-xs bg-white text-muted border border-line hover:border-moss hover:text-moss rounded-full transition-colors">
           <span data-collapse-target="toggleText">Hide</span>
         </button>
       <% end %>
       <% if Current.user && Rails.application.routes.url_helpers.respond_to?(:pages_account_path) %>
         <div class="relative mr-2">
-          <%= link_to pages_account_path, class: "inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200", title: "Profile" do %>
+          <%= link_to pages_account_path, class: "inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-muted rounded-lg hover:bg-white focus:outline-none focus:ring-2 focus:ring-line", title: "Profile" do %>
             <% if Current.user.profile_image_url.present? %>
               <img src="<%= Current.user.profile_image_url(size: 32) %>"
                    class="w-8 h-8 rounded-full object-cover"
@@ -42,42 +42,42 @@
             <% end %>
           <% end %>
           <% if Current.user.admin? %>
-            <span class="absolute -top-1 -right-1 bg-purple-600 text-white text-xs px-1.5 py-0.5 rounded-full font-semibold">A</span>
+            <span class="absolute -top-1 -right-1 bg-sienna text-white text-xs px-1.5 py-0.5 rounded-full font-semibold">A</span>
           <% end %>
         </div>
       <% end %>
       <div data-controller="hamburger">
-      <button data-action="click->hamburger#toggle" type="button" class="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 
-	    focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+      <button data-action="click->hamburger#toggle" type="button" class="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-muted rounded-lg hover:bg-white
+	    focus:outline-none focus:ring-2 focus:ring-line">
         <span class="sr-only">Open main menu</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
         </svg>
       </button>
-      <div class="absolute right-0 top-12 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50 origin-top-right" data-hamburger-target="menu">
+      <div class="absolute right-0 top-12 w-48 bg-paper rounded-lg shadow-lg border border-line z-50 origin-top-right" data-hamburger-target="menu">
         <ul class="flex flex-col font-medium py-2">
           <li>
-            <%= link_to 'Home', root_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
+            <%= link_to 'Home', root_path, class: "block py-2 px-4 text-ink hover:bg-air", data: { action: "click->hamburger#hide" } %>
           </li>
           <% if Rails.application.routes.url_helpers.respond_to?(:pages_radio_path) %>
             <li>
-              <%= link_to 'Radio', pages_radio_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
+              <%= link_to 'Radio', pages_radio_path, class: "block py-2 px-4 text-ink hover:bg-air", data: { action: "click->hamburger#hide" } %>
             </li>
           <% end %>
           <% if Rails.application.routes.url_helpers.respond_to?(:pages_about_path) %>
             <li>
-              <%= link_to 'About', pages_about_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
+              <%= link_to 'About', pages_about_path, class: "block py-2 px-4 text-ink hover:bg-air", data: { action: "click->hamburger#hide" } %>
             </li>
           <% end %>
           <% if Rails.application.routes.url_helpers.respond_to?(:pages_submit_path) %>
             <li>
-              <%= link_to 'Submit', pages_submit_path, class: "block py-2 px-4 text-gray-700 hover:bg-gray-100", data: { action: "click->hamburger#hide" } %>
+              <%= link_to 'Submit', pages_submit_path, class: "block py-2 px-4 text-ink hover:bg-air", data: { action: "click->hamburger#hide" } %>
             </li>
           <% end %>
-          
+
           <li data-controller="submenu">
-            <button data-action="click->submenu#toggle" 
-                    class="flex items-center justify-between w-full py-2 px-4 text-gray-700 hover:bg-gray-100 text-left">
+            <button data-action="click->submenu#toggle"
+                    class="flex items-center justify-between w-full py-2 px-4 text-ink hover:bg-air text-left">
               <span>More</span>
               <svg data-submenu-target="icon" class="w-4 h-4 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
@@ -85,44 +85,44 @@
             </button>
             <div data-submenu-target="content" class="overflow-hidden transition-all duration-300 ease-in-out max-h-0">
               <% if Rails.application.routes.url_helpers.respond_to?(:pages_search_path) %>
-                <%= link_to 'Search', pages_search_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
+                <%= link_to 'Search', pages_search_path, class: "block py-2 px-8 text-muted hover:bg-air text-sm", data: { action: "click->hamburger#hide" } %>
               <% end %>
               <% if Rails.application.routes.url_helpers.respond_to?(:pages_account_path) && Current.user %>
-                <%= link_to 'Account', pages_account_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
+                <%= link_to 'Account', pages_account_path, class: "block py-2 px-8 text-muted hover:bg-air text-sm", data: { action: "click->hamburger#hide" } %>
               <% end %>
               <% if Rails.application.routes.url_helpers.respond_to?(:pages_contact_path) %>
-                <%= link_to 'Contact', pages_contact_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
+                <%= link_to 'Contact', pages_contact_path, class: "block py-2 px-8 text-muted hover:bg-air text-sm", data: { action: "click->hamburger#hide" } %>
               <% end %>
-              <%= link_to 'Authors', authors_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
+              <%= link_to 'Authors', authors_path, class: "block py-2 px-8 text-muted hover:bg-air text-sm", data: { action: "click->hamburger#hide" } %>
               <% if Rails.application.routes.url_helpers.respond_to?(:pages_support_path) %>
-                <%= link_to 'Support', pages_support_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
+                <%= link_to 'Support', pages_support_path, class: "block py-2 px-8 text-muted hover:bg-air text-sm", data: { action: "click->hamburger#hide" } %>
               <% end %>
               <% if Rails.application.routes.url_helpers.respond_to?(:pages_archive_path) %>
-                <%= link_to 'Archive', pages_archive_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
+                <%= link_to 'Archive', pages_archive_path, class: "block py-2 px-8 text-muted hover:bg-air text-sm", data: { action: "click->hamburger#hide" } %>
               <% end %>
               <% if Rails.application.routes.url_helpers.respond_to?(:pages_authentication_path) && !Current.user %>
-                <%= link_to 'Login', pages_authentication_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
+                <%= link_to 'Login', pages_authentication_path, class: "block py-2 px-8 text-muted hover:bg-air text-sm", data: { action: "click->hamburger#hide" } %>
               <% end %>
-              <%= link_to 'Tags', tags_path, class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm", data: { action: "click->hamburger#hide" } %>
+              <%= link_to 'Tags', tags_path, class: "block py-2 px-8 text-muted hover:bg-air text-sm", data: { action: "click->hamburger#hide" } %>
             </div>
           </li>
-          
+
           <% if defined?(@available_topics) && @available_topics.any? %>
-            <li class="border-t border-gray-200 mt-2 pt-2" data-controller="submenu">
-              <button data-action="click->submenu#toggle" 
-                      class="flex items-center justify-between w-full py-2 px-4 text-gray-700 hover:bg-gray-100 text-left">
+            <li class="border-t border-line mt-2 pt-2" data-controller="submenu">
+              <button data-action="click->submenu#toggle"
+                      class="flex items-center justify-between w-full py-2 px-4 text-ink hover:bg-air text-left">
                 <span>Topics</span>
                 <svg data-submenu-target="icon" class="w-4 h-4 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
                 </svg>
               </button>
               <div data-submenu-target="content" class="overflow-hidden transition-all duration-300 ease-in-out max-h-0">
-                <%= link_to "All Posts", root_path, 
-                    class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm #{'bg-gray-100 font-medium text-gray-900' if @current_topic.blank?}", 
+                <%= link_to "All Posts", root_path,
+                    class: "block py-2 px-8 text-muted hover:bg-air text-sm #{'bg-air font-medium text-ink' if @current_topic.blank?}",
                     data: { action: "click->hamburger#hide" } %>
                 <% @available_topics.each do |topic| %>
-                  <%= link_to topic.titleize, root_path(topic: topic), 
-                      class: "block py-2 px-8 text-gray-600 hover:bg-gray-50 text-sm #{'bg-gray-100 font-medium text-gray-900' if @current_topic == topic}", 
+                  <%= link_to topic.titleize, root_path(topic: topic),
+                      class: "block py-2 px-8 text-muted hover:bg-air text-sm #{'bg-air font-medium text-ink' if @current_topic == topic}",
                       data: { action: "click->hamburger#hide" } %>
                 <% end %>
               </div>
