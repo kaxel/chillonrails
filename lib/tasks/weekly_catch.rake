@@ -8,17 +8,15 @@ namespace :weekly_catch do
 
     episodes = JSON.parse(File.read(path))
     created = 0
-    skipped = 0
+    updated = 0
+    unchanged = 0
 
     episodes.each do |ep|
       date = Date.parse(ep["date"])
       title = "The Weekly Catch — #{date.strftime('%B %-d, %Y')}"
       slug = title.parameterize
 
-      if Post.exists?(slug: slug)
-        skipped += 1
-        next
-      end
+      existing = Post.find_by(slug: slug)
 
       tracklist_html = ep["tracks"].map do |t|
         label = "<strong>#{ERB::Util.html_escape(t['artist'])}</strong> — #{ERB::Util.html_escape(t['song'])}"
@@ -41,6 +39,25 @@ namespace :weekly_catch do
       artists = ep["tracks"].first(5).map { |t| t["artist"] }.join(", ")
       preview = "#{ep['tracks'].size} tracks: #{artists}, and more."
 
+      image = ep.fetch("image_path", "https://weeklycatch.org/art/weekly-catch-small.png")
+
+      if existing
+        # Rerun path: don't recreate, but backfill the fully-derived fields so
+        # episodes imported before a given field existed (e.g. the Mixcloud
+        # video_link, or the per-episode fish image) pick it up. title, slug,
+        # topic, author, dates and any hand-edits to other fields are left be.
+        changes = { content: content, preview: preview, image: image, video_link: ep["mixcloud_url"] }
+                  .reject { |attr, val| existing.public_send(attr).to_s == val.to_s }
+        if changes.any?
+          existing.update!(changes)
+          updated += 1
+          puts "  updated #{slug}: #{changes.keys.join(', ')}"
+        else
+          unchanged += 1
+        end
+        next
+      end
+
       Post.create!(
         title: title,
         slug: slug,
@@ -51,12 +68,12 @@ namespace :weekly_catch do
         published_on: date,
         location: "Ashland;Oregon",
         tags: "Weekly Catch;KSKQ",
-        image: ep.fetch("image_path", "https://weeklycatch.org/art/weekly-catch-small.png"),
+        image: image,
         video_link: ep["mixcloud_url"]
       )
       created += 1
     end
 
-    puts "Created #{created} post(s), skipped #{skipped} (already existed)."
+    puts "Created #{created} post(s), updated #{updated}, #{unchanged} already current."
   end
 end
