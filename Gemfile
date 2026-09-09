@@ -19,6 +19,11 @@ gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# json 3.0 (2026-09-07) rejects unknown options as ArgumentError; Rails
+# 8.0.5.1 (activesupport) and pg still pass `quirks_mode: true` to
+# JSON.generate, which aborts boot. Hold at 2.x until those ship a fix.
+gem "json", "< 3"
+
 gem "csv"
 
 
