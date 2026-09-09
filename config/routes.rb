@@ -1,5 +1,7 @@
   Rails.application.routes.draw do
   resources :playlists, path: 'playlist', param: :slug, only: [:show]
+  # Direct-URL-only preview for comparing home page design directions live.
+  get 'preview/color-blocked', to: 'home#color_blocked', as: :color_blocked_preview
   get "errors/not_found"
   get "errors/internal_server_error"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
@@ -30,15 +32,21 @@
   get "pages/authentication"
   get "pages/account"
   get "pages/radio"
-  get '/submit', to: redirect('/pages/submit')
-  get "pages/submit"
+  # Song submission form + Stripe checkout (replaces the old Cognito Forms embed).
+  get '/submit', to: 'submissions#new', as: :submit
+  get 'pages/submit', to: 'submissions#new', as: :pages_submit
+  resources :submissions, only: [:create]
+  get '/submissions/:token/success', to: 'submissions#success', as: :submission_success
+  post '/webhooks/stripe', to: 'webhooks/stripe#create'
   get "pages/search"
   get "pages/contact"
   get "pages/licensing"
   get "pages/terms"
   get "pages/cookies", to: "pages#cookie_policy"
   get "pages/privacy"
-  get "pages/support"
+  # Donation form + inline Stripe card payment (replaces the old Cognito Forms embed).
+  get 'pages/support', to: 'donations#new', as: :pages_support
+  resources :donations, only: [ :create ]
   get "pages/archive"
   
   #redirect old story links to search page
@@ -65,7 +73,7 @@
   get '/radio', to: redirect('/pages/radio')
   # get '/promo', to: redirect('/pages/song-promo')
   get '/support', to: redirect('/pages/support')
-  get '/product/song-submission', to: redirect('/pages/submit')
+  get '/product/song-submission', to: redirect('/submit')
 
   # latest post redirect
   get '/latest', to: redirect('/')

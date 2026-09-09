@@ -75,8 +75,8 @@ export default class extends Controller {
     const loadingIndicator = document.getElementById("loading-indicator")
     if (loadingIndicator) {
       loadingIndicator.innerHTML = `
-        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
-        <p class="mt-2 text-gray-600">Loading more posts...</p>
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-moss"></div>
+        <p class="mt-2 text-muted">Loading more posts...</p>
       `
     }
 
@@ -111,7 +111,7 @@ export default class extends Controller {
           this.hasMore = false
           const loadingIndicator = document.getElementById("loading-indicator")
           if (loadingIndicator) {
-            loadingIndicator.innerHTML = '<p class="text-gray-600">No more posts to load</p>'
+            loadingIndicator.innerHTML = '<p class="text-muted">No more posts to load</p>'
           }
         } else {
           // Let Turbo handle the stream response
