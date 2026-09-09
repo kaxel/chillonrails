@@ -1,5 +1,5 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl mb-5">Register</h1>
+<div class="mx-auto md:w-2/3 w-full font-sans text-ink">
+  <h1 class="font-display italic text-4xl mb-5">Register</h1>
 
   <%= form_with(model: @user, url: registration_path, local: true, class: "contents") do |form| %>
     <% if @user.errors.any? %>
@@ -14,31 +14,31 @@
     <% end %>
 
     <div class="my-5">
-      <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "block shadow rounded-md border border-line outline-none px-3 py-2 mt-2 w-full focus:border-moss" %>
     </div>
 
     <div class="my-5">
-      <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "block shadow rounded-md border border-line outline-none px-3 py-2 mt-2 w-full focus:border-moss" %>
     </div>
 
     <div class="my-5">
-      <%= form.password_field :password_confirmation, required: true, autocomplete: "current-password", placeholder: "Confirm password", maxlength: 72, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.password_field :password_confirmation, required: true, autocomplete: "current-password", placeholder: "Confirm password", maxlength: 72, class: "block shadow rounded-md border border-line outline-none px-3 py-2 mt-2 w-full focus:border-moss" %>
     </div>
 
     <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
       <div class="inline">
-        <%= form.submit "Register", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+        <%= form.submit "Register", class: "rounded-full py-3 px-5 bg-moss hover:bg-moss-dark text-white inline-block font-medium cursor-pointer" %>
       </div>
 
-      <div class="mt-4 text-sm text-gray-500 sm:mt-0">
-        <%= link_to "Login", new_session_path, class: "text-gray-700 underline" %>
+      <div class="mt-4 text-sm text-muted sm:mt-0">
+        <%= link_to "Login", new_session_path, class: "text-moss hover:text-moss-dark underline" %>
       </div>
     </div>
 
     <div class="my-5 flex items-center">
-      <div class="flex-grow border-t border-gray-300"></div>
-      <span class="mx-4 text-gray-500 text-sm">or</span>
-      <div class="flex-grow border-t border-gray-300"></div>
+      <div class="flex-grow border-t border-line"></div>
+      <span class="mx-4 text-muted text-sm">or</span>
+      <div class="flex-grow border-t border-line"></div>
     </div>
 
     <%= button_to '/auth/google_oauth2',
