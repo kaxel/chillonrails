@@ -5,7 +5,10 @@
   <p class="text-muted mb-6">
     Upload your track(s) and pay a small listening fee of
     <strong>$<%= sprintf("%.2f", Submission::PRICE_PER_SONG_CENTS / 100.0) %> per song</strong>.
-    We listen to everything; the best tracks make our radio channel.
+    We listen to everything; the best tracks are featured on
+    <a class="text-moss hover:text-moss-dark underline" href="https://kskq.org" target="_blank">live radio</a>
+    and archived at
+    <a class="text-moss hover:text-moss-dark underline" href="https://weeklycatch.org" target="_blank">weeklycatch.org</a>.
   </p>
 
   <% if @submission.errors.any? %>
