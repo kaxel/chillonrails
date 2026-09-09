@@ -1,5 +1,3 @@
-	  <% local_color = get_tag_color %> 	  
-	  
 	  <% post.tags_from_hash.each do |e| %>
-        <div><h4 class="flex-grow px-1 text-xs m-1 py-1 font-medium title-font text-gray-700 <%= local_color %> hover:bg-blue-500 rounded-lg"><%= e %></h4></div>
+        <div><span class="inline-block px-2 text-xs m-1 py-1 font-medium text-muted bg-air border border-line rounded-full"><%= e %></span></div>
 	  <% end %>

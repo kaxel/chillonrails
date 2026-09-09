@@ -10,9 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_01_19_070321) do
+ActiveRecord::Schema[8.0].define(version: 2026_09_07_033534) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
 
   create_table "authors", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +66,15 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_19_070321) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_authors_on_item_id", unique: true
     t.index ["slug"], name: "index_authors_on_slug", unique: true
+  end
+
+  create_table "donations", force: :cascade do |t|
+    t.integer "amount_cents", null: false
+    t.string "stripe_payment_intent_id", null: false
+    t.string "status", default: "paid", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stripe_payment_intent_id"], name: "index_donations_on_stripe_payment_intent_id", unique: true
   end
 
   create_table "locations", force: :cascade do |t|
@@ -100,6 +137,29 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_19_070321) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "submission_songs", force: :cascade do |t|
+    t.bigint "submission_id", null: false
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["submission_id"], name: "index_submission_songs_on_submission_id"
+  end
+
+  create_table "submissions", force: :cascade do |t|
+    t.string "contact_name", null: false
+    t.string "email", null: false
+    t.string "artist_name", null: false
+    t.string "status", default: "pending", null: false
+    t.integer "amount_cents", default: 0, null: false
+    t.string "stripe_session_id"
+    t.string "token", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["status"], name: "index_submissions_on_status"
+    t.index ["stripe_session_id"], name: "index_submissions_on_stripe_session_id", unique: true
+    t.index ["token"], name: "index_submissions_on_token", unique: true
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
     t.string "slug"
@@ -126,5 +186,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_19_070321) do
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "sessions", "users"
+  add_foreign_key "submission_songs", "submissions"
 end

@@ -1,41 +1,40 @@
-<section data-collapse-target="content" class="text-gray-600 body-font overflow-hidden transition-all duration-300 ease-in-out">
-    <div class="container mx-auto px-5 py-12 max-w-4xl">
-      <div class="flex flex-col items-center text-center">
-        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">CHILLFILTR®
-          <br class="hidden lg:inline-block">Supports Indie.
-        </h1>
-        <p class="mb-8 leading-relaxed">CHILLFILTR® is a multifaceted platform dedicated to amplifying independent voices in both music and literature.
-  Listen live Wednesday nights from 9-11pm on 89.5 FM Ashland, 94.1 FM Medford, at <a class="hover:text-white bg-teal-300" href="https://kskq.org" target="_blank">kskq.org</a>, & archived at <a class="hover:text-white bg-teal-300" href="https://weeklycatch.org" target="_blank">weeklycatch.org</a>.
+<section data-collapse-target="content" class="font-sans text-ink overflow-hidden transition-all duration-300 ease-in-out border-b-[3px] border-ink">
+    <div class="container mx-auto px-5 py-16 max-w-2xl">
+      <div class="flex flex-col items-start text-left">
+        <p class="hero-lead mb-9 leading-relaxed text-muted max-w-md">A platform for independent voices in music and literature. Listen live Wednesday nights, 9&ndash;11pm, on 89.5 FM Ashland and 94.1 FM Medford, at <a class="text-sienna hover:underline" href="https://kskq.org" target="_blank">kskq.org</a>, archived at <a class="text-sienna hover:underline" href="https://weeklycatch.org" target="_blank">weeklycatch.org</a>.
         </p>
-        <div class="flex justify-center">
-          <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"><a href="#top_of_index">Posts</a></button>
-          <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
-            <%= link_to "Submissions", pages_submit_path %>
-          </button>
-          <button class="ml-4 inline-flex text-orange-700 bg-orange-100 border-0 py-2 px-6 focus:outline-none hover:bg-orange-200 rounded text-lg">
-            <%= link_to posts_feed_path(format: :rss, topic: "music"), target: "_blank", class: "flex items-center" do %>
+        <div class="flex flex-wrap items-center gap-3 text-sm w-full sm:w-auto">
+          <a href="#top_of_index" class="inline-flex justify-center flex-1 sm:flex-none text-white bg-[#141410] border-0 py-3 px-6 font-bold rounded hover:bg-ink transition-colors">Posts</a>
+          <%= link_to "Submissions", pages_submit_path, class: "inline-flex justify-center flex-1 sm:flex-none text-[#141410] border-2 border-[#141410] py-3 px-6 font-bold rounded hover:bg-air transition-colors" %>
+          <%= link_to posts_feed_path(format: :rss, topic: "music"), target: "_blank", class: "inline-flex items-center justify-center text-muted border-2 border-line py-3 px-6 font-bold rounded hover:border-ink hover:text-ink transition-colors" do %>
               <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M3.429 2.571c0-.952.77-1.714 1.714-1.714s1.714.762 1.714 1.714-.77 1.714-1.714 1.714-1.714-.762-1.714-1.714zm.571 4.286c3.143 0 5.714 2.571 5.714 5.714h2.286c0-4.381-3.619-8-8-8v2.286zm0 4c1.143 0 2.286 1.143 2.286 2.286h2.286c0-2.476-2.095-4.571-4.571-4.571v2.285z"/>
               </svg>
               RSS
-            <% end %>
-          </button>
+          <% end %>
         </div>
       </div>
     </div>
-    
+
     <!-- Link Letter Opener -->
 </section>
 <a id="top_of_index"></a>
 <!-- FIRST CONTENT SECTION -->
-<section class="mb-8">
-<h1 class="title-font text-2xl mb-4 font-medium text-gray-900 text-center">Top Posts</h1>
-<div class="max-w-2xl mx-auto bg-white rounded-lg shadow-sm border border-gray-200">
+<section class="mb-12 border-b-[3px] border-ink">
+<div class="container mx-auto px-5 py-16 max-w-2xl">
+<p class="font-mono text-xs font-bold tracking-wide text-sienna mb-4">01 &mdash; TOP POSTS</p>
+<div class="bg-paper rounded-2xl border border-line">
   <%= render "shared/top_posts_list" %>
+</div>
 </div>
 </section>
 <section>
-<h1 class="title-font sm:text-4xl text-3xl my-8 mb-4 font-medium text-gray-900 text-center">Recent Posts<% if @current_topic %><%= " in #{@current_topic.titleize}" %><% end %></h1>
+<div class="container mx-auto px-5 pt-16 max-w-2xl">
+<p class="font-mono text-xs font-bold tracking-wide text-sienna mb-2">02 &mdash; RECENT POSTS</p>
+<% if @current_topic %>
+  <h2 class="font-sans font-extrabold tracking-tight text-4xl sm:text-5xl mb-6 text-[#141410]"><%= @current_topic.titleize %></h2>
+<% end %>
+</div>
 <!-- SECOND CONTENT SECTION -->
 <div id="posts-container" data-controller="infinite-scroll" data-infinite-scroll-page-value="<%= @page %>" data-infinite-scroll-topic-value="<%= @current_topic %>">
   <% @posts.each_slice(2) do |first_p, second_p| %>

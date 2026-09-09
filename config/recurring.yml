@@ -1,4 +1,10 @@
-# production:
+production:
+  purge_pending_submissions:
+    class: PurgePendingSubmissionsJob
+    args: [ 24 ]
+    schedule: every day at 4am
+
+# Examples:
 #   periodic_cleanup:
 #     class: CleanSoftDeletedRecordsJob
 #     queue: background

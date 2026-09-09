@@ -1,0 +1,72 @@
+<% card_colors = ["#7fa8b3", "#8d7f9a", "#b8875a", "#8a8f7c", "#a8613f", "#3f6b52"] %>
+
+<div class="font-sans text-ink">
+
+  <div class="text-center py-3 bg-[#1c211a] text-white text-xs font-mono font-bold tracking-wide">
+    PREVIEW &mdash; Color-Blocked Sections direction &middot; not the live design
+  </div>
+
+  <!-- hero: moss block -->
+  <section class="bg-moss py-16 px-5 text-center">
+    <div class="max-w-2xl mx-auto flex flex-col items-center">
+      <p class="text-xs font-bold tracking-widest uppercase text-white/80 mb-4">CHILLFILTR&reg;</p>
+      <h1 class="font-display text-5xl sm:text-6xl mb-5 text-white">Supports Indie.</h1>
+      <p class="mb-9 leading-relaxed text-white/90 max-w-md">A platform for independent voices in music and literature. Listen live Wednesday nights, 9&ndash;11pm, on 89.5 FM Ashland and 94.1 FM Medford, at <a class="text-white underline" href="https://kskq.org" target="_blank">kskq.org</a>, archived at <a class="text-white underline" href="https://weeklycatch.org" target="_blank">weeklycatch.org</a>.</p>
+      <div class="flex justify-center items-center gap-3 text-sm flex-wrap">
+        <a href="#recent" class="inline-flex text-moss bg-white border-0 py-3 px-7 font-bold rounded-full hover:bg-air transition-colors">Posts</a>
+        <%= link_to "Submissions", pages_submit_path, class: "inline-flex text-white border-2 border-white py-3 px-7 font-bold rounded-full hover:bg-white/10 transition-colors" %>
+      </div>
+    </div>
+  </section>
+
+  <!-- top posts: clay block -->
+  <section class="bg-clay py-14 px-5">
+    <div class="max-w-2xl mx-auto">
+      <p class="text-xs font-bold tracking-widest uppercase text-white mb-4">&#9679; Top Posts</p>
+      <div class="bg-paper rounded-2xl border border-line">
+        <%= render "shared/top_posts_list" %>
+      </div>
+    </div>
+  </section>
+
+  <!-- recent posts -->
+  <section id="recent" class="py-16 px-5">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="font-display text-4xl mb-8 text-ink text-center">Recent Posts</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <% @posts.each_with_index do |post, i| %>
+          <div class="rounded-2xl p-5" style="background-color: <%= card_colors[i % card_colors.length] %>;">
+            <div class="inline-block bg-white/90 text-ink text-xs font-bold tracking-wide uppercase px-2.5 py-1 rounded mb-3">
+              <%= post.topic %>
+            </div>
+            <h3 class="font-display text-2xl mb-2 text-white">
+              <%= link_to(post.title, post_path(slug: post.slug), class: "hover:underline") %>
+            </h3>
+            <p class="text-white/90 text-sm leading-normal mb-4">
+              <%= truncate(post.preview, length: 100) %>
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <img alt="post author <%= pretty_author(post.author) %>" src="<%= author_photo(post.author) %>" class="h-7 w-7 rounded-full" />
+                <span class="text-white text-xs font-medium"><%= pretty_author(post.author) %> &middot; <%= post.published_on %></span>
+              </div>
+              <%= link_to "Read →", post_path(slug: post.slug), class: "text-sm font-bold text-white hover:underline" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer: ink block -->
+  <div class="bg-[#1c211a] py-8">
+    <ul class="flex justify-center flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
+      <li><%= link_to "Licensing", pages_licensing_path, class: "hover:text-white" %></li>
+      <li><%= link_to "Privacy", pages_privacy_path, class: "hover:text-white" %></li>
+      <li><%= link_to "Terms", pages_terms_path, class: "hover:text-white" %></li>
+      <li><%= link_to "Cookies", pages_cookies_path, class: "hover:text-white" %></li>
+    </ul>
+  </div>
+
+</div>

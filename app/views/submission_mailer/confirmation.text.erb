@@ -1,0 +1,13 @@
+Hi <%= @submission.contact_name %>,
+
+Thanks for submitting to CHILLFILTR®. We've received your payment and the following <%= pluralize(@submission.song_count, "track") %> from <%= @submission.artist_name %>:
+
+<% @submission.submission_songs.each do |song| -%>
+- <%= song.title %>
+<% end -%>
+
+Total paid: $<%= sprintf("%.2f", @submission.amount_dollars) %>
+
+We listen to everything that comes in. If it's a fit for our radio channel, we'll be in touch.
+
+— CHILLFILTR®

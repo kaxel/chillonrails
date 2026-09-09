@@ -1,5 +1,5 @@
 <div class="max-w-4xl mx-auto p-6">
-  <h1 class="font-bold text-4xl mb-8">Custom Playlist: <%= @playlist.name %></h1>
+  <h1 class="font-display italic text-4xl mb-8">Custom Playlist: <%= @playlist.name %></h1>
 
   <div id="audio-player" class="mb-8">
     <audio id="audio" class="hidden"></audio>
@@ -18,7 +18,7 @@
           <span id="duration">0:00</span>
         </div>
         <div class="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2 cursor-pointer" id="progress-bar">
-          <div id="progress" class="bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
+          <div id="progress" class="bg-moss h-2 rounded-full" style="width: 0%"></div>
         </div>
       </div>
 
@@ -27,7 +27,7 @@
         <button id="prev-btn" class="bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-bold py-3 px-6 rounded-lg transition">
           Previous
         </button>
-        <button id="play-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition">
+        <button id="play-btn" class="bg-moss hover:bg-moss-dark text-white font-bold py-3 px-8 rounded-lg transition">
           Play
         </button>
         <button id="stop-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition">
@@ -50,7 +50,7 @@
                 <span class="text-gray-500 dark:text-gray-400 font-mono"><%= index + 1 %></span>
                 <span class="song-title"><%= File.basename(url, '.mp3').gsub('%20', ' ').gsub('_', ' ') %></span>
               </div>
-              <span class="playing-indicator hidden text-blue-600">▶</span>
+              <span class="playing-indicator hidden text-moss">▶</span>
             </div>
           </li>
         <% end %>
@@ -98,10 +98,10 @@
     playlistItems.forEach((item, i) => {
       const indicator = item.querySelector('.playing-indicator');
       if (i === index) {
-        item.classList.add('bg-blue-50', 'dark:bg-blue-900');
+        item.classList.add('bg-air');
         indicator.classList.remove('hidden');
       } else {
-        item.classList.remove('bg-blue-50', 'dark:bg-blue-900');
+        item.classList.remove('bg-air');
         indicator.classList.add('hidden');
       }
     });
