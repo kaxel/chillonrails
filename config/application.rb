@@ -38,8 +38,18 @@ module Chillonrails
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     
-    config.action_mailer.delivery_method = :postmark
-    config.action_mailer.postmark_settings = { :api_token => "6ee07d77-a4b7-4214-8d32-c221dc379343" }
+    # Brevo SMTP relay — get credentials from Brevo dashboard: Settings > SMTP & API > SMTP tab.
+    # user_name is your Brevo account login email; password is the generated SMTP key (not your account password).
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: "smtp-relay.brevo.com",
+      port: 587,
+      domain: "chillfiltr.com",
+      user_name: ENV["BREVO_SMTP_LOGIN"],
+      password: ENV["BREVO_SMTP_PASSWORD"],
+      authentication: :login,
+      enable_starttls_auto: true
+    }
 
     # Don't generate system test files.
     config.generators do |g|
