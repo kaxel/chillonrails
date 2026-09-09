@@ -29,7 +29,7 @@ gem "stripe", "~> 19.6"
 gem "aws-sdk-s3", "~> 1.0", require: false
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.22"
 gem "omniauth-google-oauth2", "~> 1.2"
 gem "omniauth-apple", "~> 1.4"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
@@ -58,7 +58,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "rspec-rails", "~> 7.0"
   gem "factory_bot_rails", "~> 6.0"
-  gem "guard", "~> 2.0"
+  gem "guard", "~> 2.20"
   gem "guard-rspec", "~> 4.7"
   gem "rubocop", "~> 1.90.0", require: false
   gem "rubocop-rails", "~> 2.32.0", require: false

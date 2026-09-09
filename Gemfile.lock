@@ -157,7 +157,7 @@ GEM
     ffi (1.17.4-x86_64-linux-musl)
     formatador (1.2.3)
       reline
-    fugit (1.13.0)
+    fugit (1.12.2)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
     globalid (1.4.0)
@@ -238,8 +238,8 @@ GEM
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     lumberjack (1.4.2)
-    mail (2.9.1)
       logger
+    mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -336,11 +336,12 @@ GEM
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
       rack
+      railties (>= 7.0.0)
     pry (0.16.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
       reline (>= 0.6.0)
-    public_suffix (7.0.5)
+    public_suffix (6.0.2)
     puma (8.0.2)
       nio4r (~> 2.0)
     raabro (1.5.0)
@@ -546,7 +547,7 @@ DEPENDENCIES
   dockerfile-rails (>= 1.7)
   dotenv-rails
   factory_bot_rails (~> 6.0)
-  guard (~> 2.0)
+  guard (~> 2.20)
   guard-rspec (~> 4.7)
   importmap-rails
   jbuilder
