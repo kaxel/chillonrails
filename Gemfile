@@ -23,7 +23,7 @@ gem "csv"
 
 
 # Payments via Stripe Checkout [https://github.com/stripe/stripe-ruby]
-gem "stripe", "~> 13.0"
+gem "stripe", "~> 19.6"
 
 # Active Storage backend for Amazon S3 (production)
 gem "aws-sdk-s3", "~> 1.0", require: false
