@@ -13,7 +13,7 @@
 	                     css_classes: "object-cover object-center h-full w-full",
 	                     link_url: "/post/#{first_p.slug}" %>
 	        </div>
-		    <div class="flex items-center gap-2 font-mono text-xs font-bold tracking-wide uppercase text-sienna mb-2">
+		    <div class="flex items-center gap-2 font-mono text-sm font-bold tracking-wide uppercase text-sienna mb-2">
 		      <i class="w-1.5 h-1.5 rounded-full <%= get_topic_color(first_p.topic) %>"></i><%= first_p.topic %>
 		    </div>
 		    <div class="flex flex-wrap">
@@ -60,7 +60,7 @@
 	                     css_classes: "object-cover object-center h-full w-full",
 	                     link_url: "/post/#{second_p.slug}" %>
 	        </div>
-		    <div class="flex items-center gap-2 font-mono text-xs font-bold tracking-wide uppercase text-sienna mb-2">
+		    <div class="flex items-center gap-2 font-mono text-sm font-bold tracking-wide uppercase text-sienna mb-2">
 		      <i class="w-1.5 h-1.5 rounded-full <%= get_topic_color(second_p.topic.downcase) %>"></i><%= second_p.topic %>
 		    </div>
 	        <div class="flex flex-wrap">
