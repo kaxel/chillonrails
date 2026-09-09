@@ -21,7 +21,12 @@ gem "jbuilder"
 
 gem "csv"
 
-gem "postmark-rails"
+
+# Payments via Stripe Checkout [https://github.com/stripe/stripe-ruby]
+gem "stripe", "~> 19.6"
+
+# Active Storage backend for Amazon S3 (production)
+gem "aws-sdk-s3", "~> 1.0", require: false
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1.7"
@@ -55,13 +60,13 @@ group :development, :test do
   gem "factory_bot_rails", "~> 6.0"
   gem "guard", "~> 2.0"
   gem "guard-rspec", "~> 4.7"
-  gem "rubocop", "~> 1.77.0", require: false
+  gem "rubocop", "~> 1.90.0", require: false
   gem "rubocop-rails", "~> 2.32.0", require: false
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman",  "~> 8.0", require: false
+  gem "brakeman", ">= 8.0.5", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false

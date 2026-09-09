@@ -1,6 +1,48 @@
 @import "tailwindcss";
 
-/* Underline links specifically within post content */
-.content a {
-  text-decoration: underline;
+@theme {
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-air: #f4f6f0;
+  --color-paper: #ffffff;
+  --color-ink: #242922;
+  --color-muted: #69725f;
+  --color-line: #dee3d5;
+
+  --color-moss: #3f6b52;
+  --color-moss-dark: #2f523e;
+  --color-clay: #b8875a;
+  --color-sky: #7fa8b3;
+  --color-stone: #8a8f7c;
+  --color-sienna: #a8613f;
+  --color-heather: #8d7f9a;
+}
+
+/* Base-layer so utility classes (e.g. font-sans, font-extrabold on a
+   heading) can override these defaults — unlayered CSS beats layered
+   utilities regardless of specificity, which silently broke that. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-air);
+    color: var(--color-ink);
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Underline links specifically within post content */
+  .content a {
+    text-decoration: underline;
+    color: var(--color-moss);
+  }
 }

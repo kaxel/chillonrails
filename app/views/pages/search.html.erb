@@ -1,35 +1,35 @@
-<section class="text-gray-600 body-font">
+<section class="font-sans text-ink">
   <div class="container mx-auto flex flex-col px-5 py-4 justify-center items-center">
     <div class="w-full md:w-2/3 flex flex-col items-center text-center">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Search CHILLFILTR.com</h1>
-      <p class="leading-relaxed"> Enter your question or search term(s):</p>
+      <h1 class="font-display italic sm:text-4xl text-3xl mb-4 text-ink">Search CHILLFILTR®</h1>
+      <p class="leading-relaxed text-muted"> Enter your question or search term(s):</p>
       <div class="flex w-full justify-center items-end">
         <div class="relative mr-4 lg:w-full xl:w-1/2 w-2/4 md:w-full">
-			
+
 			<%= form_with url: :pages_search, method: :get do |form| %>
-			  <div class="p-2"><span class="border"><%= form.text_field :search, size: 24, height: 20, :value => @search_term, :class => "px-2" %></span></div>
-			  <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"><%= form.submit "Search" %></button>
+			  <div class="p-2"><span class="border border-line rounded-full"><%= form.text_field :search, size: 24, height: 20, :value => @search_term, :class => "px-3 py-1 bg-transparent focus:outline-none" %></span></div>
+			  <button class="inline-flex text-white bg-moss border-0 py-2 px-6 focus:outline-none hover:bg-moss-dark rounded-full text-lg"><%= form.submit "Search" %></button>
 			<% end %>
-		  
+
         </div>
       </div>
-      
+
     </div>
-	
+
 	<div>
-	  <p><%= @posts ? @posts.size : 0 %> records found.</p>
+	  <p class="text-muted"><%= @posts ? @posts.size : 0 %> records found.</p>
 	  <% if @posts && @posts.size>0 %>
 	    <% @posts.each do |p| %>
-	      <section class="text-gray-600 body-font hover:bg-gray-300">
+	      <section class="font-sans text-ink hover:bg-paper">
 	      	<a href="<%= post_path(slug: p.slug) %>">
 	        <div class="container px-1 py-2 mx-auto">
 	          <div class="lg:w-5/6 flex sm:flex-row flex-col sm:items-center items-start mx-auto">
 	            <div class="flex-shrink-0 mr-3 mb-2 sm:mb-0">
-	              <img src="<%= p.image %>" alt="<%= p.title %>" class="w-16 h-16 object-cover rounded">
+	              <img src="<%= p.image %>" alt="<%= p.title %>" class="w-16 h-16 object-cover rounded-xl">
 	            </div>
 	            <div class="flex-grow">
-	              <h4 class="text-normal font-medium title-font text-gray-900 mb-1"><%= p.title %></h4>
-	              <div class="text-sm text-gray-600"><%= p.preview %></div>
+	              <h4 class="not-italic font-sans text-normal font-medium text-ink mb-1"><%= p.title %></h4>
+	              <div class="text-sm text-muted"><%= p.preview %></div>
 	            </div>
 	          </div>
 	        </div>
@@ -37,8 +37,8 @@
 	      </section>
 	    <% end %>
 	  <% end %>
-	  
-	  
+
+
 	</div>
   </div>
 </section>
