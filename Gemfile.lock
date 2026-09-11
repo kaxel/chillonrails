@@ -195,7 +195,7 @@ GEM
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
     jmespath (1.6.2)
-    json (2.21.2)
+    json (3.0.0)
     json-jwt (1.17.2)
       activesupport (>= 4.2)
       aes_key_wrap
@@ -550,7 +550,7 @@ DEPENDENCIES
   guard-rspec (~> 4.7)
   importmap-rails
   jbuilder
-  json (< 3)
+  json (< 4)
   kamal
   letter_opener (~> 1)
   letter_opener_web (~> 3)
