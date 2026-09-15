@@ -31,7 +31,7 @@ gem "csv"
 gem "stripe", "~> 19.6"
 
 # Active Storage backend for Amazon S3 (production)
-gem "aws-sdk-s3", "~> 1.0", require: false
+gem "aws-sdk-s3", "~> 1.232", require: false
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1.22"
