@@ -9,9 +9,9 @@ RSpec.describe "Errors", type: :request do
   end
 
   describe "GET /internal_server_error" do
-    it "returns http success" do
+    it "returns http 500" do
       get "/errors/internal_server_error"
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:internal_server_error)
     end
   end
 

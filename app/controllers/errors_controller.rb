@@ -11,5 +11,6 @@ class ErrorsController < ApplicationController
   end
 
   def internal_server_error
+    render status: :internal_server_error
   end
 end
