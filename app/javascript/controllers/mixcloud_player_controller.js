@@ -31,9 +31,16 @@ export default class extends Controller {
         if (!this.widget) this.widget = Mixcloud.PlayerWidget(this.iframeTarget)
         return this.widget.ready
       })
-      .then(() => {
-        this.widget.seek(seconds)
-        this.widget.play()
+      // Start playback first if the player is paused/idle, then jump: the
+      // widget can't seek until audio is playing, so seeking first left a
+      // stopped player silent. Retry the seek once if it declines.
+      .then(() => this.widget.getIsPaused())
+      .then((paused) => { if (paused) return this.widget.play() })
+      .then(() => this.widget.seek(seconds))
+      .then((ok) => {
+        if (ok !== false) return
+        return new Promise((resolve) => setTimeout(resolve, 600))
+          .then(() => this.widget.seek(seconds))
       })
   }
 
