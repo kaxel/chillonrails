@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Errors", type: :request do
   describe "GET /not_found" do
-    it "returns http success" do
+    it "returns http 404" do
       get "/errors/not_found"
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:not_found)
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe "Errors", type: :request do
         follow_redirect! while response.redirect?
       }.to change(PageNotFound, :count).by(1)
 
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:not_found)
       expect(response.body).to include("Page Not Found")
       expect(PageNotFound.last.url).to end_with(dead_link)
     end
