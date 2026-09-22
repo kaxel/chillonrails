@@ -1,4 +1,8 @@
 module ApplicationHelper
+  # Soft, low-opacity tints of the same theme palette get_topic_color uses at
+  # full strength — light enough to sit behind text on a location/tag chip.
+  LIGHT_COLOR_BG = %w[bg-moss/10 bg-clay/10 bg-sky/10 bg-stone/10 bg-sienna/10 bg-heather/10].freeze
+
   def get_val_string(s)
     # Strip value string from YouTube link code
     # sample input: https://www.youtube.com/watch?v=tAMNPeo7AG0
@@ -61,8 +65,28 @@ module ApplicationHelper
     end
   end
 
+  # Wired into _post_locations/_post_tags: pass the location/tag string to
+  # get a color that's stable for that value everywhere it appears (same
+  # location always gets the same chip color). Called with no argument
+  # (as spec/helpers/application_helper_spec.rb does) just samples.
+  def get_location_color(value = nil)
+    color_for(value)
+  end
+
+  def get_tag_color(value = nil)
+    color_for(value)
+  end
+
   def random_search_message
     [ "A good search is a wonderful thing.", "Good luck with that.", "Gimme some search, said the web user.", "Your answer, just a click away.", "The AI will see you now.",
       "I love the smell of a search in the morning.", "Come on over and search me sometime.", "When the lights go down, in the city...", "I hope you find what you're searching for." ].sample
+  end
+
+  private
+
+  def color_for(value)
+    return LIGHT_COLOR_BG.sample if value.blank?
+
+    LIGHT_COLOR_BG[value.to_s.sum % LIGHT_COLOR_BG.size]
   end
 end
