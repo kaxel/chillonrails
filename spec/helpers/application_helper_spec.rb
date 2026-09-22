@@ -48,8 +48,8 @@ RSpec.describe ApplicationHelper, type: :helper do
 
   describe "#get_topic_color" do
     it "maps known topics to colors" do
-      expect(helper.get_topic_color("music")).to eq("bg-cyan-600")
-      expect(helper.get_topic_color("poetry")).to eq("bg-pink-600")
+      expect(helper.get_topic_color("music")).to eq("bg-moss")
+      expect(helper.get_topic_color("poetry")).to eq("bg-heather")
     end
 
     it "returns nil for unknown topics" do
