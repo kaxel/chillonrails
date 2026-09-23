@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  allow_unauthenticated_access only: [ :about, :authentication, :radio, :search, :contact, :licensing, :cookie_policy, :privacy, :terms, :archive ]
+  allow_unauthenticated_access only: [ :about, :authentication, :radio, :search, :contact, :thanks, :licensing, :cookie_policy, :privacy, :terms, :archive ]
 
   def about
     @page_title = "about"
@@ -26,6 +26,10 @@ class PagesController < ApplicationController
 
   def contact
     @page_title = "contact"
+  end
+
+  def thanks
+    @page_title = "thanks"
   end
 
   def radio

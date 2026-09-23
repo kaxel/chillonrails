@@ -40,6 +40,7 @@
   post '/webhooks/stripe', to: 'webhooks/stripe#create'
   get "pages/search"
   get "pages/contact"
+  get "pages/thanks"
   get "pages/licensing"
   get "pages/terms"
   get "pages/cookies", to: "pages#cookie_policy"
