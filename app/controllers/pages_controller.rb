@@ -34,6 +34,19 @@ class PagesController < ApplicationController
 
   def radio
     @page_title = "radio"
+    @latest_episode = Post.by_topic("radio").order(published_on: :desc).first
+
+    per_page = 4
+    max_total = 16
+
+    total_count = [ Post.by_topic("radio").count, max_total ].min
+    @episodes_total_pages = [ (total_count / per_page.to_f).ceil, 1 ].max
+    @episodes_page = params[:page].to_i
+    @episodes_page = 1 if @episodes_page < 1
+    @episodes_page = @episodes_total_pages if @episodes_page > @episodes_total_pages
+
+    offset = (@episodes_page - 1) * per_page
+    @episodes = Post.by_topic("radio").order(published_on: :desc).offset(offset).limit(per_page)
   end
 
   def authentication

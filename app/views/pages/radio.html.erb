@@ -1,16 +1,80 @@
 
 
 <section class="font-sans text-ink">
-  <div class="container px-5 py-8 mx-auto flex flex-wrap">
-    <h2 class="sm:text-3xl text-2xl text-ink mb-2 md:w-2/5"><iframe width="300" height="614" frameborder="0" src="https://live365.com/embeds/v1/player/a80518?s=sm&m=light&c=mp3"></iframe></h2>
-    <div class="md:w-3/5 md:pl-6">
-      <p class="leading-relaxed text-base">
-	  <iframe src="https://indierad.io/public/indieradio/history?theme=light" frameborder="0" allowtransparency="true" style="width: 100%; min-height: 750px; border: 0;"></iframe>
-	  </p>
-      <div class="flex md:mt-4 mt-6">
-       <%= link_to "Refresh", pages_radio_path, class: "block px-6 py-3 text-center text-white bg-moss hover:bg-moss-dark rounded-full" %>
-      </div>
+  <div class="container px-5 py-8 mx-auto">
+    <div class="max-w-2xl mx-auto text-center mb-8">
+      <p class="text-xs tracking-widest uppercase text-muted mb-4">Now Playing</p>
+      <h1 class="sm:text-3xl text-2xl font-display italic mb-4 text-ink">
+        <% if @latest_episode %>
+          <%= @latest_episode.title %>
+        <% else %>
+          The Weekly Catch
+        <% end %>
+      </h1>
+      <p class="leading-relaxed text-base text-muted">
+        Every Wednesday night, 9&ndash;11pm, on 89.5 FM Ashland and 94.1 FM Medford — hosted live by Krister Axel and archived here on Mixcloud right after the broadcast.
+      </p>
     </div>
+
+    <% if @latest_episode&.video_link.present? %>
+      <div class="max-w-2xl mx-auto">
+        <iframe title="Mixcloud player" allow="autoplay" width="100%" height="120" frameborder="0"
+          src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=<%= ERB::Util.url_encode(URI.parse(@latest_episode.video_link).path) %>"></iframe>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<section class="font-sans text-ink">
+  <div class="container px-5 py-8 mx-auto">
+    <p class="text-xs tracking-widest uppercase text-muted mb-4 text-center">The Weekly Catch</p>
+    <h1 class="sm:text-3xl text-2xl font-display italic mb-10 text-ink text-center">Recent Episodes</h1>
+
+    <% if @episodes.any? %>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-14 max-w-3xl mx-auto">
+        <% @episodes.each do |episode| %>
+          <article>
+            <div class="rounded-2xl h-56 overflow-hidden mb-4 bg-paper">
+              <%= render "shared/responsive_image",
+                         image_url: episode.image,
+                         alt_text: episode.title,
+                         css_classes: "object-cover object-center h-full w-full",
+                         link_url: post_path(slug: episode.slug) %>
+            </div>
+            <div class="flex items-center gap-2 text-xs tracking-widest uppercase text-muted mb-2">
+              <i class="w-1.5 h-1.5 rounded-full bg-moss"></i>Radio
+            </div>
+            <h3 class="mb-2 font-display text-2xl">
+              <%= link_to(episode.title, post_path(slug: episode.slug), class: "hover:text-moss") %>
+            </h3>
+            <p class="text-muted leading-normal mb-4">
+              <%= episode.preview %>
+            </p>
+            <div class="text-sm">
+              <%= link_to "Listen →", post_path(slug: episode.slug), class: "text-moss hover:text-moss-dark" %>
+            </div>
+          </article>
+        <% end %>
+      </div>
+
+      <% if @episodes_total_pages > 1 %>
+        <div class="flex items-center justify-center gap-6 mt-14 text-sm">
+          <% if @episodes_page > 1 %>
+            <%= link_to "← Newer", pages_radio_path(page: @episodes_page - 1), class: "text-moss hover:text-moss-dark" %>
+          <% else %>
+            <span class="text-line">← Newer</span>
+          <% end %>
+          <span class="text-muted">Page <%= @episodes_page %> of <%= @episodes_total_pages %></span>
+          <% if @episodes_page < @episodes_total_pages %>
+            <%= link_to "Older →", pages_radio_path(page: @episodes_page + 1), class: "text-moss hover:text-moss-dark" %>
+          <% else %>
+            <span class="text-line">Older →</span>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-muted text-center">No episodes posted yet — check back after Wednesday.</p>
+    <% end %>
   </div>
 </section>
 
