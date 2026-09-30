@@ -64,6 +64,14 @@ module ApplicationHelper
     when "poetry" then "bg-heather"
     end
   end
+  
+  def tag_should_be_capitalized(tag)
+    case tag
+    when "Kskq" then true
+    else
+      false
+    end
+  end
 
   # Wired into _post_locations/_post_tags: pass the location/tag string to
   # get a color that's stable for that value everywhere it appears (same
