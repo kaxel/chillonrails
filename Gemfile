@@ -37,7 +37,7 @@ gem "aws-sdk-s3", "~> 1.0", require: false
 gem "bcrypt", "~> 3.1.22"
 gem "omniauth-google-oauth2", "~> 1.2"
 gem "omniauth-apple", "~> 1.4"
-gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem "omniauth-rails_csrf_protection", "~> 2.0"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
