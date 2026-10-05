@@ -65,7 +65,7 @@ module ApplicationHelper
     when "radio" then "bg-dusk"
     end
   end
-  
+
   def tag_should_be_capitalized(tag)
     case tag
     when "Kskq" then true
