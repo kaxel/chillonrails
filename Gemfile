@@ -65,7 +65,7 @@ group :development, :test do
   gem "factory_bot_rails", "~> 6.0"
   gem "guard", "~> 2.20"
   gem "guard-rspec", "~> 4.7"
-  gem "rubocop", "~> 1.90.0", require: false
+  gem "rubocop", "~> 1.91.0", require: false
   gem "rubocop-rails", "~> 2.32.0", require: false
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
