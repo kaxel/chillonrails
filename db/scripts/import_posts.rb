@@ -15,6 +15,7 @@ class PostImporter
     @csv_file_path = csv_file_path
     @processed_count = 0
     @error_count = 0
+    @warning_count = 0
   end
 
   def import
@@ -41,6 +42,7 @@ class PostImporter
     puts "\nImport completed!"
     puts "Successfully processed: #{@processed_count} posts"
     puts "Errors: #{@error_count} posts"
+    puts "Posts saved WITHOUT an image: #{@warning_count} (see WARNING lines above)" if @warning_count > 0
   end
 
   private
@@ -57,6 +59,11 @@ class PostImporter
       # download w/ file_ext = 'main' (default)
       image_filename = download_image(this_row.image, this_row.slug)
       newpost.image = image_filename if image_filename
+    end
+
+    if newpost.image.blank?
+      @warning_count += 1
+      puts "WARNING: #{this_row.slug} has no image and will show broken on the site"
     end
     
     newpost.title = this_row.title
@@ -143,18 +150,27 @@ class PostImporter
     # Download the file
     local_path = image_dir.join(filename)
     
+    relative_path = "/images/posts/#{slug}/#{filename}"
+
     begin
-      URI.open(image_url, 'rb', ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE) do |file|
-        File.open(local_path, 'wb') do |local_file|
-          local_file.write(file.read)
-        end
-      end
-      
+      # Read the whole download before touching the destination, so a failed
+      # read can't truncate an image that's already on disk.
+      data = URI.open(image_url, 'rb', ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, &:read)
+      File.binwrite(local_path, data)
+
       puts "Downloaded image: #{image_url} -> #{local_path}"
       # Return the relative path for storing in database
-      "/images/posts/#{slug}/#{filename}"
+      relative_path
     rescue => e
       puts "Failed to download image #{image_url}: #{e.message}"
+
+      # The download can fail on the server (e.g. no outbound access) even though
+      # the file was already committed and deployed. Use it if it's really there.
+      if File.size?(local_path)
+        puts "Using the existing file instead: #{relative_path}"
+        return relative_path
+      end
+
       nil
     end
   end
