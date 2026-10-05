@@ -62,6 +62,7 @@ module ApplicationHelper
     when "technology" then "bg-stone"
     when "prose" then "bg-sienna"
     when "poetry" then "bg-heather"
+    when "radio" then "bg-dusk"
     end
   end
   

@@ -42,7 +42,7 @@
                          link_url: post_path(slug: episode.slug) %>
             </div>
             <div class="flex items-center gap-2 text-xs tracking-widest uppercase text-muted mb-2">
-              <i class="w-1.5 h-1.5 rounded-full bg-moss"></i>Radio
+              <i class="w-1.5 h-1.5 rounded-full <%= get_topic_color(episode.topic) %>"></i>Radio
             </div>
             <h3 class="mb-2 font-display text-2xl">
               <%= link_to(episode.title, post_path(slug: episode.slug), class: "hover:text-moss") %>
