@@ -15,6 +15,7 @@ AllCops:
     - 'config/**/*'
     - 'vendor/**/*'
     - 'script/import_posts.rb'
+    - 'db/scripts/import_posts.rb'
     - 'lib/tasks/import_authors.rake'	
 
 Layout/LineLength:
