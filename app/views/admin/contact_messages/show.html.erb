@@ -10,6 +10,15 @@
         <dt class="text-muted">Email</dt>
         <dd><%= mail_to @contact_message.email, nil, class: "text-moss hover:text-moss-dark underline" %></dd>
       </div>
+      <% if @contact_message.suspected_spam? %>
+        <div>
+          <dt class="text-muted">Spam check</dt>
+          <dd>
+            <span class="inline-block text-xs tracking-widest uppercase border border-sienna text-sienna rounded-full px-3 py-1">Possible spam</span>
+            <span class="text-muted block mt-2">This message contains several links, which is common in spam. It may still be genuine.</span>
+          </dd>
+        </div>
+      <% end %>
       <div>
         <dt class="text-muted">Received</dt>
         <dd><%= admin_time(@contact_message.created_at) %></dd>

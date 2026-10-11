@@ -46,6 +46,7 @@ en:
   
   contact:
     mail_subject: "Contact form: %{name}"
+    possible_spam_prefix: "[Possible spam]"
     rate_limited: "You've sent several messages recently. Please try again in a little while."
 
   posts:

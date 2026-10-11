@@ -14,10 +14,9 @@ class ContactMailer < ApplicationMailer
     reply_to = Mail::Address.new(@contact_message.email)
     reply_to.display_name = @contact_message.name
 
-    mail(
-      to: RECIPIENT,
-      reply_to: reply_to.to_s,
-      subject: t("contact.mail_subject", name: @contact_message.name.to_s.squish.truncate(80))
-    )
+    subject = t("contact.mail_subject", name: @contact_message.name.to_s.squish.truncate(80))
+    subject = "#{t('contact.possible_spam_prefix')} #{subject}" if @contact_message.suspected_spam?
+
+    mail(to: RECIPIENT, reply_to: reply_to.to_s, subject: subject)
   end
 end

@@ -21,6 +21,12 @@ RSpec.describe ContactMailer, type: :mailer do
       expect(mail.subject).to eq("Contact form: Jane Doe")
     end
 
+    it "labels the subject when the message looks like link spam" do
+      spammy = ContactMessage.create!(name: "Jane", email: "jane@example.com", message: "http://a.example http://b.example http://c.example")
+      subject = described_class.with(contact_message: spammy).message_received.subject
+      expect(subject).to eq("[Possible spam] Contact form: Jane")
+    end
+
     it "includes the message in both the text and HTML parts" do
       expect(mail.text_part.body.to_s).to include("Love the station.", "Keep it up!", "jane@example.com")
       expect(mail.html_part.body.to_s).to include("Love the station.", "Keep it up!")

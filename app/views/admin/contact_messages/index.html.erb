@@ -17,7 +17,12 @@
             <%= link_to admin_contact_message_path(message), class: "block p-5 hover:bg-air" do %>
               <div class="flex items-start justify-between gap-4">
                 <div class="min-w-0">
-                  <p class="font-medium mb-0! truncate"><%= message.name %></p>
+                  <p class="font-medium mb-0! truncate">
+                    <%= message.name %>
+                    <% if message.suspected_spam? %>
+                      <span class="ml-2 align-middle text-xs tracking-widest uppercase border border-sienna text-sienna rounded-full px-2 py-0.5">Possible spam</span>
+                    <% end %>
+                  </p>
                   <p class="text-sm text-muted mb-0! truncate"><%= message.email %></p>
                 </div>
                 <% if message.delivered_at %>

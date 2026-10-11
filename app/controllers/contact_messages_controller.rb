@@ -8,8 +8,12 @@ class ContactMessagesController < ApplicationController
   def create
     @contact_message = ContactMessage.new(contact_params)
 
-    # Bots fill the hidden honeypot field. Act as if it worked so they learn nothing.
-    return redirect_to(pages_thanks_path) if @contact_message.spam?
+    # Bots fill the hidden honeypot field, submit instantly, or skip the form
+    # (so have no valid token). Act as if it worked so they learn nothing.
+    if @contact_message.spam?
+      Rails.logger.info("Contact form spam dropped (#{@contact_message.spam_reason})")
+      return redirect_to(pages_thanks_path)
+    end
 
     if @contact_message.save
       ContactMailer.with(contact_message: @contact_message).message_received.deliver_later
@@ -23,6 +27,6 @@ class ContactMessagesController < ApplicationController
   private
 
   def contact_params
-    params.fetch(:contact_message, {}).permit(:name, :email, :message, :website)
+    params.fetch(:contact_message, {}).permit(:name, :email, :message, :website, :form_token)
   end
 end

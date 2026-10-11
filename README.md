@@ -23,8 +23,11 @@ into six topics (music, lifestyle, personal, technology, prose, poetry) plus
   is stamped when the email goes out, so `ContactMessage.undelivered` lists any
   that were saved but never sent. Admins can read them at
   `/admin/contact_messages` (also in the menu under More), with a filter for
-  the unsent ones. It has a hidden honeypot field (spam is discarded, not
-  saved) and a limit of 5 messages per hour per IP.
+  the unsent ones. Spam defenses: a hidden honeypot field, a signed form
+  timestamp (submissions faster than 3 seconds, or without a valid token, are
+  discarded, not saved), and a limit of 5 messages per hour per IP. Messages
+  with 3 or more links are still saved and emailed, but marked `suspected_spam`
+  and prefixed "[Possible spam]" in the subject.
 - **Accounts:** email/password sign-in plus Google and Apple via OmniAuth.
 - **RSS:** feeds for all posts or a single topic.
 

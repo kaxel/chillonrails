@@ -102,6 +102,15 @@ RSpec.describe "Admin contact messages", type: :request do
       expect(response.body).to include("Page 2 of 2")
     end
 
+    it "marks messages that look like link spam" do
+      create_message(name: "Link Dropper", message: "http://a.example http://b.example http://c.example")
+      create_message(name: "Plain Sender", message: "Love the station.")
+
+      get admin_contact_messages_path
+
+      expect(response.body.scan("Possible spam").size).to eq(1)
+    end
+
     it "escapes anything a visitor typed" do
       create_message(name: "<b>Bold</b> Name", message: "<script>alert(1)</script>")
 
@@ -130,6 +139,22 @@ RSpec.describe "Admin contact messages", type: :request do
       get admin_contact_message_path(message)
 
       expect(response.body).to include("Not sent", "hasn't gone out")
+    end
+
+    it "flags a possible-spam message and explains why" do
+      message = create_message(message: "http://a.example http://b.example http://c.example")
+
+      get admin_contact_message_path(message)
+
+      expect(response.body).to include("Possible spam", "several links")
+    end
+
+    it "does not flag an ordinary message" do
+      message = create_message(message: "Love the station.")
+
+      get admin_contact_message_path(message)
+
+      expect(response.body).not_to include("Possible spam")
     end
 
     it "escapes the message body" do

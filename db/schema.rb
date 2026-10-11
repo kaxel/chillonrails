@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_10_11_190000) do
+ActiveRecord::Schema[8.0].define(version: 2026_10_11_200000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -75,6 +75,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_10_11_190000) do
     t.datetime "delivered_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "suspected_spam", default: false, null: false
     t.index ["created_at"], name: "index_contact_messages_on_created_at"
   end
 

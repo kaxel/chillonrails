@@ -40,6 +40,9 @@
                   class: "block w-full rounded-lg border border-line bg-white px-3 py-2 focus:outline-none focus:border-moss" %>
           </div>
 
+          <%# When the form was shown, signed. Submissions made too fast, or without it, are bots. %>
+          <%= form.hidden_field :form_token, value: ContactMessage.new_form_token %>
+
           <%# Honeypot: invisible to people, tempting to bots. Anything typed here is silently discarded. %>
           <div class="absolute left-[-9999px]" aria-hidden="true">
             <%= form.label :website, "Leave this field empty" %>
