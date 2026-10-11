@@ -17,6 +17,14 @@ into six topics (music, lifestyle, personal, technology, prose, poetry) plus
   with a paginated list of past episodes (4 per page, 16 max).
 - **Song submissions:** artists upload tracks straight to S3 and pay $3 per
   song through Stripe Checkout. See [docs/song_submissions.md](docs/song_submissions.md).
+- **Contact form:** a native form on `/pages/contact` that emails
+  info@chillfiltr.com through the same Brevo relay, with the visitor's address
+  as Reply-To. Each message is also saved in `contact_messages`; `delivered_at`
+  is stamped when the email goes out, so `ContactMessage.undelivered` lists any
+  that were saved but never sent. Admins can read them at
+  `/admin/contact_messages` (also in the menu under More), with a filter for
+  the unsent ones. It has a hidden honeypot field (spam is discarded, not
+  saved) and a limit of 5 messages per hour per IP.
 - **Accounts:** email/password sign-in plus Google and Apple via OmniAuth.
 - **RSS:** feeds for all posts or a single topic.
 

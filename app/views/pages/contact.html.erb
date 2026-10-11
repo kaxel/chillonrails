@@ -10,30 +10,45 @@
       
       <p class="mb-8 leading-relaxed">CHILLFILTR® was built for one simple reason: to bring a spotlight to independent artists & creators from around the world.</p>
 	  <p class="leading-relaxed">You can use the contact form below. If you are sending me music, please use <%= link_to("this form", pages_submit_path, :class => "text-moss hover:text-moss-dark underline") %> instead.</p>
-	  <div class="bg-paper border border-line rounded-2xl p-6 flex text-center justify-center">
-		<form action="https://api.web3forms.com/submit" method="POST">
+      <div class="bg-paper border border-line rounded-2xl p-6 w-full max-w-md text-left">
+        <%= form_with model: @contact_message, url: contact_messages_path, scope: :contact_message, class: "space-y-4" do |form| %>
+          <% if @contact_message.errors.any? %>
+            <div class="bg-red-50 text-red-600 text-sm p-3 rounded-lg" role="alert">
+              <ul class="list-disc list-inside">
+                <% @contact_message.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-		    <!-- Replace with your Access Key -->
-		    <input type="hidden" name="access_key" value="2822f03b-fe85-4f97-9c10-a316a6dd1f25">
+          <div>
+            <%= form.label :name, "Name", class: "block text-sm text-muted mb-1" %>
+            <%= form.text_field :name, required: true, maxlength: 200, autocomplete: "name",
+                  class: "block w-full rounded-lg border border-line bg-white px-3 py-2 focus:outline-none focus:border-moss" %>
+          </div>
 
-		    <!-- Form Inputs. Each input must have a name="" attribute -->
-			<div><small><label width="30">Name</label></small>
-		    <input type="text" name="name" required class="bg-white m-2 float-right"></div>
-			<div class="mt-4"><small><label width="30">Email</label></small>
-		    <input type="email" name="email" required class="bg-white m-2 float-right"></div>
-			<div class="mt-4"><small><label width="30">Message</label></small>
-		    <textarea name="message" required class="bg-white m-2 float-right" cols=26></textarea></div>
+          <div>
+            <%= form.label :email, "Email", class: "block text-sm text-muted mb-1" %>
+            <%= form.email_field :email, required: true, maxlength: 254, autocomplete: "email",
+                  class: "block w-full rounded-lg border border-line bg-white px-3 py-2 focus:outline-none focus:border-moss" %>
+          </div>
 
-		    <!-- Honeypot Spam Protection -->
-		    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+          <div>
+            <%= form.label :message, "Message", class: "block text-sm text-muted mb-1" %>
+            <%= form.text_area :message, required: true, rows: 6, maxlength: 5000,
+                  class: "block w-full rounded-lg border border-line bg-white px-3 py-2 focus:outline-none focus:border-moss" %>
+          </div>
 
-		    <!-- Custom Confirmation / Success Page -->
-		    <input type="hidden" name="redirect" value="https://chillfiltr.com/pages/thanks">
-			<br/>	
-		    <button type="submit" class="text-white bg-moss hover:bg-moss-dark rounded-full px-6 py-2 m-2">SEND MESSAGE</button>
+          <%# Honeypot: invisible to people, tempting to bots. Anything typed here is silently discarded. %>
+          <div class="absolute left-[-9999px]" aria-hidden="true">
+            <%= form.label :website, "Leave this field empty" %>
+            <%= form.text_field :website, tabindex: -1, autocomplete: "off" %>
+          </div>
 
-		</form>
-	  </div>
+          <%= form.submit "SEND MESSAGE", class: "text-white bg-moss hover:bg-moss-dark rounded-full px-6 py-2 cursor-pointer" %>
+        <% end %>
+      </div>
     </div>
   </div>
   <hr/>

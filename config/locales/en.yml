@@ -44,6 +44,10 @@ en:
     invalid_reset_link: "Password reset link is invalid or has expired."
     reset_subject: "Reset your password"
   
+  contact:
+    mail_subject: "Contact form: %{name}"
+    rate_limited: "You've sent several messages recently. Please try again in a little while."
+
   posts:
     created_successfully: "Post was successfully created."
     updated_successfully: "Post was successfully updated."

@@ -1,0 +1,63 @@
+<section class="font-sans text-ink">
+  <div class="container mx-auto px-5 py-10 max-w-3xl">
+    <p class="text-xs tracking-widest uppercase text-muted mb-2">Admin</p>
+    <h1 class="font-display italic text-4xl mb-6">Contact messages</h1>
+
+    <nav class="flex gap-2 mb-6 text-sm" aria-label="Filter messages">
+      <%= link_to "All (#{@total_count})", admin_contact_messages_path,
+            class: "px-4 py-2 rounded-full border #{@filter == 'all' ? 'bg-moss text-white border-moss' : 'border-line text-ink hover:border-moss hover:text-moss'}" %>
+      <%= link_to "Not sent (#{@undelivered_count})", admin_contact_messages_path(filter: "undelivered"),
+            class: "px-4 py-2 rounded-full border #{@filter == 'undelivered' ? 'bg-moss text-white border-moss' : (@undelivered_count.positive? ? 'border-sienna text-sienna hover:bg-sienna hover:text-white' : 'border-line text-ink hover:border-moss hover:text-moss')}" %>
+    </nav>
+
+    <% if @contact_messages.any? %>
+      <ul class="bg-paper border border-line rounded-2xl divide-y divide-line overflow-hidden">
+        <% @contact_messages.each do |message| %>
+          <li>
+            <%= link_to admin_contact_message_path(message), class: "block p-5 hover:bg-air" do %>
+              <div class="flex items-start justify-between gap-4">
+                <div class="min-w-0">
+                  <p class="font-medium mb-0! truncate"><%= message.name %></p>
+                  <p class="text-sm text-muted mb-0! truncate"><%= message.email %></p>
+                </div>
+                <% if message.delivered_at %>
+                  <span class="shrink-0 inline-flex items-center gap-2 text-xs tracking-widest uppercase text-muted">
+                    <i class="w-1.5 h-1.5 rounded-full bg-moss"></i>Sent
+                  </span>
+                <% else %>
+                  <span class="shrink-0 text-xs tracking-widest uppercase bg-sienna text-white rounded-full px-3 py-1">Not sent</span>
+                <% end %>
+              </div>
+              <p class="text-muted mt-2 mb-1!"><%= truncate(message.message.squish, length: 140) %></p>
+              <p class="text-xs text-muted mb-0!"><%= admin_time(message.created_at) %></p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+      <% if @total_pages > 1 %>
+        <div class="flex items-center justify-center gap-6 mt-10 text-sm">
+          <% if @page > 1 %>
+            <%= link_to "← Newer", admin_contact_messages_path(page: @page - 1, filter: (@filter unless @filter == "all")), class: "text-moss hover:text-moss-dark" %>
+          <% else %>
+            <span class="text-line">← Newer</span>
+          <% end %>
+          <span class="text-muted">Page <%= @page %> of <%= @total_pages %></span>
+          <% if @page < @total_pages %>
+            <%= link_to "Older →", admin_contact_messages_path(page: @page + 1, filter: (@filter unless @filter == "all")), class: "text-moss hover:text-moss-dark" %>
+          <% else %>
+            <span class="text-line">Older →</span>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-muted text-center py-12">
+        <% if @filter == "undelivered" %>
+          Every message has been sent.
+        <% else %>
+          No messages yet.
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+</section>

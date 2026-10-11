@@ -1,0 +1,38 @@
+<section class="font-sans text-ink">
+  <div class="container mx-auto px-5 py-10 max-w-2xl">
+    <p class="mb-6 text-sm"><%= link_to "← All messages", admin_contact_messages_path, class: "text-moss hover:text-moss-dark" %></p>
+
+    <p class="text-xs tracking-widest uppercase text-muted mb-2">Message</p>
+    <h1 class="font-display italic text-4xl mb-6"><%= @contact_message.name %></h1>
+
+    <dl class="bg-paper border border-line rounded-2xl p-6 mb-6 space-y-3 text-sm">
+      <div>
+        <dt class="text-muted">Email</dt>
+        <dd><%= mail_to @contact_message.email, nil, class: "text-moss hover:text-moss-dark underline" %></dd>
+      </div>
+      <div>
+        <dt class="text-muted">Received</dt>
+        <dd><%= admin_time(@contact_message.created_at) %></dd>
+      </div>
+      <div>
+        <dt class="text-muted">Notification email</dt>
+        <dd>
+          <% if @contact_message.delivered_at %>
+            Sent <%= admin_time(@contact_message.delivered_at) %>
+          <% else %>
+            <span class="inline-block text-xs tracking-widest uppercase bg-sienna text-white rounded-full px-3 py-1">Not sent</span>
+            <span class="text-muted block mt-2">The message was saved, but the notification email hasn't gone out. Either the mail server rejected it or the background job hasn't run yet.</span>
+          <% end %>
+        </dd>
+      </div>
+    </dl>
+
+    <div class="bg-paper border border-line rounded-2xl p-6 mb-6">
+      <%= simple_format(@contact_message.message, class: "leading-relaxed") %>
+    </div>
+
+    <%= mail_to @contact_message.email, "Reply by email",
+          subject: "Re: your message to CHILLFILTR®",
+          class: "inline-block text-white bg-moss hover:bg-moss-dark rounded-full px-6 py-2" %>
+  </div>
+</section>

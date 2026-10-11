@@ -103,6 +103,9 @@
               <% if Rails.application.routes.url_helpers.respond_to?(:pages_authentication_path) && !Current.user %>
                 <%= link_to 'Login', pages_authentication_path, class: "block py-2 px-8 text-muted hover:bg-air text-sm", data: { action: "click->hamburger#hide" } %>
               <% end %>
+              <% if Current.user&.admin? %>
+                <%= link_to 'Messages', admin_contact_messages_path, class: "block py-2 px-8 text-muted hover:bg-air text-sm", data: { action: "click->hamburger#hide" } %>
+              <% end %>
               <%= link_to 'Tags', tags_path, class: "block py-2 px-8 text-muted hover:bg-air text-sm", data: { action: "click->hamburger#hide" } %>
             </div>
           </li>

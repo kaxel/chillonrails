@@ -26,6 +26,7 @@ class PagesController < ApplicationController
 
   def contact
     @page_title = "contact"
+    @contact_message = ContactMessage.new
   end
 
   def thanks

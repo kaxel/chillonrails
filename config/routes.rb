@@ -40,6 +40,11 @@
   post '/webhooks/stripe', to: 'webhooks/stripe#create'
   get "pages/search"
   get "pages/contact"
+  post "/contact", to: "contact_messages#create", as: :contact_messages
+
+  namespace :admin do
+    resources :contact_messages, only: [ :index, :show ]
+  end
   get "pages/thanks"
   get "pages/licensing"
   get "pages/terms"
