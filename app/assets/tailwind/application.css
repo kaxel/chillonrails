@@ -46,4 +46,16 @@
     text-decoration: underline;
     color: var(--color-moss);
   }
+
+  /* Native audio players embedded in post content (e.g. the Indie Music on
+     Tap season 1 episodes). Same muted treatment as the post-level audio
+     player in posts/show, but block-level so it doesn't sit inline mid-text. */
+  .content audio {
+    display: block;
+    width: 100%;
+    max-width: 28rem;
+    height: 54px;
+    margin: 1rem 0;
+    filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
+  }
 }
