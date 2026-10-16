@@ -7,37 +7,127 @@
       {
         "artist": "The Wood Brothers",
         "song": "Puff of Smoke",
-        "seek_seconds": 115
+        "seek_seconds": 61
       },
       {
         "artist": "Jessie Altman",
         "song": "Sleepwalking",
-        "seek_seconds": 300
+        "seek_seconds": 342
       },
       {
         "artist": "Meet Me For Reasons",
         "song": "A Positive Change",
-        "seek_seconds": 480
+        "seek_seconds": 539
       },
       {
         "artist": "Seadisco",
         "song": "Dreams Come True",
-        "seek_seconds": 666
+        "seek_seconds": 664
       },
       {
         "artist": "Bunch of Ace",
         "song": "Terminal 1",
-        "seek_seconds": 985
+        "seek_seconds": 977
       },
       {
         "artist": "della",
         "song": "Drive to Me",
-        "seek_seconds": 1182
+        "seek_seconds": 1175
       },
       {
         "artist": "Little City",
         "song": "Wilting Rose",
-        "seek_seconds": 1425
+        "seek_seconds": 1426
+      },
+      {
+        "artist": "Orange Oak",
+        "song": "well, well, well",
+        "seek_seconds": 1735
+      },
+      {
+        "artist": "9ms",
+        "song": "M€mo",
+        "seek_seconds": 2248
+      },
+      {
+        "artist": "ERVSED",
+        "song": "New Kid",
+        "seek_seconds": 2500
+      },
+      {
+        "artist": "Belle Blue",
+        "song": "Wash",
+        "seek_seconds": 2928
+      },
+      {
+        "artist": "Down Like Silver",
+        "song": "Broken Coastline",
+        "seek_seconds": 3433
+      },
+      {
+        "artist": "R.C.D.",
+        "song": "FANTASY",
+        "seek_seconds": 3654
+      },
+      {
+        "artist": "x_at_dawn",
+        "song": "whistle_in_the_wind_[LIKE_THIS]",
+        "seek_seconds": 3974
+      },
+      {
+        "artist": "T1NΔ",
+        "song": "She Is Me",
+        "seek_seconds": 4504
+      },
+      {
+        "artist": "Brendan Willing James",
+        "song": "Curveball",
+        "seek_seconds": 4816
+      },
+      {
+        "artist": "The Wood Brothers",
+        "song": "Pray God Listens",
+        "seek_seconds": 5237
+      },
+      {
+        "artist": "The Belle Brigade",
+        "song": "Likely to Use Something",
+        "seek_seconds": 5553
+      },
+      {
+        "artist": "Khruangbin",
+        "song": "Texas Sun",
+        "seek_seconds": 5818
+      },
+      {
+        "artist": "Fenne Lily",
+        "song": "Hollywood and Fear - Bonus Track",
+        "seek_seconds": 6070
+      },
+      {
+        "artist": "Snocaps",
+        "song": "Heathcliff",
+        "seek_seconds": 6338
+      },
+      {
+        "artist": "Anna Tivel",
+        "song": "White Goose",
+        "seek_seconds": 6487
+      },
+      {
+        "artist": "Olive Louise",
+        "song": "Moroccan Oranges",
+        "seek_seconds": 6782
+      },
+      {
+        "artist": "Wilder Woods",
+        "song": "Criminal",
+        "seek_seconds": 6998
+      },
+      {
+        "artist": "Mikayla McVey",
+        "song": "New Year",
+        "seek_seconds": 7178
       },
       {
         "artist": "Orange Oak",
@@ -50,99 +140,14 @@
         "seek_seconds": 2013
       },
       {
-        "artist": "9ms",
-        "song": "M€mo",
-        "seek_seconds": 2253
-      },
-      {
-        "artist": "ERVSED",
-        "song": "New Kid",
-        "seek_seconds": 2495
-      },
-      {
-        "artist": "Belle Blue",
-        "song": "Wash",
-        "seek_seconds": 2932
-      },
-      {
         "artist": "Christopher Jack",
         "song": "Watch You Cry",
         "seek_seconds": 3129
       },
       {
-        "artist": "Down Like Silver",
-        "song": "Broken Coastline",
-        "seek_seconds": 3420
-      },
-      {
-        "artist": "R.C.D.",
-        "song": "FANTASY",
-        "seek_seconds": 3600
-      },
-      {
-        "artist": "x_at_dawn",
-        "song": "whistle_in_the_wind_[LIKE_THIS]",
-        "seek_seconds": 3974
-      },
-      {
         "artist": "NuSkript",
         "song": "Trick of Light (Midnight Pulse Remix)",
         "seek_seconds": 4145
-      },
-      {
-        "artist": "T1NΔ",
-        "song": "She Is Me",
-        "seek_seconds": 4515
-      },
-      {
-        "artist": "Brendan Willing James",
-        "song": "Curveball",
-        "seek_seconds": 4800
-      },
-      {
-        "artist": "The Wood Brothers",
-        "song": "Pray God Listens",
-        "seek_seconds": 5220
-      },
-      {
-        "artist": "The Belle Brigade",
-        "song": "Likely to Use Something",
-        "seek_seconds": 5520
-      },
-      {
-        "artist": "Khruangbin",
-        "song": "Texas Sun",
-        "seek_seconds": 5760
-      },
-      {
-        "artist": "Fenne Lily",
-        "song": "Hollywood and Fear - Bonus Track",
-        "seek_seconds": 6060
-      },
-      {
-        "artist": "Snocaps",
-        "song": "Heathcliff",
-        "seek_seconds": 6300
-      },
-      {
-        "artist": "Anna Tivel",
-        "song": "White Goose",
-        "seek_seconds": 6480
-      },
-      {
-        "artist": "Olive Louise",
-        "song": "Moroccan Oranges",
-        "seek_seconds": 6720
-      },
-      {
-        "artist": "Wilder Woods",
-        "song": "Criminal",
-        "seek_seconds": 6960
-      },
-      {
-        "artist": "Mikayla McVey",
-        "song": "New Year",
-        "seek_seconds": 7140
       }
     ]
   },
@@ -154,102 +159,102 @@
       {
         "artist": "Night House",
         "song": "Heaven Knows",
-        "seek_seconds": 0
+        "seek_seconds": 405
       },
       {
         "artist": "Lily _like the flower_",
         "song": "Garden Song",
-        "seek_seconds": 540
+        "seek_seconds": 952
       },
       {
         "artist": "Jo Jo Gunne",
         "song": "Shake That Fat",
-        "seek_seconds": 1020
+        "seek_seconds": 1407
       },
       {
         "artist": "The Towns",
         "song": "Dreamin'",
-        "seek_seconds": 1260
+        "seek_seconds": 1673
       },
       {
         "artist": "Sanic",
         "song": "Green Trill Zone",
-        "seek_seconds": 1500
+        "seek_seconds": 1913
       },
       {
         "artist": "Magenta Sound",
         "song": "From Within",
-        "seek_seconds": 1860
+        "seek_seconds": 2284
       },
       {
         "artist": "The Wood Brothers",
         "song": "Witness",
-        "seek_seconds": 2460
+        "seek_seconds": 2840
       },
       {
         "artist": "Vacation Manor",
         "song": "January (Over & Over)",
-        "seek_seconds": 3120
+        "seek_seconds": 3500
       },
       {
         "artist": "Hanna Andréa",
         "song": "Get Off Your Phone",
-        "seek_seconds": 3180
+        "seek_seconds": 3601
       },
       {
         "artist": "southpaw",
         "song": "Yin:Yang",
-        "seek_seconds": 3480
+        "seek_seconds": 3901
       },
       {
         "artist": "Coco Elane/Michel Demello",
         "song": "Love U",
-        "seek_seconds": 3720
+        "seek_seconds": 4140
       },
       {
         "artist": "EPONINE",
         "song": "Smoov",
-        "seek_seconds": 4140
+        "seek_seconds": 4543
       },
       {
         "artist": "Dumomi the Jig",
         "song": "Kilimanja",
-        "seek_seconds": 4740
+        "seek_seconds": 5150
       },
       {
         "artist": "B-Rad",
         "song": "Bumblin'",
-        "seek_seconds": 4980
+        "seek_seconds": 5395
       },
       {
         "artist": "Leif Vollebekk",
         "song": "False-Hearted Lover",
-        "seek_seconds": 5280
+        "seek_seconds": 5695
       },
       {
         "artist": "philine",
         "song": "waste a life",
-        "seek_seconds": 5640
+        "seek_seconds": 6009
       },
       {
         "artist": "The River South",
         "song": "No Medicine",
-        "seek_seconds": 5880
+        "seek_seconds": 6302
       },
       {
         "artist": "Neal Francis",
         "song": "Can't Stop The Rain - Parsonage Mix",
-        "seek_seconds": 6240
+        "seek_seconds": 6619
       },
       {
         "artist": "The Lone Bellow",
         "song": "Martingales",
-        "seek_seconds": 6540
+        "seek_seconds": 6922
       },
       {
         "artist": "Dropper",
         "song": "Memoirs of Working in a Bowling Alley",
-        "seek_seconds": 6780
+        "seek_seconds": 7162
       }
     ]
   },
@@ -261,122 +266,122 @@
       {
         "artist": "Lucy Clearwater",
         "song": "Shoulders feat. Kenneth Pattengale",
-        "seek_seconds": 0
+        "seek_seconds": 60
       },
       {
         "artist": "Skinny Dippers",
         "song": "When You Were It",
-        "seek_seconds": 300
+        "seek_seconds": 313
       },
       {
         "artist": "The Towns",
         "song": "Two Shots",
-        "seek_seconds": 540
+        "seek_seconds": 579
       },
       {
         "artist": "Shakey Graves",
         "song": "Time Flies",
-        "seek_seconds": 1080
+        "seek_seconds": 1103
       },
       {
         "artist": "Lindsey Troy",
         "song": "See You on the Other Side",
-        "seek_seconds": 1260
+        "seek_seconds": 1322
       },
       {
         "artist": "Alchemical XP",
         "song": "Rumbling Hearts",
-        "seek_seconds": 1620
+        "seek_seconds": 1685
       },
       {
         "artist": "akatasamattin",
         "song": "Jiyuu no imi o tou you ni - English & Japanese Complete Version",
-        "seek_seconds": 1980
+        "seek_seconds": 2015
       },
       {
         "artist": "MAMI UMAMI",
         "song": "Conor",
-        "seek_seconds": 2760
+        "seek_seconds": 2824
       },
       {
         "artist": "Shakey Graves",
         "song": "When the Love Is New",
-        "seek_seconds": 3060
+        "seek_seconds": 3090
       },
       {
         "artist": "Mike Viola",
         "song": "King Kong Hand",
-        "seek_seconds": 3300
+        "seek_seconds": 3355
       },
       {
         "artist": "Rose Pedal",
         "song": "How Did I End Up Here?",
-        "seek_seconds": 3600
+        "seek_seconds": 3655
       },
       {
         "artist": "Mike Viola",
         "song": "I Forgive You, Fuck Face",
-        "seek_seconds": 4020
+        "seek_seconds": 4026
       },
       {
         "artist": "Blackwood",
         "song": "Release Me",
-        "seek_seconds": 4320
+        "seek_seconds": 4372
       },
       {
         "artist": "Lydia Luce",
         "song": "Belly",
-        "seek_seconds": 4680
+        "seek_seconds": 4695
       },
       {
         "artist": "Astara Black",
         "song": "Deep Enough Below",
-        "seek_seconds": 4860
+        "seek_seconds": 4876
       },
       {
         "artist": "Land of Talk",
         "song": "Something Will Be Said",
-        "seek_seconds": 5040
+        "seek_seconds": 5085
       },
       {
         "artist": "Widowspeak",
         "song": "Plum",
-        "seek_seconds": 5400
+        "seek_seconds": 5429
       },
       {
         "artist": "Golden Vessel",
         "song": "pockets full of rocks (feat. mallrat & emerson leif)",
-        "seek_seconds": 5700
+        "seek_seconds": 5714
       },
       {
         "artist": "Georgia Harmer",
         "song": "Strongest Person",
-        "seek_seconds": 5820
+        "seek_seconds": 5884
       },
       {
         "artist": "Palmyra",
         "song": "Arizona",
-        "seek_seconds": 6180
+        "seek_seconds": 6242
       },
       {
         "artist": "Propter Hawk",
         "song": "Telephone",
-        "seek_seconds": 6480
+        "seek_seconds": 6542
       },
       {
         "artist": "The Luxury of Being Human",
         "song": "Bring Summer Back",
-        "seek_seconds": 6720
+        "seek_seconds": 6782
       },
       {
         "artist": "Andromède",
         "song": "Menteuse",
-        "seek_seconds": 7080
+        "seek_seconds": 7085
       },
       {
         "artist": "Hand Habits",
         "song": "More Than Love",
-        "seek_seconds": 7140
+        "seek_seconds": 7145
       }
     ]
   },
@@ -388,32 +393,32 @@
       {
         "artist": "Drew Neirin",
         "song": "The Penultimatum",
-        "seek_seconds": 72
+        "seek_seconds": 67
       },
       {
         "artist": "JAYCiX",
         "song": "Bright Side",
-        "seek_seconds": 278
+        "seek_seconds": 277
       },
       {
         "artist": "pustoe mesto",
         "song": "Ostanus zdes",
-        "seek_seconds": 588
+        "seek_seconds": 590
       },
       {
         "artist": "Alissa Feudo",
         "song": "Something in the Water",
-        "seek_seconds": 821
+        "seek_seconds": 824
       },
       {
         "artist": "Lydia Luce",
         "song": "Baby Blues",
-        "seek_seconds": 950
+        "seek_seconds": 1070
       },
       {
         "artist": "Open Road Folk Music",
         "song": "Peace in this Land",
-        "seek_seconds": 1295
+        "seek_seconds": 1297
       },
       {
         "artist": "Donovan Woods",
@@ -423,7 +428,7 @@
       {
         "artist": "Collective Dreams",
         "song": "Wemby",
-        "seek_seconds": 1738
+        "seek_seconds": 1740
       },
       {
         "artist": "Jesse Adelman",
@@ -438,52 +443,52 @@
       {
         "artist": "The River South",
         "song": "There's Nothing Beneath Us",
-        "seek_seconds": 2488
+        "seek_seconds": 2489
       },
       {
         "artist": "Sumbuck",
         "song": "Kid",
-        "seek_seconds": 2712
+        "seek_seconds": 2713
       },
       {
         "artist": "Delgres",
         "song": "Walking Alone",
-        "seek_seconds": 3015
+        "seek_seconds": 3013
       },
       {
         "artist": "Arts Fishing Club",
         "song": "Some Kind of Dangerous",
-        "seek_seconds": 3320
+        "seek_seconds": 3319
       },
       {
         "artist": "Julian Bachlow",
         "song": "Destined",
-        "seek_seconds": 3694
+        "seek_seconds": 3696
       },
       {
         "artist": "RXRY!",
         "song": "Liminal",
-        "seek_seconds": 3897
+        "seek_seconds": 3900
       },
       {
         "artist": "Donovan Woods",
         "song": "Losing Everything (feat. Anaïs Mitchell)",
-        "seek_seconds": 4222
+        "seek_seconds": 4223
       },
       {
         "artist": "Finom",
         "song": "As You Are",
-        "seek_seconds": 4455
+        "seek_seconds": 4457
       },
       {
         "artist": "Christian Alexander",
         "song": "the ones we love",
-        "seek_seconds": 4830
+        "seek_seconds": 4829
       },
       {
         "artist": "Mick Flannery",
         "song": "What They Say",
-        "seek_seconds": 4985
+        "seek_seconds": 4984
       },
       {
         "artist": "lindsay",
@@ -493,12 +498,12 @@
       {
         "artist": "Ross Quinn",
         "song": "Out Of Time",
-        "seek_seconds": 5745
+        "seek_seconds": 5723
       },
       {
         "artist": "The Ballroom Thieves",
         "song": "Shine",
-        "seek_seconds": 5970
+        "seek_seconds": 5971
       },
       {
         "artist": "Bhi Bhiman",
@@ -513,17 +518,17 @@
       {
         "artist": "Lola Marsh",
         "song": "Shot Shot Cherry",
-        "seek_seconds": 6610
+        "seek_seconds": 6609
       },
       {
         "artist": "Car Seat Headrest",
         "song": "Golden Years",
-        "seek_seconds": 6835
+        "seek_seconds": 6832
       },
       {
         "artist": "Golden Vessel",
         "song": "Jersey City",
-        "seek_seconds": 7105
+        "seek_seconds": 7102
       }
     ]
   },
@@ -535,122 +540,122 @@
       {
         "artist": "Estella Dawn",
         "song": "Japanese Boots",
-        "seek_seconds": 0
+        "seek_seconds": 338
       },
       {
         "artist": "Snocaps",
         "song": "I Don't Want To",
-        "seek_seconds": 1020
+        "seek_seconds": 1359
       },
       {
         "artist": "Donovan Woods",
         "song": "These Things Happen",
-        "seek_seconds": 1740
+        "seek_seconds": 2063
       },
       {
         "artist": "Ada",
         "song": "Eve - DJ Koze Remix",
-        "seek_seconds": 1800
+        "seek_seconds": 2123
       },
       {
         "artist": "Khruangbin",
         "song": "Texas Sun",
-        "seek_seconds": 2400
+        "seek_seconds": 2756
       },
       {
         "artist": "Bad Sauna",
         "song": "Voittajan ainesta",
-        "seek_seconds": 2700
+        "seek_seconds": 3049
       },
       {
         "artist": "Izo FitzRoy",
         "song": "Little Birdie",
-        "seek_seconds": 3000
+        "seek_seconds": 3321
       },
       {
         "artist": "Joy Oladokun",
         "song": "wish you the best",
-        "seek_seconds": 3240
+        "seek_seconds": 3600
       },
       {
         "artist": "Wednesday",
         "song": "Chosen to Deserve",
-        "seek_seconds": 3480
+        "seek_seconds": 3840
       },
       {
         "artist": "Margaret Glaspy",
         "song": "Irish Goodbye",
-        "seek_seconds": 3840
+        "seek_seconds": 4173
       },
       {
         "artist": "The Old North",
         "song": "Ghost",
-        "seek_seconds": 4080
+        "seek_seconds": 4413
       },
       {
         "artist": "boygenius",
         "song": "Letter To An Old Poet",
-        "seek_seconds": 4380
+        "seek_seconds": 4695
       },
       {
         "artist": "Boo Seeka",
         "song": "Kingdom Leader",
-        "seek_seconds": 4620
+        "seek_seconds": 4939
       },
       {
         "artist": "Maggie Rogers",
         "song": "All The Same",
-        "seek_seconds": 4800
+        "seek_seconds": 5146
       },
       {
         "artist": "Dweller",
         "song": "The Lookout",
-        "seek_seconds": 5040
+        "seek_seconds": 5373
       },
       {
         "artist": "Chamberlain",
         "song": "Runaway Return",
-        "seek_seconds": 5220
+        "seek_seconds": 5548
       },
       {
         "artist": "Ruby Gill",
         "song": "I'm gonna die with this frown on my face",
-        "seek_seconds": 5460
+        "seek_seconds": 5788
       },
       {
         "artist": "Cat Rose Smith",
         "song": "What I'm For",
-        "seek_seconds": 5640
+        "seek_seconds": 5975
       },
       {
         "artist": "Liv Greene",
         "song": "New York's Arms",
-        "seek_seconds": 5880
+        "seek_seconds": 6215
       },
       {
         "artist": "Rosemary & Garlic",
         "song": "Midlands",
-        "seek_seconds": 6120
+        "seek_seconds": 6455
       },
       {
         "artist": "Krister Axel",
         "song": "Still Feels Broken",
-        "seek_seconds": 6360
+        "seek_seconds": null
       },
       {
         "artist": "David Wimbish & The Collection",
         "song": "Love Me More",
-        "seek_seconds": 6540
+        "seek_seconds": null
       },
       {
         "artist": "Devon Cole",
         "song": "I Got You",
-        "seek_seconds": 6780
+        "seek_seconds": null
       },
       {
         "artist": "The Dip",
         "song": "Paddle to the Stars",
-        "seek_seconds": 6840
+        "seek_seconds": null
       }
     ]
   },
@@ -662,152 +667,152 @@
       {
         "artist": "Irma",
         "song": "Black Sun - Acoustic",
-        "seek_seconds": 0
+        "seek_seconds": 238
       },
       {
         "artist": "Wari",
         "song": "Goodbye 'Nothing Left'",
-        "seek_seconds": 240
+        "seek_seconds": 465
       },
       {
         "artist": "Leif Vollebekk",
         "song": "False-Hearted Lover",
-        "seek_seconds": 420
+        "seek_seconds": 645
       },
       {
         "artist": "Jack Shields & The Mojave Rush",
         "song": "Internalies",
-        "seek_seconds": 720
+        "seek_seconds": 953
       },
       {
         "artist": "Hans Williams",
         "song": "Weekend",
-        "seek_seconds": 960
+        "seek_seconds": 1185
       },
       {
         "artist": "Samia",
         "song": "Maps",
-        "seek_seconds": 1080
+        "seek_seconds": 1305
       },
       {
         "artist": "John Moreland",
         "song": "Claim Your Prize",
-        "seek_seconds": 1260
+        "seek_seconds": 1498
       },
       {
         "artist": "WIOO",
         "song": "This Line Can't Hold",
-        "seek_seconds": 1800
+        "seek_seconds": 2048
       },
       {
         "artist": "Jacob Humber",
         "song": "Batch Brew",
-        "seek_seconds": 2220
+        "seek_seconds": 2424
       },
       {
         "artist": "Marcus King",
         "song": "One Day She’s Here",
-        "seek_seconds": 2460
+        "seek_seconds": 2681
       },
       {
         "artist": "The Sunshine State",
         "song": "Things Changed",
-        "seek_seconds": 2700
+        "seek_seconds": 2941
       },
       {
         "artist": "The Lone Bellow",
         "song": "Martingales",
-        "seek_seconds": 2940
+        "seek_seconds": 3127
       },
       {
         "artist": "Carsie Blanton",
         "song": "Song of the Magi",
-        "seek_seconds": 3180
+        "seek_seconds": 3401
       },
       {
         "artist": "S. Salter",
         "song": "Sunday In Bloom",
-        "seek_seconds": 3360
+        "seek_seconds": 3600
       },
       {
         "artist": "Julien Baker",
         "song": "Guthrie",
-        "seek_seconds": 3660
+        "seek_seconds": 3889
       },
       {
         "artist": "Viv & Riley",
         "song": "Kygers Hill",
-        "seek_seconds": 4020
+        "seek_seconds": 4230
       },
       {
         "artist": "Del Amitri",
         "song": "It's Feelings",
-        "seek_seconds": 4320
+        "seek_seconds": 4537
       },
       {
         "artist": "M Field",
         "song": "Huguenot Tunnel",
-        "seek_seconds": 4500
+        "seek_seconds": 4699
       },
       {
         "artist": "Atomic Blonde",
         "song": "Kansas City Sunset",
-        "seek_seconds": 4620
+        "seek_seconds": 4809
       },
       {
         "artist": "Gavin Marengi",
         "song": "Breathing Years",
-        "seek_seconds": 4800
+        "seek_seconds": 5024
       },
       {
         "artist": "Caamp",
         "song": "Lavender Girl",
-        "seek_seconds": 5040
+        "seek_seconds": 5252
       },
       {
         "artist": "Barney Cortez",
         "song": "New Age Nightmare",
-        "seek_seconds": 5220
+        "seek_seconds": 5455
       },
       {
         "artist": "Birds over Arkansas",
         "song": "Sunflower",
-        "seek_seconds": 5400
+        "seek_seconds": 5601
       },
       {
         "artist": "John Moreland",
         "song": "Cheap Idols Dressed in Expensive Garbage",
-        "seek_seconds": 5700
+        "seek_seconds": 5889
       },
       {
         "artist": "Alberta Cross",
         "song": "Born In Amazement",
-        "seek_seconds": 5940
+        "seek_seconds": 6170
       },
       {
         "artist": "D'Angelo",
         "song": "The Root",
-        "seek_seconds": 6120
+        "seek_seconds": 6353
       },
       {
         "artist": "Samian",
         "song": "SQ",
-        "seek_seconds": 6540
+        "seek_seconds": 6744
       },
       {
         "artist": "Panta Ray",
         "song": "Gaunt",
-        "seek_seconds": 6780
+        "seek_seconds": 6984
       },
       {
         "artist": "The Wood Brothers",
         "song": "River Takes the Town",
-        "seek_seconds": 6780
+        "seek_seconds": 6989
       },
       {
         "artist": "Men I Trust",
         "song": "Billie Toppy",
-        "seek_seconds": 6960
+        "seek_seconds": 7169
       }
     ]
   },
@@ -819,7 +824,7 @@
       {
         "artist": "Finnegan Tui",
         "song": "Summer Rain",
-        "seek_seconds": 42
+        "seek_seconds": 43
       },
       {
         "artist": "Jensyn",
@@ -829,67 +834,67 @@
       {
         "artist": "Steve Jinski",
         "song": "Rollercoaster",
-        "seek_seconds": 458
+        "seek_seconds": 459
       },
       {
         "artist": "Shakey Graves",
         "song": "Ready or Not (feat. Sierra Ferrell)",
-        "seek_seconds": 800
+        "seek_seconds": 797
       },
       {
         "artist": "Hawk and Steel",
         "song": "I Want You (To Break My Heart)",
-        "seek_seconds": 1032
+        "seek_seconds": 1031
       },
       {
         "artist": "Plu2",
         "song": "Love You Better (Original Mix)",
-        "seek_seconds": 1425
+        "seek_seconds": 1423
       },
       {
         "artist": "JACQUELINE",
         "song": "HOT DOG",
-        "seek_seconds": 1642
+        "seek_seconds": 1643
       },
       {
         "artist": "Shock Horror",
         "song": "On TV",
-        "seek_seconds": 1802
+        "seek_seconds": 1803
       },
       {
         "artist": "Rena Angel",
         "song": "Beauty When I Bleed",
-        "seek_seconds": 2230
+        "seek_seconds": 2205
       },
       {
         "artist": "S.G. Goodman",
         "song": "Keeper Of The Time",
-        "seek_seconds": 2473
+        "seek_seconds": 2474
       },
       {
         "artist": "Drew Neirin",
         "song": "Postmodern Romance (Lover Man)",
-        "seek_seconds": 2842
+        "seek_seconds": 2851
       },
       {
         "artist": "Jake Whiskin",
         "song": "The Trail Went Cold",
-        "seek_seconds": 3195
+        "seek_seconds": 3196
       },
       {
         "artist": "Irma",
         "song": "Black Sun - Orchestral Version",
-        "seek_seconds": 3442
+        "seek_seconds": 3441
       },
       {
         "artist": "A Days Wait",
         "song": "First Time",
-        "seek_seconds": 3635
+        "seek_seconds": 3634
       },
       {
         "artist": "RAVEN UNLTD",
         "song": "SMOKETHEDRINK",
-        "seek_seconds": 3855
+        "seek_seconds": 3856
       },
       {
         "artist": "Krister Axel",
@@ -899,17 +904,17 @@
       {
         "artist": "Catherine Feeny",
         "song": "Touch Back Down - Jeremy Wheatley Mix",
-        "seek_seconds": 4424
+        "seek_seconds": 4415
       },
       {
         "artist": "Kenny Sharp",
         "song": "Amy",
-        "seek_seconds": 4845
+        "seek_seconds": 4848
       },
       {
         "artist": "Boy Golden",
         "song": "Meadowsweet",
-        "seek_seconds": 5016
+        "seek_seconds": 5014
       },
       {
         "artist": "Ben Harper",
@@ -929,12 +934,12 @@
       {
         "artist": "The Lone Bellow",
         "song": "I Did It For Love",
-        "seek_seconds": 6443
+        "seek_seconds": 6445
       },
       {
         "artist": "Pink Birds",
         "song": "Crawling Down the White Line",
-        "seek_seconds": 6702
+        "seek_seconds": 6704
       },
       {
         "artist": "Black Dub",
@@ -956,127 +961,127 @@
       {
         "artist": "Ju Kaia",
         "song": "Committed No Crime",
-        "seek_seconds": 0
+        "seek_seconds": 569
       },
       {
         "artist": "Rusty Reid",
         "song": "Alchemist",
-        "seek_seconds": 180
+        "seek_seconds": 749
       },
       {
         "artist": "Kat Duma",
         "song": "Cruising",
-        "seek_seconds": 660
+        "seek_seconds": 1246
       },
       {
         "artist": "Jack Symes",
         "song": "Cool God",
-        "seek_seconds": 1440
+        "seek_seconds": 2039
       },
       {
         "artist": "Shakey Graves",
         "song": "Tomorrow",
-        "seek_seconds": 1740
+        "seek_seconds": 2304
       },
       {
         "artist": "Van Sur Les",
         "song": "Kadoi",
-        "seek_seconds": 2160
+        "seek_seconds": 2752
       },
       {
         "artist": "Widowspeak",
         "song": "The Good Ones",
-        "seek_seconds": 2460
+        "seek_seconds": 3025
       },
       {
         "artist": "S.G. Goodman",
         "song": "Patron Saint Of The Dollar Store",
-        "seek_seconds": 2760
+        "seek_seconds": 3338
       },
       {
         "artist": "A$tr0",
         "song": "I HATE YOUR FRIENDS",
-        "seek_seconds": 3000
+        "seek_seconds": 3578
       },
       {
         "artist": "ejg!",
         "song": "on my way",
-        "seek_seconds": 3000
+        "seek_seconds": 3578
       },
       {
         "artist": "MEGGO",
         "song": "sylvia's place ;; tricks",
-        "seek_seconds": 3300
+        "seek_seconds": 3884
       },
       {
         "artist": "BENEE",
         "song": "Winter (feat. Mallrat)",
-        "seek_seconds": 3540
+        "seek_seconds": 4090
       },
       {
         "artist": "Madison Cunningham",
         "song": "Hold On",
-        "seek_seconds": 3720
+        "seek_seconds": 4277
       },
       {
         "artist": "River Whyless",
         "song": "Born in the Right Country",
-        "seek_seconds": 4140
+        "seek_seconds": 4711
       },
       {
         "artist": "Donovan Woods",
         "song": "I Talk About You",
-        "seek_seconds": 4380
+        "seek_seconds": 4925
       },
       {
         "artist": "Snocaps",
         "song": "Avalanche",
-        "seek_seconds": 4620
+        "seek_seconds": 5211
       },
       {
         "artist": "Leif Vollebekk",
         "song": "Surfer's Journal",
-        "seek_seconds": 4800
+        "seek_seconds": 5356
       },
       {
         "artist": "Chet Faker",
         "song": "Low - Live Sessions",
-        "seek_seconds": 5160
+        "seek_seconds": 5709
       },
       {
         "artist": "Boy Golden",
         "song": "New Orleans",
-        "seek_seconds": 5400
+        "seek_seconds": 5960
       },
       {
         "artist": "Whisky sullo Jonio",
         "song": "Lamentarsi",
-        "seek_seconds": 5640
+        "seek_seconds": 6222
       },
       {
         "artist": "Maggie Rogers",
         "song": "All The Same",
-        "seek_seconds": 5880
+        "seek_seconds": 6432
       },
       {
         "artist": "Spoon",
         "song": "The Hardest Cut",
-        "seek_seconds": 6120
+        "seek_seconds": 6709
       },
       {
         "artist": "Jacob Humber",
         "song": "Jesus at My Dining Room Table",
-        "seek_seconds": 6300
+        "seek_seconds": 6903
       },
       {
         "artist": "The Black Crowes",
         "song": "Sometimes Salvation",
-        "seek_seconds": 6540
+        "seek_seconds": 7134
       },
       {
         "artist": "flipturn",
         "song": "Brooklyn Baby",
-        "seek_seconds": 6600
+        "seek_seconds": null
       }
     ]
   },
@@ -1088,17 +1093,17 @@
       {
         "artist": "Beth Orton",
         "song": "Otherside",
-        "seek_seconds": 105
+        "seek_seconds": 101
       },
       {
         "artist": "The Random Hubiak Band",
         "song": "Thisll Be Our Year (Rock Barracuda Edit)",
-        "seek_seconds": 478
+        "seek_seconds": 480
       },
       {
         "artist": "Mialuna",
         "song": "I Never Meant To Let You Down",
-        "seek_seconds": 736
+        "seek_seconds": 739
       },
       {
         "artist": "The Replicants",
@@ -1108,7 +1113,7 @@
       {
         "artist": "The Pinkerton Raid",
         "song": "The Fight for Freedom Was in VOGUE",
-        "seek_seconds": 1303
+        "seek_seconds": 1304
       },
       {
         "artist": "cielo",
@@ -1118,22 +1123,22 @@
       {
         "artist": "Kennedy Taylor",
         "song": "Temporary",
-        "seek_seconds": 1879
+        "seek_seconds": 1882
       },
       {
         "artist": "John Kolar",
         "song": "Tie My Shoes - live at the piano",
-        "seek_seconds": 2080
+        "seek_seconds": 2076
       },
       {
         "artist": "Beth Orton",
         "song": "Waiting",
-        "seek_seconds": 2438
+        "seek_seconds": 2437
       },
       {
         "artist": "Nolen Abel",
         "song": "The Sound (God Help Me)",
-        "seek_seconds": 2735
+        "seek_seconds": 2738
       },
       {
         "artist": "cielo",
@@ -1158,52 +1163,52 @@
       {
         "artist": "Steve Stout",
         "song": "waitin on mine",
-        "seek_seconds": 3795
+        "seek_seconds": 3797
       },
       {
         "artist": "Mazat",
         "song": "Impulse - Unholy",
-        "seek_seconds": 4098
+        "seek_seconds": 4100
       },
       {
         "artist": "Kings Elliot",
         "song": "BORN BLUE (THE SONG)",
-        "seek_seconds": 4295
+        "seek_seconds": 4296
       },
       {
         "artist": "Beth Orton",
         "song": "Love You Right",
-        "seek_seconds": 4532
+        "seek_seconds": 4530
       },
       {
         "artist": "Ju Kaia",
         "song": "Committed No Crime",
-        "seek_seconds": 4878
+        "seek_seconds": 4869
       },
       {
         "artist": "Theorem of joy",
         "song": "New Spring",
-        "seek_seconds": 5041
+        "seek_seconds": 5040
       },
       {
         "artist": "The Black Crowes",
         "song": "No Speak No Slave",
-        "seek_seconds": 5400
+        "seek_seconds": 5397
       },
       {
         "artist": "Spoon",
         "song": "She's Fine, She's Mine",
-        "seek_seconds": 5640
+        "seek_seconds": 5639
       },
       {
         "artist": "Houndmouth",
         "song": "McKenzie",
-        "seek_seconds": 5962
+        "seek_seconds": 5961
       },
       {
         "artist": "D'Angelo",
         "song": "Feel Like Makin' Love",
-        "seek_seconds": 6155
+        "seek_seconds": 6156
       },
       {
         "artist": "Wilder Woods",
@@ -1230,22 +1235,22 @@
       {
         "artist": "M Field",
         "song": "Huguenot Tunnel",
-        "seek_seconds": 0
+        "seek_seconds": 2
       },
       {
         "artist": "Down Like Silver",
         "song": "First Light",
-        "seek_seconds": 111
+        "seek_seconds": 112
       },
       {
         "artist": "D'Angelo",
         "song": "Africa",
-        "seek_seconds": 351
+        "seek_seconds": 319
       },
       {
         "artist": "talker",
         "song": "For the Sake of It",
-        "seek_seconds": 711
+        "seek_seconds": 694
       },
       {
         "artist": "Unknown",
@@ -1255,72 +1260,72 @@
       {
         "artist": "Viv & Riley",
         "song": "Flashing Lights",
-        "seek_seconds": 1191
+        "seek_seconds": 1148
       },
       {
         "artist": "Kathryn Hallberg",
         "song": "Some Dreams",
-        "seek_seconds": 1371
+        "seek_seconds": 1373
       },
       {
         "artist": "Aoife O'Donovan",
         "song": "Galahad",
-        "seek_seconds": 1551
+        "seek_seconds": 1536
       },
       {
         "artist": "Benji Lewis",
         "song": "Head Rush",
-        "seek_seconds": 1791
+        "seek_seconds": 1786
       },
       {
         "artist": "LEROCQUE",
         "song": "Not Invisible",
-        "seek_seconds": 1971
+        "seek_seconds": 1939
       },
       {
         "artist": "Krister Axel",
         "song": "Harvest",
-        "seek_seconds": 2151
+        "seek_seconds": 2129
       },
       {
         "artist": "Jack Francis",
         "song": "Wild Eyes",
-        "seek_seconds": 2391
+        "seek_seconds": 2371
       },
       {
         "artist": "The Highwaymen",
         "song": "Live Forever",
-        "seek_seconds": 2631
+        "seek_seconds": 2587
       },
       {
         "artist": "Abigail Fierce",
         "song": "14 Cigarettes",
-        "seek_seconds": 2751
+        "seek_seconds": 2754
       },
       {
         "artist": "Color Palette",
         "song": "Barcelona",
-        "seek_seconds": 2991
+        "seek_seconds": 2988
       },
       {
         "artist": "Devon Cole",
         "song": "I Got You",
-        "seek_seconds": 3291
+        "seek_seconds": 3272
       },
       {
         "artist": "D'Angelo",
         "song": "Lady - Radio Edit",
-        "seek_seconds": 3471
+        "seek_seconds": 3440
       },
       {
         "artist": "Coloma",
         "song": "Space Cadet",
-        "seek_seconds": 3591
+        "seek_seconds": 3601
       },
       {
         "artist": "The Satellite Station",
         "song": "Fine",
-        "seek_seconds": 3831
+        "seek_seconds": 3815
       },
       {
         "artist": "Margaret Glaspy",
@@ -1335,7 +1340,7 @@
       {
         "artist": "The Spitting Pips",
         "song": "Green Eyes",
-        "seek_seconds": 4611
+        "seek_seconds": 4588
       },
       {
         "artist": "Sophie Tex",
@@ -1345,42 +1350,42 @@
       {
         "artist": "for EONS",
         "song": "OLD FRIEND",
-        "seek_seconds": null
+        "seek_seconds": 4978
       },
       {
         "artist": "Halfway Down",
         "song": "Want You",
-        "seek_seconds": null
+        "seek_seconds": 5418
       },
       {
         "artist": "Peter N. Knight",
         "song": "Mattress on the Floor",
-        "seek_seconds": null
+        "seek_seconds": 5623
       },
       {
         "artist": "Lazy Days",
         "song": "I Wanna Go Home",
-        "seek_seconds": null
+        "seek_seconds": 5818
       },
       {
         "artist": "Mo Klé",
         "song": "Bird",
-        "seek_seconds": null
+        "seek_seconds": 6170
       },
       {
         "artist": "Margaret Glaspy",
         "song": "That Rose",
-        "seek_seconds": null
+        "seek_seconds": 6350
       },
       {
         "artist": "Beth Orton",
         "song": "Cigarette Curls",
-        "seek_seconds": 6591
+        "seek_seconds": 6589
       },
       {
         "artist": "Wild Rivers",
         "song": "Neon Stars",
-        "seek_seconds": 7071
+        "seek_seconds": 7053
       }
     ]
   },
@@ -1392,12 +1397,12 @@
       {
         "artist": "Damien Jurado",
         "song": "Fool Maria",
-        "seek_seconds": null
+        "seek_seconds": 1
       },
       {
         "artist": "Giuseppe Cucè",
         "song": "ESTASI E VELENO",
-        "seek_seconds": null
+        "seek_seconds": 453
       },
       {
         "artist": "COLLEAGUES",
@@ -1407,7 +1412,7 @@
       {
         "artist": "Shannon Clark",
         "song": "Postcards",
-        "seek_seconds": null
+        "seek_seconds": 929
       },
       {
         "artist": "Annie Elise",
@@ -1427,12 +1432,12 @@
       {
         "artist": "Cat Ryan",
         "song": "Free From This",
-        "seek_seconds": null
+        "seek_seconds": 2101
       },
       {
         "artist": "Agnes Milewski",
         "song": "Fist",
-        "seek_seconds": null
+        "seek_seconds": 2336
       },
       {
         "artist": "Kerrier Collective",
@@ -1442,7 +1447,7 @@
       {
         "artist": "Halfway Down",
         "song": "Want You",
-        "seek_seconds": null
+        "seek_seconds": 2933
       },
       {
         "artist": "Dope TAF",
@@ -1457,87 +1462,87 @@
       {
         "artist": "Wilder Woods",
         "song": "Go Ahead",
-        "seek_seconds": 3484
+        "seek_seconds": 3508
       },
       {
         "artist": "Liza Anne",
         "song": "Bad Vacation",
-        "seek_seconds": 3544
+        "seek_seconds": 3600
       },
       {
         "artist": "Steve Gunn",
         "song": "Other You",
-        "seek_seconds": 3724
+        "seek_seconds": 3768
       },
       {
         "artist": "D'Angelo",
         "song": "Left And Right",
-        "seek_seconds": 4084
+        "seek_seconds": 4135
       },
       {
         "artist": "Derby Hill",
         "song": "Restless and Forgiven",
-        "seek_seconds": 4384
+        "seek_seconds": 4422
       },
       {
         "artist": "Geneviève Racette",
         "song": "Les adieux",
-        "seek_seconds": 4804
+        "seek_seconds": 4864
       },
       {
         "artist": "Abraham Alexander",
         "song": "Stay (ft. Gary Clark Jr.)",
-        "seek_seconds": 4984
+        "seek_seconds": 5037
       },
       {
         "artist": "Sumbuck",
         "song": "Sy*z*y*gy",
-        "seek_seconds": 5224
+        "seek_seconds": 5267
       },
       {
         "artist": "Cordovas",
         "song": "Sunshine",
-        "seek_seconds": 5464
+        "seek_seconds": 5496
       },
       {
         "artist": "Richy Mitch & The Coal Miners",
         "song": "Lake Missoula",
-        "seek_seconds": 5644
+        "seek_seconds": 5685
       },
       {
         "artist": "Late Cambrian",
         "song": "How I Bleed",
-        "seek_seconds": 5764
+        "seek_seconds": 5791
       },
       {
         "artist": "The Mercy Stone",
         "song": "Unlocked",
-        "seek_seconds": 6004
+        "seek_seconds": 6020
       },
       {
         "artist": "Snocaps",
         "song": "Doom",
-        "seek_seconds": 6184
+        "seek_seconds": 6195
       },
       {
         "artist": "Neil Cassidy",
         "song": "Water From My Bottle (M)",
-        "seek_seconds": 6364
+        "seek_seconds": 6379
       },
       {
         "artist": "Mild Orange",
         "song": "Hollywood Dreams",
-        "seek_seconds": 6544
+        "seek_seconds": 6571
       },
       {
         "artist": "The HIITlist",
         "song": "Chromatic Run 3:1 Interval Ratio",
-        "seek_seconds": 6844
+        "seek_seconds": 6871
       },
       {
         "artist": "Lydia Luce",
         "song": "Other Side",
-        "seek_seconds": 7084
+        "seek_seconds": 7089
       }
     ]
   },
@@ -3270,6 +3275,158 @@
         "artist": "Boards of Canada",
         "song": "Roygbiv",
         "seek_seconds": 7039
+      }
+    ]
+  },
+  {
+    "date": "2026-10-14",
+    "mixcloud_url": "https://www.mixcloud.com/chillfiltr/weekly-catch-2026-10-14-kskq/",
+    "image_path": "/weekly-catch-fish/2026-10-14.svg",
+    "tracks": [
+      {
+        "artist": "Marmur",
+        "song": "Roses",
+        "seek_seconds": 1
+      },
+      {
+        "artist": "Adelaide Heldman",
+        "song": "Historical Figure",
+        "seek_seconds": 355
+      },
+      {
+        "artist": "Violet and the Spiral",
+        "song": "Love Hunger",
+        "seek_seconds": 598
+      },
+      {
+        "artist": "Fiona Apple",
+        "song": "Across the Universe",
+        "seek_seconds": 843
+      },
+      {
+        "artist": "SUNRYZR",
+        "song": "A Little Like This",
+        "seek_seconds": 1216
+      },
+      {
+        "artist": "Cisser Mæhl",
+        "song": "En øvelse",
+        "seek_seconds": 1451
+      },
+      {
+        "artist": "Liv Waters",
+        "song": "Mean Streak",
+        "seek_seconds": 1690
+      },
+      {
+        "artist": "Ian the Idiot",
+        "song": "You did everything for us today",
+        "seek_seconds": 1925
+      },
+      {
+        "artist": "Janet Devlin",
+        "song": "How Do Cowboys Say Goodbye?",
+        "seek_seconds": 2152
+      },
+      {
+        "artist": "Amelia Coburn",
+        "song": "I Just Want To Say",
+        "seek_seconds": 2365
+      },
+      {
+        "artist": "PRAX x CHELLYX",
+        "song": "OSAKA",
+        "seek_seconds": 2618
+      },
+      {
+        "artist": "We Are Dust",
+        "song": "wing like manner",
+        "seek_seconds": 2808
+      },
+      {
+        "artist": "Heavy in Pocket",
+        "song": "Good Cop, Bad Cop",
+        "seek_seconds": 3052
+      },
+      {
+        "artist": "Fake Fever",
+        "song": "Perigee",
+        "seek_seconds": 3244
+      },
+      {
+        "artist": "rayray",
+        "song": "Fever",
+        "seek_seconds": 3514
+      },
+      {
+        "artist": "S.G. Goodman",
+        "song": "Patron Saint Of The Dollar Store",
+        "seek_seconds": 3602
+      },
+      {
+        "artist": "Sierra Ferrell",
+        "song": "Years",
+        "seek_seconds": 3864
+      },
+      {
+        "artist": "Khruangbin & Leon Bridges",
+        "song": "Texas Sun",
+        "seek_seconds": 4038
+      },
+      {
+        "artist": "Car Seat Headrest",
+        "song": "Running Up That Hill",
+        "seek_seconds": 4392
+      },
+      {
+        "artist": "Peter Fenn",
+        "song": "Cadillac Dreams",
+        "seek_seconds": 4782
+      },
+      {
+        "artist": "Merchen",
+        "song": "Mozart",
+        "seek_seconds": 4932
+      },
+      {
+        "artist": "BOWIE x NAKED CAT",
+        "song": "Easy",
+        "seek_seconds": 5129
+      },
+      {
+        "artist": "Mike Viola",
+        "song": "Snow Face",
+        "seek_seconds": 5335
+      },
+      {
+        "artist": "Julien Baker",
+        "song": "Mental Math",
+        "seek_seconds": 5945
+      },
+      {
+        "artist": "Liv Greene",
+        "song": "New York's Arms",
+        "seek_seconds": 6150
+      },
+      {
+        "artist": "Arlo Parks",
+        "song": "Cola",
+        "seek_seconds": 6364
+      },
+      {
+        "artist": "The Open Sea",
+        "song": "Keep Me Tonight",
+        "seek_seconds": 6594
+      },
+      {
+        "artist": "Captains and Captives",
+        "song": "Street With No Streetlight",
+        "seek_seconds": 6757
+      },
+      {
+        "artist": "Waxahatchee",
+        "song": "Tomorrow",
+        "seek_seconds": 6975
       }
     ]
   }
