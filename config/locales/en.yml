@@ -54,6 +54,7 @@ en:
     updated_successfully: "Post was successfully updated."
     deleted_successfully: "Post was successfully deleted."
     must_be_valid_url: "must be a valid URL"
+    bandcamp_not_found: "looks like a Bandcamp link, but no Bandcamp track or album player was found at it"
   
   registrations:
     check_email_confirmation: "Please check your email to confirm your account."

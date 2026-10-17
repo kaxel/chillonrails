@@ -36,7 +36,7 @@ module Substack
       result = []
       result << @converter.image_node(post.image, alt: post.title) if post.image.present?
       result << video_node if post.video_link.present?
-      result << @converter.link_paragraph("▶ Listen to the audio", post.audio_link) if post.audio_link.present?
+      result << audio_node if post.audio_link.present?
       result.concat(@converter.convert(post.content))
       result << { type: "horizontal_rule" }
       result << @converter.paragraph([
@@ -44,6 +44,11 @@ module Substack
         @converter.text("chillfiltr.com", [ { type: "em" }, @converter.link_mark(canonical_url) ])
       ])
       result.compact
+    end
+
+    def audio_node
+      label = post.audio_embed_url.present? ? "▶ Listen on Bandcamp" : "▶ Listen to the audio"
+      @converter.link_paragraph(label, post.audio_link)
     end
 
     def video_node
