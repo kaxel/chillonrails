@@ -128,20 +128,37 @@ module Substack
         src = node["src"] || node.at_css("source")&.[]("src")
         src.present? ? [ link_paragraph("▶ Listen to the audio", absolute_url(src)) ] : []
       when "iframe"
-        [ embed_node(node["src"]) ].compact
+        [ embed_node(node) ].compact
       else
         blocks(node.children)
       end
     end
 
-    def embed_node(src)
+    # Substack can't take arbitrary iframes, so players become a YouTube embed
+    # or a "Listen on …" link to the public page rather than the raw player.
+    def embed_node(iframe)
+      src = iframe["src"].to_s.strip
       return if src.blank?
 
       if (id = self.class.youtube_id(src))
         { type: "youtube2", attrs: { videoId: id, startTime: nil, endTime: nil } }
+      elsif src.include?("bandcamp.com/EmbeddedPlayer")
+        link_paragraph("▶ Listen on Bandcamp", bandcamp_page_url(iframe) || src)
+      elsif (path = src[%r{open\.spotify\.com/embed/(\w+/\w+)}, 1])
+        link_paragraph("▶ Listen on Spotify", "https://open.spotify.com/#{path}")
+      elsif (id = src[%r{player\.vimeo\.com/video/(\d+)}, 1])
+        link_paragraph("▶ Watch on Vimeo", "https://vimeo.com/#{id}")
+      elsif (feed = src[/[?&]feed=([^&]+)/, 1]) && src.include?("mixcloud.com")
+        link_paragraph("▶ Listen on Mixcloud", "https://www.mixcloud.com#{CGI.unescape(feed)}")
       else
         link_paragraph(src, absolute_url(src))
       end
+    end
+
+    # Bandcamp's embed code carries a link to the track/album page as the
+    # iframe's fallback content; the HTML5 parser keeps that as raw text.
+    def bandcamp_page_url(iframe)
+      Nokogiri::HTML5.fragment(iframe.inner_html.presence || iframe.text).at_css("a[href]")&.[]("href")
     end
 
     def build_paragraph(nodes)
