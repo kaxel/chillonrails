@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   validates :video_link, format: { with: URI::DEFAULT_PARSER.make_regexp, message: I18n.t("posts.must_be_valid_url") }, allow_blank: true
   validates :audio_link, format: { with: URI::DEFAULT_PARSER.make_regexp, message: I18n.t("posts.must_be_valid_url") }, allow_blank: true
 
+  validate :resolve_audio_embed, if: :audio_link_changed?
+
   before_validation :generate_slug
   before_validation :generate_preview
 
@@ -51,6 +53,17 @@ class Post < ApplicationRecord
   end
 
   private
+
+  # A Bandcamp track/album link in the audio field shows Bandcamp's player at
+  # the top of the post instead of the <audio> player; look up its player URL
+  # once, here, rather than on every page view.
+  def resolve_audio_embed
+    self.audio_embed_url = nil
+    return unless BandcampEmbed.candidate?(audio_link)
+
+    self.audio_embed_url = BandcampEmbed.player_url_for(audio_link)
+    errors.add(:audio_link, I18n.t("posts.bandcamp_not_found")) if audio_embed_url.nil?
+  end
 
   def generate_slug
     self.slug = title.parameterize if title.present? && slug.blank?
