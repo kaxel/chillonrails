@@ -132,18 +132,19 @@ class PostImporter
   def download_image(image_url, slug, filename_ext = nil)
     return nil if image_url.blank?
     
-    # Create directory for this post's images
     image_dir = Rails.root.join('public', 'images', 'posts', slug)
-    FileUtils.mkdir_p(image_dir)
-    
-    # Extract filename from URL
-    uri = URI.parse(image_url)
     filename = "#{slug}-#{filename_ext ? filename_ext : 'main'}-image.jpg"
-    
-    # Download the file
     local_path = image_dir.join(filename)
-    
+
+    # In production public/ isn't writable, so the import relies on the images
+    # having been downloaded in dev and committed — use them if they're here.
+    if File.exist?(local_path)
+      puts "Using existing image: #{local_path}"
+      return "/images/posts/#{slug}/#{filename}"
+    end
+
     begin
+      FileUtils.mkdir_p(image_dir)
       URI.open(image_url, 'rb', ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE) do |file|
         File.open(local_path, 'wb') do |local_file|
           local_file.write(file.read)
