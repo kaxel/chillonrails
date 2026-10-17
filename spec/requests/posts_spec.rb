@@ -60,8 +60,14 @@ RSpec.describe "Posts", type: :request do
         expect(html.css('meta[name="description"]').size).to eq(1)
       end
 
-      it "falls back to the site logo when the post has no image or an SVG" do
+      it "uses the 1200x630 PNG twin of a Weekly Catch fish SVG" do
         post.update!(image: "/weekly-catch-fish/2026-10-07.svg")
+        get post_path(slug: post.slug)
+        expect(meta(Nokogiri::HTML(response.body), "og:image")).to eq("http://www.example.com/weekly-catch-og/2026-10-07.png")
+      end
+
+      it "falls back to the site logo when the post has no image or an SVG" do
+        post.update!(image: "/icon.svg")
         get post_path(slug: post.slug)
         expect(meta(Nokogiri::HTML(response.body), "og:image")).to eq("http://www.example.com/logo-900-clear.png")
 
