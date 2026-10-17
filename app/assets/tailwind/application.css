@@ -58,4 +58,22 @@
     margin: 1rem 0;
     filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
   }
+
+  /* Embed players pasted into post content (Bandcamp, YouTube, Vimeo,
+     Mixcloud, Spotify, Pannellum — see PostContentScrubber). Never wider than the column;
+     video players get a 16:9 box since their embed code often has no size. */
+  .content iframe {
+    display: block;
+    max-width: 100%;
+    margin: 1rem auto;
+    border: 0;
+  }
+
+  .content iframe[src*="youtube"],
+  .content iframe[src*="vimeo"],
+  .content iframe[src*="pannellum"] {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
 }
