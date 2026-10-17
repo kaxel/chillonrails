@@ -60,7 +60,7 @@
   }
 
   /* Embed players pasted into post content (Bandcamp, YouTube, Vimeo,
-     Mixcloud, Spotify — see PostContentScrubber). Never wider than the column;
+     Mixcloud, Spotify, Pannellum — see PostContentScrubber). Never wider than the column;
      video players get a 16:9 box since their embed code often has no size. */
   .content iframe {
     display: block;
@@ -70,7 +70,8 @@
   }
 
   .content iframe[src*="youtube"],
-  .content iframe[src*="vimeo"] {
+  .content iframe[src*="vimeo"],
+  .content iframe[src*="pannellum"] {
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;

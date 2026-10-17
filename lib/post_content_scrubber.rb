@@ -1,6 +1,6 @@
 # Sanitizes post content for the post page. Same allowlist as before, plus
 # <iframe> — but only for embed players we trust (Bandcamp, YouTube, Vimeo,
-# Mixcloud, Spotify). Any other iframe is removed entirely, fallback content and all.
+# Mixcloud, Spotify, Pannellum 360° panoramas). Any other iframe is removed entirely, fallback content and all.
 class PostContentScrubber < Rails::HTML::PermitScrubber
   TAGS = %w[p br strong em ul ol li h1 h2 h3 h4 h5 h6 blockquote a img audio iframe].freeze
   ATTRIBUTES = %w[href src alt class data-seek controls controlslist preload
@@ -11,7 +11,8 @@ class PostContentScrubber < Rails::HTML::PermitScrubber
     %r{\Ahttps://(www\.)?youtube(-nocookie)?\.com/embed/},
     %r{\Ahttps://player\.vimeo\.com/video/},
     %r{\Ahttps://(www\.|player-widget\.)?mixcloud\.com/widget/},
-    %r{\Ahttps://open\.spotify\.com/embed/}
+    %r{\Ahttps://open\.spotify\.com/embed/},
+    %r{\Ahttps://cdn\.pannellum\.org/[\d.]+/pannellum\.htm}
   ].freeze
 
   def self.trusted_embed?(src)

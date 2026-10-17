@@ -16,13 +16,14 @@ RSpec.describe PostContentScrubber do
     expect(html).to include("height:120px")
   end
 
-  it "keeps YouTube, Vimeo, Mixcloud and Spotify players" do
+  it "keeps YouTube, Vimeo, Mixcloud, Spotify and Pannellum players" do
     %w[
       https://www.youtube.com/embed/CLCx5FyHG6w
       https://www.youtube-nocookie.com/embed/CLCx5FyHG6w
       https://player.vimeo.com/video/355598436?loop=false
       https://www.mixcloud.com/widget/iframe/?feed=%2Fchillfiltr%2Fshow%2F
       https://open.spotify.com/embed/track/1xZtyh6ZffZm8e1eKzyBC9
+      https://cdn.pannellum.org/2.5/pannellum.htm#panorama=https%3A%2F%2Fres.cloudinary.com%2Fpano.jpg
     ].each do |src|
       expect(scrub(%(<iframe src="#{src}"></iframe>))).to include("<iframe"), src
     end
