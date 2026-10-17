@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-	<meta name="description" content="<%= content_for(:description) || 'CHILLFILTR® - Discover the latest content and updates' %>">
+	<meta name="description" content="<%= content_for(:description) || SocialMetaHelper::DEFAULT_DESCRIPTION %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -31,8 +31,15 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon-300v2.png">
 	
-	<%# add meta tags for socials %>
-	<meta property="og:title" content="<%= content_for(:title) %>">
+	<%# Link preview cards (iMessage, Facebook, etc.); pages override via content_for %>
+	<meta property="og:site_name" content="CHILLFILTR®">
+	<meta property="og:type" content="<%= content_for(:og_type) || "website" %>">
+	<meta property="og:title" content="<%= content_for(:og_title) || content_for(:title) || "CHILLFILTR®" %>">
+	<meta property="og:description" content="<%= content_for(:description) || SocialMetaHelper::DEFAULT_DESCRIPTION %>">
+	<meta property="og:image" content="<%= content_for(:og_image) || social_image_url(nil) %>">
+	<meta property="og:url" content="<%= content_for(:canonical_url) || "#{request.base_url}#{request.path}" %>">
+	<meta name="twitter:card" content="summary_large_image">
+	<% if content_for?(:canonical_url) %><link rel="canonical" href="<%= content_for(:canonical_url) %>"><% end %>
 
     <%# RSS feed link for auto-discovery %>
     <%= auto_discovery_link_tag(:rss, posts_feed_url(format: :rss), { title: "CHILLFILTR® Latest Posts" }) %>

@@ -35,5 +35,46 @@ RSpec.describe "Posts", type: :request do
       expect(body).not_to include("onerror")
       expect(body).not_to include("javascript:")
     end
+
+    describe "link preview tags" do
+      def meta(html, property)
+        html.at_css(%(meta[property="#{property}"]))&.[]("content")
+      end
+
+      let(:post) do
+        create(:post, title: "Stella & OpenAI", slug: "stella-and-openai", tags: "commentary", author: "krister-axel",
+          published_on: Date.new(2026, 10, 10), preview: "<p>You're supposed to know how you got there.</p>",
+          image: "/images/posts/stella/main.jpg")
+      end
+
+      it "gives scrapers a title, description, absolute image and canonical URL" do
+        get post_path(slug: post.slug)
+        html = Nokogiri::HTML(response.body)
+
+        expect(html.at_css("title").text).to eq("Stella & OpenAI — CHILLFILTR®")
+        expect(meta(html, "og:title")).to eq("Stella & OpenAI")
+        expect(meta(html, "og:type")).to eq("article")
+        expect(meta(html, "og:description")).to eq("You're supposed to know how you got there.")
+        expect(meta(html, "og:image")).to eq("http://www.example.com/images/posts/stella/main.jpg")
+        expect(meta(html, "og:url")).to eq("http://www.example.com/post/stella-and-openai")
+        expect(html.css('meta[name="description"]').size).to eq(1)
+      end
+
+      it "falls back to the site logo when the post has no image or an SVG" do
+        post.update!(image: "/weekly-catch-fish/2026-10-07.svg")
+        get post_path(slug: post.slug)
+        expect(meta(Nokogiri::HTML(response.body), "og:image")).to eq("http://www.example.com/logo-900-clear.png")
+
+        post.update!(image: nil)
+        get post_path(slug: post.slug)
+        expect(meta(Nokogiri::HTML(response.body), "og:image")).to eq("http://www.example.com/logo-900-clear.png")
+      end
+
+      it "keeps an external image URL as-is" do
+        post.update!(image: "https://cdn.example.com/cover.jpg")
+        get post_path(slug: post.slug)
+        expect(meta(Nokogiri::HTML(response.body), "og:image")).to eq("https://cdn.example.com/cover.jpg")
+      end
+    end
   end
 end
