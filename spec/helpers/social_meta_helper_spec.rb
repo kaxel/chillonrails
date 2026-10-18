@@ -26,4 +26,33 @@ RSpec.describe SocialMetaHelper, type: :helper do
         .to eq("https://chillfiltr.com/logo-900-clear.png")
     end
   end
+
+  describe "#playlist_social_description" do
+    def playlist_with(count)
+      songs = (1..count).to_h { |n| [ n.to_s, "https://x.test/Artist - Song #{n}.mp3" ] }
+      build(:playlist, songs: songs)
+    end
+
+    it "counts the songs and names the first few" do
+      expect(helper.playlist_social_description(playlist_with(6)))
+        .to eq("6 songs: Artist - Song 1, Artist - Song 2, Artist - Song 3, Artist - Song 4, and more.")
+    end
+
+    it "doesn't say 'and more' when everything is already listed" do
+      expect(helper.playlist_social_description(playlist_with(2))).to eq("2 songs: Artist - Song 1, Artist - Song 2.")
+    end
+
+    it "uses the singular for one song" do
+      expect(helper.playlist_social_description(playlist_with(1))).to eq("1 song: Artist - Song 1.")
+    end
+
+    it "falls back to the site description for an empty playlist" do
+      expect(helper.playlist_social_description(playlist_with(0))).to eq(SocialMetaHelper::DEFAULT_DESCRIPTION)
+    end
+
+    it "stays within a preview-friendly length" do
+      long = build(:playlist, songs: (1..9).to_h { |n| [ n.to_s, "https://x.test/#{"Very Long Artist Name " * 4} - Title #{n}.mp3" ] })
+      expect(helper.playlist_social_description(long).length).to be <= 200
+    end
+  end
 end
