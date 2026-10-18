@@ -1,3 +1,9 @@
+<% content_for :title, "#{@playlist.name} — Playlist — CHILLFILTR®" %>
+<% content_for :og_title, "#{@playlist.name} — a CHILLFILTR® playlist" %>
+<% content_for :description, playlist_social_description(@playlist) %>
+<% content_for :og_image, social_image_url("/social-playlist.png") %>
+<% content_for :canonical_url, playlist_url(@playlist.slug) %>
+
 <div class="max-w-4xl mx-auto p-6">
   <h1 class="font-display italic text-4xl mb-8">Custom Playlist: <%= @playlist.name %></h1>
 
@@ -48,7 +54,7 @@
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-3">
                 <span class="text-gray-500 dark:text-gray-400 font-mono"><%= index + 1 %></span>
-                <span class="song-title"><%= File.basename(url, '.mp3').gsub('%20', ' ').gsub('_', ' ') %></span>
+                <span class="song-title"><%= Playlist.song_title(url) %></span>
               </div>
               <span class="playing-indicator hidden text-moss">▶</span>
             </div>

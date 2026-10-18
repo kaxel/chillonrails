@@ -21,6 +21,17 @@ module SocialMetaHelper
     png if png && Rails.public_path.join(png.delete_prefix("/")).exist?
   end
 
+  # "6 songs: Down Like Silver - Broken Coastline, Krister Axel - As Good As Love, and more."
+  def playlist_social_description(playlist)
+    titles = playlist.song_titles
+    return DEFAULT_DESCRIPTION if titles.empty?
+
+    count = "#{titles.size} #{"song".pluralize(titles.size)}"
+    shown = titles.first(4)
+    more = titles.size > shown.size ? ", and more" : ""
+    "#{count}: #{shown.join(", ")}#{more}.".truncate(200)
+  end
+
   def social_description(text)
     strip_tags(text.to_s).squish.truncate(200).presence || DEFAULT_DESCRIPTION
   end
