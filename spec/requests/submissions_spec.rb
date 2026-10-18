@@ -50,7 +50,7 @@ RSpec.describe "Submissions", type: :request do
       expect {
         post submissions_path, params: { submission: { contact_name: "", email: "bad" } }
       }.not_to change(Submission, :count)
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
     end
   end
 

@@ -25,13 +25,13 @@ RSpec.describe "Donations", type: :request do
 
     it "rejects an amount below the minimum" do
       post donations_path, params: { amount_cents: 100 }, as: :json
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
       expect(Stripe::PaymentIntent).not_to have_received(:create)
     end
 
     it "rejects an amount that isn't a $5 increment" do
       post donations_path, params: { amount_cents: 733 }, as: :json
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to have_http_status(:unprocessable_content)
       expect(Stripe::PaymentIntent).not_to have_received(:create)
     end
   end

@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.0.2"
+gem "rails", "~> 8.1.0"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use postgresql as the database for Active Record
@@ -19,10 +19,6 @@ gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-# json 3.0 (2026-09-07) rejects unknown options as ArgumentError; Rails
-# 8.0.5.1 (activesupport) and pg still pass `quirks_mode: true` to
-# JSON.generate, which aborts boot. Hold at 2.x until those ship a fix.
-gem "json", "< 3"
 
 gem "csv"
 
@@ -37,7 +33,7 @@ gem "aws-sdk-s3", "~> 1.0", require: false
 gem "bcrypt", "~> 3.1.22"
 gem "omniauth-google-oauth2", "~> 1.2"
 gem "omniauth-apple", "~> 1.4"
-gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem "omniauth-rails_csrf_protection", "~> 2.0"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
