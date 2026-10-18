@@ -63,7 +63,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: t("posts.created_successfully")
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -71,7 +71,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to "/", notice: t("posts.updated_successfully")
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 

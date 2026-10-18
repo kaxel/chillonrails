@@ -17,7 +17,7 @@ class SubmissionsController < ApplicationController
       redirect_to checkout.url, allow_other_host: true, status: :see_other
     else
       @page_title = "submit"
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   rescue Stripe::StripeError => e
     Rails.logger.error("Stripe checkout failed for submission #{@submission&.id}: #{e.message}")
