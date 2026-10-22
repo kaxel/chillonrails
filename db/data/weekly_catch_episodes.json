@@ -3429,5 +3429,167 @@
         "seek_seconds": 6975
       }
     ]
+  },
+  {
+    "date": "2026-10-21",
+    "mixcloud_url": "https://www.mixcloud.com/chillfiltr/weekly-catch-2026-10-21-kskq/",
+    "image_path": "/weekly-catch-fish/2026-10-21.svg",
+    "tracks": [
+      {
+        "artist": "Clear Mortifee",
+        "song": "Free Spirit (ft. Otis Junior)",
+        "seek_seconds": 1
+      },
+      {
+        "artist": "Andy Grammer",
+        "song": "Woven",
+        "seek_seconds": 210
+      },
+      {
+        "artist": "Jeremy Toback",
+        "song": "Broken Birds",
+        "seek_seconds": 456
+      },
+      {
+        "artist": "Tablefox",
+        "song": "Seven Years",
+        "seek_seconds": 648
+      },
+      {
+        "artist": "ROWA",
+        "song": "Punk Tsugi",
+        "seek_seconds": 929
+      },
+      {
+        "artist": "Stella Witz",
+        "song": "Copenhagen",
+        "seek_seconds": 1152
+      },
+      {
+        "artist": "The Sways",
+        "song": "Are We Already There?",
+        "seek_seconds": 1447
+      },
+      {
+        "artist": "Strawflower",
+        "song": "Bone Runner",
+        "seek_seconds": 1716
+      },
+      {
+        "artist": "Carla Gover & Friends",
+        "song": "Williams Branch Is Hard to Find (ft. Carla Gover)",
+        "seek_seconds": 1944
+      },
+      {
+        "artist": "Charlie Horn",
+        "song": "Kate Welsh",
+        "seek_seconds": 2211
+      },
+      {
+        "artist": "Reiyo The Giant",
+        "song": "Trick of the Night",
+        "seek_seconds": 2453
+      },
+      {
+        "artist": "Nadia Faye",
+        "song": "drift",
+        "seek_seconds": 2735
+      },
+      {
+        "artist": "Outer Shapes",
+        "song": "AFTERMATH",
+        "seek_seconds": 2884
+      },
+      {
+        "artist": "Viv & Riley",
+        "song": "The General",
+        "seek_seconds": 3221
+      },
+      {
+        "artist": "Alex Dunn",
+        "song": "Me and the Lady",
+        "seek_seconds": 3395
+      },
+      {
+        "artist": "Mick Flannery",
+        "song": "Shalom",
+        "seek_seconds": 3601
+      },
+      {
+        "artist": "Andy Grammer",
+        "song": "Love Showed Up",
+        "seek_seconds": 3797
+      },
+      {
+        "artist": "Melanie MacLaren & Lorkin O'Reilly",
+        "song": "Clearance Aisle",
+        "seek_seconds": 4063
+      },
+      {
+        "artist": "Bunch of Ace",
+        "song": "Terminal 1",
+        "seek_seconds": 4291
+      },
+      {
+        "artist": "eevee and cliffe",
+        "song": "villain",
+        "seek_seconds": 4435
+      },
+      {
+        "artist": "Max García Conover",
+        "song": "la scala",
+        "seek_seconds": 4603
+      },
+      {
+        "artist": "Ollabelle",
+        "song": "Fall Back",
+        "seek_seconds": 4765
+      },
+      {
+        "artist": "S.G. Goodman",
+        "song": "Work Until I Die",
+        "seek_seconds": 5039
+      },
+      {
+        "artist": "The Wood Brothers",
+        "song": "River Takes the Town",
+        "seek_seconds": 5432
+      },
+      {
+        "artist": "Eastmountainsouth",
+        "song": "You Dance",
+        "seek_seconds": 5711
+      },
+      {
+        "artist": "Peter Fenn",
+        "song": "Far Away",
+        "seek_seconds": 5949
+      },
+      {
+        "artist": "The Lone Bellow",
+        "song": "I Did It For Love",
+        "seek_seconds": 6081
+      },
+      {
+        "artist": "Widowspeak",
+        "song": "Plum",
+        "seek_seconds": 6340
+      },
+      {
+        "artist": "Carsie Blanton",
+        "song": "Rich People",
+        "seek_seconds": 6605
+      },
+      {
+        "artist": "Black Dub",
+        "song": "Last Time",
+        "seek_seconds": 6763
+      },
+      {
+        "artist": "Maggie Rogers",
+        "song": "Don't Forget Me",
+        "seek_seconds": 6944
+      }
+    ]
   }
 ]
