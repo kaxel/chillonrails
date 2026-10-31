@@ -1,0 +1,29 @@
+# CHILLFILTR®
+
+> CHILLFILTR® is an independent music blog and radio that amplifies independent voices in popular music and modern literature. Its taste falls roughly into three categories: indie rock, folk-roots-soul, and electro pop. It's run by Krister Axel in Ashland, Oregon, whose KSKQ radio show The Weekly Catch draws on its songs.
+
+## Pages
+
+- [Home](https://chillfiltr.com/): the latest posts, filterable by topic (music, prose, personal, and lifestyle).
+- [Radio](https://chillfiltr.com/pages/radio): CHILLFILTR® Radio, a live example of the site's taste.
+- [Archive](https://chillfiltr.com/pages/archive): older posts.
+- [Search](https://chillfiltr.com/pages/search): search the posts.
+- [Tags](https://chillfiltr.com/tag) and [authors](https://chillfiltr.com/authors): posts grouped by tag and writer.
+- [Submit your music](https://chillfiltr.com/submit): send songs for review, for a small listening fee.
+- [About](https://chillfiltr.com/pages/about): the site and its founder.
+- [Contact](https://chillfiltr.com/pages/contact) and [support the site](https://chillfiltr.com/pages/support).
+
+Posts live at `/post/<slug>`, tags at `/tag/<slug>`, authors at `/author/<slug>`, and playlists at `/playlist/<slug>`.
+
+## Feeds
+
+- [RSS feed of posts](https://chillfiltr.com/posts/feed)
+
+## Policies
+
+- [Licensing](https://chillfiltr.com/pages/licensing), [privacy](https://chillfiltr.com/pages/privacy), [terms](https://chillfiltr.com/pages/terms), and [cookies](https://chillfiltr.com/pages/cookies).
+
+## Related
+
+- [The Weekly Catch](https://weeklycatch.org/): the KSKQ radio show.
+- [Krister Axel](https://axel.me/): the founder.
