@@ -19,7 +19,7 @@
     <% if @latest_episode&.video_link.present? %>
       <div class="max-w-2xl mx-auto">
         <iframe title="Mixcloud player" allow="autoplay" width="100%" height="120" frameborder="0"
-          src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=<%= ERB::Util.url_encode(URI.parse(@latest_episode.video_link).path) %>"></iframe>
+          src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=<%= ERB::Util.url_encode(URI.parse(@latest_episode.video_link).path) %>"></iframe>
       </div>
     <% end %>
   </div>

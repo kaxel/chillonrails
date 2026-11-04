@@ -27,10 +27,20 @@ class PostContentScrubber < Rails::HTML::PermitScrubber
     self.attributes = ATTRIBUTES
   end
 
+  # www.mixcloud.com/widget/ redirects to another host and, on some networks,
+  # into an anti-fraud check that leaves the embed blank. Posts saved with the
+  # old address are served from the player host Mixcloud actually embeds from.
+  LEGACY_MIXCLOUD_WIDGET = %r{\A(?:https:)?//www\.mixcloud\.com/widget/}
+  MIXCLOUD_WIDGET = "https://player-widget.mixcloud.com/widget/"
+
   def scrub(node)
-    if node.element? && node.name == "iframe" && !self.class.trusted_embed?(node["src"])
-      node.remove
-      return STOP
+    if node.element? && node.name == "iframe"
+      unless self.class.trusted_embed?(node["src"])
+        node.remove
+        return STOP
+      end
+      src = node["src"].strip
+      node["src"] = src.sub(LEGACY_MIXCLOUD_WIDGET, MIXCLOUD_WIDGET) if src.match?(LEGACY_MIXCLOUD_WIDGET)
     end
     super
   end

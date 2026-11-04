@@ -29,6 +29,22 @@ RSpec.describe PostContentScrubber do
     end
   end
 
+  it "serves Mixcloud embeds saved with the old www host from player-widget.mixcloud.com" do
+    %w[
+      https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Fchillfiltr%2Fshow%2F
+      //www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Fchillfiltr%2Fshow%2F
+    ].each do |src|
+      html = scrub(%(<iframe src="#{src}"></iframe>))
+      expect(html).to include('src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&amp;feed=%2Fchillfiltr%2Fshow%2F"'), src
+      expect(html).not_to include("www.mixcloud.com"), src
+    end
+  end
+
+  it "leaves a Mixcloud embed already on player-widget.mixcloud.com alone" do
+    src = "https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Fchillfiltr%2Fshow%2F"
+    expect(scrub(%(<iframe src="#{src}"></iframe>))).to include('src="https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&amp;feed=%2Fchillfiltr%2Fshow%2F"')
+  end
+
   it "removes iframes from anywhere else, fallback content included" do
     html = scrub('<p>Hi</p><iframe src="https://evil.example/bandcamp.com/EmbeddedPlayer/"><a href="x">fallback</a></iframe>')
     expect(html).to eq("<p>Hi</p>")

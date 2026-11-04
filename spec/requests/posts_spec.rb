@@ -22,6 +22,16 @@ RSpec.describe "Posts", type: :request do
       expect(audio["controlslist"]).to eq("nodownload")
     end
 
+    it "embeds a Weekly Catch episode's Mixcloud player from player-widget.mixcloud.com" do
+      post = create(:post, topic: "radio", tags: "weekly catch", author: "krister-axel", published_on: Date.new(2026, 10, 21),
+        video_link: "https://www.mixcloud.com/chillfiltr/weekly-catch-2026-10-21-kskq/")
+
+      get post_path(slug: post.slug)
+
+      iframe = Nokogiri::HTML(response.body).at_css('iframe[title="Mixcloud player"]')
+      expect(iframe["src"]).to eq("https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2Fchillfiltr%2Fweekly-catch-2026-10-21-kskq%2F")
+    end
+
     it "still strips scripts, event handlers and javascript: audio sources" do
       post = create(:post, tags: "indie music on tap", author: "krister-axel", published_on: Date.new(2019, 6, 10), content: <<~HTML)
         <script>alert(1)</script>
