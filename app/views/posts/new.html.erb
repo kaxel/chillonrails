@@ -59,7 +59,8 @@
       </div>
       <div>
         <%= form.label :author, class: "block font-medium mb-1" %>
-        <%= form.select :author, Author.order(:name).pluck(:name, :slug), {}, class: field %>
+        <%# "unknown" isn't an Author record; posts show it as "by Unknown" (e.g. /post/idiot-wind). %>
+        <%= form.select :author, Author.order(:name).pluck(:name, :slug) + [ [ "Unknown", PostsController::UNKNOWN_AUTHOR ] ], {}, class: field %>
       </div>
       <div>
         <%= form.label :tags, class: "block font-medium mb-1" %>

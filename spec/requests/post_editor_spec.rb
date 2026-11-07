@@ -57,6 +57,27 @@ RSpec.describe "Writing a post in the in-house editor", type: :request do
     end
   end
 
+  describe "New post link in the header" do
+    def new_post_link
+      Nokogiri::HTML(response.body).at_css(%(header a[href="#{new_post_path}"]))
+    end
+
+    it "is shown to admins" do
+      sign_in_as(admin)
+      get authors_path
+      expect(new_post_link).to be_present
+    end
+
+    it "is hidden from everyone else" do
+      get authors_path
+      expect(new_post_link).to be_nil
+
+      sign_in_as(regular_user)
+      get authors_path
+      expect(new_post_link).to be_nil
+    end
+  end
+
   describe "publishing" do
     before { sign_in_as(admin) }
 
@@ -137,6 +158,15 @@ RSpec.describe "Writing a post in the in-house editor", type: :request do
       expect(response).to have_http_status(:unprocessable_content)
       expect(response.body).to include("Title can&#39;t be blank")
       expect(Post.count).to eq(0)
+    end
+
+    it "offers Unknown as an author, shown like older anonymous posts" do
+      get new_post_path
+      expect(Nokogiri::HTML(response.body).at_css('select[name="post[author]"] option[value="unknown"]').text).to eq("Unknown")
+
+      post posts_path, params: { post: valid_params.merge(author: "unknown") }
+      follow_redirect!
+      expect(response.body).to include("by Unknown")
     end
 
     it "makes a plain-text subtitle from the body when none is given" do

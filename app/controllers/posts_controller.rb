@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   DEFAULT_AUTHOR = "krister-axel".freeze
+  UNKNOWN_AUTHOR = "unknown".freeze
 
   # Writing a post requires signing in; everything else is public, and editing
   # existing posts keeps its old redirect-home behavior for non-admins.
