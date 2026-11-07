@@ -79,24 +79,37 @@ RSpec.describe "Writing a post in the in-house editor", type: :request do
       expect(Post.last.content).to eq("<p>First paragraph.</p><h3>A heading</h3><p>Second <strong>bold</strong>.</p>")
     end
 
-    it "unwraps embed players from the editor's attachment markup and drops untrusted ones" do
-      content = <<~HTML
-        <p>Listen:</p>
-        <figure data-trix-attachment="{&quot;content&quot;:&quot;...&quot;}" data-trix-content-type="application/vnd.chillfiltr.embed" class="attachment attachment--content">
-          <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=123/size=large/" seamless></iframe>
-          <figcaption class="attachment__caption"></figcaption>
-        </figure>
-        <figure data-trix-attachment="{}" class="attachment"><iframe src="https://evil.example/x"></iframe></figure>
-        <script>alert(1)</script>
-      HTML
+    # What Trix actually submits for an "Insert embed": a placeholder figure,
+    # with the embed code only in the attachment's JSON.
+    def embed_figure(iframe_html)
+      json = { content: '<span class="post-embed-card">▶ Bandcamp player</span>', embed: iframe_html,
+               contentType: "application/vnd.chillfiltr.embed" }.to_json
+      %(<figure data-trix-attachment="#{ERB::Util.html_escape(json)}" data-trix-content-type="application/vnd.chillfiltr.embed" ) +
+        %(class="attachment attachment--content"><figcaption class="attachment__caption"></figcaption></figure>)
+    end
+
+    it "puts the real player in place of each embed placeholder and drops untrusted ones" do
+      bandcamp = '<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=123/size=large/" seamless>' \
+                 '<a href="https://artist.bandcamp.com/track/song">Song by Artist</a></iframe>'
+      content = "<p>Listen:#{embed_figure(bandcamp)}</p>" \
+                "<p>Also:#{embed_figure('<iframe src="https://evil.example/x"></iframe>')}</p><script>alert(1)</script>"
       post posts_path, params: { post: valid_params.merge(content: content) }
 
       stored = Post.last.content
-      expect(stored).to include('<iframe style="border:0;width:100%;height:120px;" src="https://bandcamp.com/EmbeddedPlayer/track=123/size=large/"')
-      expect(stored).not_to include("figure")
-      expect(stored).not_to include("data-trix")
-      expect(stored).not_to include("evil.example")
-      expect(stored).not_to include("script")
+      expect(stored).to start_with('<p>Listen:</p><iframe style="border:0;width:100%;height:120px;" src="https://bandcamp.com/EmbeddedPlayer/track=123/size=large/"')
+      expect(stored).to end_with("<p>Also:</p>")
+      %w[figure data-trix post-embed-card evil.example script].each { |gone| expect(stored).not_to include(gone) }
+    end
+
+    it "keeps text typed after an embed in its own paragraph" do
+      bandcamp = '<iframe src="https://bandcamp.com/EmbeddedPlayer/track=123/"></iframe>'
+      content = "<p>Listen:#{embed_figure(bandcamp)}And <strong>after</strong> it.</p><p>Next.</p>"
+      post posts_path, params: { post: valid_params.merge(content: content) }
+
+      expect(Post.last.content).to eq(
+        '<p>Listen:</p><iframe src="https://bandcamp.com/EmbeddedPlayer/track=123/"></iframe>' \
+        "<p>And <strong>after</strong> it.</p><p>Next.</p>"
+      )
     end
 
     it "uses an uploaded header image as the post image" do

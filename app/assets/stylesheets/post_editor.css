@@ -1,0 +1,42 @@
+/* In-house post editor (posts/new). Kept out of the Tailwind layers so these
+   rules win over the vendored trix.css, which isn't layered.
+
+   Hide the Trix tools whose output the post page doesn't display
+   (strikethrough, code blocks, file attachments). */
+trix-toolbar .trix-button--icon-strike,
+trix-toolbar .trix-button--icon-code,
+trix-toolbar .trix-button-group--file-tools {
+  display: none;
+}
+
+trix-editor.post-editor {
+  border: 1px solid var(--color-line);
+  border-radius: 0.375rem;
+  padding: 0.75rem 1rem;
+}
+
+trix-editor.post-editor:focus {
+  outline: none;
+  border-color: var(--color-moss);
+}
+
+/* Stand-in shown in the editor for an inserted embed player. */
+trix-editor .post-embed-card {
+  display: block;
+  padding: 0.75rem 1rem;
+  border: 1px dashed var(--color-moss);
+  border-radius: 0.375rem;
+  color: var(--color-moss);
+  font-weight: 500;
+}
+
+/* Show paragraphs and headings in the editor roughly as the post will. */
+trix-editor.post-editor p {
+  margin: 0 0 0.75em;
+}
+
+trix-editor.post-editor h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 1em 0 0.5em;
+}
