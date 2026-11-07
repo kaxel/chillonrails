@@ -54,6 +54,8 @@ en:
     updated_successfully: "Post was successfully updated."
     deleted_successfully: "Post was successfully deleted."
     must_be_valid_url: "must be a valid URL"
+    header_image_type: "must be a JPEG, PNG, WebP, or GIF image"
+    header_image_size: "must be smaller than %{size} MB"
     bandcamp_not_found: "looks like a Bandcamp link, but no Bandcamp track or album player was found at it"
   
   registrations:
