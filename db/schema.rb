@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_10_17_203843) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_07_194101) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -134,10 +134,12 @@ ActiveRecord::Schema[8.0].define(version: 2026_10_17_203843) do
     t.integer "score", default: 0, null: false
     t.integer "score_all_time", default: 0, null: false
     t.string "audio_embed_url"
+    t.bigint "user_id"
     t.index ["score"], name: "index_posts_on_score"
     t.index ["score_all_time"], name: "index_posts_on_score_all_time"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["topic"], name: "index_posts_on_topic"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -200,6 +202,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_10_17_203843) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "posts", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "submission_songs", "submissions"
 end

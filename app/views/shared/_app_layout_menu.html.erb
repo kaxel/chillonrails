@@ -26,6 +26,12 @@
           <span data-collapse-target="toggleText">Hide</span>
         </button>
       <% end %>
+      <% if Current.user&.admin? %>
+        <%= link_to new_post_path, title: "Write a new post", aria: { label: "New post" },
+              class: "mr-2 inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold bg-moss text-white rounded-full hover:bg-moss-dark transition-colors" do %>
+          <span aria-hidden="true">+</span><span class="hidden sm:inline" aria-hidden="true">New post</span>
+        <% end %>
+      <% end %>
       <% if Current.user && Rails.application.routes.url_helpers.respond_to?(:pages_account_path) %>
         <div class="relative mr-2">
           <%= link_to pages_account_path, class: "inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-muted rounded-lg hover:bg-white focus:outline-none focus:ring-2 focus:ring-line", title: "Profile" do %>

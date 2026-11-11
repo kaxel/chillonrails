@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
-  allow_unauthenticated_access
-  before_action :require_admin, only: [ :edit, :update, :destroy ]
+  DEFAULT_AUTHOR = "krister-axel".freeze
+  UNKNOWN_AUTHOR = "unknown".freeze
+
+  # Writing a post requires signing in; everything else is public, and editing
+  # existing posts keeps its old redirect-home behavior for non-admins.
+  allow_unauthenticated_access except: [ :new, :create ]
+  before_action :require_admin, only: [ :new, :create, :edit, :update, :destroy ]
   before_action :set_post, only: [ :show, :edit, :update, :destroy, :random ]
 
   # Usage Examples:
@@ -41,7 +46,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = Post.new(published_on: Date.current, author: DEFAULT_AUTHOR)
   end
 
   def edit
@@ -57,11 +62,15 @@ class PostsController < ApplicationController
     render plain: [ post&.audio_link.to_s, post ? post_url(post.slug) : "" ].join(",")
   end
 
+  # Posts written in the in-house editor (posts/new).
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(new_post_params)
+    @post.content = PostBodyNormalizer.call(@post.content)
+    @post.user = Current.user
+    @post.created_on = Date.current
 
     if @post.save
-      redirect_to @post, notice: t("posts.created_successfully")
+      redirect_to post_path(@post.slug), notice: t("posts.created_successfully")
     else
       render :new, status: :unprocessable_content
     end
@@ -114,6 +123,11 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find_by(slug: params[:slug])
     raise ActionController::RoutingError.new("(#{params[:slug]}) Not Found") unless @post
+  end
+
+  def new_post_params
+    params.expect(post: [ :title, :preview, :content, :header_image, :topic, :author, :tags, :location,
+                          :video_link, :audio_link, :published_on, :slug ])
   end
 
   def post_params

@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password validations: false
   has_secure_token :confirmation_token
   has_many :sessions, dependent: :destroy
+  has_many :posts, dependent: :nullify
 
   generates_token_for :password_reset, expires_in: 15.minutes do
     password_salt&.last(10)
