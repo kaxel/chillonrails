@@ -15,6 +15,39 @@ module SocialMetaHelper
     URI.join("#{request.base_url}/", DEFAULT_SOCIAL_IMAGE).to_s
   end
 
+  # Type and pixel size of a preview image served from public/, for the
+  # og:image:type/width/height tags. Uploaded (Active Storage) images report
+  # their type only. nil when unknown (e.g. an image on another site).
+  def social_image_info(url)
+    uri = URI.parse(url.to_s)
+    return unless uri.host.nil? || url.to_s.start_with?("#{request.base_url}/")
+
+    path = URI.decode_www_form_component(uri.path.to_s)
+    if path.start_with?("/rails/active_storage/")
+      type = social_image_blob(path)&.content_type
+      return type && ImageDimensions::Info.new(type, nil, nil)
+    end
+
+    file = Rails.public_path.join(path.delete_prefix("/")).expand_path
+    return unless file.to_s.start_with?("#{Rails.public_path}/") && file.file?
+
+    SocialMetaHelper.image_info_cache.fetch([ file.to_s, file.mtime.to_i ]) do |key|
+      SocialMetaHelper.image_info_cache[key] = ImageDimensions.read(file)
+    end
+  rescue URI::InvalidURIError, ArgumentError
+    nil
+  end
+
+  # Image headers don't change while a file's mtime stays the same.
+  def self.image_info_cache
+    @image_info_cache ||= Concurrent::Map.new
+  end
+
+  def social_image_blob(path)
+    signed_id = path.split("/")[-2]
+    ActiveStorage::Blob.find_signed(signed_id)
+  end
+
   def weekly_catch_og_path(path)
     date = path.to_s[WEEKLY_CATCH_FISH, 1]
     png = "/weekly-catch-og/#{date}.png" if date
