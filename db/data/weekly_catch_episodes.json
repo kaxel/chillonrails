@@ -1552,134 +1552,154 @@
     "image_path": "/weekly-catch-fish/2026-07-29.svg",
     "tracks": [
       {
+        "artist": "The National",
+        "song": "The Alcott",
+        "seek_seconds": 0
+      },
+      {
+        "artist": "Elkvilla",
+        "song": "World Spins Madly On (Weepies Cover)",
+        "seek_seconds": 417
+      },
+      {
+        "artist": "Tigerforest",
+        "song": "Sunset Avenue",
+        "seek_seconds": 580
+      },
+      {
         "artist": "Buckbee",
         "song": "Lilacs",
-        "seek_seconds": 0
+        "seek_seconds": 873
       },
       {
         "artist": "Margaret Glaspy",
         "song": "Michigan",
-        "seek_seconds": 240
+        "seek_seconds": 1089
       },
       {
         "artist": "Secret Bad Boy",
         "song": "In the Fullness of Time (You Become All the People You Claim to Revile)",
-        "seek_seconds": 540
+        "seek_seconds": 1433
       },
       {
         "artist": "Woliver",
         "song": "Wild",
-        "seek_seconds": 840
+        "seek_seconds": 1687
       },
       {
-        "artist": "La parita salazar",
-        "song": "negativo",
-        "seek_seconds": 1380
+        "artist": "VROWN",
+        "song": "Itsy Bitsy",
+        "seek_seconds": 2013
+      },
+      {
+        "artist": "PRAX x CHELLYX",
+        "song": "CRAWLING BACK",
+        "seek_seconds": 2230
       },
       {
         "artist": "RAVSTRØ",
         "song": "Ngithwele",
-        "seek_seconds": 1560
+        "seek_seconds": 2415
+      },
+      {
+        "artist": "Boys in Shorts",
+        "song": "Love In A Time Of Endings",
+        "seek_seconds": 2668
       },
       {
         "artist": "Saintseneca",
         "song": "Only The Young Die Good",
-        "seek_seconds": 2040
+        "seek_seconds": 2935
       },
       {
         "artist": "The Wood Brothers",
         "song": "Puff of Smoke",
-        "seek_seconds": 2340
+        "seek_seconds": 3188
       },
       {
         "artist": "River Whyless",
         "song": "Fast Like a Match",
-        "seek_seconds": 2580
+        "seek_seconds": 3427
       },
       {
-        "artist": "Shovels & Rope",
+        "artist": "Shovels & Rope (ft Shakey Graves)",
         "song": "Unknown Legend",
-        "seek_seconds": 2700
+        "seek_seconds": 3600
       },
       {
         "artist": "The River South",
         "song": "There's Nothing Beneath Us",
-        "seek_seconds": 3060
+        "seek_seconds": 3931
       },
       {
         "artist": "TENDER",
         "song": "Heavy",
-        "seek_seconds": 3300
+        "seek_seconds": 4155
       },
       {
         "artist": "Ocie Elliott",
         "song": "By the Way",
-        "seek_seconds": 3540
+        "seek_seconds": 4383
       },
       {
         "artist": "Georgia Harmer",
         "song": "Talamanca",
-        "seek_seconds": 3660
+        "seek_seconds": 4550
       },
       {
         "artist": "Chris Whitley",
         "song": "Her Furious Angels",
-        "seek_seconds": 3960
+        "seek_seconds": 4805
       },
       {
         "artist": "Hanne Mjøen",
         "song": "Hurt Like Heaven",
-        "seek_seconds": 4140
+        "seek_seconds": 4996
       },
       {
         "artist": "The Never Ending Fall",
         "song": "Like She Does",
-        "seek_seconds": 4260
+        "seek_seconds": 5161
       },
       {
         "artist": "Yvonne Moriel",
         "song": "Girl",
-        "seek_seconds": 4440
+        "seek_seconds": 5341
       },
       {
         "artist": "Madison Cunningham",
         "song": "Hospital",
-        "seek_seconds": 4740
+        "seek_seconds": 5629
       },
       {
         "artist": "The National Parks",
         "song": "Airplane",
-        "seek_seconds": 4980
+        "seek_seconds": 5843
       },
       {
         "artist": "The Lone Bellow",
         "song": "Enemies",
-        "seek_seconds": 5220
+        "seek_seconds": 6086
       },
       {
         "artist": "Viv & Riley",
         "song": "The General",
-        "seek_seconds": 5400
+        "seek_seconds": 6299
       },
       {
         "artist": "Josh Garrels",
         "song": "New Day (2020 Reprise)",
-        "seek_seconds": 5580
+        "seek_seconds": 6474
       },
       {
         "artist": "Richy Mitch & The Coal Miners",
         "song": "Berry Herman",
-        "seek_seconds": 5760
+        "seek_seconds": 6658
       },
       {
         "artist": "Wednesday",
         "song": "Chosen to Deserve",
-        "seek_seconds": 6060
-      },
-      {
-        "artist": "Joe Nolan",
-        "song": "Too Much Time to kill",
-        "seek_seconds": 6300
+        "seek_seconds": 6927
       }
     ]
   },
@@ -3751,6 +3771,178 @@
         "artist": "Shakey Graves",
         "song": "When the Love Is New",
         "seek_seconds": 6913
+      }
+    ]
+  },
+  {
+    "date": "2026-11-04",
+    "mixcloud_url": "https://www.mixcloud.com/chillfiltr/weekly-catch-2026-11-04-kskq/",
+    "image_path": "/weekly-catch-fish/2026-11-04.svg",
+    "tracks": [
+      {
+        "artist": "PETER FENN",
+        "song": "Pass Me By",
+        "seek_seconds": 1
+      },
+      {
+        "artist": "Irma",
+        "song": "Va-t'en",
+        "seek_seconds": 138
+      },
+      {
+        "artist": "Solbore",
+        "song": "To Be Free",
+        "seek_seconds": 306
+      },
+      {
+        "artist": "The Wood Brothers",
+        "song": "River Takes the Town",
+        "seek_seconds": 538
+      },
+      {
+        "artist": "Mild Orange",
+        "song": "Hollywood Dreams",
+        "seek_seconds": 818
+      },
+      {
+        "artist": "boygenius",
+        "song": "Stay Down",
+        "seek_seconds": 1149
+      },
+      {
+        "artist": "Lily Moore",
+        "song": "Summer",
+        "seek_seconds": 1390
+      },
+      {
+        "artist": "talker",
+        "song": "What If I Change My Mind?",
+        "seek_seconds": 1579
+      },
+      {
+        "artist": "Rosarrie",
+        "song": "Compass",
+        "seek_seconds": 1850
+      },
+      {
+        "artist": "Restless",
+        "song": "Don't Stop",
+        "seek_seconds": 2065
+      },
+      {
+        "artist": "Ben Edgar",
+        "song": "Cornerstones",
+        "seek_seconds": 2265
+      },
+      {
+        "artist": "Savagery",
+        "song": "Laughter",
+        "seek_seconds": 2528
+      },
+      {
+        "artist": "Amelia Coburn",
+        "song": "I Just Want To Say",
+        "seek_seconds": 2731
+      },
+      {
+        "artist": "Eastmountainsouth",
+        "song": "Hard Times (Album Version)",
+        "seek_seconds": 2958
+      },
+      {
+        "artist": "AINM",
+        "song": "Darlin'",
+        "seek_seconds": 3184
+      },
+      {
+        "artist": "Obed Padilla",
+        "song": "Rainforest",
+        "seek_seconds": 3404
+      },
+      {
+        "artist": "Jeffrey Martin",
+        "song": "Coal Fire",
+        "seek_seconds": 3600
+      },
+      {
+        "artist": "The Lone Bellow",
+        "song": "Enemies",
+        "seek_seconds": 3907
+      },
+      {
+        "artist": "T1NΔ",
+        "song": "She Is Me",
+        "seek_seconds": 4120
+      },
+      {
+        "artist": "talker",
+        "song": "Strangers",
+        "seek_seconds": 4432
+      },
+      {
+        "artist": "Leif Vollebekk",
+        "song": "Surfer's Journal",
+        "seek_seconds": 4626
+      },
+      {
+        "artist": "Ladi",
+        "song": "Knock n Run",
+        "seek_seconds": 4979
+      },
+      {
+        "artist": "Abigail Lapell",
+        "song": "I See Music",
+        "seek_seconds": 5195
+      },
+      {
+        "artist": "The Satellite Station",
+        "song": "Fine",
+        "seek_seconds": 5396
+      },
+      {
+        "artist": "Ian McFarland",
+        "song": "Every Days A Saturday",
+        "seek_seconds": 5674
+      },
+      {
+        "artist": "Steve Nguyen",
+        "song": "Cherubim",
+        "seek_seconds": 5836
+      },
+      {
+        "artist": "Powfu (feat. Beabadoobee)",
+        "song": "Death Bed",
+        "seek_seconds": 5956
+      },
+      {
+        "artist": "Lomelda",
+        "song": "Hannah Sun",
+        "seek_seconds": 6127
+      },
+      {
+        "artist": "Boy Golden",
+        "song": "Moontan (feat. Cat Clyde)",
+        "seek_seconds": 6335
+      },
+      {
+        "artist": "Wednesday",
+        "song": "Got Shocked",
+        "seek_seconds": 6558
+      },
+      {
+        "artist": "Robert Connely Farr",
+        "song": "Shake It",
+        "seek_seconds": 6697
+      },
+      {
+        "artist": "Sylvain Rollet",
+        "song": "Retour au lotissement",
+        "seek_seconds": 6856
+      },
+      {
+        "artist": "Callum Pitt",
+        "song": "Mayfly",
+        "seek_seconds": 7126
       }
     ]
   }
