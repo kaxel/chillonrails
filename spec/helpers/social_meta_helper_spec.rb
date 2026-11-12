@@ -27,6 +27,25 @@ RSpec.describe SocialMetaHelper, type: :helper do
     end
   end
 
+  describe "#social_image_info" do
+    it "reads the type and size of an image served from public/" do
+      expect(helper.social_image_info("https://chillfiltr.com/logo-900-clear.png").to_a).to eq([ "image/png", 900, 1023 ])
+    end
+
+    it "gives the type of an uploaded header image" do
+      blob = ActiveStorage::Blob.create_and_upload!(io: Rails.root.join("spec/fixtures/files/header.png").open,
+                                                    filename: "header.png", content_type: "image/png")
+      url = "https://chillfiltr.com#{Rails.application.routes.url_helpers.rails_blob_path(blob, only_path: true)}"
+      expect(helper.social_image_info(url).to_a).to eq([ "image/png", nil, nil ])
+    end
+
+    it "knows nothing about other sites' images, missing files, or paths outside public/" do
+      expect(helper.social_image_info("https://cdn.example.com/logo-900-clear.png")).to be_nil
+      expect(helper.social_image_info("https://chillfiltr.com/nope.jpg")).to be_nil
+      expect(helper.social_image_info("https://chillfiltr.com/../config/database.yml")).to be_nil
+    end
+  end
+
   describe "#playlist_social_description" do
     def playlist_with(count)
       songs = (1..count).to_h { |n| [ n.to_s, "https://x.test/Artist - Song #{n}.mp3" ] }

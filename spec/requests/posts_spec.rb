@@ -70,6 +70,21 @@ RSpec.describe "Posts", type: :request do
         expect(html.css('meta[name="description"]').size).to eq(1)
       end
 
+      it "describes the image and repeats the card for Twitter/X" do
+        post.update!(image: "/logo-900-clear.png")
+        get post_path(slug: post.slug)
+        html = Nokogiri::HTML(response.body)
+        name = ->(n) { html.at_css(%(meta[name="#{n}"]))&.[]("content") }
+
+        expect(meta(html, "og:image:type")).to eq("image/png")
+        expect(meta(html, "og:image:width")).to eq("900")
+        expect(meta(html, "og:image:height")).to eq("1023")
+        expect(meta(html, "og:image:alt")).to eq("Stella & OpenAI")
+        expect(name.("twitter:title")).to eq("Stella & OpenAI")
+        expect(name.("twitter:description")).to eq("You're supposed to know how you got there.")
+        expect(name.("twitter:image")).to eq("http://www.example.com/logo-900-clear.png")
+      end
+
       it "uses the 1200x630 PNG twin of a Weekly Catch fish SVG" do
         post.update!(image: "/weekly-catch-fish/2026-10-07.svg")
         get post_path(slug: post.slug)
