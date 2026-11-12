@@ -98,4 +98,35 @@ RSpec.describe Post, type: :model do
       expect(post.tags_from_hash).to eq([ "Poetry", "Melancholy" ])
     end
   end
+
+  describe "Bandcamp audio links" do
+    let(:player) { "https://bandcamp.com/EmbeddedPlayer/track=2293246886/size=large/" }
+
+    it "stores the Bandcamp player for a Bandcamp audio link" do
+      allow(BandcampEmbed).to receive(:player_url_for).and_return(player)
+      post = create(:post, audio_link: "https://kristeraxel.bandcamp.com/track/still-feels-broken")
+      expect(post.audio_embed_url).to eq(player)
+    end
+
+    it "rejects a Bandcamp link with no player" do
+      allow(BandcampEmbed).to receive(:player_url_for).and_return(nil)
+      post = build(:post, audio_link: "https://kristeraxel.bandcamp.com/track/gone")
+      expect(post).not_to be_valid
+      expect(post.errors[:audio_link]).to be_present
+    end
+
+    it "leaves mp3 links alone and clears a previous player" do
+      allow(BandcampEmbed).to receive(:player_url_for).and_return(player)
+      post = create(:post, audio_link: "https://kristeraxel.bandcamp.com/track/still-feels-broken")
+      post.update!(audio_link: "https://cdn.example.com/episode.mp3")
+      expect(post.audio_embed_url).to be_nil
+    end
+
+    it "doesn't look anything up when the audio link is unchanged" do
+      allow(BandcampEmbed).to receive(:player_url_for).and_return(player)
+      post = create(:post, audio_link: "https://kristeraxel.bandcamp.com/track/still-feels-broken")
+      post.update!(title: "Renamed")
+      expect(BandcampEmbed).to have_received(:player_url_for).once
+    end
+  end
 end

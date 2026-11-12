@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
 	  <!-- Google tag (gtag.js) -->
 	  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0F487C8SWX"></script>
@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-	<meta name="description" content="<%= content_for(:description) || 'CHILLFILTR® - Discover the latest content and updates' %>">
+	<meta name="description" content="<%= content_for(:description) || SocialMetaHelper::DEFAULT_DESCRIPTION %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -31,8 +31,29 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon-300v2.png">
 	
-	<%# add meta tags for socials %>
-	<meta property="og:title" content="<%= content_for(:title) %>">
+	<%# Link preview cards (iMessage, Facebook, etc.); pages override via content_for %>
+	<% og_title = content_for(:og_title) || content_for(:title) || "CHILLFILTR®" %>
+	<% og_description = content_for(:description) || SocialMetaHelper::DEFAULT_DESCRIPTION %>
+	<% og_image = content_for(:og_image) || social_image_url(nil) %>
+	<% og_image_info = social_image_info(og_image) %>
+	<meta property="og:site_name" content="CHILLFILTR®">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="<%= content_for(:og_type) || "website" %>">
+	<meta property="og:title" content="<%= og_title %>">
+	<meta property="og:description" content="<%= og_description %>">
+	<meta property="og:image" content="<%= og_image %>">
+	<% if og_image.start_with?("https://") %><meta property="og:image:secure_url" content="<%= og_image %>"><% end %>
+	<% if og_image_info %><meta property="og:image:type" content="<%= og_image_info.type %>"><% end %>
+	<% if og_image_info&.width %><meta property="og:image:width" content="<%= og_image_info.width %>">
+	<meta property="og:image:height" content="<%= og_image_info.height %>"><% end %>
+	<meta property="og:image:alt" content="<%= og_title %>">
+	<meta property="og:url" content="<%= content_for(:canonical_url) || "#{request.base_url}#{request.path}" %>">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="<%= og_title %>">
+	<meta name="twitter:description" content="<%= og_description %>">
+	<meta name="twitter:image" content="<%= og_image %>">
+	<meta name="twitter:image:alt" content="<%= og_title %>">
+	<% if content_for?(:canonical_url) %><link rel="canonical" href="<%= content_for(:canonical_url) %>"><% end %>
 
     <%# RSS feed link for auto-discovery %>
     <%= auto_discovery_link_tag(:rss, posts_feed_url(format: :rss), { title: "CHILLFILTR® Latest Posts" }) %>
@@ -61,13 +82,13 @@
 	        <%= render 'shared/logo30' %>
 	        <span class="ml-3 font-display text-xl tracking-tight">CHILLFILTR®</span>
 	      </a>
-	      <p class="text-sm text-muted sm:ml-4 sm:pl-4 sm:border-l sm:border-line sm:mt-0 mt-2">©<%= Time.zone.now.year %>
+	      <p class="text-sm text-muted mb-0! sm:ml-4 sm:pl-4 sm:border-l sm:border-line sm:mt-0 mt-2">©<%= Time.zone.now.year %>
 	        <a href="https://blacklake.media" class="text-muted ml-1 hover:text-moss" rel="noopener noreferrer" target="_blank">Black Lake Media</a>
 	      </p>
-	      <p class="text-sm text-muted sm:ml-4 sm:pl-4 sm:border-l sm:border-line sm:mt-0 mt-2">
+	      <p class="text-sm text-muted mb-0! sm:ml-4 sm:pl-4 sm:border-l sm:border-line sm:mt-0 mt-2">
 	        <a href="#" class="text-muted ml-1 hover:text-moss" rel="noopener noreferrer" target="_blank" aria-label="send your song to CHILLFILTR®"><%= link_to "Submissions", pages_submit_path, class: "text-sm" %></a>
 	      </p>
-	      <p class="text-sm text-muted sm:ml-4 sm:pl-4 sm:border-l sm:border-line sm:mt-0 mt-2">
+	      <p class="text-sm text-muted mb-0! sm:ml-4 sm:pl-4 sm:border-l sm:border-line sm:mt-0 mt-2">
 	        <a href="#" class="text-muted ml-1 hover:text-moss" rel="noopener noreferrer" target="_blank" aria-label="contact CHILLFILTR®"><%= link_to "Contact", pages_contact_path, class: "text-sm" %></a>
 	      </p>
 

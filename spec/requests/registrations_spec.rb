@@ -24,7 +24,7 @@ RSpec.describe "Registrations", type: :request do
 
     it "re-renders the form on invalid input" do
       post registration_path, params: { user: { email_address: "bad", password: "" } }
-      expect(response).to have_http_status(:unprocessable_entity).or have_http_status(:success)
+      expect(response).to have_http_status(:unprocessable_content).or have_http_status(:success)
       expect(User.find_by(email_address: "bad")).to be_nil
     end
   end

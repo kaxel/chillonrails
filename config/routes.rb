@@ -16,7 +16,7 @@
   post 'auth/apple/callback', to: 'omniauth_callbacks#apple'
   get 'auth/failure', to: 'omniauth_callbacks#failure'
   get "/random_song", to: "posts#random_song"
-  resources :posts, path: 'post', param: :slug, only: [:edit, :show, :update]
+  resources :posts, path: 'post', param: :slug, only: [:new, :create, :edit, :show, :update]
   get '/post/:id', to: 'posts#redirect_by_id', constraints: { id: /\d+/ }
   get 'posts/feed', to: 'posts#feed', defaults: { format: 'rss' }
   get 'posts/last', to: 'posts#last', defaults: { format: 'rss' }
@@ -40,6 +40,12 @@
   post '/webhooks/stripe', to: 'webhooks/stripe#create'
   get "pages/search"
   get "pages/contact"
+  post "/contact", to: "contact_messages#create", as: :contact_messages
+
+  namespace :admin do
+    resources :contact_messages, only: [ :index, :show ]
+  end
+  get "pages/thanks"
   get "pages/licensing"
   get "pages/terms"
   get "pages/cookies", to: "pages#cookie_policy"

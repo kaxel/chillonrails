@@ -1,4 +1,15 @@
 class Post < ApplicationRecord
+  HEADER_IMAGE_TYPES = %w[image/jpeg image/png image/webp image/gif].freeze
+  HEADER_IMAGE_MAX_SIZE = 10.megabytes
+
+  # Set for posts written in the in-house editor; imported posts have no user.
+  belongs_to :user, optional: true
+
+  # Uploaded in the editor and stored with Active Storage (disk in dev, S3 in
+  # production). Its URL is copied into `image`, which everything that shows a
+  # post image already reads.
+  has_one_attached :header_image
+
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true
   validates :content, presence: true
@@ -6,8 +17,12 @@ class Post < ApplicationRecord
   validates :video_link, format: { with: URI::DEFAULT_PARSER.make_regexp, message: I18n.t("posts.must_be_valid_url") }, allow_blank: true
   validates :audio_link, format: { with: URI::DEFAULT_PARSER.make_regexp, message: I18n.t("posts.must_be_valid_url") }, allow_blank: true
 
+  validate :resolve_audio_embed, if: :audio_link_changed?
+  validate :header_image_is_a_web_image, if: -> { header_image.attached? && attachment_changes["header_image"] }
+
   before_validation :generate_slug
   before_validation :generate_preview
+  after_commit :use_header_image_as_image, if: -> { header_image.attached? && image != header_image_path }
 
   scope :by_topic, ->(topic) { where(topic: topic) }
 
@@ -52,11 +67,46 @@ class Post < ApplicationRecord
 
   private
 
+  # A Bandcamp track/album link in the audio field shows Bandcamp's player at
+  # the top of the post instead of the <audio> player; look up its player URL
+  # once, here, rather than on every page view.
+  def resolve_audio_embed
+    self.audio_embed_url = nil
+    return unless BandcampEmbed.candidate?(audio_link)
+
+    self.audio_embed_url = BandcampEmbed.player_url_for(audio_link)
+    errors.add(:audio_link, I18n.t("posts.bandcamp_not_found")) if audio_embed_url.nil?
+  end
+
   def generate_slug
     self.slug = title.parameterize if title.present? && slug.blank?
   end
 
+  # The preview is plain text (post header, listings, link previews), so strip
+  # the body's HTML rather than truncating mid-tag.
   def generate_preview
-    self.preview = content.truncate(200) if content.present? && preview.blank?
+    return unless content.present? && preview.blank?
+
+    spaced = content.gsub(%r{</(p|h[1-6]|li|blockquote|div)>|<br\s*/?>}i, "\\0 ")
+    self.preview = ActionController::Base.helpers.strip_tags(spaced).squish.truncate(200)
+  end
+
+  def header_image_is_a_web_image
+    unless header_image.blob.content_type.in?(HEADER_IMAGE_TYPES)
+      errors.add(:header_image, I18n.t("posts.header_image_type"))
+    end
+    if header_image.blob.byte_size > HEADER_IMAGE_MAX_SIZE
+      errors.add(:header_image, I18n.t("posts.header_image_size", size: HEADER_IMAGE_MAX_SIZE / 1.megabyte))
+    end
+  end
+
+  def header_image_path
+    Rails.application.routes.url_helpers.rails_blob_path(header_image, only_path: true)
+  end
+
+  # Runs after commit, once the upload has a stable URL; update_column avoids
+  # re-running validations and callbacks for this one derived field.
+  def use_header_image_as_image
+    update_column(:image, header_image_path) # rubocop:disable Rails/SkipsModelValidations
   end
 end

@@ -1,5 +1,101 @@
-<h1>New Post</h1>
+<% content_for :title, "New Post — CHILLFILTR®" %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "trix", "data-turbo-track": "reload" %>
+<% end %>
 
-<%= render 'form', post: @post %>
+<% field = "block shadow rounded-md border border-line outline-none px-3 py-2 w-full bg-white focus:border-moss" %>
+<% hint = "text-sm text-muted mt-1" %>
 
-<%= link_to 'Back', posts_path %>
+<div class="mx-auto md:w-2/3 w-full px-4 py-10 font-sans text-ink">
+  <h1 class="font-display italic text-4xl mb-6">New Post</h1>
+
+  <% if @post.errors.any? %>
+    <div class="bg-red-50 text-red-700 font-medium p-4 rounded-lg mb-5" role="alert">
+      <h2 class="font-bold mb-3"><%= pluralize(@post.errors.count, "problem") %> to fix before publishing:</h2>
+      <ul class="list-disc list-inside">
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with model: @post, url: posts_path, method: :post, data: { turbo: false } do |form| %>
+    <div class="my-4">
+      <%= form.label :title, class: "block font-medium mb-1" %>
+      <%= form.text_field :title, required: true, class: field %>
+    </div>
+
+    <div class="my-4">
+      <%= form.label :preview, "Subtitle", class: "block font-medium mb-1" %>
+      <%= form.text_field :preview, maxlength: 200, class: field %>
+      <p class="<%= hint %>">Shown under the title and in link previews. Left blank, the start of the post is used.</p>
+    </div>
+
+    <div class="my-4">
+      <%= form.label :header_image, "Header image", class: "block font-medium mb-1" %>
+      <%= form.file_field :header_image, direct_upload: true, accept: Post::HEADER_IMAGE_TYPES.join(","), class: "block" %>
+      <p class="<%= hint %>">JPEG, PNG, WebP, or GIF, up to <%= Post::HEADER_IMAGE_MAX_SIZE / 1.megabyte %> MB. A wide image (about 1200×630) looks best in link previews.</p>
+    </div>
+
+    <div class="my-6" data-controller="post-editor" data-action="trix-file-accept->post-editor#rejectFiles">
+      <div class="flex items-end justify-between mb-1">
+        <%= form.label :content, "Post", class: "block font-medium", for: "post_content_editor" %>
+        <button type="button" data-action="post-editor#insertEmbed"
+                class="text-sm border border-line rounded-full px-3 py-1 hover:border-moss hover:text-moss">
+          + Insert embed
+        </button>
+      </div>
+      <%= form.hidden_field :content, id: "post_content" %>
+      <trix-editor id="post_content_editor" input="post_content" class="trix-content post-editor bg-white min-h-80"></trix-editor>
+      <p class="<%= hint %>">Use “Insert embed” for Bandcamp, YouTube, Vimeo, Mixcloud, or Spotify players.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <div>
+        <%= form.label :topic, class: "block font-medium mb-1" %>
+        <%= form.select :topic, Post.where.not(topic: [ nil, "" ]).distinct.order(:topic).pluck(:topic).map { |t| [ t.titleize, t ] },
+              { include_blank: "Choose a topic" }, required: true, class: field %>
+      </div>
+      <div>
+        <%= form.label :author, class: "block font-medium mb-1" %>
+        <%# "unknown" isn't an Author record; posts show it as "by Unknown" (e.g. /post/idiot-wind). %>
+        <%= form.select :author, Author.order(:name).pluck(:name, :slug) + [ [ "Unknown", PostsController::UNKNOWN_AUTHOR ] ], {}, class: field %>
+      </div>
+      <div>
+        <%= form.label :tags, class: "block font-medium mb-1" %>
+        <%= form.text_field :tags, placeholder: "indie-folk;americana", class: field %>
+        <p class="<%= hint %>">Separate with semicolons.</p>
+      </div>
+      <div>
+        <%= form.label :location, class: "block font-medium mb-1" %>
+        <%= form.text_field :location, placeholder: "eugene;oregon", class: field %>
+        <p class="<%= hint %>">Separate with semicolons.</p>
+      </div>
+      <div>
+        <%= form.label :video_link, "Video link", class: "block font-medium mb-1" %>
+        <%= form.url_field :video_link, placeholder: "https://www.youtube.com/watch?v=…", class: field %>
+        <p class="<%= hint %>">YouTube, Vimeo, or Mixcloud. Shown at the top of the post.</p>
+      </div>
+      <div>
+        <%= form.label :audio_link, "Audio link", class: "block font-medium mb-1" %>
+        <%= form.url_field :audio_link, placeholder: "https://artist.bandcamp.com/track/…", class: field %>
+        <p class="<%= hint %>">A Bandcamp track or album link, or an MP3 URL. Shown at the top of the post.</p>
+      </div>
+      <div>
+        <%= form.label :published_on, "Publish date", class: "block font-medium mb-1" %>
+        <%= form.date_field :published_on, class: field %>
+      </div>
+      <div>
+        <%= form.label :slug, "Web address", class: "block font-medium mb-1" %>
+        <%= form.text_field :slug, placeholder: "made from the title", class: field %>
+        <p class="<%= hint %>">chillfiltr.com/post/… — leave blank to use the title.</p>
+      </div>
+    </div>
+
+    <div class="mt-8 flex items-center gap-4">
+      <%= form.submit "Publish post", class: "bg-moss hover:bg-moss-dark text-white font-bold py-2 px-6 rounded-full cursor-pointer" %>
+      <%= link_to "Cancel", root_path, class: "text-muted hover:text-ink underline" %>
+    </div>
+  <% end %>
+</div>

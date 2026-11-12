@@ -44,11 +44,19 @@ en:
     invalid_reset_link: "Password reset link is invalid or has expired."
     reset_subject: "Reset your password"
   
+  contact:
+    mail_subject: "Contact form: %{name}"
+    possible_spam_prefix: "[Possible spam]"
+    rate_limited: "You've sent several messages recently. Please try again in a little while."
+
   posts:
     created_successfully: "Post was successfully created."
     updated_successfully: "Post was successfully updated."
     deleted_successfully: "Post was successfully deleted."
     must_be_valid_url: "must be a valid URL"
+    header_image_type: "must be a JPEG, PNG, WebP, or GIF image"
+    header_image_size: "must be smaller than %{size} MB"
+    bandcamp_not_found: "looks like a Bandcamp link, but no Bandcamp track or album player was found at it"
   
   registrations:
     check_email_confirmation: "Please check your email to confirm your account."

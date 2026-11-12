@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  allow_unauthenticated_access only: [ :about, :authentication, :radio, :search, :contact, :licensing, :cookie_policy, :privacy, :terms, :archive ]
+  allow_unauthenticated_access only: [ :about, :authentication, :radio, :search, :contact, :thanks, :licensing, :cookie_policy, :privacy, :terms, :archive ]
 
   def about
     @page_title = "about"
@@ -26,10 +26,30 @@ class PagesController < ApplicationController
 
   def contact
     @page_title = "contact"
+    @contact_message = ContactMessage.new
+  end
+
+  def thanks
+    @page_title = "thanks"
   end
 
   def radio
     @page_title = "radio"
+    radio_posts = Post.by_topic("radio").order(published_on: :desc)
+    @latest_episode = radio_posts.first
+    older_episodes = @latest_episode ? radio_posts.where.not(id: @latest_episode.id) : radio_posts
+
+    per_page = 4
+    max_total = 16
+
+    total_count = [ older_episodes.count, max_total ].min
+    @episodes_total_pages = [ (total_count / per_page.to_f).ceil, 1 ].max
+    @episodes_page = params[:page].to_i
+    @episodes_page = 1 if @episodes_page < 1
+    @episodes_page = @episodes_total_pages if @episodes_page > @episodes_total_pages
+
+    offset = (@episodes_page - 1) * per_page
+    @episodes = older_episodes.offset(offset).limit(per_page)
   end
 
   def authentication

@@ -6,8 +6,11 @@ class ErrorsController < ApplicationController
     # Log the 404 error to PageNotFound table
     url_to_log = (@original_path.presence || request.original_url)
     PageNotFound.create(url: url_to_log, accessed_at: Time.current)
+
+    render status: :not_found
   end
 
   def internal_server_error
+    render status: :internal_server_error
   end
 end

@@ -27,8 +27,11 @@ module Chillonrails
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
-    
+
     config.exceptions_app = self.routes
+
+    # The only attachment is an audio upload; nothing generates image variants.
+    config.active_storage.variant_processor = :disabled
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -37,7 +40,7 @@ module Chillonrails
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    
+
     # Brevo SMTP relay — get credentials from Brevo dashboard: Settings > SMTP & API > SMTP tab.
     # user_name is your Brevo account login email; password is the generated SMTP key (not your account password).
     config.action_mailer.delivery_method = :smtp
@@ -65,6 +68,5 @@ module Chillonrails
       g.fixture_replacement :factory_bot, dir: "spec/factories"
       g.helper false                         # Disable helper generation
     end
-
   end
 end

@@ -1,0 +1,7 @@
+<p>New message from the CHILLFILTR® contact form.</p>
+
+<p><strong>From:</strong> <%= @contact_message.name %> &lt;<%= mail_to @contact_message.email %>&gt;</p>
+
+<%= simple_format(@contact_message.message) %>
+
+<p>&mdash;<br>Reply to this email to answer <%= @contact_message.name %> directly.</p>

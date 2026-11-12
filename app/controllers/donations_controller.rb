@@ -16,7 +16,7 @@ class DonationsController < ApplicationController
     amount_cents = params[:amount_cents].to_i
 
     unless valid_amount?(amount_cents)
-      return render json: { error: t("donations.invalid_amount") }, status: :unprocessable_entity
+      return render json: { error: t("donations.invalid_amount") }, status: :unprocessable_content
     end
 
     intent = Stripe::PaymentIntent.create(
@@ -29,7 +29,7 @@ class DonationsController < ApplicationController
     render json: { client_secret: intent.client_secret }
   rescue Stripe::StripeError => e
     Rails.logger.error("Stripe PaymentIntent failed for donation: #{e.message}")
-    render json: { error: t("donations.payment_start_failed") }, status: :unprocessable_entity
+    render json: { error: t("donations.payment_start_failed") }, status: :unprocessable_content
   end
 
   private

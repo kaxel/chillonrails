@@ -1,0 +1,9 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "CHILLFILTR®",
+    "documentationUrl": "https://chillfiltr.com/llms.txt",
+    "logoUrl": "https://chillfiltr.com/icon-new.png"
+  },
+  "entries": []
+}

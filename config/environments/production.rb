@@ -1,4 +1,5 @@
 require "active_support/core_ext/integer/time"
+require_relative "../../lib/public_file_cache"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -14,12 +15,16 @@ Rails.application.configure do
 
   # Turn on fragment caching in view templates.
   config.action_controller.perform_caching = true
-  
+
   # Enable serving of static files from the public folder
   config.public_file_server.enabled = true
 
   # Cache assets for far-future expiry since they are all digest stamped.
   config.public_file_server.headers = { "cache-control" => "public, max-age=#{1.year.to_i}" }
+
+  # Everything else in public/ keeps its name when it changes, so it gets an hour instead.
+  config.middleware.insert_before ActionDispatch::Static, PublicFileCache,
+    long: config.public_file_server.headers["cache-control"]
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"

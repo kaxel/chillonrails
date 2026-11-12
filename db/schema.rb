@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_09_07_033534) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_07_194101) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -68,6 +68,17 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_07_033534) do
     t.index ["slug"], name: "index_authors_on_slug", unique: true
   end
 
+  create_table "contact_messages", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.text "message", null: false
+    t.datetime "delivered_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "suspected_spam", default: false, null: false
+    t.index ["created_at"], name: "index_contact_messages_on_created_at"
+  end
+
   create_table "donations", force: :cascade do |t|
     t.integer "amount_cents", null: false
     t.string "stripe_payment_intent_id", null: false
@@ -122,10 +133,13 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_07_033534) do
     t.datetime "updated_at", null: false
     t.integer "score", default: 0, null: false
     t.integer "score_all_time", default: 0, null: false
+    t.string "audio_embed_url"
+    t.bigint "user_id"
     t.index ["score"], name: "index_posts_on_score"
     t.index ["score_all_time"], name: "index_posts_on_score_all_time"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["topic"], name: "index_posts_on_topic"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -188,6 +202,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_09_07_033534) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "posts", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "submission_songs", "submissions"
 end
