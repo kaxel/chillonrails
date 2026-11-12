@@ -3945,5 +3945,167 @@
         "seek_seconds": 7126
       }
     ]
+  },
+  {
+    "date": "2026-11-11",
+    "mixcloud_url": "https://www.mixcloud.com/chillfiltr/weekly-catch-2026-11-11-kskq/",
+    "image_path": "/weekly-catch-fish/2026-11-11.svg",
+    "tracks": [
+      {
+        "artist": "Cameron Dallas",
+        "song": "Future",
+        "seek_seconds": 1
+      },
+      {
+        "artist": "Annabelle Tiffin",
+        "song": "WHEN ITS ALL SAID AND DONE",
+        "seek_seconds": 222
+      },
+      {
+        "artist": "Ruby Gill",
+        "song": "Carol / not carol",
+        "seek_seconds": 440
+      },
+      {
+        "artist": "Ó hEaráin",
+        "song": "Good Old Days",
+        "seek_seconds": 813
+      },
+      {
+        "artist": "Theo Black",
+        "song": "Afraid of the Dark?",
+        "seek_seconds": 1088
+      },
+      {
+        "artist": "JW Francis",
+        "song": "Two Dogs",
+        "seek_seconds": 1287
+      },
+      {
+        "artist": "Modern Olympia",
+        "song": "Give Up The Ghost",
+        "seek_seconds": 1441
+      },
+      {
+        "artist": "Generifus",
+        "song": "Bird Beak",
+        "seek_seconds": 1615
+      },
+      {
+        "artist": "Ruby Gill",
+        "song": "Fishing is not about fishing",
+        "seek_seconds": 1820
+      },
+      {
+        "artist": "Adahm",
+        "song": "Emily (feat. Willie)",
+        "seek_seconds": 2115
+      },
+      {
+        "artist": "Lydia Luce",
+        "song": "Wide Awake at Christmas Time",
+        "seek_seconds": 2372
+      },
+      {
+        "artist": "BRECHTJE",
+        "song": "Brechtje’s Sad Song",
+        "seek_seconds": 2558
+      },
+      {
+        "artist": "poor rich",
+        "song": "live & lose",
+        "seek_seconds": 2843
+      },
+      {
+        "artist": "Rolling Boxcar International",
+        "song": "I'm Out West",
+        "seek_seconds": 3093
+      },
+      {
+        "artist": "Tablefox",
+        "song": "Seven Years",
+        "seek_seconds": 3466
+      },
+      {
+        "artist": "Palmyra",
+        "song": "Cheap Beer",
+        "seek_seconds": 3601
+      },
+      {
+        "artist": "gōsuta",
+        "song": "Organics",
+        "seek_seconds": 3892
+      },
+      {
+        "artist": "Stefano Baruello",
+        "song": "Mind",
+        "seek_seconds": 4067
+      },
+      {
+        "artist": "Paraphernalia",
+        "song": "King & Country",
+        "seek_seconds": 4290
+      },
+      {
+        "artist": "Venture Palace",
+        "song": "What's Your Plan?",
+        "seek_seconds": 4591
+      },
+      {
+        "artist": "ØRBITA",
+        "song": "Reset",
+        "seek_seconds": 4853
+      },
+      {
+        "artist": "Kramies",
+        "song": "We're All Dead",
+        "seek_seconds": 5037
+      },
+      {
+        "artist": "DJ Fehlt",
+        "song": "Wonky Guy",
+        "seek_seconds": 5278
+      },
+      {
+        "artist": "Tony Frissore (Feat. AXIOM)",
+        "song": "Stolen Valor",
+        "seek_seconds": 5507
+      },
+      {
+        "artist": "Anna Thoresen",
+        "song": "RUSSIAN ROULETTE",
+        "seek_seconds": 5663
+      },
+      {
+        "artist": "August Vox",
+        "song": "Dirty Laundry",
+        "seek_seconds": 5899
+      },
+      {
+        "artist": "Chris Whitley",
+        "song": "Frontier",
+        "seek_seconds": 5996
+      },
+      {
+        "artist": "My Clever Android",
+        "song": "Elevator",
+        "seek_seconds": 6280
+      },
+      {
+        "artist": "The Coronas",
+        "song": "End The Day With You",
+        "seek_seconds": 6526
+      },
+      {
+        "artist": "Late Cambrian",
+        "song": "How I Bleed",
+        "seek_seconds": 6803
+      },
+      {
+        "artist": "Beth Orton",
+        "song": "Cigarette Curls",
+        "seek_seconds": 7031
+      }
+    ]
   }
 ]
